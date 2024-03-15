@@ -23,8 +23,8 @@ const DetailTab = () => {
     "https://b.zmtcdn.com/data/pictures/chains/1/931/0e79614ea14113b8b3d4b48574293d00.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A",
   ];
   return (
-    <Tabs defaultValue="overview" className="w-full">
-      <TabsList className="grid w-full grid-cols-4">
+    <Tabs defaultValue="overview" className="w-full ]">
+      <TabsList className="grid w-full grid-cols-4 bg-[#858484]">
         <TabsTrigger value="overview">Account</TabsTrigger>
         <TabsTrigger value="reviews">Reviews</TabsTrigger>
         <TabsTrigger value="photos">Photos</TabsTrigger>

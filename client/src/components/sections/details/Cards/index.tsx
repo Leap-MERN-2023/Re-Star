@@ -27,16 +27,21 @@ const DetailCard = () => {
     "nice environment",
   ];
   return (
-    <Card>
+    <Card className="mt-4">
       <CardHeader className="text-3xl block w-full ">
         <CardTitle className=" flex justify-between items-center">
-          <div>Name of Restaurant</div>
+          <div>
+            <h1 className="text-[#858484] font-bold text-3xl">
+              Name of Restaurant
+            </h1>
+          </div>
+
           <div className="flex mr-11">
             <Badge className="mr-2">
-              4.6{" "}
+              4.6
               <span className="m-2">
                 <FaStar />
-              </span>{" "}
+              </span>
             </Badge>
             <div>
               <p className="text-xs font-sans"> 3,110</p>
@@ -50,42 +55,40 @@ const DetailCard = () => {
           {categories.map((name, i) => (
             <p
               key={i}
-              className="rounded-full px-3 border border-green-500 inline-block p-1"
+              className="rounded-full px-3  border-2 border-[#858484] inline-block p-1"
             >
               {name}
             </p>
           ))}
         </div>
 
-        <CardDescription className="text-lg">
+        <CardDescription className="text-lg mt-2">
           Where is this place
         </CardDescription>
         <p>
-          <span className="text-green-300 text-lg"> Open now :</span> 10 PM -
+          <span className="text-[#6B6B6B] text-lg"> Open now :</span> 10 PM -
           1AM
         </p>
       </CardContent>
       <CardFooter className="flex  gap-3">
         <Button variant="outline">
-          {" "}
           <MdAssistantDirection
-            color="pink"
+            color="#858484"
             size={"25px"}
-            style={{ margin: 4 }}
-          />{" "}
+            style={{ margin: 6 }}
+          />
           Direction
         </Button>
         <Button variant={"outline"}>
-          {" "}
           <CiBookmarkRemove
-            color="pink"
+            color="#858484"
             size={"25px"}
             style={{ margin: 4 }}
-          />{" "}
+          />
           Save
         </Button>
         <Button variant={"outline"}>
-          <FaShare color="pink" size={"25px"} style={{ margin: 4 }} />
+          <FaShare color="#858484" size={"25px"} style={{ margin: 4 }} />
           Share
         </Button>
       </CardFooter>

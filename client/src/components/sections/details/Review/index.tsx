@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 const ReviewCard = () => {
   return (
     <div>
-      <Card className="w-96 bg-slate-200">
+      <Card className="w-96 ">
         <CardHeader className="flex justify-between w-96">
           <CardTitle className=" flex justify-between items-center">
             <div className="flex items-center gap-5">
