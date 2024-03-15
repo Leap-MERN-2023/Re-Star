@@ -12,13 +12,13 @@ export function MainNav({ className }: any) {
         Add Restaurant
       </Link>
       <Link
-        href="/"
+        href="/login"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
         Log In
       </Link>
       <Link
-        href="/"
+        href="/signup"
         className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
       >
         Sign Up
