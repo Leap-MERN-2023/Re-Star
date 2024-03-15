@@ -5,6 +5,7 @@ import Search from "@/components/sections/home/Search";
 export default function Home() {
   return (
     <div className="bg-[#fdf4ed]">
+      Hello
       <Search />
       <CategoryCard />
       <CollectionCard />
