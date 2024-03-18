@@ -4,7 +4,7 @@ import { UserNav } from "./user-nav";
 
 const Header = () => {
   return (
-    <div className="absolute w-[100%] container ">
+    <div className="bg-[#fdf4ed] w-[100%] mx-auto ">
       <div className="flex h-16 items-center px-4 bg-transparent justify-evenly">
         <img className="w-20 h-auto" src="/images/logo.png" />
         <div>
