@@ -11,7 +11,7 @@ const Page = () => {
       <div>
         <img src={"/images/signup.png"} alt="pic" />
       </div>
-      <div className="w-96  p-24 rounded-2xl bg-[#fbfbfb] flex flex-col gap-5">
+      <div className="w-[500px]  p-24 rounded-2xl bg-[#fbfbfb] flex flex-col gap-5">
         <div className="text-3xl self-center  font-serif">LOG IN</div>
         <div>
           <Label htmlFor="email">Email</Label>
@@ -29,10 +29,10 @@ const Page = () => {
         </div>
         <p className="self-center">or</p>
         <div className="flex justify-around">
-          <Button size={"icon"}>
+          <Button variant={"outline"} size={"icon"}>
             <MdEmail />
           </Button>
-          <Button size={"icon"}>
+          <Button variant={"outline"} size={"icon"}>
             <FaFacebook />
           </Button>
         </div>
