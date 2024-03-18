@@ -1,8 +1,16 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Document } from "mongoose";
 
-import bcrypt from "bcrypt";
+interface IUser extends Document {
+  name: string;
+  email: string;
+  password: string;
+  avatarImg?: string;
+  otp?: string;
+  role: "admin" | "user" | "moderator";
+  createdAt?: Date;
+}
 
-const userSchema = new Schema({
+const userSchema = new Schema<IUser>({
   name: {
     type: String,
     required: [true, "Name is required"],
@@ -16,7 +24,7 @@ const userSchema = new Schema({
     type: String,
     required: [true, "password is required"],
     minlength: 6,
-    select: false,
+    // select: false,
   },
   avatarImg: {
     type: String,
@@ -30,16 +38,12 @@ const userSchema = new Schema({
     enum: ["admin", "user", "moderator"],
     default: "user",
   },
-  owner: {
-    type: Schema.ObjectId,
-    default: "false",
-  },
   createdAt: {
     type: Date,
     default: new Date(),
   },
 });
 
-const User = model("User", userSchema);
+const User = model<IUser>("User", userSchema);
 
 export default User;

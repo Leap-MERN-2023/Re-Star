@@ -31,7 +31,10 @@ export function CategoryCard() {
               router.push("/details");
             }}
           >
-            <img src={card.img} className="h-[200px] w-[350px] rounded-xl " />
+            <img
+              src={card.img}
+              className="h-[200px] w-[350px] rounded-xl p-2"
+            />
             <div className="p-4">
               <h1 className="font-bold text-[#847c9b] text-4xl">{card.name}</h1>
               <p className="font-bold text-[#bcb3ca] text-2xl">Description</p>

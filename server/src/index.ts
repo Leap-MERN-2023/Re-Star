@@ -11,11 +11,10 @@ const app: Application = express();
 const MONGO_URL = process.env.MONGO_URL as string;
 
 connectDB(MONGO_URL);
-
-const PORT = process.env.PORT;
-
 app.use(express.json());
 app.use(cors());
+
+const PORT = process.env.PORT;
 
 app.get("/", (req, res) => {
   res.send("Hello Re-Star");

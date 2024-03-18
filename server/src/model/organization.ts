@@ -23,14 +23,25 @@ const OrganizationSchema = new Schema({
     required: [true, "Category is required"],
   },
   description: {
-    type: Schema.ObjectId,
-    ref: "Description",
-    required: [true, "Description is required"],
+    type: String,
+    default: "",
   },
   user: {
     type: Schema.ObjectId,
     ref: "User",
     required: [true, "User is required"],
+  },
+  openTime: {
+    type: String,
+    required: [true, "Open time is required"],
+  },
+  closeTime: {
+    type: String,
+    required: [true, "Close time is required"],
+  },
+  phoneNumber: {
+    type: String,
+    required: [true, "Phone number is required"],
   },
   createdAt: {
     type: Date,
