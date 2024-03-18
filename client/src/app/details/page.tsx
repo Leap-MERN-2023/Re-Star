@@ -8,8 +8,8 @@ const Page = () => {
   // Print out the picture URLs with alt text
 
   return (
-    <div className="bg-[#fdf4ed]  ">
-      <div className="mx:auto container">
+    <div className="bg-[#fdf4ed] ">
+      <div className="mx:auto container ">
         <DetailSearch />
         <DetailPicture />
       </div>

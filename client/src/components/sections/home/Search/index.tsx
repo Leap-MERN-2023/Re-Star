@@ -8,10 +8,8 @@ const Search = () => {
     <div
       style={{
         background: "#fdf4ed",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
       }}
+      className="md:auto container"
     >
       <div>
         <h1
@@ -31,6 +29,7 @@ const Search = () => {
             justifyContent: "center",
             alignItems: "center",
             gap: "20px",
+            flexWrap: "wrap",
           }}
         >
           <Input
@@ -51,13 +50,14 @@ const Search = () => {
               borderRadius: "30px",
               borderColor: "#7c84b8",
             }}
+            className="sm:flex hidden"
           >
-            <FaSearch style={{ fontSize: "20px", color: "" }} />
+            <FaSearch style={{ fontSize: "20px" }} />
           </Button>
         </div>
         <img
           src="https://scontent.xx.fbcdn.net/v/t1.15752-9/431524812_337019292142019_8037532982556948092_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=MG1035uQv7kAX_vlzte&_nc_oc=AQnRKRillC9wrqyd58l-ljrN1EQ85dYtK0lNr8Rh-7fmJt4UNkZ-H7WpWRqqN2r1JPyt4fI7EU8Kos7PBhjWng7a&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdQ5v-GIIRbgWUSXoYjaC0-jNnwBO1Kgq_2WlVFicD27dw&oe=661A65EF"
-          style={{ height: "700px", marginTop: "4px" }}
+          className="md:w-[100%] mt-1"
         />
       </div>
     </div>

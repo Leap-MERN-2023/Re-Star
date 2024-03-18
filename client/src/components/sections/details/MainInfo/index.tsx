@@ -69,7 +69,7 @@ const MainInfo = () => {
           1AM
         </p>
       </CardContent>
-      <CardFooter className="flex  gap-3">
+      <CardFooter className="flex-wrap  gap-3">
         <Button variant="outline">
           <MdAssistantDirection
             color="#858484"
