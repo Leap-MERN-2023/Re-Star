@@ -12,6 +12,7 @@ const DetailSearch = () => {
         justifyContent: "center",
         alignItems: "center",
         gap: "20px",
+        flexWrap: "wrap",
       }}
     >
       <Input
@@ -32,6 +33,7 @@ const DetailSearch = () => {
           borderRadius: "30px",
           borderColor: "#7c84b8",
         }}
+        className="md:flex hidden"
       >
         <FaSearch style={{ fontSize: "20px", color: "" }} />
       </Button>

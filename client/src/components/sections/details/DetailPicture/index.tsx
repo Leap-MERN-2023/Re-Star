@@ -28,7 +28,7 @@ export function DetailPicture() {
     },
   ];
   return (
-    <Carousel className="w-full border-4 p-3 border-[#858484] bg-white rounded-lg ">
+    <Carousel className="w-fullp-3 bg-white rounded-lg shadow-xl mt-5">
       <CarouselContent className="-ml-1 ">
         {pictures.map((picture, index) => (
           <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3 ">

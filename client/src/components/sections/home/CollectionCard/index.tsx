@@ -1,5 +1,6 @@
+"use client";
 import * as React from "react";
-
+import Router, { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
 
 const cards = [
@@ -9,30 +10,36 @@ const cards = [
   },
   {
     name: "Restaurants ",
-    img: "https://i.pinimg.com/474x/89/2f/90/892f9019e20cb88637f4cbdb3c757bf4.jpg",
+    img: "https://images.unsplash.com/photo-1710675567250-3d17ac149a20?q=80&w=4000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Party with friends",
-    img: "https://i.pinimg.com/474x/66/fe/b2/66feb2eb79915062c3365664239ae925.jpg",
+    img: "https://images.unsplash.com/photo-1710675567250-3d17ac149a20?q=80&w=4000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 
 export function CollectionCard() {
+  const router = useRouter();
   return (
-    <div>
-      <div>
-        <h1 className="flex justify-center text-4xl text-[#9f9dba] font-extrabold">
+    <div className="mx:auto container">
+      <div className="p-2">
+        <h1 className=" text-4xl  font-extrabold   p-2 rounded-md text-[#847c9b]">
           Collections
         </h1>
-        <p className="flex justify-center items-center">
+        <p className=" p-2 rounded-md text-[#545360] font-semibold">
           Explore curated lists of top restaurants, cafes, pubs, and bars in
           Mongolia, based on trends
         </p>
       </div>
-      <div className="flex justify-center items-center gap-[30px]">
+      <div className="flex justify-around items-center  flex-wrap">
         {cards.map((card) => (
-          <Card className="w-[450px] border-4 border-[#7c84b8] rounded-2xl justify-center items-center ">
-            <img src={card.img} className="h-[300px] w-[450px] rounded-xl " />
+          <Card
+            className="w-[350px] shadow-2xl rounded-2xl h-[350px] "
+            onClick={() => {
+              router.push("/details");
+            }}
+          >
+            <img src={card.img} className="h-[200px] w-[350px] rounded-xl " />
             <div className="p-4">
               <h1 className="font-bold text-[#847c9b] text-4xl">{card.name}</h1>
               <p className="font-bold text-[#bcb3ca] text-2xl">Description</p>

@@ -27,10 +27,10 @@ export const MenuTab = () => {
 
   const imgs = [
     "https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1484344958632-f7264ab71ecc?q=80&w=2591&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1542444256-164bd32f11fc?q=80&w=2610&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1540432797114-187727adf19b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cGxhdGUlMjBmb29kfGVufDB8fDB8fHww",
-    "https://images.unsplash.com/photo-1513442542250-854d436a73f2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGxhdGUlMjBmb29kfGVufDB8fDB8fHww",
+    "./images/food1.png",
+    "./images/food3.png",
+    "./images/food2.png",
+    "./images/food3.png",
   ];
   return (
     <div>
