@@ -19,7 +19,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 
-const DetailCard = () => {
+const MainInfo = () => {
   const categories = [
     " korean food",
     "original chickens",
@@ -55,14 +55,13 @@ const DetailCard = () => {
           {categories.map((name, i) => (
             <p
               key={i}
-              className="rounded-full px-3  border-2 border-[#858484] inline-block p-1"
+              className="rounded-full px-3  border-2 border-[#858484] inline-block p-1 font-medium"
             >
               {name}
             </p>
           ))}
         </div>
-
-        <CardDescription className="text-lg mt-2">
+        <CardDescription className="text-xl mt-2 font-semibold">
           Where is this place
         </CardDescription>
         <p>
@@ -96,4 +95,4 @@ const DetailCard = () => {
   );
 };
 
-export default DetailCard;
+export default MainInfo;

@@ -33,7 +33,6 @@ const Search = () => {
             gap: "20px",
           }}
         >
-          {/* <ComboboxDemo /> */}
           <Input
             type="search"
             placeholder="Search location"
