@@ -9,6 +9,12 @@ import {
   SelectValue,
 } from "../ui/select";
 import FooterSection from "./footer-section";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaTwitter,
+  FaYoutube,
+} from "@/components/icons";
 
 const Footer = () => {
   const footerDatas = [
@@ -49,13 +55,19 @@ const Footer = () => {
             </SelectContent>
           </Select>
         </div>
-        <div className="flex w-[100%] py-10">
+        <div className="flex w-[100%] py-10 flex-wrap justify-center">
           {footerDatas.map((footerData: any) => (
             <FooterSection footerData={footerData} />
           ))}
 
-          <div className="flex-1">
+          <div className=" flex-1 min-w-40 flex flex-col  items-center">
             <h1 className="my-5 font-semibold text-xl">Social Links</h1>
+            <div className="flex gap-3">
+              <FaFacebook />
+              <FaInstagram />
+              <FaTwitter />
+              <FaYoutube />
+            </div>
           </div>
         </div>
         <div className="border-t border-gray-200 pt-10">
