@@ -1,7 +1,18 @@
-import React, { useContext } from "react";
+"use client";
+import React, { useContext, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
 import { MdEmail, FaFacebook } from "@/components/icons";
 
@@ -9,133 +20,118 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { UserContext } from "@/context/UserProvider";
 
+import { RegisterSchema } from "@/schema";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import z from "zod";
+import { toast } from "react-toastify";
 
 export const SignupPage = () => {
   const { signup } = useContext(UserContext);
+  const [loading, setLoading] = useState(false);
 
-  const validationSchema = z
-    .object({
-      name: z.string(),
-      email: z.string(),
-      password: z.string(),
-      rePassword: z.string(),
-    })
-    .nullable()
-    .superRefine(
-      (
-        arg,
-        ctx
-      ): arg is {
-        name: string;
-        email: string;
-        password: string;
-        rePassword: string;
-      } => {
-        if (!arg) {
-          ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            message: "object should exist",
-          });
-        }
-        if (arg.password !== arg.rePassword) {
-          ctx.addIssue({
-            code: z.ZodIssueCode.custom,
-            message: "object should exist",
-          });
-        }
+  const form = useForm({
+    resolver: zodResolver(RegisterSchema),
+    defaultValues: {
+      email: "",
+      name: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
 
-        return z.NEVER;
-      }
-    );
+  const onSubmit = ({
+    name,
+    email,
+    password,
+    confirmPassword,
+  }: z.infer<typeof RegisterSchema>) => {
+    setLoading(false);
 
-  const formik = useFormik({
-    onSubmit: ({
-      name,
-      email,
-      password,
-    }: {
-      name: string;
-      email: string;
-      password: string;
-      rePassword?: string;
-    }) => {
+    if (password !== confirmPassword) {
+      return toast.error("password is not same");
+    } else {
+      console.log(
+        `name: ${name}, email: ${email}, password:${password}, confirm : ${confirmPassword}`
+      );
       if (signup) {
         signup({ name, email, password });
       }
-    },
-    initialValues: {
-      name: "",
-      email: "",
-      password: "",
-      rePassword: "",
-    },
-    validateOnChange: false,
-    validateOnBlur: false,
-    validationSchema,
-  });
+    }
+  };
 
+  const checkPass = (password: string, confirmPassword: string) => {};
   return (
     <div className="bg-[#fdf4ed] flex justify-center  items-center h-screen gap-40">
       <div className="w-[500px]  bg-[#fffefe] p-24 rounded-2xl flex flex-col gap-5">
         <div className="text-3xl self-center  font-serif">SIGN UP</div>
-        <div>
-          <Label htmlFor="name">Name</Label>
-          <Input
-            type="name"
-            id="name"
-            placeholder="name"
-            name="name"
-            onChange={formik.handleChange}
-            aria-errormessage={formik.errors.name}
-            value={formik.values.name}
-          />
-        </div>
-        <div>
-          <Label htmlFor="email">Email</Label>
-          <Input
-            type="email"
-            id="email"
-            placeholder="Email"
-            width={"400px"}
-            name="email"
-            onChange={formik.handleChange}
-            aria-errormessage={formik.errors.email}
-            value={formik.values.email}
-          />
-        </div>
 
-        <div>
-          <Label htmlFor="password">Password</Label>
-          <Input
-            type="password"
-            id="password"
-            placeholder="password"
-            name="password"
-            onChange={formik.handleChange}
-            aria-errormessage={formik.errors.password}
-            value={formik.values.password}
-          />
-        </div>
-        <div>
-          <Label htmlFor="re-password">Re-Password</Label>
-          <Input
-            type="re-password"
-            id="re-password"
-            placeholder="re-password"
-            name="rePassword"
-            onChange={formik.handleChange}
-            aria-errormessage={formik.errors.rePassword}
-            value={formik.values.rePassword}
-          />
-        </div>
-
-        <Button className="w-full" onClick={formik.handleSubmit}>
-          Sign in
-        </Button>
-
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <div className="space-y-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        type="email"
+                        placeholder="johndoe@gmail.com"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input {...field} placeholder="John Doe" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input {...field} type="password" placeholder="******" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="confirmPassword"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Confirm Password</FormLabel>
+                    <FormControl>
+                      <Input {...field} type="password" placeholder="******" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+            <Button type="submit" className="w-full">
+              {loading ? "Loading..." : "Register"}
+            </Button>
+          </form>
+        </Form>
         <p className="self-center">or</p>
         <div className="flex justify-around">
           <Button variant={"outline"} color="red">

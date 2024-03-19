@@ -59,6 +59,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
   const signup = async ({ name, email, password }: ISignUp) => {
     try {
+      console.log("data", name, email, password);
       await myAxios.post("http://localhost:8080/auth/signup", {
         email,
         name,
@@ -74,7 +75,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
       router.push("/login");
     } catch (error: any) {
       console.log("err", error);
-      toast.error(`${error.response.data.message as string}`);
+      toast.error(`${error?.response?.data?.message as string}`);
     }
   };
 

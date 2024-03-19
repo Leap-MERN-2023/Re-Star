@@ -1,28 +1,91 @@
-import React from "react";
+"use client";
+import React, { useContext, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { MdEmail, FaFacebook } from "@/components/icons";
 import Link from "next/link";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import z from "zod";
+import { toast } from "react-toastify";
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { LoginSchema } from "@/schema";
+import { UserContext } from "@/context/UserProvider";
 
 export const LoginPage = () => {
+  const [loading, setLoading] = useState(false);
+  const { login } = useContext(UserContext);
+  const form = useForm({
+    resolver: zodResolver(LoginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+
+  const onSubmit = ({ email, password }: z.infer<typeof LoginSchema>) => {
+    setLoading(false);
+
+    console.log(` email: ${email}, password:${password}`);
+
+    login({ email, password });
+  };
   return (
-    <div className="bg-[#fdf4ed] flex h-screen justify-center items-center gap-40">
-      <div>
+    <div className="bg-[#fdf4ed] md:flex h-screen justify-center items-center md:gap-40">
+      <div className="md:hidden">
         <img src={"/images/signup.png"} alt="pic" />
       </div>
-      <div className="w-[500px]  p-24 rounded-2xl bg-[#fbfbfb] flex flex-col gap-5">
-        <div className="text-3xl self-center  font-serif">LOG IN</div>
+      <div className="md:w-[500px]  md:p-24 rounded-2xl bg-[#fbfbfb] flex flex-col gap-5 sm:w-full ">
+        <p className="text-3xl self-center  font-serif">LOG IN</p>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <div className="space-y-4">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        type="email"
+                        placeholder="johndoe@gmail.com"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input {...field} type="password" placeholder="******" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+          </form>
+        </Form>
         <div>
-          <Label htmlFor="email">Email</Label>
-          <Input type="email" id="email" placeholder="Email" width={"400px"} />
-        </div>
-        <div>
-          <Label htmlFor="password">Password</Label>
-          <Input type="password" id="password" placeholder="password" />
-        </div>
-        <div>
-          <Button className="w-full">Log in</Button>
+          <Button type="submit" className="w-full">
+            {loading ? "Loading..." : "Log in"}
+          </Button>
           <Link href={""} className="p-0 m-0 hover:text-gray-600">
             Forgot password
           </Link>
