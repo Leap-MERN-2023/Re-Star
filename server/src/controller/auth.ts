@@ -10,6 +10,7 @@ export const signup = async (
   next: NextFunction
 ) => {
   const newUser = req.body;
+  console.log("user", newUser);
   const user = await User.create({ ...newUser });
   //   const verifyToken = jwt.sign(
   //     { email: user.email },
