@@ -9,7 +9,7 @@ import {
 } from "react";
 import myAxios from "@/utils/myAxios";
 import Swal from "sweetalert2";
-import { toast } from "react-toastify";
+import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 
 import {
@@ -20,6 +20,7 @@ import {
   ILogin,
 } from "../interface";
 import { Value } from "@radix-ui/react-select";
+import { ref } from "yup";
 
 export const UserContext = createContext<IUserContext>({
   loggedToken: "",
@@ -41,10 +42,12 @@ export const UserContext = createContext<IUserContext>({
 const UserProvider = ({ children }: PropsWithChildren) => {
   const [loggedToken, setLoggedToken] = useState<string | null>();
   const [loggedUser, setLoggedUser] = useState<ILoggedUser>({
-    name: "admin",
-    email: "admin@gmail.com",
-    _id: "12",
+    name: "",
+    email: "",
+    _id: "",
   });
+  const [refresh, setRefresh] = useState(false);
+  const { toast } = useToast();
 
   const [user, setUser] = useState<IUser>({
     name: "",
@@ -72,7 +75,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
       router.push("/login");
     } catch (error: any) {
       console.log("err", error);
-      toast.error(`${error?.response?.data?.message as string}`);
+      toast({ description: `${error?.response?.data?.message as string}` });
     }
   };
 
@@ -96,10 +99,11 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", JSON.stringify(token));
+      setRefresh(!refresh);
 
       router.push("/");
     } catch (error: any) {
-      toast.error(` Error ${error.response.data.message as string}`);
+      toast({ description: ` Error ${error.response.data.message as string}` });
       console.log("err", error);
     }
   };
@@ -108,9 +112,9 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     try {
       const storedUser = localStorage.getItem("user");
       const storedToken = localStorage.getItem("token");
-      console.log("log", storedUser);
+
       if (!storedUser || !storedToken) {
-        toast.error("go to signup ");
+        toast({ description: "go to signup " });
       }
 
       if (storedUser) {
@@ -127,13 +131,15 @@ const UserProvider = ({ children }: PropsWithChildren) => {
         }
       }
     } catch (error: any) {
-      alert("Get Error - " + error.message);
+      toast({ description: "Get Error - " + error.message });
     }
   };
 
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    setRefresh(!refresh);
+    setLoggedUser({ name: "", email: "", _id: "" });
   };
 
   //   useEffect(() => {
@@ -142,7 +148,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     getUserFromLocalStrorage();
-  }, []);
+  }, [refresh]);
 
   return (
     <UserContext.Provider
