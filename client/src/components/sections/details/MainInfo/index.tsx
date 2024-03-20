@@ -18,6 +18,7 @@ import {
 } from "@/components/icons";
 
 import { Badge } from "@/components/ui/badge";
+import { ReviewModal } from "@/components/review-modal";
 
 const MainInfo = () => {
   const categories = [
@@ -90,6 +91,7 @@ const MainInfo = () => {
           <FaShare color="#858484" size={"25px"} style={{ margin: 4 }} />
           Share
         </Button>
+        <ReviewModal />
       </CardFooter>
     </Card>
   );
