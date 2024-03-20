@@ -1,11 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import { MainNav } from "./main-nav";
 import { UserNav } from "./user-nav";
 import { useRouter } from "next/navigation";
+import { UserContext } from "@/context/UserProvider";
 
 const Header = () => {
+  const { loggedUser } = useContext(UserContext);
+  console.log("loggedUser", loggedUser);
   const router = useRouter();
   return (
     <div className="bg-[#fdf4ed] w-[100%] mx-auto p-3  ">

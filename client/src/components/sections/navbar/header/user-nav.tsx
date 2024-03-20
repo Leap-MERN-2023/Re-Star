@@ -1,5 +1,6 @@
 "use client";
 
+import { useContext } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../../../ui/avatar";
 import { Button } from "../../../ui/button";
 import {
@@ -12,8 +13,12 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "../../../ui/dropdown-menu";
+import { UserContext } from "@/context/UserProvider";
+import { useRouter } from "next/navigation";
 
 export function UserNav() {
+  const { logout, loggedUser } = useContext(UserContext);
+  const router = useRouter();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -27,15 +32,17 @@ export function UserNav() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">shadcn</p>
+            <p className="text-sm font-medium leading-none">
+              {loggedUser.name}
+            </p>
             <p className="text-xs leading-none text-muted-foreground">
-              m@example.com
+              {loggedUser.email}
             </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push("/profile")}>
             Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
@@ -50,7 +57,7 @@ export function UserNav() {
           <DropdownMenuItem>New Team</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => logout()}>
           Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
