@@ -1,7 +1,6 @@
 export interface IUser {
   name: string;
   email: string;
-  address: string;
   password?: string;
   rePassword?: string;
   avatarImg?: string;
@@ -30,6 +29,5 @@ export interface ILogin {
 export interface ILoggedUser {
   name: string;
   email: string;
-  address: string;
   _id: string;
 }

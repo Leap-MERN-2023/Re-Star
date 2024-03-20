@@ -63,12 +63,15 @@ export const SignupPage = () => {
 
   const checkPass = (password: string, confirmPassword: string) => {};
   return (
-    <div className="bg-[#fdf4ed] flex justify-center  items-center h-screen gap-40">
-      <div className="w-[500px]  bg-[#fffefe] p-24 rounded-2xl flex flex-col gap-5">
+    <div className="bg-[#fdf4ed] md:flex justify-center  items-center h-screen gap-40 p-3">
+      <div className="md:w-[500px] sm:w-full sm:mt-5  bg-[#fffefe] md:p-24 rounded-2xl flex flex-col md:gap-5">
         <div className="text-3xl self-center  font-serif">SIGN UP</div>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-6 m-3"
+          >
             <div className="space-y-4">
               <FormField
                 control={form.control}

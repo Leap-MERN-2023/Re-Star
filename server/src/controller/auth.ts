@@ -4,37 +4,19 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import MyError from "../utils/myError";
 
-export const signup = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const newUser = req.body;
-  console.log("user", newUser);
-  const user = await User.create({ ...newUser });
-  //   const verifyToken = jwt.sign(
-  //     { email: user.email },
-  //     process.env.JWT_PRIVATE_KEY as string,
-  //     {
-  //       expiresIn: "20m",
-  //     }
-  //   );
-
-  res.status(201).json({
-    message:
-      "Шинэ хэрэглэгч амжилттай бүртгэгдлээ таны бүртгэлтэй имэйл хаяг руу баталгаажуулах email илгээсэн.",
-  });
-};
-
 export const login = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
+    console.log("begin");
     const { userEmail, userPassword } = req.body;
+    console.log("req.body", req.body);
 
-    const user = await User.findOne({ userEmail }).select("+password").lean();
+    const user = await User.findOne({ email: userEmail })
+      .select("+password")
+      .lean();
 
     if (!user) {
       throw new MyError(`Хэрэглэгч олдсонгүй`, 400);
@@ -67,4 +49,18 @@ export const login = async (
   } catch (error) {
     next(error);
   }
+};
+
+export const signup = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const newUser = req.body;
+  console.log("user", newUser);
+  const user = await User.create({ ...newUser });
+
+  res.status(201).json({
+    message: "Шинэ хэрэглэгч амжилттай бүртгэгдлээ ",
+  });
 };
