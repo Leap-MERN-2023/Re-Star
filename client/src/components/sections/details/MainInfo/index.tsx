@@ -32,7 +32,7 @@ const MainInfo = () => {
       <CardHeader className="text-3xl block w-full ">
         <CardTitle className=" flex justify-between items-center">
           <div>
-            <h1 className="text-[#858484] font-bold text-3xl">
+            <h1 className="text-[#2741ab] font-bold text-3xl">
               Name of Restaurant
             </h1>
           </div>
@@ -65,10 +65,10 @@ const MainInfo = () => {
         <CardDescription className="text-xl mt-2 font-semibold">
           Where is this place
         </CardDescription>
-        <p>
-          <span className="text-[#6B6B6B] text-lg"> Open now :</span> 10 PM -
-          1AM
-        </p>
+        <div className="flex gap-10">
+          <p className="text-lg text-[#329531] font-medium">Open at: 10 AM </p>
+          <p className="text-lg text-[#a03636] font-medium">Close at: 08 PM </p>
+        </div>
       </CardContent>
       <CardFooter className="flex-wrap  gap-3">
         <Button variant="outline">
