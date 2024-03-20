@@ -41,10 +41,10 @@ export const LoginPage = () => {
   };
   return (
     <div className="bg-[#fdf4ed] md:flex h-screen justify-center items-center md:gap-40">
-      <div className="md:hidden">
+      <div className="">
         <img src={"/images/signup.png"} alt="pic" />
       </div>
-      <div className="md:w-[500px]  md:p-24 rounded-2xl bg-[#fbfbfb] flex flex-col gap-5 sm:w-full ">
+      <div className="md:w-[500px] p-4  md:p-24 rounded-2xl bg-[#fbfbfb] flex flex-col gap-5 sm:w-full ">
         <p className="text-3xl self-center  font-serif">LOG IN</p>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">

@@ -31,7 +31,6 @@ export const UserContext = createContext<IUserContext>({
   user: {
     name: "",
     email: "",
-    address: "",
     password: "",
     rePassword: "",
     avatarImg: "",
@@ -42,16 +41,14 @@ export const UserContext = createContext<IUserContext>({
 const UserProvider = ({ children }: PropsWithChildren) => {
   const [loggedToken, setLoggedToken] = useState<string | null>();
   const [loggedUser, setLoggedUser] = useState<ILoggedUser>({
-    name: "",
-    email: "",
-    address: "",
-    _id: "",
+    name: "admin",
+    email: "admin@gmail.com",
+    _id: "12",
   });
 
   const [user, setUser] = useState<IUser>({
     name: "",
     email: "",
-    address: "",
     password: "",
     rePassword: "",
   });
@@ -60,7 +57,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const signup = async ({ name, email, password }: ISignUp) => {
     try {
       console.log("data", name, email, password);
-      await myAxios.post("http://localhost:8080/auth/signup", {
+      await myAxios.post("/auth/signup", {
         email,
         name,
         password,
@@ -84,7 +81,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
       console.log("User");
       const {
         data: { token, user },
-      } = await myAxios.post("http://localhost:8080/auth/login", {
+      } = await myAxios.post("/login", {
         userEmail: email,
         userPassword: password,
       });
@@ -142,6 +139,23 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   //   useEffect(() => {
   //     getUserFromLocalStrorage();
   //   }, [loggedToken]);
+
+  const getUserById = async () => {
+    try {
+      await myAxios.get(`/user`, {
+        headers: {
+          Authorization: `Bearer ${loggedToken}`,
+        },
+      });
+    } catch (error) {
+      toast.error("алдаа");
+      console.log("алдаа", error);
+    }
+  };
+
+  useEffect(() => {
+    getUserById;
+  }, []);
 
   return (
     <UserContext.Provider

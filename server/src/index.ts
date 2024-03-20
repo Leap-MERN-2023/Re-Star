@@ -5,6 +5,8 @@ dotenv.config();
 import { connectDB } from "./config/db";
 
 import AuthRoutes from "./routes/auth";
+import OrgRoutes from "./routes/org";
+import UserRoutes from "./routes/user";
 
 const app: Application = express();
 
@@ -19,6 +21,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", AuthRoutes);
+app.use("/org", OrgRoutes);
+app.use("/user", UserRoutes);
 
 connectDB(MONGO_URL);
 

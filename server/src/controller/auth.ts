@@ -12,17 +12,9 @@ export const signup = async (
   const newUser = req.body;
   console.log("user", newUser);
   const user = await User.create({ ...newUser });
-  //   const verifyToken = jwt.sign(
-  //     { email: user.email },
-  //     process.env.JWT_PRIVATE_KEY as string,
-  //     {
-  //       expiresIn: "20m",
-  //     }
-  //   );
 
   res.status(201).json({
-    message:
-      "Шинэ хэрэглэгч амжилттай бүртгэгдлээ таны бүртгэлтэй имэйл хаяг руу баталгаажуулах email илгээсэн.",
+    message: "Шинэ хэрэглэгч амжилттай бүртгэгдлээ ",
   });
 };
 
