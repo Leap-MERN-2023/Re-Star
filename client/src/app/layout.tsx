@@ -6,7 +6,7 @@ import Footer from "@/components/sections/navbar/footer";
 import UserProvider from "@/context/UserProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import StepProvider from "@/components/sections/addRestaurant/StepContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <UserProvider>
           <Header />
-          {children}
+          <StepProvider>{children}</StepProvider>
           <ToastContainer />
           <Footer />
         </UserProvider>

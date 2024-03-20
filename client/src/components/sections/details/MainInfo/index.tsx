@@ -32,7 +32,7 @@ const MainInfo = () => {
       <CardHeader className="text-3xl block w-full ">
         <CardTitle className=" flex justify-between items-center">
           <div>
-            <h1 className="text-[#2741ab] font-bold text-3xl">
+            <h1 className="text-[#858484] font-bold text-3xl">
               Name of Restaurant
             </h1>
           </div>
