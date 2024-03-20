@@ -6,20 +6,20 @@ export function MainNav({ className }: any) {
   return (
     <nav className={cn("flex items-center space-x-4 lg:space-x-6", className)}>
       <Link
-        href="/"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        href="/addRestaurant"
+        className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab]"
       >
         Add Restaurant
       </Link>
       <Link
         href="/login"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab]"
       >
         Log In
       </Link>
       <Link
         href="/signup"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab]"
       >
         Sign Up
       </Link>
