@@ -18,27 +18,28 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+
 import { LoginSchema } from "@/schema";
 import { UserContext } from "@/context/UserProvider";
 
 export const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const { login } = useContext(UserContext);
+
   const form = useForm({
     resolver: zodResolver(LoginSchema),
     defaultValues: {
-      email: "",
+      email: "99",
       password: "",
     },
   });
 
   const onSubmit = ({ email, password }: z.infer<typeof LoginSchema>) => {
-    setLoading(false);
-
-    console.log(` email: ${email}, password:${password}`);
+    console.log(`email: ${email}, password:${password}`);
 
     login({ email, password });
   };
+
   return (
     <div className="bg-[#fdf4ed] md:flex h-screen justify-center items-center md:gap-40">
       <div className="">
@@ -80,12 +81,12 @@ export const LoginPage = () => {
                 )}
               />
             </div>
+            <Button type="submit" className="w-full">
+              {loading ? "Loading..." : "Log in"}
+            </Button>
           </form>
         </Form>
         <div>
-          <Button type="submit" className="w-full">
-            {loading ? "Loading..." : "Log in"}
-          </Button>
           <Link href={""} className="p-0 m-0 hover:text-gray-600">
             Forgot password
           </Link>

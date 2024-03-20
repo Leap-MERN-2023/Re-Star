@@ -4,6 +4,7 @@ import User from "../model/user";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import MyError from "../utils/myError";
+import { IReq } from "../utils/interface";
 
 export const addOrg = async (
   req: Request,
@@ -20,13 +21,12 @@ export const addOrg = async (
   });
 };
 
-export const getOrg = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const findUser = Organization.find();
+export const getOrg = async (req: IReq, res: Response, next: NextFunction) => {
+  const { user } = req;
+
+  const findUser = Organization.findOne({ user: user._id });
+
   res.status(201).json({
-    message: "Шинэ ресторан амжилттай бүртгэгдлээ ",
+    message: "got successfully",
   });
 };

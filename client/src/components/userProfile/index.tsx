@@ -13,26 +13,21 @@ import { z } from "zod";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form";
 
 import { toast } from "@/components/ui/use-toast";
 import { FormSchema } from "@/schema";
 import { useState } from "react";
 import { UserContext } from "@/context/UserProvider";
-import { Label } from "../ui/label";
 
 function ProfileSettings() {
   const { loggedUser } = useContext(UserContext);
-  const [isClicked, setIsClicked] = useState({
-    name: false,
-    email: false,
-    picture: false,
-  });
+
+  console.log("logged", loggedUser);
+  const [isClicked, setIsClicked] = useState(false);
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
@@ -53,10 +48,11 @@ function ProfileSettings() {
       password: "",
     },
   });
+
   return (
     <>
       <div title="Profile Settings" className="  flex justify-center  ">
-        <div className="grid  md:grid-rows-1 gap-6 w-1/3 mt-10 border-spacing-2 bg- border border-purple-300 p-8 rounded-xl">
+        <div className="grid  md:grid-rows-1 gap-6 w-[500px] mt-10 border-spacing-2 bg- border border-purple-300 p-8 rounded-xl">
           <div className="flex justify-center ">
             <div>
               <Avatar className="md:w-52 md:h-52 self-center flex justify-center">
@@ -87,12 +83,15 @@ function ProfileSettings() {
                       <FormControl>
                         <Input
                           className="placeholder:text-black"
-                          disabled={true}
+                          disabled={isClicked}
                           placeholder={loggedUser?.name}
                           {...field}
                         />
                       </FormControl>
-                      <BiEditAlt className="w-10 h-10" />
+                      <BiEditAlt
+                        className="w-10 h-10"
+                        onClick={() => setIsClicked(!isClicked)}
+                      />
                     </div>
                   </FormItem>
                 )}
@@ -107,19 +106,22 @@ function ProfileSettings() {
                       <FormControl>
                         <Input
                           className="w-full placeholder:text-black"
-                          disabled={true}
+                          disabled={isClicked}
                           placeholder={loggedUser?.email}
                           {...field}
                         />
                       </FormControl>
-                      <BiEditAlt className="w-10 h-10" />
+                      <BiEditAlt
+                        className="w-10 h-10"
+                        onClick={() => setIsClicked(!isClicked)}
+                      />
                     </div>
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
-                name="username"
+                name="password"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Password</FormLabel>
@@ -127,7 +129,7 @@ function ProfileSettings() {
                       <FormControl>
                         <Input
                           className="placeholder:text-black"
-                          disabled={true}
+                          disabled={isClicked}
                           placeholder="***********"
                           {...field}
                         />

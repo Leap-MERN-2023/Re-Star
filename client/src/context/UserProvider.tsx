@@ -81,7 +81,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
       console.log("User");
       const {
         data: { token, user },
-      } = await myAxios.post("/login", {
+      } = await myAxios.post("/auth/login", {
         userEmail: email,
         userPassword: password,
       });
@@ -140,21 +140,8 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   //     getUserFromLocalStrorage();
   //   }, [loggedToken]);
 
-  const getUserById = async () => {
-    try {
-      await myAxios.get(`/user`, {
-        headers: {
-          Authorization: `Bearer ${loggedToken}`,
-        },
-      });
-    } catch (error) {
-      toast.error("алдаа");
-      console.log("алдаа", error);
-    }
-  };
-
   useEffect(() => {
-    getUserById;
+    getUserFromLocalStrorage();
   }, []);
 
   return (
