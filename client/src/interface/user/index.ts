@@ -31,3 +31,10 @@ export interface ILoggedUser {
   email: string;
   _id: string;
 }
+
+export interface IForgotPassUser {
+  email: string;
+  password: string;
+  rePassword?: string;
+  otp: string;
+}

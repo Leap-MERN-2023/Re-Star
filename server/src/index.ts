@@ -8,6 +8,7 @@ import AuthRoutes from "./routes/auth";
 import OrgRoutes from "./routes/org";
 import UserRoutes from "./routes/user";
 import ReviewRoutes from "./routes/review";
+import ResetPassRoutes from "./routes/ResetPass";
 
 const app: Application = express();
 
@@ -25,6 +26,7 @@ app.use("/auth", AuthRoutes);
 app.use("/org", OrgRoutes);
 app.use("/review", ReviewRoutes);
 app.use("/user", UserRoutes);
+app.use("/api/resetPass", ResetPassRoutes);
 
 connectDB(MONGO_URL);
 
