@@ -18,14 +18,17 @@ import {
   IUser,
   ISignUp,
   ILogin,
+  IChangeUserProfile,
 } from "../interface";
 import { Value } from "@radix-ui/react-select";
 import { ref } from "yup";
+import axios from "axios";
 
 export const UserContext = createContext<IUserContext>({
   loggedToken: "",
   login: async () => {},
   signup: async () => {},
+  changeUserProfile: async () => {},
   getUserFromLocalStrorage: async () => {},
   logout: () => {},
 
@@ -45,6 +48,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     name: "",
     email: "",
     _id: "",
+    password: "",
   });
   const [refresh, setRefresh] = useState(false);
   const { toast } = useToast();
@@ -150,6 +154,32 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     getUserFromLocalStrorage();
   }, [refresh]);
 
+  const changeUserProfile = async ({ changedUser }: IChangeUserProfile) => {
+    try {
+      const { data } = await myAxios.put(
+        "/user",
+        {
+          changedUser,
+        },
+        {
+          headers: { Authorization: `Bearer ${loggedToken}` },
+        }
+      );
+
+      await Swal.fire({
+        position: "center",
+        title: "User profile successfully changed",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+      setLoggedUser({ ...data.changedUser, password: "" });
+    } catch (error) {
+      console.log("Error in changeUserProfile in userprovider", error);
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
@@ -160,6 +190,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
         getUserFromLocalStrorage,
         loggedUser,
         loggedToken,
+        changeUserProfile,
       }}
     >
       {children}

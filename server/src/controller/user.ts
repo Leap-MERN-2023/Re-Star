@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import User from "../model/user";
 import { IReq } from "../utils/interface";
 import MyError from "../utils/myError";
+import bcrypt from "bcrypt";
 
 export const getUserById = async (
   req: Request,
@@ -27,29 +28,34 @@ export const changeUserData = async (
   next: NextFunction
 ) => {
   try {
-    const { userData } = req.body;
+    const { changedUser } = req.body;
     const { user } = req;
 
-    if (!userData) {
+    console.log("userID", user);
+    console.log("changedUser", changedUser);
+
+    if (!changedUser) {
       throw new MyError(`Хэрэглэгчийн мэдээлэл дутуу байна.`, 400);
     }
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(changedUser.password, salt);
 
-    const findUser = await User.updateMany(
+    const findUser = await User.findByIdAndUpdate(
       { _id: user._id },
       {
-        $set: {
-          name: userData.name,
-          password: userData.password,
-          email: userData.email,
-        },
+        name: changedUser.name,
+        password: hashedPassword,
+        email: changedUser.email,
       }
     );
+    console.log("DONE");
 
+    await findUser?.save();
     res.status(201).json({
       message: "Хэрэглэгчийн мэдээлэл амжилттай өөрчиллөө.",
-      findUser,
+      changedUser,
     });
-    console.log("successfully changed user data", findUser);
+    console.log("successfully changed user data", changedUser);
   } catch (error) {
     next(error);
   }
