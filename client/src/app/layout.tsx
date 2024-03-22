@@ -5,6 +5,7 @@ import Header from "@/components/sections/navbar/header";
 import Footer from "@/components/sections/navbar/footer";
 import UserProvider from "@/context/UserProvider";
 import { ToastContainer } from "react-toastify";
+import PasswordProvider from "@/components/sections/resetPass/PasswordContext";
 import "react-toastify/dist/ReactToastify.css";
 import ReviewProvider from "@/context/ReviewProvider";
 
@@ -25,10 +26,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <UserProvider>
           <ReviewProvider>
-            <Header />
-            {children}
-            <ToastContainer />
-            <Footer />
+            <PasswordProvider>
+              <Header />
+              {children}
+              <ToastContainer />
+              <Footer />
+            </PasswordProvider>
           </ReviewProvider>
         </UserProvider>
       </body>
