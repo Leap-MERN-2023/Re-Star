@@ -13,6 +13,7 @@ export interface IUserContext {
   signup?: ({ name, email, password }: ISignUp) => {};
   getUserFromLocalStrorage: () => {};
   loggedUser: ILoggedUser;
+  changeUserProfile: ({ changedUser }: IChangeUserProfile) => {};
   loggedToken: string | null | undefined;
 }
 export interface ISignUp {
@@ -29,7 +30,8 @@ export interface ILogin {
 export interface ILoggedUser {
   name: string;
   email: string;
-  _id: string;
+  password?: string;
+  _id?: string;
 }
 
 export interface IForgotPassUser {
@@ -37,4 +39,8 @@ export interface IForgotPassUser {
   password: string;
   rePassword?: string;
   otp: string;
+}
+
+export interface IChangeUserProfile {
+  changedUser: { name: string; password: string; email: string };
 }

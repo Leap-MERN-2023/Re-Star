@@ -26,7 +26,6 @@ import { UserContext } from "@/context/UserProvider";
 function ProfileSettings() {
   const { loggedUser } = useContext(UserContext);
 
-  console.log("logged", loggedUser);
   const [isClicked, setIsClicked] = useState(false);
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -48,6 +47,18 @@ function ProfileSettings() {
       password: "",
     },
   });
+
+  const { changeUserProfile } = useContext(UserContext);
+
+  const [changedUser, setChangedUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e: any) => {
+    setChangedUser({ ...changedUser, [e.target.name]: e.target.value });
+  };
 
   return (
     <>
@@ -86,6 +97,9 @@ function ProfileSettings() {
                           disabled={isClicked}
                           placeholder={loggedUser?.name}
                           {...field}
+                          name="name"
+                          value={changedUser.name}
+                          onChange={(e) => handleChange(e)}
                         />
                       </FormControl>
                       <BiEditAlt
@@ -109,6 +123,9 @@ function ProfileSettings() {
                           disabled={isClicked}
                           placeholder={loggedUser?.email}
                           {...field}
+                          value={changedUser.email}
+                          name="email"
+                          onChange={(e) => handleChange(e)}
                         />
                       </FormControl>
                       <BiEditAlt
@@ -132,6 +149,9 @@ function ProfileSettings() {
                           disabled={isClicked}
                           placeholder="***********"
                           {...field}
+                          value={changedUser.password}
+                          name="password"
+                          onChange={(e) => handleChange(e)}
                         />
                       </FormControl>
                       <Button>Change Password</Button>
@@ -139,7 +159,11 @@ function ProfileSettings() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full">
+              <Button
+                type="submit"
+                className="w-full"
+                onClick={() => changeUserProfile({ changedUser })}
+              >
                 Submit
               </Button>
             </form>
