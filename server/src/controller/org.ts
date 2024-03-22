@@ -30,3 +30,50 @@ export const getOrg = async (req: IReq, res: Response, next: NextFunction) => {
     message: "got successfully",
   });
 };
+
+
+export const deleteOrg = async (
+  req: IReq,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+   
+    const deleteOrg = req.body
+    const Org = await Organization.findById(deleteOrg);
+
+    if (!Organization) {
+      throw new MyError(`${deleteOrg}-тэй Org олдсонгүй.`, 400);
+    }
+
+    res.status(200).json({
+      message: `${deleteOrg}-тэй Org устгалаа.`,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateOrg = async (
+  req: IReq,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+
+    const updateOrgId = req.body;
+
+    if (!updateOrgId) {
+      throw new MyError(`${updateOrgId}-тэй Organization олдсонгүй.`, 400);
+    }
+    // const food = await Organization.findById({name, updateOrgId});
+
+
+    res.status(200).json({
+      message: `${updateOrgId}-тэй Organization шинэчлэгдлээ.`,
+     
+    });
+  } catch (error) {
+    next(error);
+  }
+};
