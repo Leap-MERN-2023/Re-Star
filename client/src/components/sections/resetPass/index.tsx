@@ -29,6 +29,7 @@ export const MyStepper = () => {
       password: "",
       otp: "",
     },
+
     onSubmit: ({ email, rePassword, password, otp }) => {
       {
         activeStep === 1 && handleFirstStep(email);
