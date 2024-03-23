@@ -6,7 +6,7 @@ import { UserContext } from "@/context/UserProvider";
 
 export function MainNav({ className }: any) {
   const { loggedUser } = useContext(UserContext);
-  console.log("loggedUser", loggedUser);
+
   return (
     <nav className={cn("flex items-center space-x-4 lg:space-x-6", className)}>
       <Link

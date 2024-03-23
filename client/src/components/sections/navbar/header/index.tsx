@@ -8,7 +8,7 @@ import { UserContext } from "@/context/UserProvider";
 
 const Header = () => {
   const { loggedUser } = useContext(UserContext);
-  console.log("loggedUser", loggedUser);
+
   const router = useRouter();
   return (
     <div className="bg-[#fdf4ed] w-[100%] mx-auto p-3  ">

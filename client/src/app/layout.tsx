@@ -9,6 +9,8 @@ import PasswordProvider from "@/components/sections/resetPass/PasswordContext";
 import "react-toastify/dist/ReactToastify.css";
 import ReviewProvider from "@/context/ReviewProvider";
 
+import RestaurantProvider from "@/context/RestaurantProvider";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -27,10 +29,12 @@ export default function RootLayout({
         <UserProvider>
           <ReviewProvider>
             <PasswordProvider>
-              <Header />
-              {children}
-              <ToastContainer />
-              <Footer />
+              <RestaurantProvider>
+                <Header />
+                {children}
+                <ToastContainer />
+                <Footer />
+              </RestaurantProvider>
             </PasswordProvider>
           </ReviewProvider>
         </UserProvider>

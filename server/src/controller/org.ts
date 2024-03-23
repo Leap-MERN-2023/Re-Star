@@ -6,15 +6,14 @@ import bcrypt from "bcrypt";
 import MyError from "../utils/myError";
 import { IReq } from "../utils/interface";
 
-export const addOrg = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const newOrganization = req.body;
-  console.log("ORG :", newOrganization);
+export const addOrg = async (req: IReq, res: Response, next: NextFunction) => {
+  const newOrg = req.body;
+  const { user } = req;
+  console.log("ORG :", newOrg);
 
-  const user = await Organization.create({ ...newOrganization });
+  const newOrganization = { ...newOrg, user: user._id };
+
+  const Org = await Organization.create();
 
   res.status(201).json({
     message: "Шинэ ресторан амжилттай бүртгэгдлээ ",
