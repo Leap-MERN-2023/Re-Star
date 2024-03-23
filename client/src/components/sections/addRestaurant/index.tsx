@@ -2,19 +2,15 @@
 
 import {
   Card,
-  CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 
-import React, { useState, useEffect, ChangeEvent } from "react";
+import React, { useState } from "react";
 
-import { useFormik } from "formik";
-
-import Stepper from "./Stepper";
 import { StepOne } from "./StepOne";
+import { StepThree } from "./StepThree";
 
 export default function AddRestaurant() {
   const [activeStep, setActiveStep] = useState(1);
@@ -25,7 +21,7 @@ export default function AddRestaurant() {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
   return (
-    <div className="p-7 ">
+    <div className="p-7 w-full">
       <Card>
         <CardHeader>
           <CardTitle className="self-center">
@@ -35,20 +31,21 @@ export default function AddRestaurant() {
             To create your restaurant we need to get your restaurant information
           </CardDescription>
         </CardHeader>
-        <div>
+        {/* <div className="w-full">
           {activeStep === 1 && (
-            <div className="grid grid-cols-1 gap-10">
-              <ul className="steps w-10/12 ">
+            <div className="grid grid-cols-1 gap-10 justify-center">
+              <ul className="steps w-full  ">
                 <li className="step step-primary">Restaurant Information</li>
-                <li className="step ">Restaurant Type & Timings</li>
+                <li className="step ">Restaurant Location</li>
                 <li className="step ">Done</li>
               </ul>
-              <div>
+              <div className="w-full">
                 <StepOne />
               </div>
             </div>
           )}
-        </div>
+        </div> */}
+        <StepThree />
       </Card>
     </div>
   );

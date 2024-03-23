@@ -32,8 +32,9 @@ export function CollectionCard() {
         </p>
       </div>
       <div className="flex justify-around items-center  flex-wrap gap-10">
-        {cards.map((card) => (
+        {cards.map((card, i) => (
           <Card
+            key={i}
             className="w-[350px] shadow-2xl rounded-2xl h-[350px] "
             onClick={() => {
               router.push("/details");

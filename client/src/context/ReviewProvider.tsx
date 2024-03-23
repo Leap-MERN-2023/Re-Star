@@ -35,7 +35,9 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
       });
       setIsOpen(!isOpen);
       toast("Shine review amjilltai uuslee");
-    } catch (error) {}
+    } catch (error) {
+      toast.error("Алдаа");
+    }
   };
 
   return (
