@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import myAxios from "@/utils/myAxios";
 import Swal from "sweetalert2";
 import { useToast } from "@/components/ui/use-toast";
@@ -20,9 +14,6 @@ import {
   ILogin,
   IChangeUserProfile,
 } from "../interface";
-import { Value } from "@radix-ui/react-select";
-import { ref } from "yup";
-import axios from "axios";
 
 export const UserContext = createContext<IUserContext>({
   loggedToken: "",
@@ -64,11 +55,12 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const signup = async ({ name, email, password }: ISignUp) => {
     try {
       console.log("data", name, email, password);
-      await myAxios.post("/auth/signup", {
+      const data = await myAxios.post("/auth/signup", {
         email,
         name,
         password,
       });
+      console.log("Data :", data);
       await Swal.fire({
         position: "center",
         title: "Та амжилттай бүртгүүллээ",

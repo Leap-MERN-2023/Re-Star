@@ -54,6 +54,7 @@ export function StepOne() {
     "Pub",
     "Pizza",
     "Chicken",
+    "65fecee5f87c76",
   ];
 
   const validationSchema = Yup.object({
