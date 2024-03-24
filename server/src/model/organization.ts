@@ -19,7 +19,8 @@ const OrganizationSchema = new Schema({
     },
   ],
   category: {
-    type: Schema.ObjectId,
+    // type: Schema.ObjectId,
+    type: String,
     ref: "Category",
     required: [true, "Category is required"],
   },

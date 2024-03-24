@@ -11,6 +11,7 @@ import React, { useState } from "react";
 
 import { StepOne } from "./StepOne";
 import { StepThree } from "./StepThree";
+import StepTwo from "./stepTwo";
 
 export default function AddRestaurant() {
   const [activeStep, setActiveStep] = useState(1);
@@ -31,7 +32,7 @@ export default function AddRestaurant() {
             To create your restaurant we need to get your restaurant information
           </CardDescription>
         </CardHeader>
-        {/* <div className="w-full">
+        <div className="w-full">
           {activeStep === 1 && (
             <div className="grid grid-cols-1 gap-10 justify-center">
               <ul className="steps w-full  ">
@@ -44,8 +45,9 @@ export default function AddRestaurant() {
               </div>
             </div>
           )}
-        </div> */}
-        <StepThree />
+          {activeStep === 2 && <StepTwo />}
+          {activeStep === 3 && <StepThree />}
+        </div>
       </Card>
     </div>
   );

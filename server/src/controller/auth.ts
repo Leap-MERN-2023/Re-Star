@@ -62,5 +62,6 @@ export const signup = async (
 
   res.status(201).json({
     message: "Шинэ хэрэглэгч амжилттай бүртгэгдлээ ",
+    user,
   });
 };
