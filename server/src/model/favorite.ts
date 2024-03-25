@@ -3,17 +3,11 @@ import { Schema, model } from "mongoose";
 import bcrypt from "bcrypt";
 
 const favoriteSchema = new Schema({
-  organizations: [
-    {
-      type: Schema.ObjectId,
-      required: true,
-    },
-  ],
+  organizations: [{ type: Schema.Types.ObjectId, ref: "Organization" }],
   user: {
     type: Schema.ObjectId,
     ref: "User",
-    required: [true, "Name is required"],
-    default: "false",
+    required: [true, "User is is required"],
   },
   createdAt: {
     type: Date,
