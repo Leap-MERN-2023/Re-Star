@@ -7,14 +7,10 @@ export interface IUser {
 }
 
 export interface IUserContext {
-  user: IUser;
-  login: ({ email, password }: ILogin) => {};
   logout: () => void;
-  signup?: ({ name, email, password }: ISignUp) => {};
-  getUserFromLocalStrorage: () => {};
   loggedUser: ILoggedUser;
   changeUserProfile: ({ changedUser }: IChangeUserProfile) => {};
-  loggedToken: string | null | undefined;
+  token: string | null | undefined;
 }
 export interface ISignUp {
   name: string;

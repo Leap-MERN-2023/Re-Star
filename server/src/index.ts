@@ -12,6 +12,7 @@ import ReviewRoutes from "./routes/review";
 import ResetPassRoutes from "./routes/ResetPass";
 import CategoryRoutes from "./routes/category";
 import UploadRoutes from "./routes/upload";
+import errorHandler from "./middleware/errorHandler";
 
 const app: Application = express();
 
@@ -28,9 +29,12 @@ app.use("/auth", AuthRoutes);
 app.use("/category", CategoryRoutes);
 app.use("/org", OrgRoutes);
 app.use("/review", ReviewRoutes);
+app.use("/menu", ReviewRoutes);
 app.use("/user", UserRoutes);
 app.use("/upload", UploadRoutes);
 app.use("/api/resetPass", ResetPassRoutes);
+
+app.use(errorHandler);
 
 const MONGO_URL = process.env.MONGO_URL as string;
 connectDB(MONGO_URL);

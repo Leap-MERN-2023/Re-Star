@@ -31,7 +31,7 @@ export function StepOne() {
   const [selectValue, setSelectValue] = useState<string | null>();
   const [categories, setCategories] = useState<string[]>([]);
 
-  const { createRestaurant } = useContext(RestaurantContext);
+  const { createRestaurant, isLoading } = useContext(RestaurantContext);
 
   const addCategory = (e: string) => {
     console.log("e", e);
@@ -92,11 +92,6 @@ export function StepOne() {
       imgTwo,
       imgThree,
     }) => {
-      console.log(
-        `Values :, name ${name} openAt:${openTime}, close: ${closeTime}, address :${address},
-         Desc:${description} No :${phoneNumber} category : ${category}`
-      );
-      console.log(`Values image :, 1 ${imgOne} 2 ${imgTwo}  3 ${imgThree}`);
       createRestaurant({
         name,
         category,
@@ -215,7 +210,6 @@ export function StepOne() {
             <Button variant={"outline"} className="bg-slate-500">
               <input
                 type="file"
-                name="img1"
                 onChange={(event) => {
                   const selectedFile =
                     event.target.files && event.target.files[0];
@@ -227,10 +221,10 @@ export function StepOne() {
             <Button variant={"outline"} className="bg-slate-500">
               <input
                 type="file"
-                name="imgTwo"
                 onChange={(event) => {
                   const selectedFile =
                     event.target.files && event.target.files[0];
+                  console.log("F", selectedFile);
                   formik.setFieldValue("imgTwo", selectedFile); // Set the value in Formik state
                   console.log("Selected file:", selectedFile); // Log the selected file object
                 }}
@@ -239,7 +233,6 @@ export function StepOne() {
             <Button variant={"outline"} className="bg-slate-500">
               <input
                 type="file"
-                name="imgThree"
                 onChange={(event) => {
                   const selectedFile =
                     event.target.files && event.target.files[0];
@@ -256,7 +249,7 @@ export function StepOne() {
             type="submit"
             className="w-full"
           >
-            Next
+            {isLoading === true ? "...loading" : "Upload"}
           </Button>
         </CardFooter>
       </Card>

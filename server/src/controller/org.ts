@@ -6,48 +6,57 @@ import bcrypt from "bcrypt";
 import MyError from "../utils/myError";
 import { IReq } from "../utils/interface";
 import cloudinary from "../utils/cloudinary";
+import Multer from "multer";
 
 export const addOrg = async (req: IReq, res: Response, next: NextFunction) => {
   const newOrg = req.body;
   const { user } = req;
 
-  console.log("ORG :", newOrg);
-  console.log("user Req:", user);
-
   const newOrganization = { ...newOrg, user: user._id };
+  const images: string[] = [];
 
-  if (!req.file) {
+  const files = req.files as Express.Multer.File[];
+
+  if (!files) {
     throw new MyError("No file uploaded", 400);
+  } else {
+    for (let file of files) {
+      const { secure_url } = await cloudinary.uploader.upload(file.path);
+
+      images.push(secure_url);
+    }
+    newOrganization.images = images;
+
+    const org = await Organization.create(newOrganization);
   }
-
-  console.log("File", req.files);
-
-  const images = req.files as Express.Multer.File[];
-
-  for (let image of images) {
-    const { secure_url } = await cloudinary.uploader.upload(image.path);
-
-    console.log("Uploaded:", secure_url);
-    newOrganization.images.push(secure_url);
-  }
-
-  console.log("New", newOrganization);
-
-  const Org = await Organization.create(newOrganization);
 
   res.status(201).json({
     message: "Шинэ ресторан амжилттай бүртгэгдлээ ",
   });
+  console.log("successfully");
 };
 
-export const getOrg = async (req: IReq, res: Response, next: NextFunction) => {
+export const getOrgById = async (
+  req: IReq,
+  res: Response,
+  next: NextFunction
+) => {
   const { user } = req;
 
-  const findOrg = Organization.findOne({ user: user._id });
+  const org = Organization.findOne({ user: user._id });
 
   res.status(201).json({
     message: "got successfully",
-    findOrg,
+    org,
+  });
+};
+
+export const getOrg = async (req: IReq, res: Response, next: NextFunction) => {
+  const allOrg = await Organization.find();
+
+  res.status(201).json({
+    message: "got successfully",
+    allOrg,
   });
 };
 
