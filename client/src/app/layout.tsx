@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import ReviewProvider from "@/context/ReviewProvider";
 
 import RestaurantProvider from "@/context/RestaurantProvider";
+import FavoritesProvider from "@/context/FavoritesProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,16 +28,18 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <UserProvider>
-          <ReviewProvider>
-            <PasswordProvider>
-              <RestaurantProvider>
-                <Header />
-                {children}
-                <ToastContainer />
-                <Footer />
-              </RestaurantProvider>
-            </PasswordProvider>
-          </ReviewProvider>
+          <FavoritesProvider>
+            <ReviewProvider>
+              <PasswordProvider>
+                <RestaurantProvider>
+                  <Header />
+                  {children}
+                  <ToastContainer />
+                  <Footer />
+                </RestaurantProvider>
+              </PasswordProvider>
+            </ReviewProvider>
+          </FavoritesProvider>
         </UserProvider>
       </body>
     </html>
