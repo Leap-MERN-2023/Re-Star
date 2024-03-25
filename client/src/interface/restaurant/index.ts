@@ -11,6 +11,9 @@ export interface IRestaurantContext {
     imgTwo,
     imgThree,
   }: IRestaurant) => void;
+  isLoading: Boolean;
+  handleFetch: (reFetch: boolean) => void;
+  refetch: boolean;
 }
 
 export interface IRestaurant {
@@ -21,7 +24,7 @@ export interface IRestaurant {
   address: string;
   description: string;
   phoneNumber: string;
-  imgOne: any;
-  imgTwo: any;
-  imgThree: any;
+  imgOne: File;
+  imgTwo: File;
+  imgThree: File;
 }

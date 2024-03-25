@@ -1,8 +1,8 @@
-import UserProfile from "@/components/userProfile";
+import { ProfileSettings } from "@/components";
 import React from "react";
 
 const Page = () => {
-  return <UserProfile />;
+  return <ProfileSettings />;
 };
 
 export default Page;

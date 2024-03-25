@@ -1,7 +1,7 @@
 "use client";
 import React, { useContext, useState } from "react";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import myAxios from "@/utils/myAxios";
 import { Button } from "@/components/ui/button";
 import { MdEmail, FaFacebook } from "@/components/icons";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 import {
   Form,
@@ -20,11 +21,11 @@ import {
 } from "@/components/ui/form";
 
 import { LoginSchema } from "@/schema";
-import { UserContext } from "@/context/UserProvider";
+
+import Swal from "sweetalert2";
 
 export const LoginPage = () => {
   const [loading, setLoading] = useState(false);
-  const { login } = useContext(UserContext);
 
   const form = useForm({
     resolver: zodResolver(LoginSchema),
@@ -33,11 +34,38 @@ export const LoginPage = () => {
       password: "",
     },
   });
+  const router = useRouter();
 
   const onSubmit = ({ email, password }: z.infer<typeof LoginSchema>) => {
     console.log(`email: ${email}, password:${password}`);
 
     login({ email, password });
+  };
+
+  const login = async ({ email, password }: any) => {
+    try {
+      const {
+        data: { token, user },
+      } = await myAxios.post("/auth/login", {
+        userEmail: email,
+        userPassword: password,
+      });
+
+      await Swal.fire({
+        position: "center",
+        title: "амжилттай Нэвтрэлээ",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", JSON.stringify(token));
+
+      router.push("/");
+    } catch (error: any) {
+      toast.error(` Error ${(error?.response?.data?.message as string) || ""}`);
+    }
   };
 
   return (

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import Category from "../model/category";
+import Menu from "../model/menu";
 import MyError from "../utils/myError";
 import { IReq } from "../utils/interface";
 import Organization from "../model/organization";
@@ -12,61 +12,63 @@ export const addCategory = async (
   const newCategory = req.body;
   console.log("new category :", newCategory);
 
-  const user = await Category.create({ ...newCategory });
+  const user = await Menu.create({ ...newCategory });
 
   res.status(201).json({
     message: "Post category successfully",
   });
 };
-export const deleteCategory = async (
-  req: Request,
+
+export const deleteMenu = async (
+  req: IReq,
   res: Response,
   next: NextFunction
 ) => {
   const { deleteId } = req.body;
-  console.log("delete category Id:", deleteId);
+  const { user } = req;
 
-  await Category.deleteOne({ _id: deleteId });
+  const findMenu = Menu.findOne({ _id: user._id });
 
   res.status(201).json({
     message: "deleted category successfully",
   });
 };
 
-export const updateCategory = async (
+export const updateMenu = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const updateCategory = req.body;
-  console.log("new category :", updateCategory);
+  const updateMenu = req.body;
+  console.log("new Menu :", updateMenu);
 
-  const findCategory = await Category.findByIdAndUpdate(
+  const findMenu = await Menu.findByIdAndUpdate(
     {
-      _id: updateCategory.id,
+      _id: updateMenu.id,
     },
     {
-      name: updateCategory.name,
-      image: updateCategory.image,
-      description: updateCategory.description,
+      name: updateMenu.name,
+      image: updateMenu.image,
+      description: updateMenu.description,
     }
   );
 
   res.status(201).json({
-    message: "Post category successfully",
+    message: "Post Menu successfully",
   });
 };
 
-export const getCategory = async (
+export const getMenu = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const allCategory = await Category.find();
-  console.log("ALl", allCategory);
+  const { orgId } = req.body;
+  const AllMenu = await Menu.find({ _id: orgId });
+  console.log("ALl", AllMenu);
 
   res.status(201).json({
     message: "Post category successfully",
-    allCategory,
+    AllMenu,
   });
 };

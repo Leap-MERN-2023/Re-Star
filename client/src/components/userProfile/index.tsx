@@ -23,7 +23,7 @@ import { FormSchema } from "@/schema";
 import { useState } from "react";
 import { UserContext } from "@/context/UserProvider";
 
-function ProfileSettings() {
+export function ProfileSettings() {
   const { loggedUser } = useContext(UserContext);
 
   const [isClicked, setIsClicked] = useState(false);
@@ -173,5 +173,3 @@ function ProfileSettings() {
     </>
   );
 }
-
-export default ProfileSettings;

@@ -4,3 +4,5 @@ export * from "./sections/navbar/footer";
 export * from "./sections/navbar/header";
 export * from "./userProfile";
 export * from "./sections/details/AboutCard";
+export * from "./userProfile";
+export * from "./sections/restaurant";
