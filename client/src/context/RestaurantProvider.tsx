@@ -1,6 +1,10 @@
 "use client";
 
-import { IRestaurantContext, IRestaurant } from "@/interface";
+import {
+  IRestaurantContext,
+  IRestaurant,
+  IUpdateRestaurant,
+} from "@/interface";
 import myAxios from "@/utils/myAxios";
 import {
   PropsWithChildren,
@@ -63,17 +67,50 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       toast.error(`Алдаа : ${error} `);
     }
   };
+  const updateRestaurant = async ({
+    name,
+    category,
+    openTime,
+    closeTime,
+    address,
+    description,
+    phoneNumber,
+  }: IUpdateRestaurant) => {
+    try {
+      const data = await myAxios.put(
+        "/org/update",
+        {
+          name,
+          category,
+          openTime,
+          closeTime,
+          address,
+          description,
+          phoneNumber,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setIsLoading(true);
+
+      toast.success("restaurant amjilttai shinechlegdlee");
+
+      setIsLoading(!isLoading);
+    } catch (error) {
+      toast.error(`Алдаа : ${error} `);
+    }
+  };
 
   const gesRestaurant = async () => {
     try {
-      console.log("storedToken", token);
-
       const {
         data: { allOrg },
       } = await myAxios.get("/org/");
       console.log("orgfromback", allOrg);
       setOrg(allOrg);
-      toast.success("restaurant amjilttai uuslee");
     } catch (error: any) {
       toast.error(`Алдаа : ${error?.response?.data?.message} `);
       console.log("error", error);
@@ -90,7 +127,13 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <RestaurantContext.Provider
-      value={{ createRestaurant, isLoading, handleFetch, refetch }}
+      value={{
+        createRestaurant,
+        isLoading,
+        handleFetch,
+        refetch,
+        updateRestaurant,
+      }}
     >
       {children}
     </RestaurantContext.Provider>

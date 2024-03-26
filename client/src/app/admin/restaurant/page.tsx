@@ -1,10 +1,10 @@
-import { AdminPage } from "@/components";
+import { EditOrganization } from "@/components";
 import React from "react";
 
 const Page = () => {
   return (
     <div>
-      <AdminPage />
+      <EditOrganization />
     </div>
   );
 };

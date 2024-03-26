@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import PasswordProvider from "@/components/sections/resetPass/PasswordContext";
 import "react-toastify/dist/ReactToastify.css";
 import ReviewProvider from "@/context/ReviewProvider";
+import CategoryProvider from "@/context/CategoryProvider";
 
 import RestaurantProvider from "@/context/RestaurantProvider";
 import FavoritesProvider from "@/context/FavoritesProvider";
@@ -28,18 +29,20 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <UserProvider>
-          <FavoritesProvider>
-            <ReviewProvider>
-              <PasswordProvider>
-                <RestaurantProvider>
-                  <Header />
-                  {children}
-                  <ToastContainer />
-                  <Footer />
-                </RestaurantProvider>
-              </PasswordProvider>
-            </ReviewProvider>
-          </FavoritesProvider>
+          <CategoryProvider>
+            <FavoritesProvider>
+              <ReviewProvider>
+                <PasswordProvider>
+                  <RestaurantProvider>
+                   <Header />
+                      {children}
+                    <ToastContainer />
+                   <Footer />
+                  </RestaurantProvider>  
+                </PasswordProvider>
+              </ReviewProvider>
+            </FavoritesProvider>
+          </CategoryProvider>
         </UserProvider>
       </body>
     </html>
