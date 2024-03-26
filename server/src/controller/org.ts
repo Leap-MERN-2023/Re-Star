@@ -43,20 +43,20 @@ export const getOrgById = async (
 ) => {
   const { user } = req;
 
-  const org = Organization.findOne({ user: user._id });
+  const findOrg = await Organization.findOne({ user: user._id }).lean();
 
   res.status(201).json({
     message: "got successfully",
-    org,
+    findOrg,
   });
 };
 
 export const getOrg = async (req: IReq, res: Response, next: NextFunction) => {
-  const allOrg = await Organization.find();
+  const userOrgs = await Organization.find();
 
   res.status(201).json({
     message: "got successfully",
-    allOrg,
+    userOrgs,
   });
 };
 
@@ -93,9 +93,9 @@ export const updateOrg = async (
 ) => {
   try {
     const updateOrg = req.body;
+
     const { newUpdate } = req.body;
     const { user } = req;
-    console.log("data", newUpdate);
 
     const findOrg = await Organization.updateOne(
       {
@@ -109,11 +109,13 @@ export const updateOrg = async (
     if (!findOrg) {
       throw new MyError(`Хэрэглэгчид бүртгэлтэй Organization олдсонгүй.`, 400);
     }
+    console.log("first", findOrg);
 
     res.status(200).json({
       message: ` Organization шинэчлэгдлээ.`,
       findOrg,
     });
+    console.log("success");
   } catch (error) {
     next(error);
   }

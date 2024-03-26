@@ -30,19 +30,23 @@ import { useFormik } from "formik";
 
 export function EditOrganization() {
   const { categories } = useContext(CategoryContext);
-  const { updateRestaurant } = useContext(RestaurantContext);
+  const { updateRestaurant, userOrgs, getRestaurantById } =
+    useContext(RestaurantContext);
+  console.log("userOrgs1234567890", userOrgs);
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      category: "",
-      openTime: "",
-      closeTime: "",
-      address: "",
-      description: "",
-      phoneNumber: "",
+      id: "65fbe0a3bb390dd76c66ff70",
+      name: userOrgs[0]?.name,
+      category: userOrgs[0]?.category,
+      openTime: userOrgs[0]?.name,
+      closeTime: userOrgs[0]?.closeTime,
+      address: userOrgs[0]?.address,
+      description: userOrgs[0]?.description,
+      phoneNumber: userOrgs[0]?.phoneNumber,
     },
     onSubmit: ({
+      id,
       name,
       category,
       openTime,
@@ -52,6 +56,7 @@ export function EditOrganization() {
       phoneNumber,
     }) => {
       updateRestaurant({
+        id,
         name,
         category,
         openTime,
@@ -62,6 +67,10 @@ export function EditOrganization() {
       });
     },
   });
+
+  useEffect(() => {
+    getRestaurantById();
+  }, []);
 
   return (
     <div>
@@ -82,7 +91,13 @@ export function EditOrganization() {
               <Label htmlFor="name" className="text-right">
                 Name
               </Label>
-              <Input defaultValue="23" id="name" className="col-span-3" />
+              <Input
+                id="name"
+                className="col-span-3"
+                name="name"
+                onChange={formik.handleChange}
+                value={formik.values.name}
+              />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="Open Hours" className="text-right">
@@ -94,7 +109,8 @@ export function EditOrganization() {
               </Label>
               <Input
                 id="OperationHours"
-                value=""
+                value={formik.values.closeTime}
+                name="closeTime"
                 className="col-span-3"
                 type="time"
               />
@@ -103,7 +119,13 @@ export function EditOrganization() {
               <Label htmlFor="Phone" className="text-right">
                 Phone Number
               </Label>
-              <Input id="Phone" value="" className="col-span-3" />
+              <Input
+                id="Phone"
+                className="col-span-3"
+                name="phoneNumber"
+                onChange={formik.handleChange}
+                value={formik.values.phoneNumber}
+              />
             </div>
             <div>
               <Label htmlFor="address" className="text-right">
@@ -111,21 +133,33 @@ export function EditOrganization() {
               </Label>
               <Input
                 id="address"
-                value="www.Website.mn"
                 className="col-span-3"
+                name="address"
+                onChange={formik.handleChange}
+                value={formik.values.address}
               />
             </div>
             <div>
               <Label htmlFor="description" className="text-right">
                 Description
               </Label>
-              <Input id="description" className="col-span-3" />
+              <Input
+                id="description"
+                className="col-span-3"
+                name="description"
+                onChange={formik.handleChange}
+                value={formik.values.description}
+              />
             </div>
             <div className="grid grid-cols-1 items-center gap-4 ">
               <Label htmlFor="Category" className="text-left">
                 Select a Category
               </Label>
-              <Select>
+              <Select
+                onValueChange={(e) => {
+                  formik.setFieldValue("category", e);
+                }}
+              >
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Add Category" />
                 </SelectTrigger>
@@ -143,7 +177,11 @@ export function EditOrganization() {
           </div>
           <SheetFooter>
             <SheetClose asChild>
-              <Button className="w-full" type="submit">
+              <Button
+                className="w-full"
+                type="submit"
+                onClick={() => formik.handleSubmit()}
+              >
                 Save changes
               </Button>
             </SheetClose>

@@ -4,6 +4,7 @@ import {
   IRestaurantContext,
   IRestaurant,
   IUpdateRestaurant,
+  IOrg,
 } from "@/interface";
 import myAxios from "@/utils/myAxios";
 import {
@@ -24,6 +25,8 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
   const [refetch, setRefetch] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
   const [org, setOrg] = useState({});
+
+  const [userOrgs, setUserOrgs] = useState<IOrg[]>([]);
 
   const { token } = useContext(UserContext);
 
@@ -67,7 +70,9 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       toast.error(`Алдаа : ${error} `);
     }
   };
+
   const updateRestaurant = async ({
+    id,
     name,
     category,
     openTime,
@@ -80,13 +85,16 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       const data = await myAxios.put(
         "/org/update",
         {
-          name,
-          category,
-          openTime,
-          closeTime,
-          address,
-          description,
-          phoneNumber,
+          id,
+          newUpdate: {
+            name,
+            category,
+            openTime,
+            closeTime,
+            address,
+            description,
+            phoneNumber,
+          },
         },
         {
           headers: {
@@ -121,6 +129,27 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
     setRefetch(reFetch);
   };
 
+  const getRestaurantById = async () => {
+    const tokenInstance =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJlMGEzYmIzOTBkZDc2YzY2ZmY3MCIsImlhdCI6MTcxMTQ0MTY5OCwiZXhwIjoxNzExNTI4MDk4fQ.RL7sIhQKUut5YsrPyuXo9t9_bd4D4faTPoVS3rV_4js";
+    try {
+      const {
+        data: { findOrg },
+      } = await myAxios.get("/org/id", {
+        headers: {
+          Authorization: `Bearer ${tokenInstance}`,
+        },
+      });
+
+      setUserOrgs(findOrg);
+      console.log("UserRelatedOrgsFromNack", userOrgs);
+    } catch (error: any) {
+      toast.error(
+        `Алдаа : ${error.response ? error.response.data.message : error} `
+      );
+    }
+  };
+
   useEffect(() => {
     gesRestaurant();
   }, [refetch, token]);
@@ -128,11 +157,13 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
   return (
     <RestaurantContext.Provider
       value={{
+        userOrgs,
         createRestaurant,
         isLoading,
         handleFetch,
         refetch,
         updateRestaurant,
+        getRestaurantById,
       }}
     >
       {children}
