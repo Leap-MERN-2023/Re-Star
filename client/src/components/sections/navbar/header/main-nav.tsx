@@ -15,6 +15,12 @@ export function MainNav({ className }: any) {
       >
         Add Restaurant
       </Link>
+      <Link
+        href={`${loggedUser ? "/favorites" : "/login"}`}
+        className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab]"
+      >
+        Favorites
+      </Link>
 
       {loggedUser?._id === "" ? (
         <div className="space-x-4 lg:space-x-6">

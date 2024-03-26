@@ -11,6 +11,7 @@ import ReviewProvider from "@/context/ReviewProvider";
 import CategoryProvider from "@/context/CategoryProvider";
 
 import RestaurantProvider from "@/context/RestaurantProvider";
+import FavoritesProvider from "@/context/FavoritesProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,18 +29,20 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <UserProvider>
-          <ReviewProvider>
-            <PasswordProvider>
-              <CategoryProvider>
-                <RestaurantProvider>
-                  <Header />
-                  {children}
-                  <ToastContainer />
-                  <Footer />
-                </RestaurantProvider>
-              </CategoryProvider>
-            </PasswordProvider>
-          </ReviewProvider>
+          <CategoryProvider>
+            <FavoritesProvider>
+              <ReviewProvider>
+                <PasswordProvider>
+                  <RestaurantProvider>
+                   <Header />
+                      {children}
+                    <ToastContainer />
+                   <Footer />
+                  </RestaurantProvider>  
+                </PasswordProvider>
+              </ReviewProvider>
+            </FavoritesProvider>
+          </CategoryProvider>
         </UserProvider>
       </body>
     </html>

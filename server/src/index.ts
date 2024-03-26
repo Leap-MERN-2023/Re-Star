@@ -13,6 +13,7 @@ import ResetPassRoutes from "./routes/ResetPass";
 import CategoryRoutes from "./routes/category";
 import UploadRoutes from "./routes/upload";
 import errorHandler from "./middleware/errorHandler";
+import FavoriteRoutes from "./routes/favorite";
 
 const app: Application = express();
 
@@ -33,6 +34,7 @@ app.use("/menu", ReviewRoutes);
 app.use("/user", UserRoutes);
 app.use("/upload", UploadRoutes);
 app.use("/api/resetPass", ResetPassRoutes);
+app.use("/favorite", FavoriteRoutes);
 
 app.use(errorHandler);
 
