@@ -62,11 +62,10 @@ export const getCategory = async (
   res: Response,
   next: NextFunction
 ) => {
-  const allCategory = await Category.find();
-  console.log("ALl", allCategory);
+  const categories = await Category.find();
 
   res.status(201).json({
     message: "Post category successfully",
-    allCategory,
+    categories,
   });
 };

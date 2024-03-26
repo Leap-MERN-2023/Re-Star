@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import cloudinary from "../utils/cloudinary";
 import MyError from "../utils/myError";
+import Multer from "multer";
 
 export const uploadFile = async (
   req: Request,
@@ -8,7 +9,7 @@ export const uploadFile = async (
   next: NextFunction
 ) => {
   try {
-    if (!req.file) {
+    if (!req.files) {
       throw new MyError("No file uploaded", 400);
     }
 

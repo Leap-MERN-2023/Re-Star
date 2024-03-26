@@ -93,16 +93,26 @@ export const updateOrg = async (
 ) => {
   try {
     const updateOrg = req.body;
+    const { newUpdate } = req.body;
     const { user } = req;
+    console.log("data", newUpdate);
 
-    const findOrg = await Organization.findById({ _id: updateOrg.id });
+    const findOrg = await Organization.updateOne(
+      {
+        $and: [{ user: user._id }, { _id: updateOrg.id }],
+      },
+      {
+        ...newUpdate,
+      }
+    );
 
     if (!findOrg) {
-      throw new MyError(` Organization олдсонгүй.`, 400);
+      throw new MyError(`Хэрэглэгчид бүртгэлтэй Organization олдсонгүй.`, 400);
     }
 
     res.status(200).json({
       message: ` Organization шинэчлэгдлээ.`,
+      findOrg,
     });
   } catch (error) {
     next(error);
