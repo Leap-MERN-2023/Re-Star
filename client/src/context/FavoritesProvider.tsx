@@ -23,7 +23,7 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
     setFavorites(favorites.organizations);
   };
   useEffect(() => {
-    getFavorites();
+    // getFavorites();
   }, []);
 
   return (

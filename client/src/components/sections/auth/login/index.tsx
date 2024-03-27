@@ -60,7 +60,7 @@ export const LoginPage = () => {
       });
 
       localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("token", JSON.stringify(token));
+      localStorage.setItem("token", token);
 
       router.push("/");
     } catch (error: any) {

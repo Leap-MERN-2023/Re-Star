@@ -23,9 +23,12 @@ export interface IRestaurantContext {
     description,
     phoneNumber,
   }: IUpdateRestaurant) => void;
+  getRestaurantById: () => void;
+  userOrgs: IOrg[];
 }
 
 export interface IUpdateRestaurant {
+  id: string;
   name?: string;
   category?: string;
   openTime?: string;
@@ -46,4 +49,15 @@ export interface IRestaurant {
   imgOne: File;
   imgTwo: File;
   imgThree: File;
+}
+
+export interface IOrg {
+  name: string;
+  category: string;
+  openTime: string;
+  closeTime: string;
+  address: string;
+  description: string;
+  phoneNumber: string;
+  images: [];
 }

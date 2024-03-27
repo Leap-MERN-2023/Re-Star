@@ -34,11 +34,11 @@ export default function RootLayout({
               <ReviewProvider>
                 <PasswordProvider>
                   <RestaurantProvider>
-                   <Header />
-                      {children}
+                    <Header />
+                    {children}
                     <ToastContainer />
-                   <Footer />
-                  </RestaurantProvider>  
+                    <Footer />
+                  </RestaurantProvider>
                 </PasswordProvider>
               </ReviewProvider>
             </FavoritesProvider>
