@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DetailsPage from "../details/page";
+import { EditOrganization } from "@/components";
 
 const Page = () => {
   const { getRestaurantById, userOrgs, deleteRestaurantById } =
@@ -27,8 +28,13 @@ const Page = () => {
 
   return (
     <div className="container mx-auto ">
-      <div>
-        <h1 className="text-3xl p-3 text-bold text-center">Admin Page</h1>
+      <div className="flex">
+        <h1 className="text-3xl p-3 text-bold text-center flex-1">
+          Admin Page{" "}
+        </h1>
+        <div className="flex-1 ">
+          <EditOrganization />
+        </div>
       </div>
       <div>
         {userOrgs.length === 0 ? (

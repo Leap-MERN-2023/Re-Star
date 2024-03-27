@@ -85,7 +85,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       const data = await myAxios.put(
         "/org/update",
         {
-          id,
+          orgId: id,
           newUpdate: {
             name,
             category,
