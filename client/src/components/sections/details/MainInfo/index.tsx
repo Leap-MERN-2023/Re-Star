@@ -19,8 +19,17 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { ReviewModal } from "@/components/review-modal";
+import { IInfo } from "@/interface";
 
-const MainInfo = () => {
+const MainInfo = ({
+  name,
+  category,
+  openTime,
+  closeTime,
+  address,
+  description,
+  phoneNumber,
+}: IInfo) => {
   const categories = [
     " korean food",
     "original chickens",
@@ -32,9 +41,7 @@ const MainInfo = () => {
       <CardHeader className="text-3xl block w-full ">
         <CardTitle className=" flex justify-between items-center">
           <div>
-            <h1 className="text-[#2741ab] font-bold text-3xl">
-              Name of Restaurant
-            </h1>
+            <h1 className="text-[#2741ab] font-bold text-3xl">{name}</h1>
           </div>
 
           <div className="flex mr-11">
@@ -62,12 +69,19 @@ const MainInfo = () => {
             </p>
           ))}
         </div>
-        <CardDescription className="text-xl mt-2 font-semibold">
-          Where is this place
+        <CardDescription className="text-lg mt-2 text-black font-semibold">
+          Address : {address}
+        </CardDescription>
+        <CardDescription className="text-xl mt-2 text-purple-500 font-semibold">
+          About my place : {description}
         </CardDescription>
         <div className="flex gap-10">
-          <p className="text-lg text-[#329531] font-medium">Open at: 10 AM </p>
-          <p className="text-lg text-[#a03636] font-medium">Close at: 08 PM </p>
+          <p className="text-lg text-[#329531] font-medium">
+            Open at: {openTime}{" "}
+          </p>
+          <p className="text-lg text-[#a03636] font-medium">
+            Close at: {closeTime}
+          </p>
         </div>
       </CardContent>
       <CardFooter className="flex-wrap  gap-3">

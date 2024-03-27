@@ -25,6 +25,7 @@ export interface IRestaurantContext {
   }: IUpdateRestaurant) => void;
   getRestaurantById: () => void;
   userOrgs: IOrg[];
+  deleteRestaurantById: (id: string) => void;
 }
 
 export interface IUpdateRestaurant {
@@ -60,4 +61,15 @@ export interface IOrg {
   description: string;
   phoneNumber: string;
   images: [];
+  _id: string;
+}
+
+export interface IInfo {
+  name: string;
+  category: string;
+  openTime: string;
+  closeTime: string;
+  address: string;
+  description: string;
+  phoneNumber: string;
 }

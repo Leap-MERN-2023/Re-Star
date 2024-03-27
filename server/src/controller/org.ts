@@ -44,10 +44,12 @@ export const getOrgById = async (
   const { user } = req;
 
   const findOrg = await Organization.findOne({ user: user._id }).lean();
+  console.log("findOrg", findOrg);
 
   res.status(201).json({
     message: "got successfully",
     findOrg,
+    haveOrg: true,
   });
 };
 
@@ -66,7 +68,7 @@ export const deleteOrg = async (
   next: NextFunction
 ) => {
   try {
-    const deleteOrg = req.body;
+    const id = req.params;
     const { user } = req;
 
     const findOrg = await Organization.findOne({ user: user.id });
@@ -75,7 +77,7 @@ export const deleteOrg = async (
       throw new MyError(` Orgization  олдсонгүй.`, 400);
     }
 
-    const data = findOrg.deleteOne({ _id: deleteOrg.id });
+    const data = findOrg.deleteOne({ _id: id });
     await findOrg.save();
 
     res.status(200).json({
