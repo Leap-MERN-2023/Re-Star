@@ -15,52 +15,78 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import DetailsPage from "../details/page";
 
 const Page = () => {
-  const { getRestaurantById } = useContext(RestaurantContext);
+  const { getRestaurantById, userOrgs, deleteRestaurantById } =
+    useContext(RestaurantContext);
+
   useEffect(() => {
     getRestaurantById();
   }, []);
+
   return (
     <div className="container mx-auto ">
       <div>
         <h1 className="text-3xl p-3 text-bold text-center">Admin Page</h1>
       </div>
       <div>
-        <Tabs defaultValue="admin" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="admin">Admin Page</TabsTrigger>
-            <TabsTrigger value="delete">Delete Restaurant</TabsTrigger>
-          </TabsList>
-          <TabsContent value="admin">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-center">Your Restaurant</CardTitle>
-              </CardHeader>
-            </Card>
-          </TabsContent>
-          <TabsContent value="delete" className="flex justify-center">
-            <Card className="lg:w-1/3 w-full">
-              <CardHeader>
-                <CardTitle className="text-center">
-                  Delete Your Own Restaurant
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <p>
-                    Once you delete you restaurant, you can't undo this action.
-                    All the information about your restaurant will be dleted
-                    immediatelly
-                  </p>
-                </div>
-              </CardContent>
-              <CardFooter className="w-full">
-                <Button className="w-full">Delete Restaurant</Button>
-              </CardFooter>
-            </Card>
-          </TabsContent>
-        </Tabs>
+        {userOrgs.length === 0 ? (
+          "Empty"
+        ) : (
+          <Tabs defaultValue={userOrgs[0]?.name} className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+              {userOrgs.map((org) => (
+                <TabsTrigger value={org.name}>Admin Page</TabsTrigger>
+              ))}
+
+              <TabsTrigger value="delete">Delete Restaurant</TabsTrigger>
+            </TabsList>
+            {userOrgs.map((org) => (
+              <TabsContent value={org.name}>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-center">
+                      Your Restaurant
+                    </CardTitle>
+                  </CardHeader>
+
+                  <DetailsPage {...org} />
+                </Card>
+              </TabsContent>
+            ))}
+            <TabsContent value="delete" className="flex justify-center">
+              {userOrgs.length === 0
+                ? ""
+                : userOrgs.map((org) => (
+                    <Card className="lg:w-1/3 w-full">
+                      <CardHeader>
+                        <CardTitle className="text-center">
+                          Delete {org.name}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-2">
+                        <div className="space-y-1">
+                          <p>
+                            Once you delete you restaurant, you can't undo this
+                            action. All the information about your restaurant
+                            will be dleted immediatelly
+                          </p>
+                        </div>
+                      </CardContent>
+                      <CardFooter className="w-full">
+                        <Button
+                          className="w-full"
+                          onClick={() => deleteRestaurantById(org._id)}
+                        >
+                          Delete Restaurant
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  ))}
+            </TabsContent>
+          </Tabs>
+        )}
       </div>
     </div>
   );

@@ -131,7 +131,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
 
   const getRestaurantById = async () => {
     const tokenInstance =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJlMGEzYmIzOTBkZDc2YzY2ZmY3MCIsImlhdCI6MTcxMTQ0MTY5OCwiZXhwIjoxNzExNTI4MDk4fQ.RL7sIhQKUut5YsrPyuXo9t9_bd4D4faTPoVS3rV_4js";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJlMGEzYmIzOTBkZDc2YzY2ZmY3MCIsImlhdCI6MTcxMTUzMDI3NywiZXhwIjoxNzExNjE2Njc3fQ.jkAr2VVpXcAMprjlrxnJi8f6tgvSi7zinr8Z6UjZfUg";
     try {
       const {
         data: { findOrg },
@@ -141,8 +141,26 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
         },
       });
 
-      setUserOrgs(findOrg);
-      console.log("UserRelatedOrgsFromNack", userOrgs);
+      setUserOrgs([findOrg]);
+    } catch (error: any) {
+      toast.error(
+        `Алдаа : ${error.response ? error.response.data.message : error} `
+      );
+    }
+  };
+  const deleteRestaurantById = async (id: string) => {
+    const tokenInstance =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJlMGEzYmIzOTBkZDc2YzY2ZmY3MCIsImlhdCI6MTcxMTUzMDI3NywiZXhwIjoxNzExNjE2Njc3fQ.jkAr2VVpXcAMprjlrxnJi8f6tgvSi7zinr8Z6UjZfUg";
+    try {
+      const {
+        data: { findOrg },
+      } = await myAxios.delete(`/org/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${tokenInstance}`,
+        },
+      });
+
+      setUserOrgs([findOrg]);
     } catch (error: any) {
       toast.error(
         `Алдаа : ${error.response ? error.response.data.message : error} `
@@ -164,6 +182,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
         refetch,
         updateRestaurant,
         getRestaurantById,
+        deleteRestaurantById,
       }}
     >
       {children}
