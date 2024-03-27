@@ -3,6 +3,7 @@ import Category from "../model/category";
 import MyError from "../utils/myError";
 import { IReq } from "../utils/interface";
 import Organization from "../model/organization";
+import cloudinary from "../utils/cloudinary";
 
 export const addCategory = async (
   req: Request,
@@ -10,12 +11,25 @@ export const addCategory = async (
   next: NextFunction
 ) => {
   const newCategory = req.body;
+
+  console.log("req :", req.body);
   console.log("new category :", newCategory);
 
-  const user = await Category.create({ ...newCategory });
+  if (!req.file) {
+    throw new MyError("Pic", 400);
+  } else {
+    const { secure_url } = await cloudinary.uploader.upload(req.file.path);
+
+    newCategory.image = secure_url;
+    console.log("new Ctae", newCategory);
+    console.log("first", secure_url);
+  }
+
+  const category = await Category.create({ ...newCategory });
 
   res.status(201).json({
     message: "Post category successfully",
+    category,
   });
 };
 export const deleteCategory = async (
