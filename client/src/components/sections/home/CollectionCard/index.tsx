@@ -2,6 +2,7 @@
 import * as React from "react";
 import Router, { useRouter } from "next/navigation";
 import { Card } from "@/components/ui/card";
+import { CategoryContext } from "@/context/CategoryProvider";
 
 const cards = [
   {
@@ -19,6 +20,7 @@ const cards = [
 ];
 
 export function CollectionCard() {
+  const { categories } = React.useContext(CategoryContext);
   const router = useRouter();
   return (
     <div className="mx:auto container">
@@ -32,7 +34,7 @@ export function CollectionCard() {
         </p>
       </div>
       <div className="flex justify-around items-center  flex-wrap gap-10">
-        {cards.map((card, i) => (
+        {categories.map((card, i) => (
           <Card
             key={i}
             className="w-[350px] shadow-2xl rounded-2xl h-[350px] "
@@ -41,7 +43,7 @@ export function CollectionCard() {
             }}
           >
             <img
-              src={card.img}
+              src={card.image}
               className="h-[200px] w-[350px] rounded-xl p-2"
             />
             <div className="p-4">

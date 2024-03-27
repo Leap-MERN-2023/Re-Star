@@ -4,7 +4,7 @@ import DetailTab from "@/components/sections/details/tabs";
 import DetailCard from "@/components/sections/details/MainInfo";
 import DetailSearch from "@/components/sections/details/DetailSearch";
 
-const Page = () => {
+const DetailsPage = () => {
   // Print out the picture URLs with alt text
 
   return (
@@ -21,4 +21,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default DetailsPage;
