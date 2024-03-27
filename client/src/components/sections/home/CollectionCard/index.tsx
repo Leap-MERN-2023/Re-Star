@@ -35,24 +35,27 @@ export function CollectionCard() {
       </div>
       <div className="flex justify-around items-center  flex-wrap gap-10">
         {categories.map((card, i) => (
-          <Card
-            key={i}
-            className="w-[350px] shadow-2xl rounded-2xl h-[350px] "
-            onClick={() => {
-              router.push("/details");
-            }}
-          >
-            <img
-              src={card.image}
-              className="h-[200px] w-[350px] rounded-xl p-2"
-            />
-            <div className="p-4">
-              <h1 className="font-bold text-[#847c9b] text-4xl">{card.name}</h1>
-              <p className="font-bold text-[#bcb3ca] text-2xl">Description</p>
-            </div>
-          </Card>
+        <Card
+        </Card>
         ))}
       </div>
     </div>
   );
 }
+
+  // <Card
+          //   key={i}
+          //   className="w-[350px] shadow-2xl rounded-2xl h-[350px] "
+          //   onClick={() => {
+          //     router.push("/details");
+          //   }}
+          // >
+          //   <img
+          //     src={card.image}
+          //     className="h-[200px] w-[350px] rounded-xl p-2"
+          //   />
+          //   <div className="p-4">
+          //     <h1 className="font-bold text-[#847c9b] text-4xl">{card.name}</h1>
+          //     <p className="font-bold text-[#bcb3ca] text-2xl">Description</p>
+          //   </div>
+          // </Card>
