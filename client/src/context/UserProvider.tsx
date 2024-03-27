@@ -41,6 +41,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+
     setLoggedUser({ name: "", email: "", _id: "" });
   };
 

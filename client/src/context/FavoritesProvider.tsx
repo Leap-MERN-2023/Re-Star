@@ -2,8 +2,15 @@
 
 import { IFavoritesContext } from "@/interface";
 import myAxios from "@/utils/myAxios";
-import { PropsWithChildren, createContext, useEffect, useState } from "react";
+import {
+  PropsWithChildren,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { toast } from "react-toastify";
+import { UserContext } from "./UserProvider";
 
 export const FavoritesContext = createContext<IFavoritesContext>(
   {} as IFavoritesContext
@@ -11,26 +18,30 @@ export const FavoritesContext = createContext<IFavoritesContext>(
 
 const FavoritesProvider = ({ children }: PropsWithChildren) => {
   const [favorites, setFavorites] = useState([]);
+  const { token } = useContext(UserContext);
+  const [loved, setLoved] = useState(false);
+
   const getFavorites = async () => {
     const {
       data: { favorites },
     } = await myAxios.get("/favorite", {
       headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmQ1MTQwZjM3Mzg4YjZhYTQwZGZmZiIsImlhdCI6MTcxMTM1MjA5NiwiZXhwIjoxNzExNDM4NDk2fQ.SXSenoStWw_TUIG3Th9CMZB5PyZrUhZDc4C8rIgiNEA",
+        Authorization: `Bearer ${token}`,
       },
     });
     setFavorites(favorites.organizations);
   };
+
   useEffect(() => {
-    // getFavorites();
-  }, []);
+    if (token) {
+      getFavorites();
+    }
+  }, [token]);
 
   return (
     <FavoritesContext.Provider
       value={{
         favorites,
-        getFavorites,
       }}
     >
       {children}
