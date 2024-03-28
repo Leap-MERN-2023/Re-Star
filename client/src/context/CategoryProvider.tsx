@@ -50,7 +50,9 @@ const CategoryProvider = ({ children }: PropsWithChildren) => {
   };
 
   useEffect(() => {
-    getCategory();
+    if (token) {
+      getCategory();
+    }
   }, []);
 
   return (

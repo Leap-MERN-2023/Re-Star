@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface IRestaurantContext {
   createRestaurant: ({
     name,
@@ -23,9 +25,12 @@ export interface IRestaurantContext {
     description,
     phoneNumber,
   }: IUpdateRestaurant) => void;
-  getRestaurantById: () => void;
+  getRestaurantById: (id: string) => void;
   userOrgs: IOrg[];
   deleteRestaurantById: (id: string) => void;
+  org: object[];
+  setOrgIdContext: Dispatch<SetStateAction<string>>;
+  orgById: any;
 }
 
 export interface IUpdateRestaurant {

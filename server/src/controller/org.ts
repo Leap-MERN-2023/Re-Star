@@ -41,24 +41,26 @@ export const getOrgById = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { user } = req;
+  try {
+    const findOrg = await Organization.findById({ _id: req.params.id });
+    console.log("findOrg", findOrg);
 
-  const findOrg = await Organization.findOne({ user: user._id }).lean();
-  console.log("findOrg", findOrg);
-
-  res.status(201).json({
-    message: "got successfully",
-    findOrg,
-    haveOrg: true,
-  });
+    res.status(201).json({
+      message: "got successfully",
+      findOrg,
+      haveOrg: true,
+    });
+  } catch (error) {
+    console.log("getOrgById ERROR", error);
+  }
 };
 
 export const getOrg = async (req: IReq, res: Response, next: NextFunction) => {
-  const userOrgs = await Organization.find();
+  const allOrg = await Organization.find();
 
   res.status(201).json({
     message: "got successfully",
-    userOrgs,
+    allOrg,
   });
 };
 
