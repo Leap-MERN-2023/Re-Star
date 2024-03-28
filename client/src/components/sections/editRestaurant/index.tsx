@@ -36,7 +36,7 @@ export function EditOrganization() {
 
   const formik = useFormik({
     initialValues: {
-      id: "65fbe0a3bb390dd76c66ff70",
+      id: "660131075f830f200fdc7589",
       name: userOrgs[0]?.name,
       category: userOrgs[0]?.category,
       openTime: userOrgs[0]?.name,
@@ -76,7 +76,9 @@ export function EditOrganization() {
     <div>
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline">Edit Page</Button>
+          <Button className="w-full h-12 bg-lime-600 hover:bg-lime-800 my-1">
+            Edit Restaurant
+          </Button>
         </SheetTrigger>
         <SheetContent className="w-[400px] sm:w-[540px]">
           <SheetHeader>

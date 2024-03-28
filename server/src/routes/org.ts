@@ -17,5 +17,6 @@ router.route("/:id").get(getOrgById);
 router.route("/add").post(authenticate, upload.array("images"), addOrg);
 router.route("/update").put(authenticate, updateOrg);
 router.route("/delete/:id").delete(authenticate, deleteOrg);
+router.route("/").get(getOrg);
 
 export default router;

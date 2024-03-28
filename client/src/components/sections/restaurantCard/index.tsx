@@ -1,23 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { BiPhone } from "@/components/icons";
 import { useRouter } from "next/navigation";
@@ -26,7 +11,7 @@ import { FaStar } from "@/components/icons";
 import Checkbox from "@mui/material/Checkbox";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-export function RestaurantCard({ favorite, data }: any) {
+export function RestaurantCard({ address, favorite, data }: any) {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const router = useRouter();
   return (

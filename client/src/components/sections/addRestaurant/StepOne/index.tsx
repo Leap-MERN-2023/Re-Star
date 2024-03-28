@@ -26,19 +26,22 @@ import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { useContext, useState } from "react";
 import { RestaurantContext } from "@/context/RestaurantProvider";
+import { CategoryContext } from "@/context/CategoryProvider";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export function StepOne() {
   const [selectValue, setSelectValue] = useState<string | null>();
-  const [categories, setCategories] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
   const { createRestaurant, isLoading } = useContext(RestaurantContext);
+  const { categories } = useContext(CategoryContext);
 
   const addCategory = (e: string) => {
     console.log("e", e);
     const event = e;
-    let categoriesArrayCopy = [...categories];
+    let categoriesArrayCopy = [...selectedCategories];
     categoriesArrayCopy.push(e);
-    setCategories(categoriesArrayCopy);
+    setSelectedCategories(categoriesArrayCopy);
   };
 
   const restaurantTypes = [
@@ -143,9 +146,11 @@ export function StepOne() {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Restaurant Type</SelectLabel>
-                    {restaurantTypes.map((event, i) => (
-                      <SelectItem key={i} value={event}>
-                        {event}
+
+                    {!categories && <Skeleton className="h-4 w-[250px]" />}
+                    {categories.map((category, i) => (
+                      <SelectItem key={i} value={category?._id}>
+                        {category.name}
                       </SelectItem>
                     ))}
                   </SelectGroup>
