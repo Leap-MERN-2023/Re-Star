@@ -1,17 +1,18 @@
 "use client";
 import * as React from "react";
-import Router, { useRouter } from "next/navigation";
-import { Card } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
+import { Skeleton } from "@/components/ui/skeleton";
+
 import { CategoryContext } from "@/context/CategoryProvider";
-import CategoryRow from "../Row";
-
-
+import { CategoryRow } from "../Row";
 
 export function CollectionCard() {
   const { categories } = React.useContext(CategoryContext);
+  console.log("categories", categories);
+
   const router = useRouter();
   return (
-    <div className="mx:auto container">
+    <div className="">
       <div className="p-4">
         <h1 className=" text-4xl  font-extrabold   p-2 rounded-md text-[#847c9b]">
           Collections
@@ -22,12 +23,28 @@ export function CollectionCard() {
         </p>
       </div>
       <div className="flex justify-around items-start  flex-wrap gap-10 flex-col">
-        {categories.map((category, i) => (
-          <div className="">
-            <p className="text-4xl  font-extrabold   p-2 rounded-md text-[#847c9b]">{category.name}</p>
-          <CategoryRow />
+        {!categories && (
+          <div className="flex items-center space-x-4">
+            <Skeleton className="h-12 w-12 rounded-full" />
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-[250px]" />
+              <Skeleton className="h-4 w-[200px]" />
+            </div>
           </div>
-        ))}
+        )}
+
+        <div className="">
+          {categories.map((category, i) => (
+            <div className="" key={i}>
+              <p className="text-4xl  font-extrabold rounded-md text-[#847c9b] text-left md:ml-[3%]">
+                {category.name}
+              </p>
+              <div className="">
+                <CategoryRow categoryId={category?._id} />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

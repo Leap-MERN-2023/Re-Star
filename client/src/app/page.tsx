@@ -5,11 +5,10 @@ import RestaurantCard from "@/components/sections/restaurantCard";
 
 export default function Home() {
   return (
-    <div className="bg-[#fdf4ed]">
+    <div className="bg-[#fdf4ed] w-screen overflow-y-hidden">
       <Search />
       <CategoryCard />
       <CollectionCard />
-      <RestaurantCard />
     </div>
   );
 }

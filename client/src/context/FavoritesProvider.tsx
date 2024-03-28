@@ -22,14 +22,18 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
   const [loved, setLoved] = useState(false);
 
   const getFavorites = async () => {
-    const {
-      data: { favorites },
-    } = await myAxios.get("/favorite", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setFavorites(favorites.organizations);
+    try {
+      const {
+        data: { favorites },
+      } = await myAxios.get("/favorite", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setFavorites(favorites?.organizations);
+    } catch (error: any) {
+      toast.error("Error in favorite context", error);
+    }
   };
 
   useEffect(() => {

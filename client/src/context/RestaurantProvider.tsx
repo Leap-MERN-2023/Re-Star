@@ -24,7 +24,7 @@ export const RestaurantContext = createContext<IRestaurantContext>(
 const RestaurantProvider = ({ children }: PropsWithChildren) => {
   const [refetch, setRefetch] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [org, setOrg] = useState({});
+  const [org, setOrg] = useState<IOrg[]>([]);
 
   const [userOrgs, setUserOrgs] = useState<IOrg[]>([]);
 
@@ -115,10 +115,10 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
   const gesRestaurant = async () => {
     try {
       const {
-        data: { allOrg },
-      } = await myAxios.get("/org/");
-      console.log("orgfromback", allOrg);
-      setOrg(allOrg);
+        data: { allOrgs },
+      } = await myAxios.get("/org");
+      console.log("All Org :", allOrgs);
+      setOrg(allOrgs);
     } catch (error: any) {
       toast.error(`Алдаа : ${error?.response?.data?.message} `);
       console.log("error", error);
@@ -175,6 +175,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
   return (
     <RestaurantContext.Provider
       value={{
+        org,
         userOrgs,
         createRestaurant,
         isLoading,
