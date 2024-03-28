@@ -54,12 +54,17 @@ export const getOrgById = async (
 };
 
 export const getOrg = async (req: IReq, res: Response, next: NextFunction) => {
-  const userOrgs = await Organization.find();
+  try {
+    const allOrgs = await Organization.find();
+    console.log("all org", allOrgs);
 
-  res.status(201).json({
-    message: "got successfully",
-    userOrgs,
-  });
+    res.status(201).json({
+      message: "got successfully",
+      allOrgs,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const deleteOrg = async (
