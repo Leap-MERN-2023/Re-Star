@@ -20,6 +20,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { ReviewModal } from "@/components/review-modal";
 import { IInfo } from "@/interface";
+import { MenuModal } from "@/components/menu-modal";
 
 const MainInfo = ({
   name,
@@ -106,6 +107,7 @@ const MainInfo = ({
           Share
         </Button>
         <ReviewModal />
+        <MenuModal />
       </CardFooter>
     </Card>
   );
