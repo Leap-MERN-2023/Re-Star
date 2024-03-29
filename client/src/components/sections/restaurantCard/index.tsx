@@ -28,7 +28,7 @@ export function RestaurantCard({ address, favorite, data }: any) {
           <div className="grid grid-cols-2">
             <CardTitle className="text-xl">{data?.name}</CardTitle>
             <div className="text-sm flex justify-end">
-              <Badge className="bg-green-500">
+              <Badge className="bg-green-500 hover:bg-green-700">
                 4.8
                 <span className="m-1">
                   <FaStar />
@@ -45,8 +45,8 @@ export function RestaurantCard({ address, favorite, data }: any) {
             <div className="flex justify-end ml-6">
               <Checkbox
                 {...label}
-                icon={<FaRegHeart className="text-red-500 w-6 h-6 " />}
-                checkedIcon={<FaHeart className="text-red-500 w-6 h-6" />}
+                icon={<FaRegHeart className="text-red-500 w-10 h-10 " />}
+                checkedIcon={<FaHeart className="text-red-500 w-10 h-10" />}
               />
             </div>
           </div>

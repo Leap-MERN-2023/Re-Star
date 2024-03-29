@@ -95,61 +95,19 @@ export const deleteOrg = async (
   }
 };
 
-// export const updateOrg = async (
-//   req: IReq,
-//   res: Response,
-//   next: NextFunction
-// ) => {
-//   try {
-//     const updateOrg = req.body;
-
-//     const { newUpdate } = req.body;
-//     const { user } = req;
-//     console.log("user", user._id);
-//     console.log("user", updateOrg);
-
-//     const findOrgs = await Organization.findOne({ user: user._id });
-
-//     if (!findOrgs) {
-//       throw new MyError(`Хэрэглэгчид бүртгэлтэй Organization олдсонгүй.`, 400);
-//     }
-
-//     const findOrg = await Organization.updateOne(
-//       {
-//         $and: [{ user: user._id }, { _id: updateOrg.id }],
-//       },
-//       {
-//         $set: { ...newUpdate },
-//       }
-//     );
-
-//     res.status(200).json({
-//       message: ` Organization шинэчлэгдлээ.`,
-//     });
-
-//     // console.log("first", findOrg);
-//     // console.log("success", updatedOrg);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
-// Adjust the import path accordingly
-
 export const updateOrg = async (
   req: IReq,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const { newUpdate, orgId } = req.body; // Assuming orgId is provided in the request body
+    const { newUpdate, orgId } = req.body;
     const { user } = req;
 
     console.log("User ID:", user._id);
     console.log("Organization ID:", orgId);
     console.log("New Update Data:", newUpdate);
 
-    // Check if the user is the owner of the organization
     const findOrg = await Organization.findOne({
       user: user._id,
       _id: orgId,
@@ -159,7 +117,6 @@ export const updateOrg = async (
       throw new MyError(`Organization not found for the user.`, 404);
     }
 
-    // Update the organization based on the organization ID
     const updatedOrg = await Organization.updateOne(
       { _id: orgId },
       { $set: { ...newUpdate } }
