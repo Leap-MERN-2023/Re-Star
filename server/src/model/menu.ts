@@ -30,10 +30,6 @@ const MenuSchema = new Schema({
         type: String,
         default: "no-category-photo",
       },
-      category: {
-        type: String,
-        required: true,
-      },
       createdAt: {
         type: Date,
         default: Date.now,

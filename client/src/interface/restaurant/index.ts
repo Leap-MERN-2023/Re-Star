@@ -82,9 +82,17 @@ export interface IInfo {
 
 
 export interface IMenuContext{
+name: string;
+category: string;
+description: string;
+price: string;
+image:File;
 
 }
 export interface IMenu{
-
+menu: IMenu;
+isopen: boolean
+addMenu: ( name: string, category: string, description: string, price:string, image:File
+  ) => void;
 }
 
