@@ -9,21 +9,21 @@ export default function OrgByIdPage({ params }: { params: { id: string } }) {
   console.log("params in [id]", params);
   const { setOrgIdContext, orgById } = useContext(RestaurantContext);
   setOrgIdContext(params.id);
-  console.log("orgByIdIn Page", orgById);
+  console.log("orgById In Page", orgById);
   return (
     <div className="bg-[#fdf4ed] ">
       <div className="mx:auto container ">
-        <DetailPicture images={orgById[0]?.images} />
+        <DetailPicture images={orgById?.images} />
       </div>
       <div className="mx:auto container">
         <DetailCard
-          name={orgById[0]?.name}
-          category={orgById[0]?.category}
-          openTime={orgById[0]?.openTime}
-          closeTime={orgById[0]?.closeTime}
-          address={orgById[0]?.address}
-          description={orgById[0]?.description}
-          phoneNumber={orgById[0]?.phoneNumber}
+          name={orgById?.name}
+          category={orgById?.category}
+          openTime={orgById?.openTime}
+          closeTime={orgById?.closeTime}
+          address={orgById?.address}
+          description={orgById?.description}
+          phoneNumber={orgById?.phoneNumber}
         />
         <DetailTab />
       </div>

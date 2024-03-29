@@ -31,19 +31,43 @@ export function DetailPicture(images: any) {
   return (
     <Carousel className="w-fullp-3 bg-white rounded-lg shadow-xl mt-5">
       <CarouselContent className="-ml-1 ">
-        {pictures?.map((picture: any, index: number) => (
-          <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3 ">
-            <div className="p-1 ">
-              <Card className=" h-[400px] ">
-                <img
-                  src={picture.img}
-                  alt=""
-                  className="h-full w-full rounded-lg"
-                />
-              </Card>
-            </div>
-          </CarouselItem>
-        ))}
+        {!images
+          ? pictures?.map((picture: any, index: number) => (
+              <CarouselItem
+                key={index}
+                className="pl-1 md:basis-1/2 lg:basis-1/3 "
+              >
+                <div className="p-1 ">
+                  <Card className=" h-[400px] ">
+                    <img
+                      src={picture}
+                      alt=""
+                      className="h-full w-full rounded-lg"
+                    />
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))
+          : pictures?.map((picture: any, index: number) => (
+              <CarouselItem
+                key={index}
+                className="pl-1 md:basis-1/2 lg:basis-1/3 "
+              >
+                <div className="p-1 ">
+                  <Card className=" h-[400px] ">
+                    <img
+                      src={picture.img}
+                      alt=""
+                      className="h-full w-full rounded-lg"
+                    />
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+
+        {/* {images.map((e) => (
+          <div>{e}</div>
+        ))} */}
       </CarouselContent>
       <CarouselPrevious />
       <CarouselNext />

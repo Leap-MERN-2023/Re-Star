@@ -31,6 +31,7 @@ export interface IRestaurantContext {
   setOrgIdContext: Dispatch<SetStateAction<string>>;
   orgById: any;
   org: IOrg[];
+  getUserRestaurantById: () => void;
 }
 
 export interface IUpdateRestaurant {

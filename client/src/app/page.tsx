@@ -14,10 +14,10 @@ export default function Home() {
       <Search />
       <CategoryCard />
       <CollectionCard />
-      <RestaurantCard />
-      {org.map((data) => (
-        <RestaurantCard data={data} />
-      ))}
+
+      {/* {org.map((data) => (
+        <RestaurantCard org={data} />
+      ))} */}
     </div>
   );
 }

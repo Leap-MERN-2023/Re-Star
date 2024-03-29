@@ -77,6 +77,7 @@ export const getCategory = async (
   next: NextFunction
 ) => {
   const categories = await Category.find();
+  console.log("categories, ", categories);
 
   res.status(201).json({
     message: "Post category successfully",

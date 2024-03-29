@@ -69,6 +69,22 @@ export const getOrg = async (req: IReq, res: Response, next: NextFunction) => {
   }
 };
 
+export const getUserOrgById = async (
+  req: IReq,
+  res: Response,
+  next: NextFunction
+) => {
+  const { user } = req;
+
+  const findOrg = await Organization.findOne({ user: user._id }).lean();
+  console.log("findOrg", findOrg);
+
+  res.status(201).json({
+    message: "got successfully",
+    findOrg,
+    haveOrg: true,
+  });
+};
 export const deleteOrg = async (
   req: IReq,
   res: Response,
