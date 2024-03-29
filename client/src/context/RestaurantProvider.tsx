@@ -27,6 +27,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
   const [org, setOrg] = useState<IOrg[]>([]);
 
   const [userOrgs, setUserOrgs] = useState<IOrg[]>([]);
+  const [orgById, setOrgById] = useState({});
 
   const { token } = useContext(UserContext);
 
@@ -112,7 +113,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const gesRestaurant = async () => {
+  const getRestaurant = async () => {
     try {
       const {
         data: { allOrgs },
@@ -124,30 +125,37 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       console.log("error", error);
     }
   };
+  useEffect(() => {
+    if (token) {
+      getRestaurant();
+      console.log("token in RP", token);
+    }
+  }, [refetch, token]);
 
   const handleFetch = (reFetch: boolean) => {
     setRefetch(reFetch);
   };
 
+  const [orgIdContext, setOrgIdContext] = useState("");
+
   const getRestaurantById = async () => {
-    const tokenInstance =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJlMGEzYmIzOTBkZDc2YzY2ZmY3MCIsImlhdCI6MTcxMTUzMDI3NywiZXhwIjoxNzExNjE2Njc3fQ.jkAr2VVpXcAMprjlrxnJi8f6tgvSi7zinr8Z6UjZfUg";
     try {
       const {
         data: { findOrg },
-      } = await myAxios.get("/org/id", {
-        headers: {
-          Authorization: `Bearer ${tokenInstance}`,
-        },
-      });
-
-      setUserOrgs([findOrg]);
+      } = await myAxios.get(`/org/${orgIdContext}`);
+      console.log("findOrg", findOrg);
+      setOrgById([findOrg]);
     } catch (error: any) {
       toast.error(
         `Алдаа : ${error.response ? error.response.data.message : error} `
       );
     }
   };
+  useEffect(() => {
+    if (orgIdContext) {
+      getRestaurantById();
+    }
+  }, [orgIdContext]);
   const deleteRestaurantById = async (id: string) => {
     const tokenInstance =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJlMGEzYmIzOTBkZDc2YzY2ZmY3MCIsImlhdCI6MTcxMTUzMDI3NywiZXhwIjoxNzExNjE2Njc3fQ.jkAr2VVpXcAMprjlrxnJi8f6tgvSi7zinr8Z6UjZfUg";
@@ -168,10 +176,6 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  useEffect(() => {
-    gesRestaurant();
-  }, [refetch, token]);
-
   return (
     <RestaurantContext.Provider
       value={{
@@ -184,6 +188,9 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
         updateRestaurant,
         getRestaurantById,
         deleteRestaurantById,
+
+        setOrgIdContext,
+        orgById,
       }}
     >
       {children}
