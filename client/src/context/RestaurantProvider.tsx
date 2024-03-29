@@ -44,6 +44,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
     imgThree,
   }: IRestaurant) => {
     try {
+      setIsLoading(!isLoading);
       const formdata = new FormData();
 
       formdata.set("name", name);
@@ -62,7 +63,6 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      setIsLoading(true);
 
       toast.success("restaurant amjilttai uuslee");
 

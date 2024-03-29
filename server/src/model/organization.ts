@@ -49,6 +49,11 @@ const OrganizationSchema = new Schema({
     type: Date,
     default: new Date(),
   },
+  role: {
+    type: String,
+    enum: ["asked", "approved", "banned"],
+    default: "asked",
+  },
 });
 
 const Organization = model("Organization", OrganizationSchema);

@@ -1,30 +1,76 @@
 "use client";
 import { RestaurantContext } from "@/context/RestaurantProvider";
-import { UserContext } from "@/context/UserProvider";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import Lottie from "react-lottie";
+import * as emptyBasket from "../../../public/images/empty.json";
+
+import myAxios from "@/utils/myAxios";
 
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import DetailsPage from "../details/page";
-import { EditOrganization } from "@/components";
+
+import { UserContext } from "@/context/UserProvider";
+import { toast } from "react-toastify";
 
 const Page = () => {
   const { getRestaurantById, userOrgs, deleteRestaurantById } =
     useContext(RestaurantContext);
 
+  const { token } = useContext(UserContext);
+  const [pass, setPass] = useState<string>();
+
   useEffect(() => {
-    getRestaurantById();
-  }, []);
+    if (token) {
+      getRestaurantById();
+    }
+  }, [token]);
+
+  const defaultOption = {
+    animationData: emptyBasket,
+    loop: true,
+    autoplay: true,
+  };
+
+  const checkPassword = async (pass: string, orgId: string) => {
+    try {
+      const {
+        data: { isValid },
+      } = await myAxios.post(
+        `/auth/checkPassword`,
+        { pass },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (isValid === true) {
+        deleteRestaurantById(orgId);
+      } else {
+        toast.error("wrong password");
+      }
+    } catch (error) {
+      toast.error("aldaa");
+    }
+  };
 
   return (
     <div className="container mx-auto ">
@@ -32,13 +78,16 @@ const Page = () => {
         <h1 className="text-3xl p-3 text-bold text-center flex-1">
           Admin Page{" "}
         </h1>
-        <div className="flex-1 ">
-          <EditOrganization />
-        </div>
       </div>
       <div>
         {userOrgs.length === 0 ? (
-          "Empty"
+          <div className=" justify-center">
+            <Lottie options={defaultOption} height={400} width={400} />
+            <h3 className="text-center text-2xl">
+              {" "}
+              Та байгууллага бүртгээгүй байна
+            </h3>
+          </div>
         ) : (
           <Tabs defaultValue={userOrgs[0]?.name} className="w-full">
             <TabsList className="grid w-full grid-cols-2">
@@ -81,12 +130,38 @@ const Page = () => {
                         </div>
                       </CardContent>
                       <CardFooter className="w-full">
-                        <Button
-                          className="w-full"
-                          onClick={() => deleteRestaurantById(org._id)}
-                        >
-                          Delete Restaurant
-                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button variant="outline">
+                              Delete Organization
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="sm:max-w-[425px]">
+                            <DialogHeader>
+                              Type password that is used for login
+                            </DialogHeader>
+                            <div className="grid gap-4 py-4">
+                              <div className="grid grid-cols-4 items-center gap-4">
+                                <Label
+                                  htmlFor="password"
+                                  className="text-right"
+                                >
+                                  Password
+                                </Label>
+                                <Input
+                                  id="password"
+                                  defaultValue="Pedro Duarte"
+                                  className="col-span-3"
+                                />
+                              </div>
+                            </div>
+                            <DialogFooter>
+                              <Button type="submit" onClick={() => {}}>
+                                Check Password
+                              </Button>
+                            </DialogFooter>
+                          </DialogContent>
+                        </Dialog>
                       </CardFooter>
                     </Card>
                   ))}
