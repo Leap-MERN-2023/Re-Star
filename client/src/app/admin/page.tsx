@@ -35,7 +35,7 @@ const Page = () => {
     useContext(RestaurantContext);
 
   const { token } = useContext(UserContext);
-  const [pass, setPass] = useState<string>();
+  const [pass, setPass] = useState<string>("");
 
   useEffect(() => {
     if (token) {
@@ -54,7 +54,7 @@ const Page = () => {
       const {
         data: { isValid },
       } = await myAxios.post(
-        `/auth/checkPassword`,
+        `/user/check`,
         { pass },
         {
           headers: {
@@ -67,8 +67,8 @@ const Page = () => {
       } else {
         toast.error("wrong password");
       }
-    } catch (error) {
-      toast.error("aldaa");
+    } catch (error: any) {
+      toast.error("aldaa", error.response.data.message);
     }
   };
 
@@ -150,13 +150,18 @@ const Page = () => {
                                 </Label>
                                 <Input
                                   id="password"
-                                  defaultValue="Pedro Duarte"
+                                  value={pass}
                                   className="col-span-3"
+                                  name="pass"
+                                  onChange={(e) => setPass(e.target.value)}
                                 />
                               </div>
                             </div>
                             <DialogFooter>
-                              <Button type="submit" onClick={() => {}}>
+                              <Button
+                                className="w-full"
+                                onClick={() => checkPassword(pass, org._id)}
+                              >
                                 Check Password
                               </Button>
                             </DialogFooter>

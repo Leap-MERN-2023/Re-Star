@@ -16,7 +16,9 @@ export default function Home() {
       <CollectionCard />
 
       {/* {org.map((data) => (
+
         <RestaurantCard org={data} />
+        
       ))} */}
     </div>
   );
