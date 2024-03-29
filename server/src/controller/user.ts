@@ -5,7 +5,7 @@ import MyError from "../utils/myError";
 import bcrypt from "bcrypt";
 
 export const getUserById = async (
-  req: Request,
+  req: IReq,
   res: Response,
   next: NextFunction
 ) => {
@@ -16,6 +16,39 @@ export const getUserById = async (
     res.status(200).json({
       message: `Захиалгыг амжилттай авлаа`,
       findUser,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const checkPass = async (
+  req: IReq,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { user } = req;
+    const { pass } = req.body;
+    console.log("user", user);
+
+    const find = await User.findOne({ email: user.email })
+      .select("+password")
+      .lean();
+
+    if (!user) {
+      throw new MyError(`Хэрэглэгч олдсонгүй`, 400);
+    }
+
+    const isValid = await bcrypt.compare(pass, find!.password);
+
+    if (!isValid) {
+      throw new MyError(`Нууц үг буруу байна`, 400);
+    }
+
+    res.status(200).json({
+      message: `Захиалгыг амжилттай авлаа`,
+      isValid: true,
     });
   } catch (error) {
     next(error);
@@ -37,6 +70,7 @@ export const changeUserData = async (
     if (!changedUser) {
       throw new MyError(`Хэрэглэгчийн мэдээлэл дутуу байна.`, 400);
     }
+
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(changedUser.password, salt);
 
@@ -48,6 +82,7 @@ export const changeUserData = async (
         email: changedUser.email,
       }
     );
+
     console.log("DONE");
 
     await findUser?.save();

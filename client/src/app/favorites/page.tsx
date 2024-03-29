@@ -11,8 +11,8 @@ const FavoritesPage = () => {
     <div>
       <h1 className="text-lg text-gray-800">Your favorites</h1>
       {/* {favorites.map((favorite, index) => ( */}
-        {/* // <FavoriteCard favorite={favorite} key={index} /> */}
-       <FavoriteCard/>
+      {/* // <FavoriteCard favorite={favorite} key={index} /> */}
+      <FavoriteCard />
       {/* ))} */}
     </div>
   );

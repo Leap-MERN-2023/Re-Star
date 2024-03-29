@@ -27,7 +27,7 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
       <Card className="">
         <img
           src={images?.at(1)}
-          className="h-[200px] w-[380px] rounded-lg p-1"
+          className="h-[200px] w-[380px] rounded-lg p-1 object-cover"
         />
         <CardHeader>
           <div className="grid grid-cols-2">

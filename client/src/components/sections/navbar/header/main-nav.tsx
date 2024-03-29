@@ -10,13 +10,19 @@ export function MainNav({ className }: any) {
   return (
     <nav className={cn("flex items-center space-x-4 lg:space-x-6", className)}>
       <Link
+        href="/"
+        className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab]"
+      >
+        Home
+      </Link>
+      <Link
         href={`${loggedUser ? "/explore" : "/login"}`}
         className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab]"
       >
         Explore
       </Link>
       <Link
-        href={`${loggedUser ? "/favorites" : "/login"}`}
+        href={`${loggedUser ? "/favorites" : ""}`}
         className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab]"
       >
         Favorites
