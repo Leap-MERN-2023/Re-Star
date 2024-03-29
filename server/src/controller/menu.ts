@@ -4,15 +4,19 @@ import MyError from "../utils/myError";
 import { IReq } from "../utils/interface";
 import Organization from "../model/organization";
 
-export const addCategory = async (
+export const addMenu = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const newCategory = req.body;
-  console.log("new category :", newCategory);
+  const {newFood }= req.body;
+  const orgId = req.body
+  console.log("new category :", newFood);
 
-  const user = await Menu.create({ ...newCategory });
+
+  const findOrg = await Menu.findOne({organization:orgId});
+   findOrg?.foods.create({newFood})
+
 
   res.status(201).json({
     message: "Post category successfully",

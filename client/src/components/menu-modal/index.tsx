@@ -15,7 +15,6 @@ import { Input } from "@/components/ui/input"
 import { Avatar,AvatarImage,AvatarFallback } from "@/components/ui/avatar"
 import { Textarea } from "@/components/ui/textarea"
 import { useContext, useEffect, useState } from "react";
-import { ReviewContext } from "@/context/ReviewProvider";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { MdRestaurantMenu } from "react-icons/md";
 import React from "react";
@@ -32,6 +31,8 @@ import {
     PopoverTrigger,
   } from "@/components/ui/popover"
   import { Check, ChevronsUpDown } from "lucide-react"
+import { useFormik } from "formik";
+// import { MenuContext } from "@/context/MenuProvider";
 
 
 const categories = [
@@ -57,19 +58,32 @@ const categories = [
     },
   ]
 export function MenuModal() {   
-    const [category, setCategory] = useState(null);
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [price, setPrice] = useState("");
-    const [image, setImage] = useState("");
- 
-  const handleChange = (e: any) => setCategory(e.target.value);
-  const [isDisabled, setIsDisabled] = useState(true);
-//   const { addMenu, isOpen } = useContext(MenuContext);
-    const [open, setOpen] = React.useState(false)
-    const [value, setValue] = React.useState("")
+    const formik = useFormik({
+        initialValues: {
+          name: '',
+          category: '',
+          description: '',
+          price: '',
+          image: '',
+        },
+        onSubmit: (values:any) => {
+          console.log( "Menu Item values",values);
+          alert(JSON.stringify(values, null, 2));
+          },
+        });
+    // const [open, setOpen] = React.useState(false)
+    // const [value, setValue] = React.useState("")
+    // const [isDisabled, setIsDisabled] = useState(true);
 
+    // useEffect(() => {
+    //     if (value=== null) {
+    //       setIsDisabled(true);
+    //     } else {
+    //       setIsDisabled(false);
+    //     }
+    //   }, [value]);
   return (
+    <form onSubmit={formik.handleSubmit}>
     <Dialog>
       <DialogTrigger asChild>
         <Button variant={"outline"}>
@@ -86,48 +100,7 @@ export function MenuModal() {
         </DialogHeader>
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
-          <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
-        <Button
-          variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-[200px] justify-center"
-        >
-          {value
-            ? categories.find((categories) => categories.value === value)?.label
-            : "Select Category"}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
-        <Command>
-          <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No category found.</CommandEmpty>
-          <CommandGroup>
-            {categories.map((categories) => (
-              <CommandItem
-                key={categories.value}
-                value={categories.value}
-                onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue)
-                  setOpen(false)
-                  
-                }}
-              >
-                <Check
-                  className={cn(
-                    "mr-2 h-4 w-4",
-                    value === categories.value ? "opacity-100" : "opacity-0"
-                  )}
-                />
-                {categories.label}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </Command>
-      </PopoverContent>
-    </Popover>
+         
           </div>
           <div className=" flex flex-col items-start gap-4 justify-start">
             <Label htmlFor="NameFood" className="text-right">
@@ -137,34 +110,40 @@ export function MenuModal() {
               id="name"
               className="w-64"
               placeholder="Name of Item."
-              onChange={(e) => handleChange(e)}
+              onChange={formik.handleChange}
+              value={formik.values.name}
+          
             />
-    <Label htmlFor="Description" className="text-right">
+    <Label htmlFor="description" className="text-right">
               Description
             </Label>
-            <Textarea       onChange={(e) => handleChange(e)} /> 
-            <Label htmlFor="Price" className="text-right">
+            <Textarea    
+             id="description"
+              onChange={formik.handleChange}
+              value={formik.values.description}  /> 
+            <Label htmlFor="price" className="text-right">
               Price
             </Label>
             <Input
-              id="Price"
+              id="price"
               className="w-64"
               placeholder="Price of Item."
-              onChange={(e) => handleChange(e)}
+              onChange={formik.handleChange}
+              value={formik.values.price}
             />
            <div>
             <Label className="gap-4"> Image of Item </Label>
-              <Avatar className="md:w-32 md:h-32 self-center flex justify-center gap-4">
+              <Avatar className="md:w-24 md:h-24 self-center flex justify-center gap-4">
                 <AvatarImage
                   src=""
                   className="md:w-32 md:h-32"
                   alt="@"
-                  onChange={(e) => handleChange(e)}
                 />
                 <AvatarFallback>Your Food</AvatarFallback>
               </Avatar>
               <div className="rounded-lg ">
-                <Input id="picture" type="file" className="w-42 mt-2" />
+                <Input id="picture" type="file" className="w-42 mt-2"    onChange={formik.handleChange}
+              value={formik.values.image}/>
               </div>
             </div>
           </div>
@@ -172,9 +151,9 @@ export function MenuModal() {
         <DialogFooter>
           <DialogClose asChild>
             <Button
-              disabled={isDisabled}
+            //   disabled={isDisabled}
               type="submit"
-            //   onClick={() => addMenu(category, name, image, description, price)}
+              onClick={() => formik.handleSubmit()}
             >
               Add Item
             </Button>
@@ -182,6 +161,7 @@ export function MenuModal() {
         </DialogFooter>
       </DialogContent>
     </Dialog>
+    </form>
   );
  }
 
