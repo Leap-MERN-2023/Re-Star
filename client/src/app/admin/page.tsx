@@ -31,7 +31,7 @@ import { UserContext } from "@/context/UserProvider";
 import { toast } from "react-toastify";
 
 const Page = () => {
-  const { getRestaurantById, userOrgs, deleteRestaurantById } =
+  const { getUserRestaurantById, userOrgs, deleteRestaurantById } =
     useContext(RestaurantContext);
 
   const { token } = useContext(UserContext);
@@ -39,7 +39,7 @@ const Page = () => {
 
   useEffect(() => {
     if (token) {
-      getRestaurantById();
+      getUserRestaurantById();
     }
   }, [token]);
 

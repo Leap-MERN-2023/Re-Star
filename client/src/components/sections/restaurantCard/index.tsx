@@ -10,23 +10,28 @@ import { FaStar } from "@/components/icons";
 
 import Checkbox from "@mui/material/Checkbox";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { IOrg } from "@/interface";
 
-export function RestaurantCard({ address, favorite, data }: any) {
+interface IProps extends IOrg {
+  favorite?: any;
+}
+
+export function RestaurantCard({ name, address, images, _id }: IProps) {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const router = useRouter();
   return (
     <div
       className=" flex justify-center items-center "
-      onClick={() => router.push(`http://localhost:3000/details/${data._id}`)}
+      onClick={() => router.push(`http://localhost:3000/details/${_id}`)}
     >
       <Card className="">
         <img
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8UmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D"
+          src={images?.at(1)}
           className="h-[200px] w-[380px] rounded-lg p-1"
         />
         <CardHeader>
           <div className="grid grid-cols-2">
-            <CardTitle className="text-xl">{data?.name}</CardTitle>
+            <CardTitle className="text-xl">{name}</CardTitle>
             <div className="text-sm flex justify-end">
               <Badge className="bg-green-500 hover:bg-green-700">
                 4.8
@@ -39,9 +44,7 @@ export function RestaurantCard({ address, favorite, data }: any) {
         </CardHeader>
         <CardContent>
           <div className="flex flex-cols-2 justify-between items-center gap-2">
-            <div className="text-sm text-gray-400 ">
-              Location: {data?.address}
-            </div>
+            <div className="text-sm text-gray-400 ">Location: {address}</div>
             <div className="flex justify-end ml-6">
               <Checkbox
                 {...label}

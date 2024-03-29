@@ -144,7 +144,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
         data: { findOrg },
       } = await myAxios.get(`/org/${orgIdContext}`);
       console.log("findOrg", findOrg);
-      setOrgById([findOrg]);
+      setOrgById(findOrg);
     } catch (error: any) {
       toast.error(
         `Алдаа : ${error.response ? error.response.data.message : error} `
@@ -156,6 +156,24 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       getRestaurantById();
     }
   }, [orgIdContext]);
+
+  const getUserRestaurantById = async () => {
+    try {
+      const {
+        data: { findOrg },
+      } = await myAxios.get("/org/user", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      setUserOrgs([findOrg]);
+    } catch (error: any) {
+      toast.error(
+        `Алдаа : ${error.response ? error.response.data.message : error} `
+      );
+    }
+  };
   const deleteRestaurantById = async (id: string) => {
     const tokenInstance =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJlMGEzYmIzOTBkZDc2YzY2ZmY3MCIsImlhdCI6MTcxMTUzMDI3NywiZXhwIjoxNzExNjE2Njc3fQ.jkAr2VVpXcAMprjlrxnJi8f6tgvSi7zinr8Z6UjZfUg";
@@ -188,7 +206,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
         updateRestaurant,
         getRestaurantById,
         deleteRestaurantById,
-
+        getUserRestaurantById,
         setOrgIdContext,
         orgById,
       }}

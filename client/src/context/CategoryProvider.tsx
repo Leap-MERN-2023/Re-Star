@@ -53,7 +53,7 @@ const CategoryProvider = ({ children }: PropsWithChildren) => {
     if (token) {
       getCategory();
     }
-  }, []);
+  }, [token]);
 
   return (
     <CategoryContext.Provider value={{ categories, addCategory }}>
