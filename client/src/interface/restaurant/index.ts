@@ -78,3 +78,12 @@ export interface IInfo {
   description: string;
   phoneNumber: string;
 }
+
+
+export interface IMenuContext{
+
+}
+export interface IMenu{
+
+}
+
