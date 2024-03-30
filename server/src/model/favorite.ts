@@ -3,7 +3,9 @@ import { Schema, model } from "mongoose";
 import bcrypt from "bcrypt";
 
 const favoriteSchema = new Schema({
-  organizations: [{ type: Schema.Types.ObjectId, ref: "Organization" }],
+  organizations: [
+    { type: Schema.Types.ObjectId, ref: "Organization", unique: true },
+  ],
   user: {
     type: Schema.ObjectId,
     ref: "User",

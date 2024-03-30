@@ -67,7 +67,7 @@ export interface IOrg {
   description: string;
   phoneNumber: string;
   images: [];
-  _id: string;
+  _id: string | any;
 }
 
 export interface IInfo {
@@ -80,19 +80,24 @@ export interface IInfo {
   phoneNumber: string;
 }
 
-
-export interface IMenuContext{
-name: string;
-category: string;
-description: string;
-price: string;
-image:File;
-
+export interface IMenuContext {
+  name: string;
+  category: string;
+  description: string;
+  price: string;
+  image: File;
 }
-export interface IMenu{
-menu: IMenu;
-isopen: boolean
-addMenu: ( name: string, category: string, description: string, price:string, image:File
+export interface IMenu {
+  menu: IMenu;
+  isopen: boolean;
+  addMenu: (
+    name: string,
+    category: string,
+    description: string,
+    price: string,
+    image: File
   ) => void;
 }
 
+export interface IMenuContext {}
+export interface IMenu {}

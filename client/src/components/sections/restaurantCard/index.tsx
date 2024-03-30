@@ -11,19 +11,42 @@ import { FaStar } from "@/components/icons";
 import Checkbox from "@mui/material/Checkbox";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { IOrg } from "@/interface";
+import { useContext, useEffect, useState } from "react";
+import { FavoritesContext } from "@/context/FavoritesProvider";
 
 interface IProps extends IOrg {
-  favorite?: any;
+  favorite?: boolean;
 }
 
 export function RestaurantCard({ name, address, images, _id }: IProps) {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const router = useRouter();
+  const { addFavorite, favorites, deleteFavorite } =
+    useContext(FavoritesContext);
+  const [isExist, setIsExist] = useState(false);
+
+  console.log("favs in rescard", favorites);
+
+  const fav = favorites?.filter((fav: any) => fav?._id == _id);
+
+  useEffect(() => {
+    if (fav?.length > 0) {
+      setIsExist(true);
+    } else {
+      setIsExist(false);
+    }
+  }, [fav]);
+
+  const clickFavorite = () => {
+    if (fav?.length > 0) {
+      deleteFavorite(_id);
+    } else {
+      addFavorite(_id);
+    }
+  };
+
   return (
-    <div
-      className=" flex justify-center items-center "
-      onClick={() => router.push(`http://localhost:3000/details/${_id}`)}
-    >
+    <div className=" flex justify-center items-center ">
       <Card className="">
         <img
           src={images?.at(1)}
@@ -31,7 +54,14 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
         />
         <CardHeader>
           <div className="grid grid-cols-2">
-            <CardTitle className="text-xl">{name}</CardTitle>
+            <CardTitle
+              className="text-xl"
+              onClick={() =>
+                router.push(`http://localhost:3000/details/${_id}`)
+              }
+            >
+              {name}
+            </CardTitle>
             <div className="text-sm flex justify-end">
               <Badge className="bg-green-500 hover:bg-green-700">
                 4.8
@@ -47,9 +77,13 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
             <div className="text-sm text-gray-400 ">Location: {address}</div>
             <div className="flex justify-end ml-6">
               <Checkbox
+                onClick={() => {
+                  clickFavorite();
+                }}
                 {...label}
                 icon={<FaRegHeart className="text-red-500 w-10 h-10 " />}
                 checkedIcon={<FaHeart className="text-red-500 w-10 h-10" />}
+                checked={isExist}
               />
             </div>
           </div>
