@@ -51,14 +51,23 @@ export const deleteFavorite = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { orgId } = req.body;
-  const findFavorite = await Favorite.findOne({ user: req.user._id });
-  const findIndex = findFavorite?.organizations.findIndex((el) => el === orgId);
-  if (!findFavorite) {
-    console.log("Favorites bhgui bna");
-  } else {
-    if (findIndex) {
-      findFavorite.organizations.splice(findIndex, 1);
+  try {
+    const { orgId } = req.body;
+    const findFavorite = await Favorite.findOne({ user: req.user._id });
+    const findIndex = findFavorite?.organizations.findIndex(
+      (el) => el.toString() === orgId
+    );
+    console.log("findindex in delFav", findIndex);
+    if (!findFavorite) {
+      console.log("Favorites bhgui bna");
+    } else {
+      findFavorite.organizations.splice(findIndex!, 1);
+
+      console.log("findFavs in delFav", findFavorite);
+      await findFavorite.save();
     }
+    res.send("delete Fav success");
+  } catch (error) {
+    console.log("error in delFav back", error);
   }
 };
