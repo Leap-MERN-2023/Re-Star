@@ -76,7 +76,9 @@ export const getUserOrgById = async (
 ) => {
   const { user } = req;
 
-  const findOrg = await Organization.findOne({ user: user._id }).lean();
+  const findOrg = await Organization.findOne({ user: user._id })
+    .populate("category")
+    .lean();
   console.log("findOrg", findOrg);
 
   res.status(201).json({
@@ -141,6 +143,38 @@ export const updateOrg = async (
     if (updatedOrg.modifiedCount === 0) {
       throw new MyError(`Organization not updated.`, 500);
     }
+
+    res.status(200).json({
+      message: `Organization updated successfully.`,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+export const updateOrgPic = async (
+  req: IReq,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { orgId } = req.body;
+    const { user } = req;
+
+    const findOrg = await Organization.findOne({
+      user: user._id,
+      _id: orgId,
+    });
+
+    if (!findOrg) {
+      throw new MyError(`Organization not found for the user.`, 404);
+    }
+
+    const file = req.file as Express.Multer.File;
+
+    const { secure_url } = await cloudinary.uploader.upload(file.path);
+
+    findOrg.images.push(secure_url);
+    const org = await findOrg.save();
 
     res.status(200).json({
       message: `Organization updated successfully.`,

@@ -5,15 +5,12 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  CardDescription,
   CardFooter,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   FaStar,
   FaClock,
-  SlLike,
-  SlDislike,
   BiSolidLike,
   BiSolidDislike,
 } from "@/components/icons";

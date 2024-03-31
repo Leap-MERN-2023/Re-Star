@@ -5,5 +5,5 @@ export * from "./sections/navbar/header";
 export * from "./userProfile";
 export * from "./sections/details/AboutCard";
 export * from "./userProfile";
-export * from "./sections/restaurant";
 export * from "./sections/editRestaurant";
+export * from "./sections/admin";

@@ -81,6 +81,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
     address,
     description,
     phoneNumber,
+    
   }: IUpdateRestaurant) => {
     try {
       const data = await myAxios.put(
@@ -174,6 +175,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       );
     }
   };
+
   const deleteRestaurantById = async (id: string) => {
     const tokenInstance =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZmJlMGEzYmIzOTBkZDc2YzY2ZmY3MCIsImlhdCI6MTcxMTUzMDI3NywiZXhwIjoxNzExNjE2Njc3fQ.jkAr2VVpXcAMprjlrxnJi8f6tgvSi7zinr8Z6UjZfUg";
