@@ -14,6 +14,7 @@ const DetailsPage = ({
   description,
   phoneNumber,
   images,
+  _id,
 }: IOrg) => {
   // Print out the picture URLs with alt text
 
@@ -31,6 +32,7 @@ const DetailsPage = ({
           address={address}
           description={description}
           phoneNumber={phoneNumber}
+          _id={_id}
         />
         <DetailTab />
       </div>

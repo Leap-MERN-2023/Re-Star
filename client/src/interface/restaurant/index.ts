@@ -43,6 +43,7 @@ export interface IUpdateRestaurant {
   address?: string;
   description?: string;
   phoneNumber?: string;
+  image?: any;
 }
 
 export interface IRestaurant {
@@ -72,12 +73,13 @@ export interface IOrg {
 
 export interface IInfo {
   name: string;
-  category: string;
   openTime: string;
   closeTime: string;
   address: string;
   description: string;
   phoneNumber: string;
+  _id: string;
+  category: any;
 }
 
 export interface IMenuContext {

@@ -51,6 +51,7 @@ export const CategoryRow = ({ categoryId }: { categoryId: string }) => {
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
       className="w-screen h-96"
+      spaceBetween={20}
     >
       <div className="">
         {!org && <Skeleton />}

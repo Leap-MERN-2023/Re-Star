@@ -21,6 +21,7 @@ import { Badge } from "@/components/ui/badge";
 import { ReviewModal } from "@/components/review-modal";
 import { IInfo } from "@/interface";
 import { MenuModal } from "@/components/menu-modal";
+import { IoMdRestaurant, GrMapLocation, FiBell } from "@/components/icons";
 
 const MainInfo = ({
   name,
@@ -30,23 +31,22 @@ const MainInfo = ({
   address,
   description,
   phoneNumber,
+  _id,
 }: IInfo) => {
-  const categories = [
-    " korean food",
-    "original chickens",
-    "tasty soups",
-    "nice environment",
-  ];
   return (
     <Card className="mt-4">
       <CardHeader className="text-3xl block w-full ">
         <CardTitle className=" flex justify-between items-center">
           <div>
-            <h1 className="text-[#2741ab] font-bold text-3xl">{name}</h1>
+            <h1 className="text-4xl font-bold ">{name}</h1>
+          </div>
+          <div className="flex flex-wrap text-lg text-gray-500">
+            {" "}
+            <IoMdRestaurant size={30} color="green" /> : {category}
           </div>
 
           <div className="flex mr-11">
-            <Badge className="mr-2">
+            <Badge className="mr-2  bg-green-600">
               4.6
               <span className="m-2">
                 <FaStar />
@@ -60,18 +60,8 @@ const MainInfo = ({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex flex-wrap gap-2">
-          {categories.map((name, i) => (
-            <p
-              key={i}
-              className="rounded-full px-3  border-2 border-[#858484] inline-block p-1 font-medium"
-            >
-              {name}
-            </p>
-          ))}
-        </div>
-        <CardDescription className="text-lg mt-2 text-black font-semibold">
-          Address : {address}
+        {/* <CardDescription className="text-lg mt-2 text-black font-semibold">
+          <GrMapLocation color="green" size={28} /> {address}
         </CardDescription>
         <CardDescription className="text-xl mt-2 text-purple-500 font-semibold">
           About my place : {description}
@@ -83,9 +73,25 @@ const MainInfo = ({
           <p className="text-lg text-[#a03636] font-medium">
             Close at: {closeTime}
           </p>
+        </div> */}
+        <div className="">
+          <CardDescription className="text-lg text-gray-400  flex gap-3 font-serif">
+            <GrMapLocation color="green" size={28} /> {address}
+          </CardDescription>
+          <CardDescription className="text-xl mt-1 flex gap-3 font-serif">
+            <FiBell color="green" size={28} /> {description}
+          </CardDescription>
+          <div className="flex gap-10 mt-3">
+            <p className="text-lg text-[#329531] font-medium">
+              Open at: {openTime}{" "}
+            </p>
+            <p className="text-lg text-[#a03636] font-medium">
+              Close at: {closeTime}
+            </p>
+          </div>
         </div>
       </CardContent>
-      <CardFooter className="flex-wrap  gap-3">
+      <CardFooter className="flex-wrap grid grid-cols-4 gap-3">
         <Button variant="outline">
           <MdAssistantDirection
             color="#858484"
@@ -107,7 +113,6 @@ const MainInfo = ({
           Share
         </Button>
         <ReviewModal />
-        <MenuModal />
       </CardFooter>
     </Card>
   );

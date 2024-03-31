@@ -46,11 +46,14 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
   };
 
   return (
-    <div className=" flex justify-center items-center ">
-      <Card className="">
+    <div
+      className=" flex justify-center items-center "
+      onClick={() => router.push(`http://localhost:3000/details/${_id}`)}
+    >
+      <Card className="w-80">
         <img
           src={images?.at(1)}
-          className="h-[200px] w-[380px] rounded-lg p-1 object-cover"
+          className="h-52 w-full rounded-lg p-1 object-cover"
         />
         <CardHeader>
           <div className="grid grid-cols-2">

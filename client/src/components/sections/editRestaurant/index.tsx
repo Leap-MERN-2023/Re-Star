@@ -25,12 +25,12 @@ import {
 import { CategoryContext } from "@/context/CategoryProvider";
 import { RestaurantContext } from "@/context/RestaurantProvider";
 
-import * as Yup from "yup";
+import { GrEdit } from "@/components/icons";
 import { useFormik } from "formik";
 
 export function EditOrganization() {
   const { categories } = useContext(CategoryContext);
-  const { updateRestaurant, userOrgs, getRestaurantById } =
+  const { updateRestaurant, userOrgs, getUserRestaurantById } =
     useContext(RestaurantContext);
   console.log("userOrgs1234567890", userOrgs);
 
@@ -39,7 +39,7 @@ export function EditOrganization() {
       id: "660131075f830f200fdc7589",
       name: userOrgs[0]?.name,
       category: userOrgs[0]?.category,
-      openTime: userOrgs[0]?.name,
+      openTime: userOrgs[0]?.openTime,
       closeTime: userOrgs[0]?.closeTime,
       address: userOrgs[0]?.address,
       description: userOrgs[0]?.description,
@@ -69,14 +69,18 @@ export function EditOrganization() {
   });
 
   useEffect(() => {
-    getRestaurantById();
+    getUserRestaurantById();
   }, []);
 
   return (
     <div>
       <Sheet>
         <SheetTrigger asChild>
-          <Button className="w-full h-12 bg-lime-600 hover:bg-lime-800 my-1">
+          <Button
+            className="w-full h-12 bg-gray-300 space-x-4"
+            variant="secondary"
+          >
+            <GrEdit size={23} color="gray" />
             Edit Restaurant
           </Button>
         </SheetTrigger>
