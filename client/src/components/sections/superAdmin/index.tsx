@@ -4,7 +4,7 @@ import { CategoryContext } from "@/context/CategoryProvider";
 
 const SuperAdmin = () => {
   return (
-    <div>
+    <div className="h-screen">
       <AddCategory />
     </div>
   );

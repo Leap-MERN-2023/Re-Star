@@ -11,7 +11,7 @@ import PhotosTab from "./photosTab";
 const DetailTab = () => {
   return (
     <Tabs defaultValue="reviews" className="w-full ">
-      <TabsList className="grid w-full grid-cols-3 bg-[#858484] text-white">
+      <TabsList className="grid w-full grid-cols-3 bg-[#858484] text-white mt-3">
         <TabsTrigger value="reviews">Reviews</TabsTrigger>
         <TabsTrigger value="photos">Photos</TabsTrigger>
         <TabsTrigger value="menu">Menu</TabsTrigger>

@@ -29,7 +29,7 @@ export function DetailPicture(images: any) {
   ];
   console.log("images in detailpicture", images);
   return (
-    <Carousel className="w-fullp-3 bg-white rounded-lg shadow-xl mt-5">
+    <Carousel className="w-fullp-3 bg-white rounded-lg shadow-xl ">
       <CarouselContent className="-ml-1 ">
         {!images
           ? pictures?.map((picture: any, index: number) => (
