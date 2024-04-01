@@ -21,7 +21,9 @@ import { Badge } from "@/components/ui/badge";
 import { ReviewModal } from "@/components/review-modal";
 import { IInfo } from "@/interface";
 import { MenuModal } from "@/components/menu-modal";
-import { IoMdRestaurant, GrMapLocation, FiBell } from "@/components/icons";
+import { FiBell } from "react-icons/fi";
+import { IoMdRestaurant } from "react-icons/io";
+import { GrMapLocation } from "react-icons/gr";
 
 const MainInfo = ({
   name,

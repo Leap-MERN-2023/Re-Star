@@ -2,6 +2,7 @@
 import React from "react";
 import CategoryList from "./categoryList";
 import SearchPlace from "./searchPlace";
+import SearchMap from "./searchMap";
 
 const Explore = () => {
   return (
@@ -16,7 +17,7 @@ const Explore = () => {
       </div>
       <div className="map flex-1 gap-10">
         <div>
-          <SearchPlace />
+          <SearchMap />
         </div>
       </div>
     </div>
