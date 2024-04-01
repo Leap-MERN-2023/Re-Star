@@ -81,7 +81,6 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
     address,
     description,
     phoneNumber,
-    
   }: IUpdateRestaurant) => {
     try {
       const data = await myAxios.put(
@@ -126,6 +125,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       console.log("error", error);
     }
   };
+
   useEffect(() => {
     if (token) {
       getRestaurant();
