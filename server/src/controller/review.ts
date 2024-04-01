@@ -8,14 +8,18 @@ export const addReview = async (
   res: Response,
   next: NextFunction
 ) => {
-  const newReview = req.body;
-  console.log("new review :", newReview);
+  try {
+    const newReview = req.body;
+    console.log("new review :", newReview);
 
-  const user = await Review.create({ ...newReview });
+    const user = await Review.create({ ...newReview });
 
-  res.status(201).json({
-    message: "Post review successfully",
-  });
+    res.status(201).json({
+      message: "Post review successfully",
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getReview = async (
@@ -35,8 +39,11 @@ export const getReviewById = async (
   next: NextFunction
 ) => {
   try {
-    const orgReview = await Review.find({ organization: req.body.orgId });
+    console.log("12==>");
+    console.log("HIII", req.params);
+    const orgReview = await Review.find({ organization: req.params.id });
     console.log("org.Rev", orgReview);
+
     res.status(201).json({ orgReview });
     res.send({ orgReview });
   } catch (error) {

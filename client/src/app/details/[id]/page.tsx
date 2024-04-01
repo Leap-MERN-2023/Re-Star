@@ -3,13 +3,19 @@ import { DetailPicture } from "@/components/sections/details/DetailPicture";
 import DetailCard from "@/components/sections/details/MainInfo";
 import DetailTab from "@/components/sections/details/tabs";
 import { RestaurantContext } from "@/context/RestaurantProvider";
-import { useContext } from "react";
+import { ReviewContext } from "@/context/ReviewProvider";
+import { useContext, useEffect } from "react";
 
 export default function OrgByIdPage({ params }: { params: { id: string } }) {
   console.log("params in [id]", params);
   const { setOrgIdContext, orgById } = useContext(RestaurantContext);
+  const { getReviewById, review, reviewsLoading } = useContext(ReviewContext);
+
+  useEffect(() => {
+    getReviewById(params.id);
+  }, []);
   setOrgIdContext(params.id);
-  console.log("orgById In Page", orgById);
+
   return (
     <div className="bg-[#fdf4ed] ">
       <div className="mx:auto container ">
@@ -25,7 +31,8 @@ export default function OrgByIdPage({ params }: { params: { id: string } }) {
           description={orgById?.description}
           phoneNumber={orgById?.phoneNumber}
         />
-        <DetailTab />
+        {reviewsLoading && <div> I am loading</div>}
+        {!reviewsLoading && <DetailTab reviews={review} />}
       </div>
     </div>
   );

@@ -25,12 +25,12 @@ export const addFavorite = async (
   } else {
     findFavorite.organizations.push(orgId);
 
-    await findFavorite?.save();
+    const favorites = await findFavorite?.save();
+    res.status(201).json({
+      message: "Post favorite successfully",
+      favorites,
+    });
   }
-
-  res.status(201).json({
-    message: "Post favorite successfully",
-  });
 };
 
 export const getFavorite = async (
@@ -64,7 +64,12 @@ export const deleteFavorite = async (
       findFavorite.organizations.splice(findIndex!, 1);
 
       console.log("findFavs in delFav", findFavorite);
-      await findFavorite.save();
+      const favorites = await findFavorite.save();
+
+      res.status(201).json({
+        message: `Get all favorite successfully`,
+        favorites,
+      });
     }
     res.send("delete Fav success");
   } catch (error) {

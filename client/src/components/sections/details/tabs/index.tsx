@@ -1,14 +1,15 @@
 "use client";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import AccountTab from "./accountTab";
-import ReviewTab from "./reviewTab";
 import { MenuTab } from "./menuTab";
 import PhotosTab from "./photosTab";
+import ReviewTab from "./reviewTab";
 
-const DetailTab = () => {
+const DetailTab = (props: { reviews?: any }) => {
+  const { reviews } = props;
+
   return (
     <Tabs defaultValue="reviews" className="w-full ">
       <TabsList className="grid w-full grid-cols-3 bg-[#858484] text-white mt-3">
@@ -20,7 +21,9 @@ const DetailTab = () => {
         <Card>
           <CardHeader>
             <CardTitle>Reviews</CardTitle>
-            <ReviewTab />
+            {reviews?.map((revData: any, index: any) => (
+              <ReviewTab revData={revData} key={index} />
+            ))}
           </CardHeader>
         </Card>
       </TabsContent>

@@ -9,11 +9,7 @@ import {
 
 const router = Router();
 
-router
-  .route("/")
-  .post(addReview)
-  .get(getReviewById)
-  .put(updateReview)
-  .delete(deleteReview);
+router.route("/").post(addReview).put(updateReview).delete(deleteReview);
 
+router.route("/:id").get(getReviewById);
 export default router;

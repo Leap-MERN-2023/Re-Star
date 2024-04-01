@@ -5,7 +5,9 @@ export interface IReview {
   organization: string;
 }
 export interface IReviewContext {
-  review: IReview;
+  review: IReview[];
   isOpen: boolean;
-  addReview: (score: number | null, message: string) => void;
+  addReview: (score: number | null, message: string, orgId: string) => void;
+  getReviewById: (orgId: string) => void;
+  reviewsLoading: boolean;
 }

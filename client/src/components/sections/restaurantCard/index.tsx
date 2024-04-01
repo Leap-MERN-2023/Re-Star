@@ -13,6 +13,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { IOrg } from "@/interface";
 import { useContext, useEffect, useState } from "react";
 import { FavoritesContext } from "@/context/FavoritesProvider";
+import { RestaurantContext } from "@/context/RestaurantProvider";
 
 interface IProps extends IOrg {
   favorite?: boolean;
@@ -20,6 +21,8 @@ interface IProps extends IOrg {
 
 export function RestaurantCard({ name, address, images, _id }: IProps) {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  const { setOrgIdContext } = useContext(RestaurantContext);
+
   const router = useRouter();
   const { addFavorite, favorites, deleteFavorite } =
     useContext(FavoritesContext);
@@ -27,6 +30,7 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
 
   console.log("favs in rescard", favorites);
 
+  console.log("FAvvv", favorites);
   const fav = favorites?.filter((fav: any) => fav?._id == _id);
 
   useEffect(() => {
@@ -59,9 +63,10 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
           <div className="grid grid-cols-2">
             <CardTitle
               className="text-xl"
-              onClick={() =>
-                router.push(`http://localhost:3000/details/${_id}`)
-              }
+              onClick={() => {
+                setOrgIdContext(_id);
+                router.push(`http://localhost:3000/details/${_id}`);
+              }}
             >
               {name}
             </CardTitle>

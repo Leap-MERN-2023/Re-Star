@@ -20,6 +20,7 @@ export const FavoritesContext = createContext<IFavoritesContext>(
 const FavoritesProvider = ({ children }: PropsWithChildren) => {
   const [favorites, setFavorites] = useState([]);
   const { token } = useContext(UserContext);
+  const [fav1, setFav1] = useState(false);
 
   const getFavorites = async () => {
     try {
@@ -32,6 +33,7 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
       });
       console.log("getFavs running");
       setFavorites(favorites?.organizations);
+      setFav1(!fav1);
     } catch (error: any) {
       toast.error("Error in favorite context getFavorites", error);
     }
@@ -45,7 +47,9 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
 
   const addFavorite = async (orgId: string) => {
     try {
-      await myAxios.put(
+      const {
+        data: { favorites },
+      } = await myAxios.put(
         "/favorite",
         {
           orgId,
@@ -56,6 +60,7 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
           },
         }
       );
+      getFavorites();
       console.log("orgId in favContext", orgId);
       toast.success("Put Fav Success");
     } catch (error) {
@@ -69,12 +74,15 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
         Authorization: `Bearer ${token}`,
       };
 
-      await myAxios.delete("/favorite", {
+      const {
+        data: { favorites },
+      } = await myAxios.delete("/favorite", {
         headers,
-
         data: { orgId },
       });
-      console.log("Fav amjilttai ustgalaa");
+      getFavorites();
+
+      console.log("Fav amjilttai ustgalaa", favorites);
     } catch (error) {
       console.log("Error in delFav COntext", error);
     }

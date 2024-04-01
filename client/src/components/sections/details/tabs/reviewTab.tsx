@@ -16,7 +16,7 @@ import {
 } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 
-const ReviewTab = () => {
+const ReviewTab = ({ revData }: any) => {
   return (
     <Card className=" border-[#858484] border-[3px]  md:w-96">
       <CardHeader>
@@ -30,13 +30,13 @@ const ReviewTab = () => {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <div className="text-lg ">
-              <p>Name of User</p>
+              <p>{revData.user}</p>
               <p className="text-base text-gray-500">Count of reviews</p>
             </div>
           </div>
           <div className=" h-7 ">
             <Badge className="m-2 ">
-              4.6
+              {revData.score}
               <span className="">
                 <FaStar />
               </span>
@@ -48,14 +48,9 @@ const ReviewTab = () => {
         <div className="flex">
           <FaClock size={28} color="green" />
           <span className="mx-4">Dining :</span>
-          <span className="text-gray-500">3 days ago</span>
+          <span className="text-gray-500">{revData.createdAt}</span>
         </div>
-        <div className="my-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-          ipsam repudiandae possimus quasi natus temporibus doloremque quae,
-          pariatur nisi asperiores laboriosam illo blanditiis, est tenetur
-          fugiat consequuntur voluptatem atque iusto.
-        </div>
+        <div className="my-3">{revData.message}</div>
       </CardContent>
       <CardFooter className="flex justify-around">
         <Button variant="outline" className="bg-[#858484] text-white">
