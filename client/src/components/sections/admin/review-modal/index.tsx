@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { FaStar } from "react-icons/fa";
-import { Textarea } from "../ui/textarea";
+import { Textarea } from "../../../ui/textarea";
 import Rating from "@mui/material/Rating";
 import { useContext, useEffect, useState } from "react";
 import { ReviewContext } from "@/context/ReviewProvider";

@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
+import { MdOutlineInsertPhoto, IoMdCloudUpload } from "@/components/icons";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -19,19 +19,16 @@ import { DialogClose } from "@radix-ui/react-dialog";
 import { MdRestaurantMenu } from "react-icons/md";
 import React from "react";
 import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Check, ChevronsUpDown } from "lucide-react";
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useFormik } from "formik";
+
 // import { MenuContext } from "@/context/MenuProvider";
 
 const categories = [
@@ -57,6 +54,8 @@ const categories = [
   },
 ];
 export function MenuModal() {
+  const [image, setImage] = useState<File>();
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -65,13 +64,20 @@ export function MenuModal() {
       price: "",
       image: "",
     },
-    onSubmit: (values: any) => {
-      console.log("Menu Item values", values);
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: ({ name, category, description, price, image }) => {
+      console.log(
+        "Menu Item values",
+        name,
+        category,
+        description,
+        price,
+        image
+      );
     },
   });
+
   // const [open, setOpen] = React.useState(false)
-  // const [value, setValue] = React.useState("")
+
   // const [isDisabled, setIsDisabled] = useState(true);
 
   // useEffect(() => {
@@ -110,6 +116,7 @@ export function MenuModal() {
               <Input
                 id="name"
                 className="w-64"
+                name="name"
                 placeholder="Name of Item."
                 onChange={formik.handleChange}
                 value={formik.values.name}
@@ -119,9 +126,27 @@ export function MenuModal() {
               </Label>
               <Textarea
                 id="description"
+                name="description"
                 onChange={formik.handleChange}
                 value={formik.values.description}
               />
+              <Select
+                onValueChange={(e) => formik.setFieldValue("category", e)}
+                value={formik.values.category}
+              >
+                <SelectTrigger className="w-[250px]">
+                  <SelectValue placeholder="Select Category" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>Category</SelectLabel>
+                    <SelectItem value="apple">Drink</SelectItem>
+                    <SelectItem value="banana">Main Course</SelectItem>
+                    <SelectItem value="blueberry">Dessert</SelectItem>
+                    <SelectItem value="grapes">Alcohol</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
               <Label htmlFor="price" className="text-right">
                 Price
               </Label>
@@ -134,10 +159,27 @@ export function MenuModal() {
               />
               <div>
                 <Label className="gap-4"> Image of Item </Label>
-                <Avatar className="md:w-24 md:h-24 self-center flex justify-center gap-4">
-                  <AvatarImage src="" className="md:w-32 md:h-32" alt="@" />
-                  <AvatarFallback>Your Food</AvatarFallback>
-                </Avatar>
+                <div>
+                  {!image && (
+                    <div className="size-60 text-center flex flex-col justify-center">
+                      <div className="mx-[10%]">
+                        <IoMdCloudUpload
+                          className="lg:size-52"
+                          color="purple"
+                        />
+                      </div>
+                      No Chosen File
+                    </div>
+                  )}
+
+                  {image && (
+                    <img
+                      src={URL.createObjectURL(image)}
+                      alt="ss"
+                      className="object-cover rounded-lg"
+                    />
+                  )}
+                </div>
                 <div className="rounded-lg ">
                   <Input
                     id="picture"
@@ -152,11 +194,7 @@ export function MenuModal() {
           </div>
           <DialogFooter>
             <DialogClose asChild>
-              <Button
-                //   disabled={isDisabled}
-                type="submit"
-                onClick={() => formik.handleSubmit()}
-              >
+              <Button type="submit" onClick={() => formik.handleSubmit()}>
                 Add Item
               </Button>
             </DialogClose>

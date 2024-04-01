@@ -21,9 +21,9 @@ import {
 } from "@/components/icons";
 
 import { Badge } from "@/components/ui/badge";
-import { ReviewModal } from "@/components/review-modal";
+import { ReviewModal } from "@/components/sections/admin/review-modal";
 import { IInfo } from "@/interface";
-import { MenuModal } from "@/components/menu-modal";
+import { MenuModal } from "@/components/sections/admin/menu-modal";
 import { EditOrganization } from "../../editRestaurant";
 import { AddPhotos } from "../AddPhotos";
 

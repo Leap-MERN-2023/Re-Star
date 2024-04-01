@@ -7,3 +7,4 @@ export * from "./sections/details/AboutCard";
 export * from "./userProfile";
 export * from "./sections/editRestaurant";
 export * from "./sections/admin";
+export * from "./sections/admin/index";
