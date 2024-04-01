@@ -2,6 +2,7 @@
 
 import { IReviewContext, IReview } from "@/interface";
 import myAxios from "@/utils/myAxios";
+import { StringToBoolean } from "class-variance-authority/types";
 import {
   PropsWithChildren,
   createContext,
@@ -10,33 +11,57 @@ import {
   useState,
 } from "react";
 import { toast } from "react-toastify";
+import { RestaurantContext } from "./RestaurantProvider";
+import { UserContext } from "./UserProvider";
 
 export const ReviewContext = createContext<IReviewContext>(
   {} as IReviewContext
 );
 
 const ReviewProvider = ({ children }: PropsWithChildren) => {
-  const [review, setReview] = useState<IReview>({
-    score: 0,
-    message: "",
-    user: "",
-    organization: "",
-  });
+  const [reviewsLoading, setReviewsLoading] = useState(false);
+  const [review, setReview] = useState<IReview[]>([
+    {
+      score: 0,
+      message: "",
+      user: "",
+      organization: "",
+    },
+  ]);
+
   const [isOpen, setIsOpen] = useState(false);
-  const addReview = async (score: number | null, message: string) => {
+  const { loggedUser } = useContext(UserContext);
+  const addReview = async (
+    score: number | null,
+    message: string,
+    orgId: string
+  ) => {
     try {
-      const userId = "65fa7ae08e9bd3ea7ad022dd";
-      const orgId = "65fa955f1694bfcff98611d3";
-      const data = await myAxios.post("/review", {
+      await myAxios.post("/review", {
         organization: orgId,
-        user: userId,
+        user: loggedUser,
         score,
         message,
       });
       setIsOpen(!isOpen);
       toast("Shine review amjilltai uuslee");
     } catch (error) {
-      toast.error("Алдаа");
+      toast.error("Error in AddReview COntext");
+    }
+  };
+  const getReviewById = async (orgId: any) => {
+    try {
+      setReviewsLoading(true);
+      console.log("WORKING GETREVBYID");
+
+      const {
+        data: { orgReview },
+      } = await myAxios.get(`/review/${orgId}`);
+      console.log("REVIEW IN CONTEXT", orgReview);
+      setReview(orgReview);
+      setReviewsLoading(false);
+    } catch (error) {
+      console.log("Err in getReviewById COntext", error);
     }
   };
 
@@ -46,6 +71,8 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
         review,
         isOpen,
         addReview,
+        getReviewById,
+        reviewsLoading,
       }}
     >
       {children}

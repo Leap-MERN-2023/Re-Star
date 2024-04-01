@@ -16,6 +16,7 @@ import Rating from "@mui/material/Rating";
 import { useContext, useEffect, useState } from "react";
 import { ReviewContext } from "@/context/ReviewProvider";
 import { DialogClose } from "@radix-ui/react-dialog";
+import { RestaurantContext } from "@/context/RestaurantProvider";
 
 export function ReviewModal() {
   const [score, setScore] = useState(null);
@@ -31,6 +32,7 @@ export function ReviewModal() {
     }
   }, [score]);
   console.log("message", message);
+  const { orgById } = useContext(RestaurantContext);
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -78,7 +80,7 @@ export function ReviewModal() {
             <Button
               disabled={isDisabled}
               type="submit"
-              onClick={() => addReview(score, message)}
+              onClick={() => addReview(score, message, orgById)}
             >
               Add review
             </Button>
