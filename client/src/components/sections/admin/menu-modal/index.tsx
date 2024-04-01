@@ -87,6 +87,11 @@ export function MenuModal() {
   //       setIsDisabled(false);
   //     }
   //   }, [value]);
+<<<<<<< HEAD
+=======
+
+  const imagetoDisplay = {};
+>>>>>>> ab105bb (little fixes)
   return (
     <form onSubmit={formik.handleSubmit}>
       <Dialog>
@@ -171,7 +176,6 @@ export function MenuModal() {
                       No Chosen File
                     </div>
                   )}
-
                   {image && (
                     <img
                       src={URL.createObjectURL(image)}
