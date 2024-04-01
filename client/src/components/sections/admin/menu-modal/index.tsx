@@ -87,11 +87,6 @@ export function MenuModal() {
   //       setIsDisabled(false);
   //     }
   //   }, [value]);
-<<<<<<< HEAD
-=======
-
-  const imagetoDisplay = {};
->>>>>>> ab105bb (little fixes)
   return (
     <form onSubmit={formik.handleSubmit}>
       <Dialog>
