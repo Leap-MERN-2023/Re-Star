@@ -16,6 +16,7 @@ import {
 } from "react";
 import { toast } from "react-toastify";
 import { UserContext } from "./UserProvider";
+import { MenuContext } from "./MenuProvider";
 
 export const RestaurantContext = createContext<IRestaurantContext>(
   {} as IRestaurantContext
@@ -152,6 +153,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       );
     }
   };
+
   useEffect(() => {
     if (orgIdContext) {
       getRestaurantById();

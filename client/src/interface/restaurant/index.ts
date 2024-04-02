@@ -83,23 +83,15 @@ export interface IInfo {
 }
 
 export interface IMenuContext {
+  getMenuByOrgId: (orgId: string) => Promise<void>;
+  menus: IMenu[];
+}
+export interface IMenu {
   name: string;
   category: string;
   description: string;
   price: string;
-  image: File;
+  image: string;
+  organization: string;
+  _id: string;
 }
-export interface IMenu {
-  menu: IMenu;
-  isopen: boolean;
-  addMenu: (
-    name: string,
-    category: string,
-    description: string,
-    price: string,
-    image: File
-  ) => void;
-}
-
-export interface IMenuContext {}
-export interface IMenu {}

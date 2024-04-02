@@ -14,6 +14,7 @@ import CategoryRoutes from "./routes/category";
 import UploadRoutes from "./routes/upload";
 import errorHandler from "./middleware/errorHandler";
 import FavoriteRoutes from "./routes/favorite";
+import MenuRoutes from "./routes/menu";
 
 const app: Application = express();
 
@@ -30,7 +31,7 @@ app.use("/auth", AuthRoutes);
 app.use("/category", CategoryRoutes);
 app.use("/org", OrgRoutes);
 app.use("/review", ReviewRoutes);
-app.use("/menu", ReviewRoutes);
+app.use("/menu", MenuRoutes);
 app.use("/user", UserRoutes);
 app.use("/upload", UploadRoutes);
 app.use("/api/resetPass", ResetPassRoutes);

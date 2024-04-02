@@ -7,19 +7,11 @@ import { RestaurantContext } from "@/context/RestaurantProvider";
 import { useContext } from "react";
 
 export default function Home() {
-  const { org } = useContext(RestaurantContext);
-  console.log("orginizations in front", org);
   return (
     <div className="bg-[#fdf4ed] w-screen overflow-y-hidden ">
       <Search />
       <CategoryCard />
       <CollectionCard />
-
-      {/* {org.map((data) => (
-
-        <RestaurantCard org={data} />
-        
-      ))} */}
     </div>
   );
 }

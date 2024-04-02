@@ -88,7 +88,6 @@ const AdminCoreView = ({
               </p>
             </div>
           </div>
-          <div></div>
         </CardContent>
         <CardFooter className="flex-wrap  gap-3  grid grid-cols-4">
           <AddPhotos id={_id} />
@@ -97,8 +96,8 @@ const AdminCoreView = ({
             <FaShare color="#858484" size={"25px"} style={{ margin: 4 }} />
             Share
           </Button>
-          <MenuModal />
-          <EditOrganization />
+          <MenuModal id={_id} />
+          <EditOrganization id={_id} />
         </CardFooter>
       </Card>
     </div>
