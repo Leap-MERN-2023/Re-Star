@@ -12,17 +12,12 @@ export const addCategory = async (
 ) => {
   const newCategory = req.body;
 
-  console.log("req :", req.body);
-  console.log("new category :", newCategory);
-
   if (!req.file) {
     throw new MyError("Pic", 400);
   } else {
     const { secure_url } = await cloudinary.uploader.upload(req.file.path);
 
     newCategory.image = secure_url;
-    console.log("new Ctae", newCategory);
-    console.log("first", secure_url);
   }
 
   const category = await Category.create({ ...newCategory });
@@ -38,7 +33,6 @@ export const deleteCategory = async (
   next: NextFunction
 ) => {
   const { deleteId } = req.body;
-  console.log("delete category Id:", deleteId);
 
   await Category.deleteOne({ _id: deleteId });
 
@@ -53,7 +47,6 @@ export const updateCategory = async (
   next: NextFunction
 ) => {
   const updateCategory = req.body;
-  console.log("new category :", updateCategory);
 
   const findCategory = await Category.findByIdAndUpdate(
     {
@@ -77,7 +70,6 @@ export const getCategory = async (
   next: NextFunction
 ) => {
   const categories = await Category.find();
-  console.log("categories, ", categories);
 
   res.status(201).json({
     message: "Post category successfully",

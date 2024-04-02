@@ -7,7 +7,6 @@ import { ReviewContext } from "@/context/ReviewProvider";
 import { useContext, useEffect } from "react";
 
 export default function OrgByIdPage({ params }: { params: { id: string } }) {
-  console.log("params in [id]", params);
   const { setOrgIdContext, orgById } = useContext(RestaurantContext);
   const { getReviewById, review, reviewsLoading } = useContext(ReviewContext);
 
@@ -30,6 +29,7 @@ export default function OrgByIdPage({ params }: { params: { id: string } }) {
           address={orgById?.address}
           description={orgById?.description}
           phoneNumber={orgById?.phoneNumber}
+          _id={orgById?.phoneNumber}
         />
         {reviewsLoading && <div> I am loading</div>}
         {!reviewsLoading && <DetailTab reviews={review} />}

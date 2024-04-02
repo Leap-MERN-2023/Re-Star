@@ -28,15 +28,14 @@ import { RestaurantContext } from "@/context/RestaurantProvider";
 import { GrEdit } from "@/components/icons";
 import { useFormik } from "formik";
 
-export function EditOrganization() {
+export function EditOrganization({ id }: { id: string }) {
   const { categories } = useContext(CategoryContext);
   const { updateRestaurant, userOrgs, getUserRestaurantById } =
     useContext(RestaurantContext);
-  console.log("userOrgs1234567890", userOrgs);
 
   const formik = useFormik({
     initialValues: {
-      id: "660131075f830f200fdc7589",
+      id: id,
       name: userOrgs[0]?.name,
       category: userOrgs[0]?.category,
       openTime: userOrgs[0]?.openTime,

@@ -8,7 +8,6 @@ import { CategoryRow } from "../Row";
 
 export function CollectionCard() {
   const { categories } = React.useContext(CategoryContext);
-  console.log("categories", categories);
 
   const router = useRouter();
   return (

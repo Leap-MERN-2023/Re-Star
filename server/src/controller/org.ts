@@ -43,7 +43,6 @@ export const getOrgById = async (
 ) => {
   try {
     const findOrg = await Organization.findById({ _id: req.params.id });
-    console.log("findOrg", findOrg);
 
     res.status(201).json({
       message: "got successfully",
@@ -58,7 +57,6 @@ export const getOrgById = async (
 export const getOrg = async (req: IReq, res: Response, next: NextFunction) => {
   try {
     const allOrgs = await Organization.find();
-    console.log("all org", allOrgs);
 
     res.status(201).json({
       message: "got successfully",
@@ -79,7 +77,6 @@ export const getUserOrgById = async (
   const findOrg = await Organization.findOne({ user: user._id })
     .populate("category")
     .lean();
-  console.log("findOrg", findOrg);
 
   res.status(201).json({
     message: "got successfully",
@@ -121,10 +118,6 @@ export const updateOrg = async (
   try {
     const { newUpdate, orgId } = req.body;
     const { user } = req;
-
-    console.log("User ID:", user._id);
-    console.log("Organization ID:", orgId);
-    console.log("New Update Data:", newUpdate);
 
     const findOrg = await Organization.findOne({
       user: user._id,

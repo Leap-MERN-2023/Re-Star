@@ -16,6 +16,11 @@ const MenuSchema = new Schema({
         unique: true,
         maxLength: [50, "category can not be longer than 50"],
       },
+      category: {
+        type: String,
+        required: [true, "Category is required"],
+        default: "",
+      },
       description: {
         type: String,
         required: [true, "category is required"],
@@ -28,7 +33,7 @@ const MenuSchema = new Schema({
       },
       image: {
         type: String,
-        default: "no-category-photo",
+        required: [true, "Photo is required "],
       },
       createdAt: {
         type: Date,
@@ -36,13 +41,12 @@ const MenuSchema = new Schema({
       },
     },
   ],
-
   createdAt: {
     type: Date,
     default: new Date(),
   },
 });
 
-const Review = model("Review", MenuSchema);
+const Menu = model("Menu", MenuSchema);
 
-export default Review;
+export default Menu;

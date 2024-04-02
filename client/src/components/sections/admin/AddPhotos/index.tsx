@@ -74,8 +74,6 @@ export function AddPhotos({ id }: { id: string }) {
             <input
               type="file"
               name="image"
-              id="image"
-              className=""
               onChange={(e) => setImage(e.currentTarget.files![0])}
             />
           </Button>

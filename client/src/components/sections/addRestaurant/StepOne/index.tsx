@@ -37,7 +37,6 @@ export function StepOne() {
   const { categories } = useContext(CategoryContext);
 
   const addCategory = (e: string) => {
-    console.log("e", e);
     const event = e;
     let categoriesArrayCopy = [...selectedCategories];
     categoriesArrayCopy.push(e);
@@ -218,8 +217,7 @@ export function StepOne() {
                 onChange={(event) => {
                   const selectedFile =
                     event.target.files && event.target.files[0];
-                  formik.setFieldValue("imgOne", selectedFile); // Set the value in Formik state
-                  console.log("Selected file:", selectedFile); // Log the selected file object
+                  formik.setFieldValue("imgOne", selectedFile);
                 }}
               />
             </Button>
@@ -230,8 +228,7 @@ export function StepOne() {
                   const selectedFile =
                     event.target.files && event.target.files[0];
                   console.log("F", selectedFile);
-                  formik.setFieldValue("imgTwo", selectedFile); // Set the value in Formik state
-                  console.log("Selected file:", selectedFile); // Log the selected file object
+                  formik.setFieldValue("imgTwo", selectedFile);
                 }}
               />
             </Button>
@@ -241,8 +238,7 @@ export function StepOne() {
                 onChange={(event) => {
                   const selectedFile =
                     event.target.files && event.target.files[0];
-                  formik.setFieldValue("imgThree", selectedFile); // Set the value in Formik state
-                  console.log("Selected file:", selectedFile); // Log the selected file object
+                  formik.setFieldValue("imgThree", selectedFile);
                 }}
               />
             </Button>

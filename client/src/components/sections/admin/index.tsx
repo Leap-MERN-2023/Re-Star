@@ -128,7 +128,7 @@ export const AdminTab = () => {
             </CardHeader>
             <AdminPicView />
             <AdminCoreView {...org} />
-            <AdminMenuView />
+            <AdminMenuView {...org} />
           </Card>
         </TabsContent>
       ))}
