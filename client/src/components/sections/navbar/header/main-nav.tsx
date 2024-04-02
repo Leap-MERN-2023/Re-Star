@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useContext } from "react";
 import { UserContext } from "@/context/UserProvider";
+import FavoriteDrawer from "../../favorite/favoriteDrawer";
 
 export function MainNav({ className }: any) {
   const { loggedUser } = useContext(UserContext);
@@ -21,12 +22,24 @@ export function MainNav({ className }: any) {
       >
         Explore
       </Link>
-      <Link
-        href={`${loggedUser ? "/favorites" : ""}`}
-        className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab]"
+      {/* <Link
+        id="my-drawer-4"
+        href={`${loggedUser ? "" : ""}`}
+        className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab] drawer-content"
       >
         Favorites
-      </Link>
+      </Link> */}
+
+      <div className="drawer-content">
+        <label
+          htmlFor="my-drawer-4"
+          className="  text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab]"
+        >
+          Favorites
+        </label>
+        <FavoriteDrawer />
+      </div>
+
       <Link
         href={`${loggedUser ? "/admin/addrestaurant" : ""}`}
         className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab]"
