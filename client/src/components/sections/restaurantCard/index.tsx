@@ -27,10 +27,6 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
   const { addFavorite, favorites, deleteFavorite } =
     useContext(FavoritesContext);
   const [isExist, setIsExist] = useState(false);
-
-  console.log("favs in rescard", favorites);
-
-  console.log("FAvvv", favorites);
   const fav = favorites?.filter((fav: any) => fav?._id == _id);
 
   useEffect(() => {
@@ -51,10 +47,10 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
 
   return (
     <div
-      className=" flex justify-center items-center "
+      className=" flex justify-start  "
       onClick={() => router.push(`http://localhost:3000/details/${_id}`)}
     >
-      <Card className="w-80">
+      <Card className=" w-[350px]   rounded-2xl h-[350px] p-1">
         <img
           src={images?.at(1)}
           className="h-52 w-full rounded-lg p-1 object-cover"
@@ -62,7 +58,7 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
         <CardHeader>
           <div className="grid grid-cols-2">
             <CardTitle
-              className="text-xl"
+              className="font-bold text-[#847c9b] text-xl"
               onClick={() => {
                 setOrgIdContext(_id);
                 router.push(`http://localhost:3000/details/${_id}`);
@@ -71,11 +67,9 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
               {name}
             </CardTitle>
             <div className="text-sm flex justify-end">
-              <Badge className="bg-green-500 hover:bg-green-700">
+              <Badge className="bg-green-500 hover:bg-green-700 ">
                 4.8
-                <span className="m-1">
-                  <FaStar />
-                </span>
+                <FaStar className="text-xs" />
               </Badge>
             </div>
           </div>
@@ -89,8 +83,8 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
                   clickFavorite();
                 }}
                 {...label}
-                icon={<FaRegHeart className="text-red-500 w-10 h-10 " />}
-                checkedIcon={<FaHeart className="text-red-500 w-10 h-10" />}
+                icon={<FaRegHeart className="text-red-500 w-8 h-8 " />}
+                checkedIcon={<FaHeart className="text-red-500 w-8 h-8" />}
                 checked={isExist}
               />
             </div>

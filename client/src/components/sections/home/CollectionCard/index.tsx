@@ -11,8 +11,8 @@ export function CollectionCard() {
 
   const router = useRouter();
   return (
-    <div className="">
-      <div className="p-4">
+    <div className="mx:auto container">
+      <div className="">
         <h1 className=" text-4xl  font-extrabold   p-2 rounded-md text-[#847c9b]">
           Collections
         </h1>
@@ -34,13 +34,11 @@ export function CollectionCard() {
 
         <div className="">
           {categories.map((category, i) => (
-            <div className="" key={i}>
-              <p className="text-4xl  font-extrabold rounded-md text-[#847c9b] text-left md:ml-[3%]">
+            <div className="p-4" key={i}>
+              <p className="text-3xl  font-bold  text-[#605b6f] md:ml-[3%] uppercase py-2">
                 {category.name}
               </p>
-              <div className="">
-                <CategoryRow categoryId={category?._id} />
-              </div>
+              <CategoryRow categoryId={category?._id} />
             </div>
           ))}
         </div>
