@@ -54,7 +54,7 @@ const RestaurantCard = () => {
                 <div className="w-[400px]">{e.name}</div>
               </div>
               <div className="grid grid-cols-4  gap-4 justify-center items-center">
-                s<Label htmlFor="username">Address:</Label>
+                <Label htmlFor="username">Address:</Label>
                 <div className="w-[400px]">{e.address}</div>
               </div>
               <div className="grid grid-cols-4  gap-4 justify-center items-center">

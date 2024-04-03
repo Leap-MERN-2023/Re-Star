@@ -27,7 +27,7 @@ export const AdminPicView = () => {
   ];
   return (
     <>
-      <Carousel className="w-fullp-3 bg-white rounded-lg shadow-xl mt-5">
+      <Carousel className="w-full  bg-white rounded-lg shadow-xl ">
         <CarouselContent className="-ml-1 ">
           {pictures?.map((picture: any, index: number) => (
             <CarouselItem
@@ -45,10 +45,6 @@ export const AdminPicView = () => {
               </div>
             </CarouselItem>
           ))}
-
-          {/* {images.map((e) => (
-            <div>{e}</div>
-          ))} */}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />

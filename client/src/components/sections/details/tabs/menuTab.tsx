@@ -12,23 +12,23 @@ import { MenuContext } from "@/context/MenuProvider";
 export const MenuTab = () => {
   const { menus } = useContext(MenuContext);
 
-  const arrs = [
-    {
-      food: "Main Menu",
-      price: "200$",
-      dec: "Korean food",
-    },
-    { food: "Drinks", price: "200$", dec: "Korean food" },
-    { food: "Desserts", price: "200$", dec: "Korean food" },
-  ];
+  // const arrs = [
+  //   {
+  //     food: "Main Menu",
+  //     price: "200$",
+  //     dec: "Korean food",
+  //   },
+  //   { food: "Drinks", price: "200$", dec: "Korean food" },
+  //   { food: "Desserts", price: "200$", dec: "Korean food" },
+  // ];
 
-  const imgs = [
-    "https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "./images/food1.png",
-    "./images/food3.png",
-    "./images/food2.png",
-    "./images/food3.png",
-  ];
+  // const imgs = [
+  //   "https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //   "./images/food1.png",
+  //   "./images/food3.png",
+  //   "./images/food2.png",
+  //   "./images/food3.png",
+  // ];
   // const categories = menus.map((e) => e.category);
 
   const categories = ["Dessert", "Drink", "Main Course", "Alcohol"];
@@ -43,7 +43,7 @@ export const MenuTab = () => {
           <div>
             <h1 className="font-bold text-[25px]">{category}</h1>
           </div>
-          <div className="flex gap-10 ">
+          <div className="flex gap-10 w-full ">
             <Swiper
               className="mySwiper "
               modules={[Pagination, Autoplay, Navigation]}
