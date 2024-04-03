@@ -30,13 +30,13 @@ const ReviewTab = ({ revData }: any) => {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <div className="text-lg ">
-              {/* <p>{revData.user}</p> */}
+              <p>{revData.user}</p>
               <p className="text-base text-gray-500">Count of reviews</p>
             </div>
           </div>
           <div className=" h-7 ">
             <Badge className="m-2 ">
-              {/* {revData.score} */}
+              {revData.score}
               <span className="">
                 <FaStar />
               </span>
@@ -48,9 +48,9 @@ const ReviewTab = ({ revData }: any) => {
         <div className="flex">
           <FaClock size={28} color="green" />
           <span className="mx-4">Dining :</span>
-          {/* <span className="text-gray-500">{revData.createdAt}</span> */}
+          <span className="text-gray-500">{revData.createdAt}</span>
         </div>
-        {/* <div className="my-3">{revData.message}</div> */}
+        <div className="my-3">{revData.message}</div>
       </CardContent>
       <CardFooter className="flex justify-around">
         <Button variant="outline" className="bg-[#858484] text-white">

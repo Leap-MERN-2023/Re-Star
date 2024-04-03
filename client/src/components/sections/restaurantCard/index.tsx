@@ -55,7 +55,7 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
         <CardHeader>
           <div className="grid grid-cols-2">
             <CardTitle
-              className="font-bold text-[#847c9b] text-xl"
+              className="font-bold  text-xl"
               onClick={() => {
                 setOrgIdContext(_id);
                 router.push(`http://localhost:3000/details/${_id}`);
@@ -73,7 +73,7 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
         </CardHeader>
         <CardContent>
           <div className="flex flex-cols-2 justify-between items-center gap-2">
-            <div className="text-sm text-gray-400 ">Location: {address}</div>
+            <div className="text-sm  ">Location: {address}</div>
             <div className="flex justify-end ml-6">
               <Checkbox
                 onClick={() => {

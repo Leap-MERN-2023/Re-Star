@@ -11,7 +11,7 @@ export function CollectionCard() {
 
   const router = useRouter();
   return (
-    <div className="mx:auto container">
+    <div className="mx:auto container bg-secondary">
       <div className="">
         <h1 className=" text-4xl  font-extrabold   p-2 rounded-md text-[#847c9b]">
           Collections
