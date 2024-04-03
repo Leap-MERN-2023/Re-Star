@@ -38,7 +38,7 @@ const Footer = () => {
     ,
   ];
   return (
-    <div className="bg-[#fdf4ed] w-[100%] h-[600px] pt-10">
+    <div className="bg-secondary w-[100%] h-[600px] pt-10">
       <img src="./images/footerLine.png" className="h-[100px] w-[100%]" />
       <div className="container p-0">
         <div className="flex justify-between ">

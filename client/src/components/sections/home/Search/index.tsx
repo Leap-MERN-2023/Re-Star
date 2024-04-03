@@ -5,25 +5,19 @@ import { FaSearch } from "react-icons/fa";
 
 const Search = () => {
   return (
-    <div
-      style={{
-        background: "#fdf4ed",
-      }}
-      className="md:auto container"
-    >
+    <div className="md:auto container bg-secondary">
       <h1
-        style={{ color: "#9f9dba", fontWeight: "bold", fontSize: "50px" }}
+        style={{ fontWeight: "bold", fontSize: "50px" }}
         className="flex justify-center "
       >
         Re-Star
       </h1>
 
-      <p className="flex justify-center text-[40px] text-[#9f9dba]">
+      <p className="flex justify-center text-[40px] text-primary]">
         Discover the best food & drinks in Mongolia
       </p>
       <div
         style={{
-          background: "#fdf4ed",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

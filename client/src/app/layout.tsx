@@ -13,6 +13,7 @@ import CategoryProvider from "@/context/CategoryProvider";
 import RestaurantProvider from "@/context/RestaurantProvider";
 import FavoritesProvider from "@/context/FavoritesProvider";
 import MenuProvider from "@/context/MenuProvider";
+import { ThemeProvider } from "@/context/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,26 +28,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <UserProvider>
-          <CategoryProvider>
-            <FavoritesProvider>
-              <ReviewProvider>
-                <PasswordProvider>
-                  <RestaurantProvider>
-                    <MenuProvider>
-                      <Header />
-                      {children}
-                      <ToastContainer />
-                      <Footer />
-                    </MenuProvider>
-                  </RestaurantProvider>
-                </PasswordProvider>
-              </ReviewProvider>
-            </FavoritesProvider>
-          </CategoryProvider>
-        </UserProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <UserProvider>
+            <CategoryProvider>
+              <FavoritesProvider>
+                <ReviewProvider>
+                  <PasswordProvider>
+                    <RestaurantProvider>
+                      <MenuProvider>
+                        <Header />
+                        {children}
+                        <ToastContainer />
+                        <Footer />
+                      </MenuProvider>
+                    </RestaurantProvider>
+                  </PasswordProvider>
+                </ReviewProvider>
+              </FavoritesProvider>
+            </CategoryProvider>
+          </UserProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
