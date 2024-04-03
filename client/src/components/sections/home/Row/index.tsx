@@ -12,6 +12,7 @@ import {
   Scrollbar,
   A11y,
   EffectCube,
+  Autoplay,
 } from "swiper/modules";
 
 import "swiper/css";
@@ -23,34 +24,19 @@ export const CategoryRow = ({ categoryId }: { categoryId: string }) => {
   const router = useRouter();
   const { org } = useContext(RestaurantContext);
 
-  const cards = [
-    {
-      name: "Coffee with friends",
-      img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D",
-    },
-    {
-      name: "Restaurants ",
-      img: "https://i.pinimg.com/474x/89/2f/90/892f9019e20cb88637f4cbdb3c757bf4.jpg",
-    },
-    {
-      name: "Party with friends",
-      img: "https://i.pinimg.com/474x/66/fe/b2/66feb2eb79915062c3365664239ae925.jpg",
-    },
-    {
-      name: "Clubs",
-      img: "https://i.pinimg.com/474x/66/fe/b2/66feb2eb79915062c3365664239ae925.jpg",
-    },
-  ];
-
   return (
     <Swiper
-      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
       slidesPerView={4}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
       navigation
       pagination={{ clickable: true }}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
-      className="w-screen h-96"
+      className="w-screen  container mySwiper "
       spaceBetween={20}
     >
       <div className="">
@@ -62,7 +48,7 @@ export const CategoryRow = ({ categoryId }: { categoryId: string }) => {
           .map((org, i) => {
             return (
               <div key={i}>
-                <SwiperSlide>
+                <SwiperSlide className="">
                   <RestaurantCard {...org} />
                 </SwiperSlide>
               </div>

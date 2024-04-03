@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="bg-[#fdf4ed] w-screen overflow-y-hidden ">
       <Search />
-      <CategoryCard />
+      {/* <CategoryCard /> */}
       <CollectionCard />
     </div>
   );
