@@ -30,6 +30,7 @@ export default function OrgByIdPage({ params }: { params: { id: string } }) {
           description={orgById?.description}
           phoneNumber={orgById?.phoneNumber}
           _id={""}
+          reviews={review}
         />
         {reviewsLoading && <div> I am loading</div>}
         {!reviewsLoading && <DetailTab reviews={review} />}
