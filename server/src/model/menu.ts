@@ -33,7 +33,6 @@ const MenuSchema = new Schema({
       },
       image: {
         type: String,
-        required: [true, "Photo is required "],
       },
       createdAt: {
         type: Date,

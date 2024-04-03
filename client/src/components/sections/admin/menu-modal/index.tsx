@@ -1,5 +1,17 @@
 "use client";
+
+import React from "react";
+import { useContext } from "react";
+
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+
+import { IoMdCloudUpload } from "@/components/icons";
+import myAxios from "@/utils/myAxios";
+import { MdRestaurantMenu } from "react-icons/md";
+
 import {
   Dialog,
   DialogContent,
@@ -9,15 +21,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { MdOutlineInsertPhoto, IoMdCloudUpload } from "@/components/icons";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import myAxios from "@/utils/myAxios";
-import { Textarea } from "@/components/ui/textarea";
-import { useContext, useEffect, useState } from "react";
-import { DialogClose } from "@radix-ui/react-dialog";
-import { MdRestaurantMenu } from "react-icons/md";
-import React from "react";
 import {
   Select,
   SelectContent,
@@ -27,6 +30,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { UserContext } from "@/context/UserProvider";
