@@ -13,6 +13,7 @@ export const addMenu = async (
     const newMenu = req.body;
 
     const { orgId, ...newFood } = newMenu;
+    console.log("Req Body :", req.body);
 
     if (req.file) {
       const { secure_url } = await cloudinary.uploader.upload(req.file.path);
@@ -21,7 +22,11 @@ export const addMenu = async (
 
     const findMenu = await Menu.findOne({ organization: orgId });
 
+    console.log("findmenu", findMenu);
+    console.log("findmenu", Menu);
+    console.log("orgId", orgId);
     if (!findMenu) {
+      console.log("first");
       await Menu.create({
         organization: newMenu.orgId,
         foods: {
@@ -36,6 +41,7 @@ export const addMenu = async (
         message: "Post category successfully",
       });
     } else {
+      console.log("second");
       const updateMenuIndex = findMenu.foods.findIndex(
         (e) => e.name === newMenu.name
       );

@@ -2,7 +2,7 @@ import React from "react";
 import { DetailPicture } from "@/components/sections/details/DetailPicture";
 import DetailTab from "@/components/sections/details/tabs";
 import DetailCard from "@/components/sections/details/MainInfo";
-import DetailSearch from "@/components/sections/details/DetailSearch";
+
 import { IOrg } from "@/interface";
 
 const DetailsPage = ({
