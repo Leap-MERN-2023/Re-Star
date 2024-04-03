@@ -46,11 +46,8 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
   };
 
   return (
-    <div
-      className=" flex justify-start  "
-      onClick={() => router.push(`http://localhost:3000/details/${_id}`)}
-    >
-      <Card className=" w-[350px]   rounded-2xl h-[350px] p-1">
+    <div className=" flex justify-center items-center ">
+      <Card className="w-80">
         <img
           src={images?.at(1)}
           className="h-52 w-full rounded-lg p-1 object-cover"
@@ -82,6 +79,7 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
                 onClick={() => {
                   clickFavorite();
                 }}
+                className="z-10"
                 {...label}
                 icon={<FaRegHeart className="text-red-500 w-8 h-8 " />}
                 checkedIcon={<FaHeart className="text-red-500 w-8 h-8" />}

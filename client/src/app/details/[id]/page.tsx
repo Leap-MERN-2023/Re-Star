@@ -29,7 +29,7 @@ export default function OrgByIdPage({ params }: { params: { id: string } }) {
           address={orgById?.address}
           description={orgById?.description}
           phoneNumber={orgById?.phoneNumber}
-          _id={orgById?.phoneNumber}
+          _id={""}
         />
         {reviewsLoading && <div> I am loading</div>}
         {!reviewsLoading && <DetailTab reviews={review} />}
