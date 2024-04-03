@@ -9,7 +9,6 @@ import { CategoryRow } from "../Row";
 export function CollectionCard() {
   const { categories } = React.useContext(CategoryContext);
 
-  const router = useRouter();
   return (
     <div className="mx:auto container bg-secondary">
       <div className="">

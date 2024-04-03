@@ -34,7 +34,7 @@ export const AdminMenuView = ({ name, _id }: any) => {
       </TabsContent>
       <TabsContent value="menu">
         <Card>
-          <AdminMenuTab />
+          <AdminMenuTab orgId={_id} />
         </Card>
       </TabsContent>
     </Tabs>

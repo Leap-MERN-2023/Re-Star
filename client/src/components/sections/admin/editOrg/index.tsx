@@ -27,13 +27,18 @@ import { toast } from "react-toastify";
 import { UserContext } from "@/context/UserProvider";
 import myAxios from "@/utils/myAxios";
 
+interface IOrmMenuProps extends IMenu {
+  orgId: string;
+}
+
 export function EditOrgMenu({
   name,
   category,
   description,
   price,
   _id,
-}: IMenu) {
+  orgId,
+}: IOrmMenuProps) {
   const { categories } = useContext(CategoryContext);
   const { token } = useContext(UserContext);
 
@@ -53,7 +58,7 @@ export function EditOrgMenu({
         dataForm.set("category", category);
         dataForm.set("description", description);
         dataForm.set("price", price);
-        dataForm.set("orgId", _id);
+        dataForm.set("orgId", orgId);
 
         const data = await myAxios.post("/menu", dataForm, {
           headers: {
@@ -61,13 +66,6 @@ export function EditOrgMenu({
           },
         });
 
-        // useEffect(() => {
-        //     if (value=== null) {
-        //       setIsDisabled(true);
-        //     } else {
-        //       setIsDisabled(false);
-        //     }
-        //   }, [value]);
         toast.success("Shine review amjilltai uuslee");
       } catch (error: any) {
         toast.error("Алдаа");
@@ -121,7 +119,7 @@ export function EditOrgMenu({
               onChange={formik.handleChange}
             />
             <Label className="text-right">Category</Label>
-            <Select>
+            <Select value={formik.values.category}>
               <SelectTrigger className="w-40">
                 <SelectValue placeholder="Select a category" />
               </SelectTrigger>
