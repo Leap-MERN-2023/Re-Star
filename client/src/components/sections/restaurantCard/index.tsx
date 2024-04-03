@@ -14,6 +14,7 @@ import { IOrg } from "@/interface";
 import { useContext, useEffect, useState } from "react";
 import { FavoritesContext } from "@/context/FavoritesProvider";
 import { RestaurantContext } from "@/context/RestaurantProvider";
+import { ReviewContext } from "@/context/ReviewProvider";
 
 interface IProps extends IOrg {
   favorite?: boolean;
@@ -65,7 +66,7 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
             </CardTitle>
             <div className="text-sm flex justify-end">
               <Badge className="bg-green-500 hover:bg-green-700 ">
-                4.8
+                {4.5}
                 <FaStar className="text-xs" />
               </Badge>
             </div>

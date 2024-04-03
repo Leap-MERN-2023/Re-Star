@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -22,6 +22,11 @@ import { ReviewModal } from "@/components/sections/admin/review-modal";
 import { IInfo } from "@/interface";
 import { MenuModal } from "@/components/sections/admin/menu-modal";
 import { IoMdRestaurant, GrMapLocation, FiBell } from "@/components/icons";
+import { intersection } from "zod";
+
+interface IProps extends IInfo {
+  reviews: any;
+}
 
 const MainInfo = ({
   name,
@@ -31,7 +36,19 @@ const MainInfo = ({
   address,
   description,
   phoneNumber,
-}: IInfo) => {
+  reviews,
+}: IProps) => {
+  console.log(reviews);
+
+  const scores = reviews.map((review: any) => review.score);
+  const calculateAverage = (scores: number[]) => {
+    if (scores.length === 0) return 0;
+    const total = scores.reduce((acc: number, curr: number) => acc + curr, 0);
+    return total / scores.length;
+  };
+
+  const averageScore = calculateAverage(scores);
+
   return (
     <Card className="mt-4">
       <CardHeader className="text-3xl block w-full ">
@@ -46,7 +63,7 @@ const MainInfo = ({
 
           <div className="flex mr-11">
             <Badge className="mr-2  bg-green-600">
-              4.6
+              {averageScore}
               <span className="m-2">
                 <FaStar />
               </span>
