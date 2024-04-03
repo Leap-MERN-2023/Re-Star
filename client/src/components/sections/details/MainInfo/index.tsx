@@ -31,7 +31,6 @@ const MainInfo = ({
   address,
   description,
   phoneNumber,
-  _id,
 }: IInfo) => {
   return (
     <Card className="mt-4">
