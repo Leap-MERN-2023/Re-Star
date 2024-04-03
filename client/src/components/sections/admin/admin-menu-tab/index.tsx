@@ -11,6 +11,14 @@ import { MenuContext } from "@/context/MenuProvider";
 import { Button } from "@/components/ui/button";
 import { MdModeEdit } from "@/components/icons";
 import { EditOrgMenu } from "../editOrg";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card } from "@mui/material";
 export const AdminMenuTab = () => {
   const { menus } = useContext(MenuContext);
 
@@ -24,36 +32,11 @@ export const AdminMenuTab = () => {
             <h1 className="font-bold text-[25px]">{category}</h1>
           </div>
           <div className="flex gap-10 ">
-            <Swiper
-              className="mySwiper "
-              modules={[Pagination, Autoplay, Navigation]}
-              autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              navigation={true}
-              breakpoints={{
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 10,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 20,
-                },
-                1400: {
-                  slidesPerView: 4,
-                  spaceBetween: 50,
-                },
-              }}
-            >
-              {menus
-                .filter((menu) => menu.category == category)
-                .map((menu) => (
-                  <SwiperSlide>
+            <Carousel className="w-full  bg-white rounded-lg shadow-xl ">
+              <CarouselContent className="-ml-1 ">
+                {menus
+                  .filter((menu) => menu.category == category)
+                  .map((menu) => (
                     <div>
                       <div className="flex justify-center items-center">
                         <img
@@ -81,9 +64,11 @@ export const AdminMenuTab = () => {
                         <EditOrgMenu {...menu} />
                       </div>
                     </div>
-                  </SwiperSlide>
-                ))}
-            </Swiper>
+                  ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         </div>
       ))}

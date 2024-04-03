@@ -53,7 +53,7 @@ export const AdminPage = () => {
   };
 
   return (
-    <div className="container mx-auto ">
+    <div className="container mx-auto  ">
       <div className="flex">
         <h1 className="text-3xl p-3 text-bold text-center flex-1">
           Admin Page{" "}
@@ -113,23 +113,25 @@ export const AdminTab = () => {
   };
   return (
     <Tabs defaultValue={userOrgs[0]?.name} className="w-full">
-      <TabsList className="grid w-full grid-cols-2">
+      <TabsList className="grid w-full grid-cols-2 bg-[#858484]">
         {userOrgs.map((org) => (
-          <TabsTrigger value={org.name}>Admin Page</TabsTrigger>
+          <TabsTrigger value={org.name} className="text-white">
+            Admin Page
+          </TabsTrigger>
         ))}
 
-        <TabsTrigger value="delete">Delete Restaurant</TabsTrigger>
+        <TabsTrigger value="delete" className="text-white">
+          Delete Restaurant
+        </TabsTrigger>
       </TabsList>
       {userOrgs.map((org) => (
         <TabsContent value={org.name}>
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-center">Your Restaurant</CardTitle>
-            </CardHeader>
-            <AdminPicView />
-            <AdminCoreView {...org} />
-            <AdminMenuView {...org} />
-          </Card>
+          <CardHeader>
+            <CardTitle className="text-center">Your Restaurant</CardTitle>
+          </CardHeader>
+          <AdminPicView />
+          <AdminCoreView {...org} />
+          <AdminMenuView {...org} />
         </TabsContent>
       ))}
       <TabsContent value="delete" className="flex justify-center">
