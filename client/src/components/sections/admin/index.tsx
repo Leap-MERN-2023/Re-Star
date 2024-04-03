@@ -56,7 +56,7 @@ export const AdminPage = () => {
     <div className="container mx-auto  ">
       <div className="flex">
         <h1 className="text-3xl p-3 text-bold text-center flex-1">
-          Admin Page{" "}
+          Admin Page
         </h1>
       </div>
       <div>

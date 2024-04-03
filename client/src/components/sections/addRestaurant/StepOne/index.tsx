@@ -111,26 +111,26 @@ export function StepOne() {
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
-      <Card className="w-1/2 flex flex-col  ">
+      <Card className="w-[50%] ">
         <CardHeader>
-          <CardTitle>Reset Password</CardTitle>
+          <CardTitle>Add Restaurant</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid  items-center gap-4 w-full">
-            <div className="flex flex-col space-y-1.5 w-full">
+          <div className="grid  items-center gap-5 w-full">
+            <div className="flex flex-col w-full gap-2">
               <Label htmlFor="name">Name</Label>
               <Input
                 id="name"
                 placeholder="Name of your project"
                 name="name"
+                className="placeholder:text-third"
                 onChange={formik.handleChange}
-                className="w-full"
               />
               {formik.touched.name && formik.errors.name ? (
                 <p className="text-red-700">{formik.errors.name}</p>
               ) : null}
             </div>
-            <div className="flex flex-col space-y-1.5">
+            <div className="flex flex-col gap-2">
               <Label htmlFor="framework">Restaurant type</Label>
               <Select
                 onValueChange={(e) => (
@@ -139,7 +139,7 @@ export function StepOne() {
                 name="category"
                 value={formik.values.category}
               >
-                <SelectTrigger className=" w-2/3">
+                <SelectTrigger className=" ">
                   <SelectValue placeholder="Select Your Restaurant type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -157,53 +157,54 @@ export function StepOne() {
               </Select>
             </div>
             <div className="grid  items-center gap-4">
-              <div className="flex flex-col space-y-1.5">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="framework">About restaurant</Label>
                 <Input
                   placeholder="Tell us about your restaurant for example founded year, food types, environment and capacity"
                   name="description"
                   onChange={formik.handleChange}
+                  className="placeholder:text-third"
                   value={formik.values.description}
                 />
               </div>
-              <div className="flex flex-col space-y-1.5">
+              <div className="flex flex-col gap-2">
                 <Label htmlFor="framework">Phone Number</Label>
                 <Input
                   placeholder="Phone Number"
+                  className="placeholder:text-third "
                   name="phoneNumber"
                   onChange={formik.handleChange}
                   value={formik.values.phoneNumber}
                 />
               </div>
 
-              <div className="flex flex-col space-y-1.5 w-full">
+              <div className="flex flex-col gap-2 w-full">
                 <Label htmlFor="framework">Open Time</Label>
-
                 <input
                   placeholder="open Time for example 10:00"
                   name="openTime"
                   type="time"
-                  className="border border-1 p-2"
+                  className="border border-1 p-2 rounded-md bg-secondary placeholder:text-white"
                   onChange={formik.handleChange}
                   value={formik.values.openTime}
                   required
                 />
               </div>
-              <div className="flex flex-col space-y-1.5 w-full">
+              <div className="flex flex-col gap-2 w-full">
                 <Label htmlFor="framework">Close Time</Label>
 
                 <input
                   placeholder="Close Time for example 20:00"
                   name="closeTime"
                   type="time"
-                  className="border border-1 p-2"
+                  className="border border-1 p-2 rounded-md bg-secondary"
                   onChange={formik.handleChange}
                   value={formik.values.closeTime}
                   required
                 />
               </div>
             </div>
-            <div className="flex flex-col space-y-1.5 w-full">
+            <div className="flex flex-col gap-2 w-full">
               <Label htmlFor="framework">Restaurant Full Address</Label>
               <Input
                 placeholder="Restaurant Full Address: Disctrict, Street , Building No, Exact Location"
@@ -211,7 +212,7 @@ export function StepOne() {
                 onChange={formik.handleChange}
               />
             </div>
-            <Button variant={"outline"} className="bg-slate-500">
+            <Button variant={"outline"} className="bg-secondary ">
               <input
                 type="file"
                 onChange={(event) => {
@@ -221,7 +222,7 @@ export function StepOne() {
                 }}
               />
             </Button>
-            <Button variant={"outline"} className="bg-slate-500">
+            <Button variant={"outline"} className="bg-secondary">
               <input
                 type="file"
                 onChange={(event) => {
@@ -232,7 +233,7 @@ export function StepOne() {
                 }}
               />
             </Button>
-            <Button variant={"outline"} className="bg-slate-500">
+            <Button variant={"outline"} className="bg-secondary">
               <input
                 type="file"
                 onChange={(event) => {

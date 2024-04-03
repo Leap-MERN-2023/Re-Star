@@ -3,7 +3,7 @@ import Explore from "@/components/sections/explore";
 
 const ExplorePage = () => {
   return (
-    <div className="bg-[#fdf4ed]">
+    <div className="bg-secondary ">
       <div className="mx:auto container">
         <Explore />
       </div>

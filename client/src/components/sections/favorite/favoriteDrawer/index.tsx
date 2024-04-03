@@ -6,7 +6,7 @@ const FavoriteDrawer = () => {
   const { favorites } = useContext(FavoritesContext);
   console.log("FAV DRAWER FAV CARD", favorites);
   return (
-    <div className="drawer drawer-end">
+    <div className="drawer drawer-end z-20">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-side ">
         <label

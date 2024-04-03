@@ -3,7 +3,7 @@ import React from "react";
 
 const AddRestaurantPage = () => {
   return (
-    <div className="bg-[#fdf4ed]">
+    <div className="bg-secondary ">
       <div className="mx:auto container ">
         <AddRestaurant />
       </div>
