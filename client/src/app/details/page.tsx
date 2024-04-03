@@ -19,7 +19,7 @@ const DetailsPage = ({
   // Print out the picture URLs with alt text
 
   return (
-    <div className="bg-[#fdf4ed] ">
+    <div className="bg-secondary ">
       <div className="mx:auto container ">
         <DetailPicture images={images} />
       </div>
