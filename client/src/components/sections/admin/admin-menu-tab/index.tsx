@@ -11,15 +11,7 @@ import { MenuContext } from "@/context/MenuProvider";
 import { Button } from "@/components/ui/button";
 import { MdModeEdit } from "@/components/icons";
 import { EditOrgMenu } from "../editOrg";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { Card } from "@mui/material";
-export const AdminMenuTab = () => {
+export const AdminMenuTab = ({ orgId }: { orgId: string }) => {
   const { menus } = useContext(MenuContext);
 
   const categories = ["Dessert", "Drink", "Main Course", "Alcohol"];
@@ -61,7 +53,7 @@ export const AdminMenuTab = () => {
                             </p>
                           </div>
                         </div>
-                        <EditOrgMenu {...menu} />
+                        <EditOrgMenu {...menu} orgId={orgId} />
                       </div>
                     </div>
                   ))}

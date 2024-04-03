@@ -14,6 +14,7 @@ export const addMenu = async (
 
     const { orgId, ...newFood } = newMenu;
     console.log("Req Body :", req.body);
+    console.log("org", orgId);
 
     if (req.file) {
       const { secure_url } = await cloudinary.uploader.upload(req.file.path);
@@ -23,7 +24,7 @@ export const addMenu = async (
     const findMenu = await Menu.findOne({ organization: orgId });
 
     console.log("findmenu", findMenu);
-    console.log("findmenu", Menu);
+    console.log("findmenu", findMenu);
     console.log("orgId", orgId);
     if (!findMenu) {
       console.log("first");
