@@ -64,9 +64,6 @@ export const changeUserData = async (
     const { changedUser } = req.body;
     const { user } = req;
 
-    console.log("userID", user);
-    console.log("changedUser", changedUser);
-
     if (!changedUser) {
       throw new MyError(`Хэрэглэгчийн мэдээлэл дутуу байна.`, 400);
     }
@@ -83,13 +80,13 @@ export const changeUserData = async (
       }
     );
 
-    console.log("DONE");
-
     await findUser?.save();
+
     res.status(201).json({
       message: "Хэрэглэгчийн мэдээлэл амжилттай өөрчиллөө.",
       changedUser,
     });
+
     console.log("successfully changed user data", changedUser);
   } catch (error) {
     next(error);

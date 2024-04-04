@@ -198,6 +198,26 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  const changeOrgStatus = async (orgId: string, status: string) => {
+    try {
+      await myAxios.post(
+        `/org/changeStatus`,
+        {
+          orgId,
+          status,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      toast.success("successfully changed restaurant status");
+      getRestaurant();
+    } catch (error: any) {
+      toast.error("error :", error);
+    }
+  };
+
   return (
     <RestaurantContext.Provider
       value={{
@@ -213,6 +233,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
         getUserRestaurantById,
         setOrgIdContext,
         orgById,
+        changeOrgStatus,
       }}
     >
       {children}
