@@ -16,6 +16,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { DeleteOrg } from "../DeleteOrg";
 export const AdminMenuTab = ({ orgId }: { orgId: string }) => {
   const { menus } = useContext(MenuContext);
 
@@ -46,6 +47,7 @@ export const AdminMenuTab = ({ orgId }: { orgId: string }) => {
                         />
                       </div>
                       <div className="flex justify-center ">
+                        <DeleteOrg />
                         <div className="">
                           <div className="text-center">
                             <p className="font-semibold  font-serif text-[20px]">

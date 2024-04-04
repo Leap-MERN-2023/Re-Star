@@ -16,6 +16,7 @@ export interface IRestaurantContext {
   isLoading: Boolean;
   handleFetch: (reFetch: boolean) => void;
   refetch: boolean;
+  changeOrgStatus: (orgId: string, status: string) => void;
   updateRestaurant: ({
     name,
     category,
@@ -69,6 +70,7 @@ export interface IOrg {
   phoneNumber: string;
   images: [];
   _id: string | any;
+  role: string;
 }
 
 export interface IInfo {

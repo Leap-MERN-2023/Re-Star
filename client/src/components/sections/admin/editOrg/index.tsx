@@ -26,6 +26,7 @@ import { CategoryContext } from "@/context/CategoryProvider";
 import { toast } from "react-toastify";
 import { UserContext } from "@/context/UserProvider";
 import myAxios from "@/utils/myAxios";
+import { MenuContext } from "@/context/MenuProvider";
 
 interface IOrmMenuProps extends IMenu {
   orgId: string;
@@ -41,6 +42,7 @@ export function EditOrgMenu({
 }: IOrmMenuProps) {
   const { categories } = useContext(CategoryContext);
   const { token } = useContext(UserContext);
+  const { getMenuByOrgId } = useContext(MenuContext);
 
   const formik = useFormik({
     initialValues: {
@@ -65,6 +67,7 @@ export function EditOrgMenu({
             Authorization: `Bearer ${token}`,
           },
         });
+        getMenuByOrgId(orgId);
 
         toast.success("Shine review amjilltai uuslee");
       } catch (error: any) {
