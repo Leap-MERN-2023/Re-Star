@@ -8,9 +8,14 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { MenuContext } from "@/context/MenuProvider";
-import { Button } from "@/components/ui/button";
-import { MdModeEdit } from "@/components/icons";
+
 import { EditOrgMenu } from "../editOrg";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 export const AdminMenuTab = ({ orgId }: { orgId: string }) => {
   const { menus } = useContext(MenuContext);
 
