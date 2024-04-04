@@ -51,8 +51,8 @@ const OrganizationSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ["asked", "approved", "banned"],
-    default: "asked",
+    enum: ["pending", "approved", "banned"],
+    default: "pending",
   },
 });
 

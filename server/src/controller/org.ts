@@ -176,3 +176,36 @@ export const updateOrgPic = async (
     next(error);
   }
 };
+
+export const changeStatus = async (
+  req: IReq,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const {
+      user: { role },
+    } = req;
+    console.log("role", role);
+    console.log("role", typeof role);
+
+    if (role !== "admin") {
+      throw new MyError("You can not do this action", 200);
+    }
+
+    const { orgId, status } = req.body;
+
+    const findOrg = await Organization.findOne({ _id: orgId });
+    if (!findOrg) {
+      throw new MyError("Restaurant does not exist", 404);
+    }
+    findOrg.role = status;
+    await findOrg.save();
+
+    res.status(200).json({
+      message: `Organization status changed successfully.`,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

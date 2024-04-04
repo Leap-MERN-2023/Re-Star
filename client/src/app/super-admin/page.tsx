@@ -9,16 +9,17 @@ import { redirect } from "next/navigation";
 import { useLayoutEffect } from "react";
 
 const SuperPage = () => {
-  useLayoutEffect(() => {
-    // const isAuth = isAuthenticated;
-    const user: any = localStorage.getItem("user");
+  // useLayoutEffect(() => {
+  //   // const isAuth = isAuthenticated;
+  //   const user: any = localStorage.getItem("user");
 
-    const { role } = user;
+  //   const { role } = user;
 
-    if (role !== "admin") {
-      redirect("/");
-    }
-  }, []);
+  //   if (role != "admin") {
+  //     redirect("/");
+  //   }
+  // }, []);
+
   return (
     <div className="bg-[#fdf4ed]">
       <div className="mx:auto container">
