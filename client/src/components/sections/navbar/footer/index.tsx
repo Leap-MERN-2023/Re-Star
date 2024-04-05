@@ -15,13 +15,14 @@ import {
   FaTwitter,
   FaYoutube,
 } from "@/components/icons";
+// import { AboutUs } from "../../aboutUs";
 
 const Footer = () => {
   const footerDatas = [
     {
       id: 1,
       name: "About Re-Star",
-      links: ["Who We Are", "Blog", "Wrok With Us", "Contact Us"],
+      links: ["About Us" , "Blog", "Work With Us", "Contact Us"],
     },
 
     {
