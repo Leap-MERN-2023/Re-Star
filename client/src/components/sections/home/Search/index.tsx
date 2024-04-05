@@ -12,8 +12,7 @@ const Search = () => {
       >
         Re-Star
       </h1>
-
-      <p className="flex justify-center text-[40px] text-primary]">
+      <p className="flex justify-center text-[40px] text-primary items-center">
         Discover the best food & drinks in Mongolia
       </p>
       <div
@@ -28,12 +27,12 @@ const Search = () => {
         <Input
           type="search"
           placeholder="Search location"
-          className=" w-[400px] h-[60px] text-[20px] "
+          className=" w-[400px] h-[60px] text-[20px] placeholder:text-primary"
         />
         <Input
           type="search"
           placeholder="Search for restaurant, cuisine or dish"
-          className=" w-[400px] h-[60px] text-[20px] "
+          className=" w-[400px] h-[60px] text-[20px]  placeholder:text-primary"
         />
       </div>
 

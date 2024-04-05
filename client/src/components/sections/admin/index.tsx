@@ -37,6 +37,8 @@ import { AdminMenuView } from "./adminMenuView";
 export const AdminPage = () => {
   const { getUserRestaurantById, userOrgs, deleteRestaurantById } =
     useContext(RestaurantContext);
+  console.log("userOrgs", userOrgs[0]);
+  console.log("userOrgs", !userOrgs[0]);
 
   const { token } = useContext(UserContext);
 
@@ -60,7 +62,7 @@ export const AdminPage = () => {
         </h1>
       </div>
       <div>
-        {userOrgs.length === 0 ? (
+        {userOrgs[0] === null ? (
           <div className=" justify-center">
             <Lottie options={defaultOption} height={400} width={400} />
             <h3 className="text-center text-2xl">
@@ -115,7 +117,7 @@ export const AdminTab = () => {
     <Tabs defaultValue={userOrgs[0]?.name} className="w-full">
       <TabsList className="grid w-full grid-cols-2 bg-[#858484]">
         {userOrgs.map((org) => (
-          <TabsTrigger value={org.name} className="text-white">
+          <TabsTrigger value={"admin"} className="text-white">
             Admin Page
           </TabsTrigger>
         ))}
@@ -125,7 +127,7 @@ export const AdminTab = () => {
         </TabsTrigger>
       </TabsList>
       {userOrgs.map((org) => (
-        <TabsContent value={org.name}>
+        <TabsContent value={"admin"}>
           <CardHeader>
             <CardTitle className="text-center">Your Restaurant</CardTitle>
           </CardHeader>
@@ -141,7 +143,7 @@ export const AdminTab = () => {
               <Card className="lg:w-1/3 w-full">
                 <CardHeader>
                   <CardTitle className="text-center">
-                    Delete {org.name}
+                    Delete {org?.name}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">

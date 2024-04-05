@@ -16,7 +16,7 @@ export default function OrgByIdPage({ params }: { params: { id: string } }) {
   setOrgIdContext(params.id);
 
   return (
-    <div className="bg-[#fdf4ed] ">
+    <div className="bg-secondary ">
       <div className="mx:auto container ">
         <DetailPicture images={orgById?.images} />
       </div>

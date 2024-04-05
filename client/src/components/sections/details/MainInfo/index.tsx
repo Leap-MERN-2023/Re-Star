@@ -57,14 +57,13 @@ const MainInfo = ({
             <h1 className="text-4xl font-bold ">{name}</h1>
           </div>
           <div className="flex flex-wrap text-lg text-gray-500">
-            {" "}
             <IoMdRestaurant size={30} color="green" /> : {category}
           </div>
 
           <div className="flex mr-11">
-            <Badge className="mr-2  bg-green-600">
+            <Badge className="mr-3 bg-green-600 text-white flex justify-center items-center">
               {averageScore}
-              <span className="m-2">
+              <span className="m-1">
                 <FaStar />
               </span>
             </Badge>
@@ -76,30 +75,18 @@ const MainInfo = ({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {/* <CardDescription className="text-lg mt-2 text-black font-semibold">
-          <GrMapLocation color="green" size={28} /> {address}
-        </CardDescription>
-        <CardDescription className="text-xl mt-2 text-purple-500 font-semibold">
-          About my place : {description}
-        </CardDescription>
-        <div className="flex gap-10">
-          <p className="text-lg text-[#329531] font-medium">
-            Open at: {openTime}{" "}
-          </p>
-          <p className="text-lg text-[#a03636] font-medium">
-            Close at: {closeTime}
-          </p>
-        </div> */}
         <div className="">
-          <CardDescription className="text-lg text-gray-400  flex gap-3 font-serif">
-            <GrMapLocation color="green" size={28} /> {address}
+          <CardDescription className="text-lg text-gray-400  flex gap-3 ">
+            <GrMapLocation color="green" size={28} />
+            <p className="text-primary">{address}</p>
           </CardDescription>
-          <CardDescription className="text-xl mt-1 flex gap-3 font-serif">
-            <FiBell color="green" size={28} /> {description}
+          <CardDescription className="text-xl mt-1 flex gap-3 ">
+            <FiBell color="green" size={28} />
+            <p className="text-primary">{description}</p>
           </CardDescription>
           <div className="flex gap-10 mt-3">
             <p className="text-lg text-[#329531] font-medium">
-              Open at: {openTime}{" "}
+              Open at: {openTime}
             </p>
             <p className="text-lg text-[#a03636] font-medium">
               Close at: {closeTime}
@@ -109,23 +96,15 @@ const MainInfo = ({
       </CardContent>
       <CardFooter className="flex-wrap grid grid-cols-4 gap-3">
         <Button variant="outline">
-          <MdAssistantDirection
-            color="#858484"
-            size={"25px"}
-            style={{ margin: 6 }}
-          />
+          <MdAssistantDirection size={"25px"} style={{ margin: 6 }} />
           Direction
         </Button>
         <Button variant={"outline"}>
-          <CiBookmarkRemove
-            color="#858484"
-            size={"25px"}
-            style={{ margin: 4 }}
-          />
+          <CiBookmarkRemove size={"25px"} style={{ margin: 4 }} />
           Save
         </Button>
         <Button variant={"outline"}>
-          <FaShare color="#858484" size={"25px"} style={{ margin: 4 }} />
+          <FaShare size={"25px"} style={{ margin: 4 }} />
           Share
         </Button>
         <ReviewModal />

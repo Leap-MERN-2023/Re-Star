@@ -12,7 +12,7 @@ const Header = () => {
 
   const router = useRouter();
   return (
-    <div className="bg-secondary w-[100%] mx-auto p-3  z-10 fixed">
+    <div className="bg-secondary w-[100%] mx-auto p-3 ">
       <div className="flex h-16 items-center px-4 bg-transparent justify-evenly   ">
         <img
           className="w-10 h-10 "

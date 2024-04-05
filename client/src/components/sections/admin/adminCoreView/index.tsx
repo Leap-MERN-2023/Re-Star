@@ -54,7 +54,7 @@ const AdminCoreView = ({
             </div>
             <div className="flex flex-wrap text-lg text-gray-500">
               {" "}
-              <IoMdRestaurant size={30} color="green" /> : {category.name}
+              <IoMdRestaurant size={30} color="green" /> : {category?.name}
             </div>
 
             <div className="flex mr-11 ">

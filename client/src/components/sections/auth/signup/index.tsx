@@ -70,7 +70,7 @@ export const SignupPage = () => {
       console.log("Data :", data);
       await Swal.fire({
         position: "center",
-        title: "Та амжилттай бүртгүүллээ",
+        title: "Sign up successffully",
         icon: "success",
         timer: 1500,
         showConfirmButton: false,
@@ -83,8 +83,14 @@ export const SignupPage = () => {
   };
 
   return (
-    <div className="bg-[#fdf4ed] md:flex justify-center  items-center h-screen gap-40 p-3">
-      <div className="md:w-[500px] sm:w-full sm:mt-5  bg-[#fffefe] md:p-24 rounded-2xl flex flex-col md:gap-5">
+    <div className="bg-secondary md:flex justify-center  items-center h-screen gap-40 p-3">
+      <div>
+        <img
+          src="https://scontent.xx.fbcdn.net/v/t1.15752-9/434153217_788234183216519_7255311917734673479_n.png?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=B9c5dwTAMb0Ab7KIWKk&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdUW2eNmHd6opBye3rdwZybNn4OEBfbemcJL4Qzikf5OBw&oe=6636DFAE"
+          alt="pic"
+        />
+      </div>
+      <div className="md:w-[500px] sm:w-full sm:mt-5 p-10 bg-[#fffefe] md:p-14 rounded-2xl flex flex-col md:gap-5 ">
         <div className="text-3xl self-center  font-serif">SIGN UP</div>
 
         <Form {...form}>
@@ -164,9 +170,6 @@ export const SignupPage = () => {
             <FaFacebook />
           </Button>
         </div>
-      </div>
-      <div>
-        <img src={"/images/signup.png"} alt="pic" />
       </div>
     </div>
   );

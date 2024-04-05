@@ -34,7 +34,7 @@ export const CategoryRow = ({ categoryId }: { categoryId: string }) => {
       }}
       navigation
       pagination={{ clickable: true }}
-      onSlideChange={() => console.log("slide change")}
+      // onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
       className="w-screen  container mySwiper "
       spaceBetween={20}

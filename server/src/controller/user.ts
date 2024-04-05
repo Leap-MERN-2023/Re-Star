@@ -50,6 +50,7 @@ export const checkPass = async (
       message: `Захиалгыг амжилттай авлаа`,
       isValid: true,
     });
+    console.log("uuusus")
   } catch (error) {
     next(error);
   }

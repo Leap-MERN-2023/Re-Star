@@ -14,13 +14,15 @@ const FavoriteDrawer = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="menu p-4 w-[500px] min-h-full bg-white text-base-content">
-          <h1 className="text-2xl text-black font-medium flex justify-center">
+        <div className="menu p-4 min-h-full bg-white text-base-content ">
+          <h1 className="text-2xl text-black font-medium flex justify-center mt-5">
             Your favorites
           </h1>
-          {favorites?.map((favorite, index) => (
-            <FavoriteCard favorite={favorite} key={index} />
-          ))}
+          <div className="mt-5">
+            {favorites?.map((favorite, index) => (
+              <FavoriteCard favorite={favorite} key={index} />
+            ))}
+          </div>
         </div>
       </div>
     </div>
