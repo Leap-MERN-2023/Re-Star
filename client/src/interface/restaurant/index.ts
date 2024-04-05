@@ -12,6 +12,8 @@ export interface IRestaurantContext {
     imgOne,
     imgTwo,
     imgThree,
+    lat,
+    lng,
   }: IRestaurant) => void;
   isLoading: Boolean;
   handleFetch: (reFetch: boolean) => void;
@@ -58,6 +60,8 @@ export interface IRestaurant {
   imgOne: File;
   imgTwo: File;
   imgThree: File;
+  lat: string;
+  lng: string;
 }
 
 export interface IOrg {

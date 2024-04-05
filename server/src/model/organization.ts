@@ -54,6 +54,14 @@ const OrganizationSchema = new Schema({
     enum: ["pending", "approved", "banned"],
     default: "pending",
   },
+  lat: {
+    type: String,
+    required: [true, "lat is required"],
+  },
+  lng: {
+    type: String,
+    required: [true, "lng is required"],
+  },
 });
 
 const Organization = model("Organization", OrganizationSchema);
