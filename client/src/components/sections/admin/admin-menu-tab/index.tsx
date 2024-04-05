@@ -29,14 +29,14 @@ export const AdminMenuTab = ({ orgId }: { orgId: string }) => {
           <div>
             <h1 className="font-bold text-[25px]">{category}</h1>
           </div>
-          <div className="flex gap-10 ">
-            <Carousel className="w-full  bg-white rounded-lg shadow-xl ">
-              <CarouselContent className="-ml-1 ">
+          <div className="flex gap-10 p-10 ">
+            <Carousel className="w-full  bg-secondary rounded-lg shadow-xl ">
+              <CarouselContent className=" flex  p-5 justify-start ">
                 {menus
                   .filter((menu) => menu.category == category)
                   .map((menu) => (
                     <div>
-                      <div className="flex justify-center items-center">
+                      <div className="flex justify-center items-center gap-10">
                         <img
                           src="https://scontent.xx.fbcdn.net/v/t1.15752-9/431496684_425982866675811_4402109109499232244_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=0F7bIciPPQkAX_w1lcc&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdSlH3Z9JXLA-JVGNGMyYG-kL2numnrFBaCst_Aq3zN5gA&oe=661F5419"
                           className="h-[260px] w-[260px] rounded-full "

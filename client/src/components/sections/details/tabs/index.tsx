@@ -12,7 +12,7 @@ const DetailTab = (props: { reviews?: any }) => {
 
   return (
     <Tabs defaultValue="reviews" className="w-full ">
-      <TabsList className="grid w-full grid-cols-3 bg-[#858484] text-white mt-3">
+      <TabsList className="grid w-full grid-cols-3  shadow text-primary mt-3">
         <TabsTrigger value="reviews">Reviews</TabsTrigger>
         <TabsTrigger value="photos">Photos</TabsTrigger>
         <TabsTrigger value="menu">Menu</TabsTrigger>

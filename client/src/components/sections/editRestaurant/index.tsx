@@ -36,13 +36,13 @@ export function EditOrganization({ id }: { id: string }) {
   const formik = useFormik({
     initialValues: {
       id: id,
-      name: userOrgs[0]?.name,
-      category: userOrgs[0]?.category,
-      openTime: userOrgs[0]?.openTime,
-      closeTime: userOrgs[0]?.closeTime,
-      address: userOrgs[0]?.address,
-      description: userOrgs[0]?.description,
-      phoneNumber: userOrgs[0]?.phoneNumber,
+      name: userOrgs && userOrgs[0]?.name,
+      category: userOrgs && userOrgs[0]?.category,
+      openTime: userOrgs && userOrgs[0]?.openTime,
+      closeTime: userOrgs && userOrgs[0]?.closeTime,
+      address: userOrgs && userOrgs[0]?.address,
+      description: userOrgs && userOrgs[0]?.description,
+      phoneNumber: userOrgs && userOrgs[0]?.phoneNumber,
     },
     onSubmit: ({
       id,

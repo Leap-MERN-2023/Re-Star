@@ -92,6 +92,7 @@ export const deleteOrg = async (
   try {
     const id = req.params;
     const { user } = req;
+    console.log("delete", req.params);
 
     const findOrg = await Organization.findOne({ user: user.id });
 
