@@ -43,6 +43,8 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
     imgOne,
     imgTwo,
     imgThree,
+    lat,
+    lng,
   }: IRestaurant) => {
     try {
       setIsLoading(!isLoading);
@@ -58,6 +60,8 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       formdata.append("images", imgOne);
       formdata.append("images", imgTwo);
       formdata.append("images", imgThree);
+      formdata.set("lat", lat);
+      formdata.set("lng", lng);
 
       const data = await myAxios.post("/org/add", formdata, {
         headers: {
@@ -66,7 +70,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       });
 
       toast.success("restaurant amjilttai uuslee");
-
+      console.log("RES DATAAA====>", formdata);
       setIsLoading(!isLoading);
     } catch (error) {
       toast.error(`Алдаа : ${error} `);

@@ -11,6 +11,7 @@ import Multer from "multer";
 export const addOrg = async (req: IReq, res: Response, next: NextFunction) => {
   const newOrg = req.body;
   const { user } = req;
+  console.log("REqq: ", req.body);
 
   const newOrganization = { ...newOrg, user: user._id };
   const images: string[] = [];

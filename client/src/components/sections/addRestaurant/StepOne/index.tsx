@@ -79,6 +79,8 @@ export function StepOne() {
       imgOne: File,
       imgTwo: File,
       imgThree: File,
+      lat: "",
+      lng: "",
     },
 
     // validationSchema,
@@ -93,6 +95,8 @@ export function StepOne() {
       imgOne,
       imgTwo,
       imgThree,
+      lat,
+      lng,
     }) => {
       createRestaurant({
         name,
@@ -105,6 +109,8 @@ export function StepOne() {
         imgOne,
         imgTwo,
         imgThree,
+        lat,
+        lng,
       });
     },
   });
@@ -209,6 +215,22 @@ export function StepOne() {
               <Input
                 placeholder="Restaurant Full Address: Disctrict, Street , Building No, Exact Location"
                 name="address"
+                onChange={formik.handleChange}
+              />
+            </div>
+            <div className="flex flex-col gap-2 w-full">
+              <Label htmlFor="framework">google lan</Label>
+              <Input
+                placeholder="Lat"
+                name="lat"
+                onChange={formik.handleChange}
+              />
+            </div>
+            <div className="flex flex-col gap-2 w-full">
+              <Label htmlFor="framework">google lng</Label>
+              <Input
+                placeholder="Lng"
+                name="lng"
                 onChange={formik.handleChange}
               />
             </div>
