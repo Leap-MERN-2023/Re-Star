@@ -11,8 +11,9 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { MdDeleteForever } from "@/components/icons";
+import { IMenu } from "@/interface";
 
-export function DeleteOrg() {
+export function DeleteOrg({ _id, name }: IMenu) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -26,7 +27,9 @@ export function DeleteOrg() {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle>
+            Are you absolutely sure to menu item {name}?
+          </AlertDialogTitle>
           <AlertDialogDescription>
             This action cannot be undone. This will permanently delete your
             restaurant menu and remove your food data from our servers.
@@ -34,7 +37,7 @@ export function DeleteOrg() {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          <AlertDialogAction onClick={() => {}}>Continue</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

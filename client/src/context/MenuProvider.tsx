@@ -27,9 +27,21 @@ const MenuProvider = ({ children }: PropsWithChildren) => {
       toast.error("error :", error);
     }
   };
+  const DeleteMenuByOrgId = async (orgId: string, deleteId: string) => {
+    try {
+      await myAxios.delete(`/menu`, {
+        data: { orgId, deleteId },
+        headers: {
+          Authorization: token,
+        },
+      });
+    } catch (error: any) {
+      toast.error("error :", error);
+    }
+  };
 
   return (
-    <MenuContext.Provider value={{ menus, getMenuByOrgId }}>
+    <MenuContext.Provider value={{ menus, getMenuByOrgId, DeleteMenuByOrgId }}>
       {children}
     </MenuContext.Provider>
   );

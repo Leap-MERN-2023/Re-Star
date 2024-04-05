@@ -90,6 +90,7 @@ export interface IInfo {
 
 export interface IMenuContext {
   getMenuByOrgId: (orgId: string) => Promise<void>;
+  DeleteMenuByOrgId: (orgId: string, deleteId: string) => Promise<void>;
   menus: IMenu[];
 }
 export interface IMenu {

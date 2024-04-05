@@ -3,6 +3,7 @@ import Menu from "../model/menu";
 import MyError from "../utils/myError";
 import { IReq } from "../utils/interface";
 import cloudinary from "../utils/cloudinary";
+import Organization from "../model/organization";
 
 export const addMenu = async (
   req: Request,
@@ -79,21 +80,37 @@ export const deleteMenu = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { deleteId, orgId } = req.body;
+  const { deleteId } = req.body;
+
   const { user } = req;
 
-  const findMenu = Menu.findOne({ organization: user._id });
+  const findOrg = await Organization.findOne({ user: user._id });
 
-  const findIndexOfMenu = (e: any) => {
+  if (!findOrg) {
+    throw new MyError("You are not owner of this restaurant", 401);
+  }
+
+  const findMenu = await Menu.findOne({ organization: findOrg._id });
+
+  if (!findMenu) {
+    throw new MyError("Restaurant does not exist", 401);
+  }
+  console.log("findMenu", findMenu);
+
+  const indexOfMenu = findMenu.foods.findIndex((e: any) => {
     return e._id == deleteId;
-  };
-
-  res.status(200).json({
-    message: `Захиалгыг амжилттай устгалаа`,
   });
+
+  const spliceCount = findMenu.foods.splice(indexOfMenu, 1);
+
+  console.log("indexOfMenu", indexOfMenu);
+  console.log("spliceCount", spliceCount);
+
+  const menu = await findMenu.save();
 
   res.status(201).json({
     message: "deleted category successfully",
+    menu,
   });
 };
 

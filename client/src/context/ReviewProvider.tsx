@@ -26,6 +26,7 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
       message: "",
       user: "",
       organization: "",
+      _id: "",
     },
   ]);
 
