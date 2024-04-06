@@ -21,7 +21,7 @@ const SuperPage = () => {
   // }, []);
 
   return (
-    <div className="bg-[#fdf4ed]">
+    <div className="bg-secondary">
       <div className="mx:auto container">
         <SuperAdmin />
       </div>
