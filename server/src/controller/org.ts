@@ -211,3 +211,69 @@ export const changeStatus = async (
     next(error);
   }
 };
+
+export const searchOrgByNameAndCategory = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { name, category } = req.params;
+    console.log("params", req.params);
+
+    const organizations = await Organization.find({
+      name: { $regex: new RegExp(name as string, "i") },
+      category: { $regex: new RegExp(category as string, "i") },
+    });
+
+    res.status(200).json({
+      message: `Organization found successfully.`,
+      organizations,
+    });
+    console.log("organizations", organizations);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};
+
+// export const searchMapByName = async (
+//   req: Request,
+//   res: Response,
+//   next: NextFunction
+// ) => {
+//   try {
+//     const { category, name } = req.params;
+//     console.log("req", req.params);
+
+//     const organizations = await Organization.find({
+//       name: { $regex: new RegExp(name, "i") },
+//       category: { $regex: new RegExp(category, "i") },
+//     });
+
+//     Organization.find({ name: { $in: "hand" } });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+export const searchMapByCategory = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { category } = req.params;
+    console.log("req", req.params);
+
+    const organizations = await Organization.find({
+      category: category,
+    });
+
+    res.status(200).json({
+      message: `Organization found successfully.`,
+      organizations,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

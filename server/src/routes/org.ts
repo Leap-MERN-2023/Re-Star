@@ -8,6 +8,8 @@ import {
   getUserOrgById,
   updateOrgPic,
   changeStatus,
+  searchOrgByNameAndCategory,
+  searchMapByCategory,
 } from "../controller/org";
 
 import { authenticate, authorize } from "../middleware/authenticate";
@@ -25,5 +27,9 @@ router
 router.route("/delete/:id").delete(authenticate, deleteOrg);
 router.route("/:id").get(getOrgById);
 router.route("/").get(getOrg);
+router
+  .route(`/search/name/:name?/cate/:category?`)
+  .get(searchOrgByNameAndCategory);
+router.route(`/cate/:category`).get(searchMapByCategory);
 
 export default router;
