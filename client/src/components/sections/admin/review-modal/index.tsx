@@ -36,7 +36,7 @@ export function ReviewModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant={"outline"}>
+        <Button variant={"outline"} className="bg-secondary">
           <FaStar color="#858484" size={"25px"} style={{ margin: 4 }} />
           Add Review
         </Button>

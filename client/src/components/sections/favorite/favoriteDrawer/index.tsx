@@ -6,7 +6,7 @@ const FavoriteDrawer = () => {
   const { favorites } = useContext(FavoritesContext);
   console.log("FAV DRAWER FAV CARD", favorites);
   return (
-    <div className="drawer drawer-end z-20">
+    <div className="drawer drawer-end z-20  shadow-white shadow-xl">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-side ">
         <label
@@ -14,8 +14,8 @@ const FavoriteDrawer = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="menu p-4 min-h-full bg-white text-base-content ">
-          <h1 className="text-2xl text-black font-medium flex justify-center mt-5">
+        <div className="menu p-4 min-h-full bg-primary-content text-base-content ">
+          <h1 className="text-2xl text-primary font-medium flex justify-center mt-5">
             Your favorites
           </h1>
           <div className="mt-5">
