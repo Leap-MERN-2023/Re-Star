@@ -21,7 +21,7 @@ const DetailTab = (props: { reviews?: any }) => {
         <Card>
           <CardHeader>
             <CardTitle>Reviews</CardTitle>
-            <div className="flex gap-5 mt-5">
+            <div className="flex gap-5 mt-5 flex-wrap">
               {reviews?.map((revData: any, index: any) => (
                 <ReviewTab revData={revData} key={index} />
               ))}

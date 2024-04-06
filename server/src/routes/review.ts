@@ -3,13 +3,13 @@ import {
   getReview,
   addReview,
   getReviewById,
-  updateReview,
+  editReview,
   deleteReview,
 } from "../controller/review";
 
 const router = Router();
 
-router.route("/").post(addReview).put(updateReview).delete(deleteReview);
+router.route("/").post(addReview).put(editReview).delete(deleteReview);
 
 router.route("/:id").get(getReviewById);
 export default router;
