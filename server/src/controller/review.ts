@@ -51,32 +51,6 @@ export const getReviewById = async (
   }
 };
 
-export const updateReview = async (
-  req: IReq,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    const { changedReview } = req.body;
-    const findReview = await Review.findByIdAndUpdate(
-      {
-        _id: req.body.reviewId,
-      },
-      {
-        message: changedReview.message,
-        score: changedReview.score,
-      }
-    );
-    findReview?.save();
-    res.status(201).json({
-      message: "Хэрэглэгчийн review амжилттай өөрчиллөө.",
-      changedReview,
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const deleteReview = async (
   req: IReq,
   res: Response,
@@ -89,5 +63,30 @@ export const deleteReview = async (
     res.status(201).json({ message: "Heregchinn review amjilttai ustgagdlaa" });
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const editReview = async (
+  req: IReq,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    console.log("Hi editReview");
+    const findReview = await Review.findByIdAndUpdate(
+      { _id: req.body.data.reviewId },
+      {
+        score: req.body.data.editedScore,
+        message: req.body.data.editedMessage,
+      }
+    );
+
+    findReview?.save();
+
+    res
+      .status(201)
+      .json({ message: "Heregchinn review amjilttai uurchlugluu" });
+  } catch (error) {
+    console.log("Error in edit review", error);
   }
 };
