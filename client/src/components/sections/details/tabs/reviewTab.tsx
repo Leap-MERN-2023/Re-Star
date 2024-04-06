@@ -18,13 +18,8 @@ import { Button } from "@/components/ui/button";
 
 const ReviewTab = ({ revData }: any) => {
   return (
-<<<<<<< HEAD
     <div className="flex">
       <Card className=" shadow md:w-96 bg-secondary">
-=======
-    <div className="flex flex-col">
-      <Card className=" shadow md:w-96">
->>>>>>> 16b6e85 (responsive edit)
         <CardHeader>
           <CardTitle className=" flex  sm:flex-col lg:flex-row ">
             <div className="flex items-center gap-5 ">
