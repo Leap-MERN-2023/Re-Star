@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 const ReviewTab = ({ revData }: any) => {
   return (
     <div className="flex">
-      <Card className=" shadow md:w-96">
+      <Card className=" shadow md:w-96 bg-secondary">
         <CardHeader>
           <CardTitle className=" flex justify-between ">
             <div className="flex items-center gap-5 ">

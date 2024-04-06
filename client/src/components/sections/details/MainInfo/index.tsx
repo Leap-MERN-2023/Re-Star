@@ -56,8 +56,9 @@ const MainInfo = ({
           <div>
             <h1 className="text-4xl font-bold ">{name}</h1>
           </div>
-          <div className="flex flex-wrap text-lg text-gray-500">
-            <IoMdRestaurant size={30} color="green" /> : {category}
+          <div className="flex flex-wrap text-lg ">
+            <IoMdRestaurant size={30} className=" text-green-600" /> :{" "}
+            {category}
           </div>
 
           <div className="flex mr-11">
@@ -77,33 +78,33 @@ const MainInfo = ({
       <CardContent>
         <div className="">
           <CardDescription className="text-lg text-gray-400  flex gap-3 ">
-            <GrMapLocation color="green" size={28} />
+            <GrMapLocation className="text-green-600" size={28} />
             <p className="text-primary">{address}</p>
           </CardDescription>
           <CardDescription className="text-xl mt-1 flex gap-3 ">
-            <FiBell color="green" size={28} />
+            <FiBell className="text-green-600" size={28} />
             <p className="text-primary">{description}</p>
           </CardDescription>
           <div className="flex gap-10 mt-3">
-            <p className="text-lg text-[#329531] font-medium">
+            <p className="text-lg text-[#329531] font-semibold">
               Open at: {openTime}
             </p>
-            <p className="text-lg text-[#a03636] font-medium">
+            <p className="text-lg text-[#ef3737] font-semibold">
               Close at: {closeTime}
             </p>
           </div>
         </div>
       </CardContent>
       <CardFooter className="flex-wrap grid grid-cols-4 gap-3">
-        <Button variant="outline">
+        <Button variant="outline" className="bg-secondary">
           <MdAssistantDirection size={"25px"} style={{ margin: 6 }} />
           Direction
         </Button>
-        <Button variant={"outline"}>
+        <Button variant={"outline"} className="bg-secondary">
           <CiBookmarkRemove size={"25px"} style={{ margin: 4 }} />
           Save
         </Button>
-        <Button variant={"outline"}>
+        <Button variant={"outline"} className="bg-secondary">
           <FaShare size={"25px"} style={{ margin: 4 }} />
           Share
         </Button>

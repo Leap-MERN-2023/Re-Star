@@ -129,7 +129,7 @@ export function StepOne() {
                 id="name"
                 placeholder="Name of your project"
                 name="name"
-                className="placeholder:text-third"
+                className="placeholder:text-primary bg-secondary"
                 onChange={formik.handleChange}
               />
               {formik.touched.name && formik.errors.name ? (
@@ -145,14 +145,14 @@ export function StepOne() {
                 name="category"
                 value={formik.values.category}
               >
-                <SelectTrigger className=" ">
+                <SelectTrigger className="bg-secondary ">
                   <SelectValue placeholder="Select Your Restaurant type" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Restaurant Type</SelectLabel>
 
-                    {!categories && <Skeleton className="h-4 w-[250px]" />}
+                    {!categories && <Skeleton className="h-4 w-[250px] " />}
                     {categories.map((category, i) => (
                       <SelectItem key={i} value={category?._id}>
                         {category.name}
@@ -169,7 +169,7 @@ export function StepOne() {
                   placeholder="Tell us about your restaurant for example founded year, food types, environment and capacity"
                   name="description"
                   onChange={formik.handleChange}
-                  className="placeholder:text-third"
+                  className="placeholder:text-primary bg-secondary"
                   value={formik.values.description}
                 />
               </div>
@@ -177,7 +177,7 @@ export function StepOne() {
                 <Label htmlFor="framework">Phone Number</Label>
                 <Input
                   placeholder="Phone Number"
-                  className="placeholder:text-third "
+                  className="placeholder:text-primary bg-secondary "
                   name="phoneNumber"
                   onChange={formik.handleChange}
                   value={formik.values.phoneNumber}
@@ -190,7 +190,7 @@ export function StepOne() {
                   placeholder="open Time for example 10:00"
                   name="openTime"
                   type="time"
-                  className="border border-1 p-2 rounded-md bg-secondary placeholder:text-white"
+                  className="border border-1 p-2 rounded-md bg-secondary placeholder:text-primary"
                   onChange={formik.handleChange}
                   value={formik.values.openTime}
                   required
@@ -215,22 +215,25 @@ export function StepOne() {
               <Input
                 placeholder="Restaurant Full Address: Disctrict, Street , Building No, Exact Location"
                 name="address"
+                className="placeholder:text-primary bg-secondary"
                 onChange={formik.handleChange}
               />
             </div>
             <div className="flex flex-col gap-2 w-full">
-              <Label htmlFor="framework">google lan</Label>
+              <Label htmlFor="framework">Google latitude</Label>
               <Input
-                placeholder="Lat"
+                placeholder="Location latitude"
                 name="lat"
+                className="placeholder:text-primary bg-secondary"
                 onChange={formik.handleChange}
               />
             </div>
             <div className="flex flex-col gap-2 w-full">
-              <Label htmlFor="framework">google lng</Label>
+              <Label htmlFor="framework">Google longitude</Label>
               <Input
-                placeholder="Lng"
+                placeholder="Locaton longitude"
                 name="lng"
+                className="placeholder:text-primary bg-secondary"
                 onChange={formik.handleChange}
               />
             </div>

@@ -15,6 +15,13 @@ import { useContext, useEffect, useState } from "react";
 import { FavoritesContext } from "@/context/FavoritesProvider";
 import { RestaurantContext } from "@/context/RestaurantProvider";
 import { ReviewContext } from "@/context/ReviewProvider";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface IProps extends IOrg {
   favorite?: boolean;
@@ -48,6 +55,7 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
 
   return (
     <div className=" flex justify-center items-center ">
+      {/* <CarouselItem className="pl-1 md:basis-1/2 lg:basis-1/3 "> */}
       <Card className="w-80">
         <img
           src={images?.at(1)}
@@ -65,7 +73,7 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
               {name}
             </CardTitle>
             <div className="text-sm flex justify-end">
-              <Badge className="bg-green-500 hover:bg-green-700 ">
+              <Badge className="bg-green-500 hover:bg-green-700 text-primary ">
                 {4.5}
                 <FaStar className="text-xs" />
               </Badge>
@@ -90,6 +98,31 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
           </div>
         </CardContent>
       </Card>
+      {/* </CarouselItem>
+      <CarouselPrevious />
+      <CarouselNext /> */}
+      {/* <Carousel className="w-fullp-3 rounded-lg shadow-xl ">
+        <CarouselContent className="-ml-1 ">
+          {images.map((picture: any, index: number) => (
+            <CarouselItem
+              key={index}
+              className="pl-1 md:basis-1/2 lg:basis-1/3 "
+            >
+              <div className="p-1 ">
+                <Card className=" h-[400px] ">
+                  <img
+                    src={picture}
+                    alt=""
+                    className="h-full w-full rounded-lg object-cover"
+                  />
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel> */}
     </div>
   );
 }
