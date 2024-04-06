@@ -18,10 +18,15 @@ import { Button } from "@/components/ui/button";
 
 const ReviewTab = ({ revData }: any) => {
   return (
+<<<<<<< HEAD
     <div className="flex">
       <Card className=" shadow md:w-96 bg-secondary">
+=======
+    <div className="flex flex-col">
+      <Card className=" shadow md:w-96">
+>>>>>>> 16b6e85 (responsive edit)
         <CardHeader>
-          <CardTitle className=" flex justify-between ">
+          <CardTitle className=" flex  sm:flex-col lg:flex-row ">
             <div className="flex items-center gap-5 ">
               <Avatar>
                 <AvatarImage
@@ -30,15 +35,15 @@ const ReviewTab = ({ revData }: any) => {
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
-              <div className="text-lg ">
+              <div className="text-sm">
                 <p>{revData?.user}</p>
                 <p className="text-base text-gray-500">Count of reviews</p>
               </div>
             </div>
-            <div className=" h-7 ">
-              <Badge className="m-2 ">
+            <div className="  ">
+              <Badge className="m-1  ">
                 {revData?.score}
-                <span className="">
+                <span className="flex ">
                   <FaStar />
                 </span>
               </Badge>

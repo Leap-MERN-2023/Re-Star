@@ -23,7 +23,7 @@ export function CategoryCard() {
   const router = useRouter();
   return (
     <div className="mx:auto container">
-      <div className="flex justify-around items-center  flex-wrap gap-10">
+      <div className="flex justify-around items-center  flex-wrap gap-10 flex-col">
         {cards.map((card, i) => (
           <Card
             key={i}

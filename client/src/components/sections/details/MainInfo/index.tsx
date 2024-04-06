@@ -52,13 +52,18 @@ const MainInfo = ({
   return (
     <Card className="mt-4">
       <CardHeader className="text-3xl block w-full ">
-        <CardTitle className=" flex justify-between items-center">
+        <CardTitle className=" flex  flex-col justify-between items-center md:flex-row gap-2">
           <div>
-            <h1 className="text-4xl font-bold ">{name}</h1>
+            <h1 className="text-3xl font-bold ">{name}</h1>
           </div>
+<<<<<<< HEAD
           <div className="flex flex-wrap text-lg ">
             <IoMdRestaurant size={30} className=" text-green-600" /> :{" "}
             {category}
+=======
+          <div className="flex gap-2 text-gray-500">
+            <IoMdRestaurant  size={30} color="green"  /> : <p className="text-sm md:text-lg">{category}</p>
+>>>>>>> 16b6e85 (responsive edit)
           </div>
 
           <div className="flex mr-11">
