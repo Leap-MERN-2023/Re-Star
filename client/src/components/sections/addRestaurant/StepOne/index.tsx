@@ -116,8 +116,8 @@ export function StepOne() {
   });
 
   return (
-    <div className="w-full flex flex-col justify-center items-center sm:justify-start">
-      <Card className="w-[50%]">
+    <div className="w-full flex flex-col justify-center items-center">
+      <Card className="w-[50%] ">
         <CardHeader>
           <CardTitle>Add Restaurant</CardTitle>
         </CardHeader>
@@ -129,18 +129,14 @@ export function StepOne() {
                 id="name"
                 placeholder="Name of your project"
                 name="name"
-<<<<<<< HEAD
                 className="placeholder:text-primary bg-secondary"
-=======
-                className="placeholder:text-third w-24 lg:w-96 md:w-72 sm:w-24 xs:w-12"
->>>>>>> 16b6e85 (responsive edit)
                 onChange={formik.handleChange}
               />
               {formik.touched.name && formik.errors.name ? (
                 <p className="text-red-700">{formik.errors.name}</p>
               ) : null}
             </div>
-            <div className="flex flex-col gap-2  w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
+            <div className="flex flex-col gap-2">
               <Label htmlFor="framework">Restaurant type</Label>
               <Select
                 onValueChange={(e) => (
@@ -166,7 +162,7 @@ export function StepOne() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="grid  items-center gap-4  w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
+            <div className="grid  items-center gap-4">
               <div className="flex flex-col gap-2">
                 <Label htmlFor="framework">About restaurant</Label>
                 <Input
@@ -214,7 +210,7 @@ export function StepOne() {
                 />
               </div>
             </div>
-            <div className="flex flex-col gap-2 w-full  w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
+            <div className="flex flex-col gap-2 w-full">
               <Label htmlFor="framework">Restaurant Full Address</Label>
               <Input
                 placeholder="Restaurant Full Address: Disctrict, Street , Building No, Exact Location"
@@ -223,13 +219,8 @@ export function StepOne() {
                 onChange={formik.handleChange}
               />
             </div>
-<<<<<<< HEAD
             <div className="flex flex-col gap-2 w-full">
               <Label htmlFor="framework">Google latitude</Label>
-=======
-            <div className="flex flex-col gap-2 w-full  w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
-              <Label htmlFor="framework">google lan</Label>
->>>>>>> 16b6e85 (responsive edit)
               <Input
                 placeholder="Location latitude"
                 name="lat"
@@ -237,13 +228,8 @@ export function StepOne() {
                 onChange={formik.handleChange}
               />
             </div>
-<<<<<<< HEAD
             <div className="flex flex-col gap-2 w-full">
               <Label htmlFor="framework">Google longitude</Label>
-=======
-            <div className="flex flex-col gap-2 w-full  w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
-              <Label htmlFor="framework">google lng</Label>
->>>>>>> 16b6e85 (responsive edit)
               <Input
                 placeholder="Locaton longitude"
                 name="lng"
@@ -251,10 +237,9 @@ export function StepOne() {
                 onChange={formik.handleChange}
               />
             </div>
-            <Button variant={"outline"} className="bg-secondary w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
+            <Button variant={"outline"} className="bg-secondary ">
               <input
                 type="file"
-              
                 onChange={(event) => {
                   const selectedFile =
                     event.target.files && event.target.files[0];
@@ -262,7 +247,7 @@ export function StepOne() {
                 }}
               />
             </Button>
-            <Button variant={"outline"} className="bg-secondary  w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
+            <Button variant={"outline"} className="bg-secondary">
               <input
                 type="file"
                 onChange={(event) => {
@@ -273,7 +258,7 @@ export function StepOne() {
                 }}
               />
             </Button>
-            <Button variant={"outline"} className="bg-secondary w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
+            <Button variant={"outline"} className="bg-secondary">
               <input
                 type="file"
                 onChange={(event) => {
@@ -285,7 +270,7 @@ export function StepOne() {
             </Button>
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between ">
+        <CardFooter className="flex justify-between">
           <Button
             onClick={() => formik.handleSubmit()}
             type="submit"

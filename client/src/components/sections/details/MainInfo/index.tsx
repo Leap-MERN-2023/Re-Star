@@ -56,14 +56,9 @@ const MainInfo = ({
           <div>
             <h1 className="text-3xl font-bold ">{name}</h1>
           </div>
-<<<<<<< HEAD
           <div className="flex flex-wrap text-lg ">
             <IoMdRestaurant size={30} className=" text-green-600" /> :{" "}
             {category}
-=======
-          <div className="flex gap-2 text-gray-500">
-            <IoMdRestaurant  size={30} color="green"  /> : <p className="text-sm md:text-lg">{category}</p>
->>>>>>> 16b6e85 (responsive edit)
           </div>
 
           <div className="flex mr-11">
