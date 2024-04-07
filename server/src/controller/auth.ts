@@ -56,12 +56,22 @@ export const signup = async (
   res: Response,
   next: NextFunction
 ) => {
-  const newUser = req.body;
-  console.log("user", newUser);
-  const user = await User.create({ ...newUser });
+  try {
+    const newUser = req.body;
+    console.log("user", newUser);
+    const isExist = await User.findOne({ email: newUser.email });
 
-  res.status(201).json({
-    message: "Шинэ хэрэглэгч амжилттай бүртгэгдлээ ",
-    user,
-  });
+    if (isExist) {
+      throw new MyError("User is registered, go to login", 400);
+    }
+
+    const user = await User.create({ ...newUser });
+
+    res.status(201).json({
+      message: "Шинэ хэрэглэгч амжилттай бүртгэгдлээ ",
+      user,
+    });
+  } catch (error) {
+    next(error);
+  }
 };

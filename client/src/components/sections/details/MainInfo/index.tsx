@@ -25,7 +25,7 @@ import { IoMdRestaurant, GrMapLocation, FiBell } from "@/components/icons";
 import { intersection } from "zod";
 
 interface IProps extends IInfo {
-  reviews: any;
+  reviews?: any;
 }
 
 const MainInfo = ({
@@ -37,10 +37,11 @@ const MainInfo = ({
   description,
   phoneNumber,
   reviews,
+  _id,
 }: IProps) => {
   console.log(reviews);
 
-  const scores = reviews.map((review: any) => review.score);
+  const scores = reviews?.map((review: any) => review.score);
   const calculateAverage = (scores: number[]) => {
     if (scores.length === 0) return 0;
     const total = scores.reduce((acc: number, curr: number) => acc + curr, 0);

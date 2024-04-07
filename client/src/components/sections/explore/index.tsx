@@ -1,23 +1,40 @@
 "use client";
-import React from "react";
+
+import React, { useContext, useEffect, useState } from "react";
 import CategoryList from "./categoryList";
-import SearchPlace from "./searchPlace";
+import myAxios from "@/utils/myAxios";
+
 import SearchMap from "./searchMap";
-import {
-  APIProvider,
-  Map,
-  AdvancedMarker,
-  Pin,
-  InfoWindow,
-} from "@vis.gl/react-google-maps";
-import { Input } from "@/components/ui/input";
+import { RestaurantContext } from "@/context/RestaurantProvider";
 
 const Explore = () => {
+  const [mapOrgs, setMapOrgs] = useState<any>([]);
+
+  const { org } = useContext(RestaurantContext);
+
+  const mappedOrgByName = (name: string) => {
+    const NameFilteredOrg = org.filter((res) =>
+      res.name.toLowerCase().includes(name!.toLowerCase())
+    );
+    console.log("NameFilteredOrg", NameFilteredOrg);
+    setMapOrgs(NameFilteredOrg);
+
+    console.log("filtered", mapOrgs);
+  };
+
+  const mappedOrgByCategory = (category: string) => {
+    console.log("cate", category);
+    const NameFilteredOrg = org.filter((res) => res.category === category);
+    console.log("NameFilteredOrg", NameFilteredOrg);
+    setMapOrgs(NameFilteredOrg);
+
+    console.log("filtered", mapOrgs);
+  };
+
   return (
-    <div className="flex items-center gap-10 ">
-      <CategoryList />
-      <SearchPlace />
-      <SearchMap />
+    <div className="flex items-center gap-10">
+      <CategoryList mappedOrgByCategory={mappedOrgByCategory} />
+      <SearchMap mappedOrgByName={mappedOrgByName} mapOrgs={mapOrgs} />
     </div>
   );
 };
