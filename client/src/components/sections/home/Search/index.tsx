@@ -1,9 +1,12 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+
 import React from "react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { FaSearch } from "react-icons/fa";
 
 const Search = () => {
+  const router = useRouter();
   return (
     <div className="md:auto container bg-secondary">
       <h1
@@ -27,12 +30,8 @@ const Search = () => {
         <Input
           type="search"
           placeholder="Search location"
-          className=" w-[400px] h-[60px] text-[20px] placeholder:text-primary"
-        />
-        <Input
-          type="search"
-          placeholder="Search for restaurant, cuisine or dish"
-          className=" w-[400px] h-[60px] text-[20px]  placeholder:text-primary"
+          className=" w-[800px] h-[60px] text-[20px] placeholder:text-primary rounded-full"
+          onClick={() => router.push("/explore")}
         />
       </div>
 
