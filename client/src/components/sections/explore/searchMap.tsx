@@ -21,46 +21,25 @@ interface IOrgProps extends IOrg {
   lng: string;
   location: string;
   description: string;
+  openTime: string;
+  closeTime: string;
 }
 
 const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
-  const locations = [
-    {
-      lat: 47.91941168353897,
-      lng: 106.91512983001671,
-      name: "asbdhj",
-      description: "tasty foods",
-      category: "korean",
-      location: "3gal",
-    },
-    {
-      lat: 47.91941168353897,
-      lng: 106.9252848216232,
-      name: "chinese",
-      description: "tasty foods",
-      category: "korean",
-      location: "3gal",
-    },
-  ];
-
   const position1 = { lat: 47.915274773004924, lng: 106.91512983001671 };
 
   const [searchName, setSearchName] = useState("");
 
   const handleMappedOrg = useCallback(() => {
     mappedOrgByName(searchName);
-    console.log("ORGS", mapOrgs);
-    console.log("search", searchName);
-  }, [searchName, mappedOrgByName]);
-
-  console.log("ammped", mapOrgs);
+  }, [mappedOrgByName]);
 
   // const calculateDistance = (lat1, lon1, lat2, lon2) => {
   //   const earthRadius = 6371; // in kilometers
 
   //   const degToRad = (deg) => {
   //     return deg * (Math.PI / 180);
-  //   };
+  //   };s
 
   //   const dLat = degToRad(lat2 - lat1);
   //   const dLon = degToRad(lon2 - lon1);
@@ -95,11 +74,11 @@ const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
   // };
 
   return (
-    <div className="w-[1000px]">
-      <div className="flex">
+    <div className="w-[1000px] ">
+      <div className="flex justify-center items-center gap-5">
         <Input
           placeholder="Search for restaurant, cuisine or dish"
-          className="w-full h-[60px] text-[20px]"
+          className="w-full h-[60px] text-[20px] placeholder:text-primary"
           value={searchName}
           onChange={(e) => setSearchName(e.target.value)}
         />
@@ -123,28 +102,39 @@ const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
                     title={org.name}
                   >
                     <Pin
-                      background={"grey"}
-                      borderColor={"green"}
-                      glyphColor={"purple"}
+                      background={"#FE0E0E"}
+                      borderColor={"#B30808"}
+                      glyphColor={"#9C0909"}
                     />
                   </AdvancedMarker>
+
                   <InfoWindow
                     // position={{ lat: 47.925472, lng: 106.901336 }}
-                    position={{ lat: Number(org?.lat), lng: Number(org?.lng) }}
+                    position={{
+                      lat: Number(org?.lat),
+                      lng: Number(org?.lng),
+                    }}
                     maxWidth={200}
                     minWidth={100}
                   >
                     <div className="">
                       <img
                         src={org.images.at(0)}
-                        alt=""
                         className="h-[80px] w-full object-cover"
                       />
-                      <p className="text-primary text-bold">{org.name}</p>
-                      <p className="text-primary">{org.location}</p>
-                      <p className="text-primary">{org.description}</p>
+                      <p className="text-black text-lg font-medium w-full">
+                        {org.name}
+                      </p>
+                      <p className="text-black">{org.location}</p>
+                      <p className="text-black">{org.description}</p>
+
+                      <p className="text-black font-medium justify-end flex mt-2 gap-1">
+                        <span className="text-[#FB1818] ">{org.openTime}</span>:
+                        <span className="text-[#27a445] ">{org.closeTime}</span>
+                      </p>
                     </div>
                   </InfoWindow>
+
                   <div className="text-bold">{org.name}</div>
                 </React.Fragment>
               ))}

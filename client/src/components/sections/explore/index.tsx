@@ -16,25 +16,24 @@ const Explore = () => {
     const NameFilteredOrg = approvedOrgs.filter((res) =>
       res.name.toLowerCase().includes(name!.toLowerCase())
     );
-    console.log("NameFilteredOrg", NameFilteredOrg);
-    setMapOrgs(NameFilteredOrg);
 
-    console.log("filtered", mapOrgs);
+    setMapOrgs(NameFilteredOrg);
   };
 
   const mappedOrgByCategory = (category: string) => {
     const NameFilteredOrg = approvedOrgs.filter(
       (res) => res.category === category
     );
-    console.log("NameFilteredOrg", NameFilteredOrg);
-    setMapOrgs(NameFilteredOrg);
 
-    console.log("filtered", mapOrgs);
+    setMapOrgs(NameFilteredOrg);
+  };
+  const allOrg = () => {
+    setMapOrgs(approvedOrgs);
   };
 
   return (
     <div className="flex items-center gap-10">
-      <CategoryList mappedOrgByCategory={mappedOrgByCategory} />
+      <CategoryList mappedOrgByCategory={mappedOrgByCategory} allOrg={allOrg} />
       <SearchMap mappedOrgByName={mappedOrgByName} mapOrgs={mapOrgs} />
     </div>
   );

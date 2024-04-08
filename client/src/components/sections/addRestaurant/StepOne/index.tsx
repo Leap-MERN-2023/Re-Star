@@ -43,22 +43,6 @@ export function StepOne() {
     setSelectedCategories(categoriesArrayCopy);
   };
 
-  const restaurantTypes = [
-    "Korean Restaurant",
-    "Sushi Restaurant",
-    "Mediterranean Restaurant",
-    "Fast Food Chain",
-    "Ramen Restaurant",
-    "Chinese Restaurant",
-    "Buffet",
-    "Coffee Shop",
-    "Bakery",
-    "Pub",
-    "Pizza",
-    "Chicken",
-    "65fecee5f87c76",
-  ];
-
   const validationSchema = Yup.object({
     name: Yup.string().required("Username is required"),
     category: Yup.array().required("Category is required"), // Adjusted to require a non-empty category
@@ -117,7 +101,7 @@ export function StepOne() {
 
   return (
     <div className="w-full flex flex-col justify-center items-center sm:justify-start">
-      <Card className="w-[50%]">
+      <Card className="w-[500px] justify-center">
         <CardHeader>
           <CardTitle>Add Restaurant</CardTitle>
         </CardHeader>
@@ -129,14 +113,14 @@ export function StepOne() {
                 id="name"
                 placeholder="Name of your project"
                 name="name"
-                className="placeholder:text-third w-44 lg:w-96 md:w-72 sm:w-24 xs:w-12"
+                className="w-full bg-secondary placeholder:text-"
                 onChange={formik.handleChange}
               />
               {formik.touched.name && formik.errors.name ? (
                 <p className="text-red-700">{formik.errors.name}</p>
               ) : null}
             </div>
-            <div className="flex flex-col gap-2  w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
+            <div className="flex flex-col gap-2 w-full">
               <Label htmlFor="framework">Restaurant type</Label>
               <Select
                 onValueChange={(e) => (
@@ -145,7 +129,7 @@ export function StepOne() {
                 name="category"
                 value={formik.values.category}
               >
-                <SelectTrigger className=" ">
+                <SelectTrigger className="bg-secondary ">
                   <SelectValue placeholder="Select Your Restaurant type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -162,111 +146,121 @@ export function StepOne() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="grid  items-center gap-4  w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
-              <div className="flex flex-col gap-2">
-                <Label htmlFor="framework">About restaurant</Label>
-                <Input
-                  placeholder="Tell us about your restaurant for example founded year, food types, environment and capacity"
-                  name="description"
-                  onChange={formik.handleChange}
-                  className="placeholder:text-third"
-                  value={formik.values.description}
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <Label htmlFor="framework">Phone Number</Label>
-                <Input
-                  placeholder="Phone Number"
-                  className="placeholder:text-third "
-                  name="phoneNumber"
-                  onChange={formik.handleChange}
-                  value={formik.values.phoneNumber}
-                />
-              </div>
 
-              <div className="flex flex-col gap-2 w-full">
-                <Label htmlFor="framework">Open Time</Label>
-                <input
-                  placeholder="open Time for example 10:00"
-                  name="openTime"
-                  type="time"
-                  className="border border-1 p-2 rounded-md bg-secondary placeholder:text-white"
-                  onChange={formik.handleChange}
-                  value={formik.values.openTime}
-                  required
-                />
-              </div>
-              <div className="flex flex-col gap-2 w-full">
-                <Label htmlFor="framework">Close Time</Label>
+            <div className="flex flex-col gap-2 w-full ">
+              <Label htmlFor="framework">About restaurant</Label>
+              <Input
+                placeholder="Tell us about your restaurant for example founded year, food types, environment and capacity"
+                name="description"
+                onChange={formik.handleChange}
+                className="w-full bg-secondary"
+                value={formik.values.description}
+              />
+            </div>
+            <div className="flex flex-col gap-2  lg:w-full md:w-full sm:w-full xs:w-full">
+              <Label htmlFor="framework">Phone Number</Label>
+              <Input
+                placeholder="Phone Number"
+                className="  lg:w-full md:w-full sm:w-full xs:w-full bg-secondary  "
+                name="phoneNumber"
+                onChange={formik.handleChange}
+                value={formik.values.phoneNumber}
+              />
+            </div>
 
-                <input
-                  placeholder="Close Time for example 20:00"
-                  name="closeTime"
-                  type="time"
-                  className="border border-1 p-2 rounded-md bg-secondary"
-                  onChange={formik.handleChange}
-                  value={formik.values.closeTime}
-                  required
-                />
-              </div>
-            </div>
-            <div className="flex flex-col gap-2 w-full  w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
-              <Label htmlFor="framework">Restaurant Full Address</Label>
-              <Input
-                placeholder="Restaurant Full Address: Disctrict, Street , Building No, Exact Location"
-                name="address"
-                onChange={formik.handleChange}
-              />
-            </div>
-            <div className="flex flex-col gap-2 w-full  w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
-              <Label htmlFor="framework">google lan</Label>
-              <Input
-                placeholder="Lat"
-                name="lat"
-                onChange={formik.handleChange}
-              />
-            </div>
-            <div className="flex flex-col gap-2 w-full  w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
-              <Label htmlFor="framework">google lng</Label>
-              <Input
-                placeholder="Lng"
-                name="lng"
-                onChange={formik.handleChange}
-              />
-            </div>
-            <Button variant={"outline"} className="bg-secondary w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
+            <div className="flex flex-col gap-2 w-full">
+              <Label htmlFor="framework">Open Time</Label>
               <input
-                type="file"
-              
-                onChange={(event) => {
-                  const selectedFile =
-                    event.target.files && event.target.files[0];
-                  formik.setFieldValue("imgOne", selectedFile);
-                }}
+                placeholder="open Time for example 10:00"
+                name="openTime"
+                type="time"
+                className="border border-1 p-2 rounded-md bg-secondary placeholder:text-white"
+                onChange={formik.handleChange}
+                value={formik.values.openTime}
+                required
               />
-            </Button>
-            <Button variant={"outline"} className="bg-secondary  w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
+            </div>
+            <div className="flex flex-col gap-2  lg:w-full md:w-full sm:w-full xs:w-full">
+              <Label htmlFor="framework">Close Time</Label>
+
               <input
-                type="file"
-                onChange={(event) => {
-                  const selectedFile =
-                    event.target.files && event.target.files[0];
-                  console.log("F", selectedFile);
-                  formik.setFieldValue("imgTwo", selectedFile);
-                }}
+                placeholder="Close Time for example 20:00"
+                name="closeTime"
+                type="time"
+                className="border border-1 p-2 rounded-md bg-secondary  lg:w-full md:w-full sm:w-full xs:w-ful"
+                onChange={formik.handleChange}
+                value={formik.values.closeTime}
+                required
               />
-            </Button>
-            <Button variant={"outline"} className="bg-secondary w-16 lg:w-96 md:w-72 sm:w-24 xs:w-12">
-              <input
-                type="file"
-                onChange={(event) => {
-                  const selectedFile =
-                    event.target.files && event.target.files[0];
-                  formik.setFieldValue("imgThree", selectedFile);
-                }}
-              />
-            </Button>
+            </div>
           </div>
+          <div className="flex flex-col gap-2  lg:w-full md:w-full sm:w-full xs:w-full mt-3">
+            <Label htmlFor="framework">Restaurant Full Address</Label>
+            <Input
+              placeholder="Restaurant Full Address: "
+              name="address"
+              className=" lg:w-full md:w-full sm:w-full xs:w-full bg-secondary"
+              onChange={formik.handleChange}
+            />
+          </div>
+          <div className="flex flex-col gap-2  lg:w-full md:w-full sm:w-full xs:w-full mt-3">
+            <Label htmlFor="framework">Google latitude</Label>
+            <Input
+              placeholder="Latitude"
+              name="lat"
+              className="bg-secondary  lg:w-full md:w-full sm:w-full xs:w-full"
+              onChange={formik.handleChange}
+            />
+          </div>
+          <div className="flex flex-col gap-2  lg:w-full md:w-full sm:w-full xs:w-full mt-3">
+            <Label htmlFor="framework">Google longitude</Label>
+            <Input
+              placeholder="Longitude"
+              name="lng"
+              className="bg-secondary  lg:w-full md:w-full sm:w-full xs:w-full"
+              onChange={formik.handleChange}
+            />
+          </div>
+          <Button
+            variant={"outline"}
+            className="bg-secondary  lg:w-full md:w-full sm:w-full xs:w-full mt-5"
+          >
+            <input
+              type="file"
+              onChange={(event) => {
+                const selectedFile =
+                  event.target.files && event.target.files[0];
+                formik.setFieldValue("imgOne", selectedFile);
+              }}
+            />
+          </Button>
+          <Button
+            variant={"outline"}
+            className="bg-secondary  lg:w-full md:w-full sm:w-full xs:w-full mt-3"
+          >
+            <input
+              type="file"
+              onChange={(event) => {
+                const selectedFile =
+                  event.target.files && event.target.files[0];
+                console.log("F", selectedFile);
+                formik.setFieldValue("imgTwo", selectedFile);
+              }}
+            />
+          </Button>
+          <Button
+            variant={"outline"}
+            className="bg-secondary  lg:w-full md:w-full sm:w-full xs:w-full mt-3"
+          >
+            <input
+              type="file"
+              onChange={(event) => {
+                const selectedFile =
+                  event.target.files && event.target.files[0];
+                formik.setFieldValue("imgThree", selectedFile);
+              }}
+            />
+          </Button>
         </CardContent>
         <CardFooter className="flex justify-between ">
           <Button

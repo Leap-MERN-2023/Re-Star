@@ -24,7 +24,7 @@ const RestaurantCard = () => {
 
   const router = useRouter();
 
-  const statuses = ["pending", "approved", "banned"];
+  const statuses = ["PENDING", "APPROVED", "BANNED"];
 
   const formik = useFormik({
     initialValues: {

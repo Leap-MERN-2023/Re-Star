@@ -29,8 +29,8 @@ export default function AddRestaurant() {
     <div className="p-7 bg-secondary ">
       <div className="">
         {activeStep === 0 && (
-          <div className="mt-10 bg-secondary text-center text-3xl font-serif flex justify-center items-center flex-col gap-6">
-            <div className="flex justify-center items-end bg-primary rounded-full p-10">
+          <div className="mt-10 bg-secondary text-center text-3xl flex justify-center items-center flex-col gap-6 font-medium">
+            <div className="flex justify-center items-end bg-secondary rounded-full p-10">
               <img
                 src="https://scontent.xx.fbcdn.net/v/t1.15752-9/432983801_791832539065929_2970134213591291201_n.png?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Ac1haJLawqYAX_CSvEa&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdVx1yr3qI3nvMlqAVzneYHRJWBFo-uaZAUqU6cZI9BUig&oe=663488AB"
                 className="h-[250px]"
@@ -42,10 +42,12 @@ export default function AddRestaurant() {
             </div>
             Add Your restaurant on Re-star
             <div className="grid grid-cols-2 gap-3">
-              <Button onClick={handleNext} variant={"outline"} className="">
+              <Button onClick={handleNext} className="">
                 Go to Home{" "}
               </Button>
-              <Button onClick={handleNext}>Next </Button>
+              <Button onClick={handleNext} className="bg-primary">
+                Next{" "}
+              </Button>
             </div>
           </div>
         )}

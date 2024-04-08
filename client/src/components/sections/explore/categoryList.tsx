@@ -3,21 +3,24 @@ import { Card } from "@/components/ui/card";
 import { CategoryContext } from "@/context/CategoryProvider";
 import React, { useContext, useState } from "react";
 
-const CategoryList = ({ mappedOrgByCategory }: any) => {
+const CategoryList = ({ mappedOrgByCategory, allOrg }: any) => {
   const { categories } = useContext(CategoryContext);
   const [selectedCategory, setSelectedCategory] = useState();
 
   return (
     <div className="h-[100vh] p-5">
-      <Card className="rounded w-[280px]  h-[900px]  md:w-[180px]  md:h-[750px] sm:w-[120px] sm:h-[500]  3xs:w-[80] 3xs:h-[300]     shadow-lg text-secondary p-5  ">
+      <Card className="rounded  w-[480px]   md:w-[300px] sm:w-[120px] sm:h-[500]  3xs:w-[80] 3xs:h-[300]     shadow-lg text-secondary p-5  ">
         <h1 className="text-primary flex justify-center font-bold text-[30px]">
           Category List
         </h1>
-        <div className="flex flex-col text-black gap-4 ">
+        <div className="flex flex-col text-black gap-4 mt-5">
+          <Button className="" onClick={allOrg}>
+            All
+          </Button>
           {categories.map((category, i) => (
             <Button
               key={i}
-              variant={"outline"}
+              className=""
               onClick={() => mappedOrgByCategory(category?._id)}
             >
               <div>{category.name}</div>
