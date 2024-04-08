@@ -1,11 +1,11 @@
 import React from "react";
-import About from "@/components/sections/aboutUs";
+import AboutUs from "@/components/sections/aboutUs";
 
 const Page = () => {
   return (
     <div className="bg-secondary ">
       <div className="mx:auto container">
-        <About />
+        <AboutUs />
       </div>
     </div>
   );
