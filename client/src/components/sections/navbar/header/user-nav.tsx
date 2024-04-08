@@ -22,14 +22,23 @@ export function UserNav() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-8 w-8 rounded-full ">
-          <Avatar className="h-8 w-8 hover: border-[#272fab] m-2 shadow-lg">
+        <Button
+          variant="ghost"
+          className="relative h-8 w-8 rounded-full p-4 hover:scale-105"
+        >
+          <Avatar className="h-8 w-8 border-primary">
             <AvatarImage src="/avatars/01.png" alt="@shadcn" />
-            <AvatarFallback>SC</AvatarFallback>
+            <AvatarFallback className="bg-secondary border-2 border-primary">
+              SC
+            </AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="end" forceMount>
+      <DropdownMenuContent
+        className="w-56 bg-secondary border-primary border-2"
+        align="end"
+        forceMount
+      >
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-lg font-medium leading-none text-center">

@@ -64,7 +64,7 @@ const MainInfo = ({
           </div>
 
           <div className="flex mr-11">
-            <Badge className="mr-3 bg-green-600 text-white flex justify-center items-center">
+            <Badge className="mr-3 bg-green-600 text-white flex justify-center items-center h-[30px]">
               {averageScore}
               <span className="m-1">
                 <FaStar />
@@ -80,36 +80,36 @@ const MainInfo = ({
       <CardContent>
         <div className="">
           <CardDescription className="text-lg text-gray-400  flex gap-3 ">
-            <GrMapLocation className="text-green-600" size={28} />
+            <GrMapLocation className="text-[#4ec154] font-bold" size={28} />
             <p className="text-primary">{address}</p>
           </CardDescription>
           <CardDescription className="text-xl mt-1 flex gap-3 ">
-            <FiBell className="text-green-600" size={28} />
+            <FiBell className="text-[#4ec154] font-bold" size={28} />
             <p className="text-primary">{description}</p>
           </CardDescription>
           <div className="flex gap-10 mt-3">
             <p className="text-lg text-[#329531] font-semibold">
               Open at: {openTime}
             </p>
-            <p className="text-lg text-[#ef3737] font-semibold">
+            <p className="text-lg text-[#f33b3b] font-semibold">
               Close at: {closeTime}
             </p>
           </div>
         </div>
       </CardContent>
       <CardFooter className="flex-wrap grid grid-cols-4 gap-3">
-        <Button variant="outline" className="bg-secondary">
+        <Button className="bg-secondary text-primary hover:bg-secondary hover:scale-105">
           <MdAssistantDirection size={"25px"} style={{ margin: 6 }} />
           Direction
         </Button>
-        <Button variant={"outline"} className="bg-secondary">
+        <Button className="bg-secondary text-primary hover:bg-black hover:scale-105">
           <CiBookmarkRemove size={"25px"} style={{ margin: 4 }} />
           Save
         </Button>
-        <Button variant={"outline"} className="bg-secondary">
+        <Button className="bg-secondary text-primary hover:bg-secondary hover:scale-105">
           <ShareButton />
         </Button>
-        <Button variant={"outline"} className="bg-secondary">
+        <Button className="bg-secondary text-primary hover:bg-secondary hover:scale-105">
           <ReviewModal />
         </Button>
       </CardFooter>

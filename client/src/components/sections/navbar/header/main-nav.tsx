@@ -9,31 +9,36 @@ export function MainNav({ className }: any) {
   const { loggedUser } = useContext(UserContext);
 
   return (
-    <nav className={cn("sm:flex items-center space-x-4  sm:text-center sm:space-x-3 md:space-x-4 lg:space-x-6 text-center sm:text-left", className)}>
+    <nav
+      className={cn(
+        "sm:flex items-center space-x-4  sm:space-x-3 md:space-x-4 lg:space-x-6 text-center sm:text-left",
+        className
+      )}
+    >
       <Link
         href="/"
-        className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab] xs:text-xs sm:text-sm md:text-md lg:text-lg"
+        className="text-base font-semibold text-muted-foreground transition-colors hover:scale-105  xs:text-xs sm:text-sm md:text-md lg:text-lg"
       >
         Home
       </Link>
       <Link
         href={`${loggedUser ? "/explore" : "/login"}`}
-        className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab] xs:text-xs sm:text-sm md:text-md lg:text-lg"
+        className="text-base font-semibold text-muted-foreground transition-colors hover:scale-105  xs:text-xs sm:text-sm md:text-md lg:text-lg"
       >
         Explore
       </Link>
       {/* <Link
         id="my-drawer-4"
         href={`${loggedUser ? "" : ""}`}
-        className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab] drawer-content"
+        className="text-base font-semibold text-muted-foreground transition-colors hover:scale-105  drawer-content"
       >
         Favorites
       </Link> */}
 
-      <div className="drawer-content">
+      <div className="drawer-content  ">
         <label
           htmlFor="my-drawer-4"
-          className="  text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab] xs:text-xs sm:text-sm md:text-md lg:text-lg"
+          className="  text-base font-semibold text-muted-foreground transition-colors xs:text-xs sm:text-sm md:text-md lg:text-lg"
         >
           Favorites
         </label>
@@ -42,7 +47,7 @@ export function MainNav({ className }: any) {
 
       <Link
         href={`${loggedUser ? "/admin/addrestaurant" : ""}`}
-        className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab] ml-2 xs:text-xs sm:text-sm md:text-md lg:text-lg"
+        className="text-base font-semibold text-muted-foreground transition-colors hover:scale-105  ml-2 xs:text-xs sm:text-sm md:text-md lg:text-lg"
       >
         Add Restaurant
       </Link>
@@ -51,13 +56,13 @@ export function MainNav({ className }: any) {
         <div className="space-x-4 lg:space-x-6">
           <Link
             href="/login"
-            className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab]"
+            className="text-base font-semibold text-muted-foreground transition-colors hover:scale-105 "
           >
             Log In
           </Link>
           <Link
             href="/signup"
-            className="text-base font-semibold text-muted-foreground transition-colors hover:text-[#303068] text-[#272fab]"
+            className="text-base font-semibold text-muted-foreground transition-colors hover:scale-105 "
           >
             Sign Up
           </Link>

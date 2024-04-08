@@ -12,16 +12,16 @@ const DetailTab = (props: { reviews?: any }, id: any) => {
 
   return (
     <Tabs defaultValue="reviews" className="w-full ">
-      <TabsList className="grid w-full grid-cols-3  shadow text-primary mt-3">
+      <TabsList className="grid w-full grid-cols-3 text-primary mt-3 bg-secondary">
         <TabsTrigger value="reviews">Reviews</TabsTrigger>
         <TabsTrigger value="photos">Photos</TabsTrigger>
         <TabsTrigger value="menu">Menu</TabsTrigger>
       </TabsList>
       <TabsContent value="reviews">
-        <Card>
+        <Card className="">
           <CardHeader>
             <CardTitle>Reviews</CardTitle>
-            <div className="flex gap-5 mt-5 flex-wrap">
+            <div className="flex gap-5 mt-5 flex-wrap ">
               {reviews?.map((revData: any, index: any) => (
                 <ReviewTab revData={revData} key={index} />
               ))}

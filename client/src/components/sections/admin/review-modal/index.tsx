@@ -46,8 +46,8 @@ export function ReviewModal({ revData }: IReviewModal) {
     <Dialog>
       <DialogTrigger asChild>
         {!revData ? (
-          <Button variant={"outline"} className="bg-secondary">
-            <FaStar color="#858484" size={"25px"} style={{ margin: 4 }} />
+          <Button className=" bg-secondary hover:bg-secondary text-primary">
+            <FaStar size={"25px"} style={{ margin: 4 }} />
             Add Review
           </Button>
         ) : (
@@ -76,20 +76,19 @@ export function ReviewModal({ revData }: IReviewModal) {
               name="simple-controlled"
               value={!revData ? score : editedScore}
               id="score"
+              className="text-secondary"
               onChange={(event, newValue: any) => {
                 !revData ? setScore(newValue) : setEditedScore(newValue);
-                // console.log("score", score);
-                // console.log("oldscore", oldScore);
               }}
             />
           </div>
-          <div className="grid grid-cols-4 items-start gap-4">
+          <div className="grid grid-cols-4 items-start gap-4 ">
             <Label htmlFor="username" className="text-right">
               Message
             </Label>
             <Textarea
               id="message"
-              className="w-64"
+              className="w-64 placeholder:text-primary"
               placeholder={
                 !revData ? "Type your comment here." : revData?.message
               }

@@ -54,21 +54,21 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
   };
 
   return (
-    <div className=" flex justify-center items-center ">
+    <div className=" flex justify-center items-center transform transition-all hover:scale-105 hover:cursor-pointer">
       {/* <CarouselItem className="pl-1 md:basis-1/2 lg:basis-1/3 "> */}
-      <Card className="w-80 hover">
+      <Card className="w-[350px] ">
         <img
           src={images?.at(1)}
-          className="h-52 w-full rounded-lg p-1 object-cover"
+          className="h-52 w-full rounded-2xl p-3 object-cover "
           onClick={() => {
             setOrgIdContext(_id);
             router.push(`http://localhost:3000/details/${_id}`);
           }}
         />
         <CardHeader>
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-2 items-center">
             <CardTitle
-              className="font-bold  text-xl"
+              className="font-bold  text-xl w-[200px]"
               onClick={() => {
                 setOrgIdContext(_id);
                 router.push(`http://localhost:3000/details/${_id}`);
@@ -76,8 +76,8 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
             >
               {name}
             </CardTitle>
-            <div className="text-sm flex justify-end">
-              <Badge className="bg-green-500 hover:bg-green-700 text-primary ">
+            <div className="text-sm flex justify-end h-[30px] items-center">
+              <Badge className="bg-green-500 hover:bg-green-700 text-white items-center justify-center py-2 ">
                 {4.5}
                 <FaStar className="text-xs" />
               </Badge>
@@ -86,7 +86,9 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
         </CardHeader>
         <CardContent>
           <div className="flex flex-cols-2 justify-between items-center gap-2">
-            <div className="text-sm  ">Location: {address}</div>
+            <div className="text-sm  font-medium text- ">
+              Location: {address}
+            </div>
             <div className="flex justify-end ml-6">
               <Checkbox
                 onClick={() => {
