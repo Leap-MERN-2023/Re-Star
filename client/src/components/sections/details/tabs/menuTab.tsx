@@ -26,19 +26,23 @@ export const MenuTab = () => {
     <div>
       {!orgMenus ? (
         <div className="p-10">
-          "This restaurant has not posted any of their menus"
+          This restaurant has not posted any of their menus
         </div>
       ) : (
-        categories.map((category) => (
+        categories.map((category, i) => (
           <Carousel
             plugins={[plugin.current]}
+            key={i}
             className="w-full p-3 rounded-lg shadow-xl  "
           >
             <CarouselContent className="-ml-1 ">
               {orgMenus
                 .filter((menu) => menu.category == category)
-                .map((menu) => (
-                  <CarouselItem className="pl-1  sm:basis-1 md:basis-1/2 lg:basis-1/3 ">
+                .map((menu, i) => (
+                  <CarouselItem
+                    className="pl-1  sm:basis-1 md:basis-1/2 lg:basis-1/3 "
+                    key={i}
+                  >
                     <div>
                       <div className="flex justify-center items-center">
                         <img

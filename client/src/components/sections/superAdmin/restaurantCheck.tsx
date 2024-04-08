@@ -51,8 +51,8 @@ const RestaurantCard = () => {
             .filter((stat) => {
               return stat.role === status;
             })
-            .map((e) => (
-              <Dialog>
+            .map((e, i) => (
+              <Dialog key={i}>
                 <DialogTrigger asChild>
                   <Button
                     variant="outline"
@@ -74,7 +74,7 @@ const RestaurantCard = () => {
                   <DialogHeader>
                     <DialogTitle>Restaurant Check</DialogTitle>
                     <DialogDescription>
-                      Check restaurant here. Click save when you're done.
+                      Check restaurant here. Click save when you are done.
                     </DialogDescription>
                   </DialogHeader>
                   <div className="grid gap-4 py-4 ">
@@ -101,8 +101,13 @@ const RestaurantCard = () => {
                     <div className="grid grid-cols-4  gap-4 justify-center items-center">
                       <Label htmlFor="username">Images:</Label>
                       <div className="w-[500px] flex gap-2 overflow-hidden overflow-x-auto">
-                        {e.images.map((img) => (
-                          <img src={img} alt="" className="h-[250px] " />
+                        {e.images.map((img, i) => (
+                          <img
+                            src={img}
+                            key={i}
+                            alt=""
+                            className="h-[250px] "
+                          />
                         ))}
                       </div>
                     </div>

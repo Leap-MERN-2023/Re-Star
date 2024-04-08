@@ -58,9 +58,9 @@ export interface IRestaurant {
   address: string;
   description: string;
   phoneNumber: string;
-  imgOne: File;
-  imgTwo: File;
-  imgThree: File;
+  imgOne: any;
+  imgTwo: any;
+  imgThree: any;
   lat: string;
   lng: string;
 }
