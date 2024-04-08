@@ -68,6 +68,23 @@ export const getOrg = async (req: IReq, res: Response, next: NextFunction) => {
   }
 };
 
+export const getApprovedOrg = async (
+  req: IReq,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const approvedOrgs = await Organization.find({ role: "approved" });
+
+    res.status(201).json({
+      message: "got successfully",
+      approvedOrgs,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getUserOrgById = async (
   req: IReq,
   res: Response,
@@ -85,6 +102,7 @@ export const getUserOrgById = async (
     haveOrg: true,
   });
 };
+
 export const deleteOrg = async (
   req: IReq,
   res: Response,
@@ -169,6 +187,7 @@ export const updateOrgPic = async (
     const { secure_url } = await cloudinary.uploader.upload(file.path);
 
     findOrg.images.push(secure_url);
+
     const org = await findOrg.save();
 
     res.status(200).json({

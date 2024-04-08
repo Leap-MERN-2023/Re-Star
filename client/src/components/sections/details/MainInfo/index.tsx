@@ -23,6 +23,7 @@ import { IInfo } from "@/interface";
 import { MenuModal } from "@/components/sections/admin/menu-modal";
 import { IoMdRestaurant, GrMapLocation, FiBell } from "@/components/icons";
 import { intersection } from "zod";
+import ShareButton from "../../shareButton";
 
 interface IProps extends IInfo {
   reviews?: any;
@@ -106,10 +107,11 @@ const MainInfo = ({
           Save
         </Button>
         <Button variant={"outline"} className="bg-secondary">
-          <FaShare size={"25px"} style={{ margin: 4 }} />
-          Share
+          <ShareButton />
         </Button>
-        <ReviewModal />
+        <Button variant={"outline"} className="bg-secondary">
+          <ReviewModal />
+        </Button>
       </CardFooter>
     </Card>
   );

@@ -37,8 +37,6 @@ export const LoginPage = () => {
   const router = useRouter();
 
   const onSubmit = ({ email, password }: z.infer<typeof LoginSchema>) => {
-    console.log(`email: ${email}, password:${password}`);
-
     login({ email, password });
   };
 
@@ -118,7 +116,7 @@ export const LoginPage = () => {
           </form>
         </Form>
         <div>
-          <Link href={""} className="p-0 m-0 hover:text-gray-600">
+          <Link href={"/resetPass"} className="p-0 m-0 hover:text-gray-600">
             Forgot password
           </Link>
         </div>

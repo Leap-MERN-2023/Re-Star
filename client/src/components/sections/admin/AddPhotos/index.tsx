@@ -17,10 +17,12 @@ import { toast } from "react-toastify";
 
 export function AddPhotos({ id }: { id: string }) {
   const [image, setImage] = useState<File>();
+  const [loading, setLoading] = useState(false);
 
   const { token } = useContext(UserContext);
 
   const uploadPic = async () => {
+    setLoading(true);
     try {
       const formdata = new FormData();
 
@@ -32,7 +34,8 @@ export function AddPhotos({ id }: { id: string }) {
           Authorization: `Bearer ${token}`,
         },
       });
-      toast.success("sucess");
+      toast.success("success");
+      setLoading(false);
     } catch (error: any) {
       toast.error("errr", error);
     }
@@ -58,6 +61,12 @@ export function AddPhotos({ id }: { id: string }) {
                   <IoMdCloudUpload className="lg:size-52" color="purple" />
                 </div>
                 No Chosen File
+              </div>
+            )}
+            {loading && (
+              <div className="h-fit flex flex-col justify-center items-center text-error">
+                <span className="loading loading-dots w-14 text-error"></span>
+                <span>Uploading</span>
               </div>
             )}
 

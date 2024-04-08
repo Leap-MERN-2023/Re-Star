@@ -57,7 +57,7 @@ const ReviewTab = ({ revData }: any) => {
           </div>
           <div className="my-3">{revData?.message}</div>
         </CardContent>
-        {loggedUser._id == revData.user ? (
+        {loggedUser?._id == revData?.user ? (
           <CardFooter className="flex justify-around">
             <ReviewModal revData={revData} orgId={orgById._id} />
             <Button
