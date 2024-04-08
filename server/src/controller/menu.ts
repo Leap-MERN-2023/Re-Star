@@ -14,21 +14,18 @@ export const addMenu = async (
     const newMenu = req.body;
 
     const { orgId, ...newFood } = newMenu;
-    console.log("Req Body :", req.body);
-    console.log("org", orgId);
 
     if (req.file) {
+      console.log("first");
       const { secure_url } = await cloudinary.uploader.upload(req.file.path);
       newFood.image = secure_url;
+      console.log("yup");
     }
 
     const findMenu = await Menu.findOne({ organization: orgId });
 
-    console.log("findmenu", findMenu);
-    console.log("findmenu", findMenu);
-    console.log("orgId", orgId);
     if (!findMenu) {
-      console.log("first");
+      console.log("create");
       await Menu.create({
         organization: newMenu.orgId,
         foods: {
@@ -43,7 +40,6 @@ export const addMenu = async (
         message: "Post category successfully",
       });
     } else {
-      console.log("second");
       const updateMenuIndex = findMenu.foods.findIndex(
         (e) => e.name === newMenu.name
       );
@@ -69,6 +65,7 @@ export const addMenu = async (
         });
       }
     }
+    console.log("done");
   } catch (error) {
     console.log("err", error);
     next(error);
@@ -80,7 +77,7 @@ export const deleteMenu = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { deleteId } = req.body;
+  const { deleteId, orgId } = req.body;
 
   const { user } = req;
 
@@ -90,12 +87,11 @@ export const deleteMenu = async (
     throw new MyError("You are not owner of this restaurant", 401);
   }
 
-  const findMenu = await Menu.findOne({ organization: findOrg._id });
+  const findMenu = await Menu.findOne({ organization: orgId });
 
   if (!findMenu) {
     throw new MyError("Restaurant does not exist", 401);
   }
-  console.log("findMenu", findMenu);
 
   const indexOfMenu = findMenu.foods.findIndex((e: any) => {
     return e._id == deleteId;
@@ -120,12 +116,13 @@ export const getMenuByOrgId = async (
   next: NextFunction
 ) => {
   const { orgId } = req.params;
+  console.log("orgId in menus", orgId);
 
-  const orgMenus = await Menu.find({ organization: orgId });
-  console.log("ALl", orgMenus);
+  const menus = await Menu.find({ organization: orgId });
+  console.log("ALl", menus);
 
   res.status(201).json({
     message: "Post category successfully",
-    orgMenus,
+    menus,
   });
 };

@@ -28,7 +28,7 @@ router.route("/delete/:id").delete(authenticate, deleteOrg);
 router.route("/:id").get(getOrgById);
 router.route("/").get(getOrg);
 router
-  .route(`/search/name/:name?/cate/:category?`)
+  .route(`/search/cate/:category?/name/:name?`)
   .get(searchOrgByNameAndCategory);
 router.route(`/cate/:category`).get(searchMapByCategory);
 

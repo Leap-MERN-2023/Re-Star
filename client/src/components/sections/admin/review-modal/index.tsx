@@ -21,7 +21,7 @@ import { BiEdit } from "react-icons/bi";
 
 interface IReviewModal {
   revData?: any;
-  orgId: string;
+  orgId?: string;
 }
 
 export function ReviewModal({ revData }: IReviewModal) {

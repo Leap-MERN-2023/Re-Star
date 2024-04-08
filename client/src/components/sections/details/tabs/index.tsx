@@ -7,7 +7,7 @@ import { MenuTab } from "./menuTab";
 import PhotosTab from "./photosTab";
 import ReviewTab from "./reviewTab";
 
-const DetailTab = (props: { reviews?: any }) => {
+const DetailTab = (props: { reviews?: any }, id: any) => {
   const { reviews } = props;
 
   return (

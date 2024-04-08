@@ -12,8 +12,15 @@ import {
 import { Button } from "@/components/ui/button";
 import { MdDeleteForever } from "@/components/icons";
 import { IMenu } from "@/interface";
+import { useContext } from "react";
+import { MenuContext } from "@/context/MenuProvider";
 
-export function DeleteOrg({ _id, name }: IMenu) {
+interface IProps extends IMenu {
+  orgId: string;
+}
+
+export function DeleteOrg({ _id, name, orgId }: IProps) {
+  const { DeleteMenuByOrgId } = useContext(MenuContext);
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -37,7 +44,9 @@ export function DeleteOrg({ _id, name }: IMenu) {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={() => {}}>Continue</AlertDialogAction>
+          <AlertDialogAction onClick={() => DeleteMenuByOrgId(orgId, _id)}>
+            Continue
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
