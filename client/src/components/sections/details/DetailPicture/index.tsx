@@ -1,4 +1,5 @@
 import * as React from "react";
+import AutoPlay from "embla-carousel-autoplay";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -8,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Autoplay } from "swiper/modules";
 
 export function DetailPicture(props: { images?: string[] }) {
   const pictures = [
@@ -16,9 +18,15 @@ export function DetailPicture(props: { images?: string[] }) {
   ];
 
   const { images = pictures } = props;
+  const plugin = React.useRef(
+    AutoPlay({ delay: 1500, stopOnInterraction: true })
+  );
 
   return (
-    <Carousel className="w-full p-3 rounded-lg shadow-xl ">
+    <Carousel
+      plugins={[plugin.current]}
+      className="w-full p-3 rounded-lg shadow-xl  "
+    >
       <CarouselContent className="-ml-1 ">
         {images.map((picture: any, index: number) => (
           <CarouselItem

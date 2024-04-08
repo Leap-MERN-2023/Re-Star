@@ -22,8 +22,8 @@ const ReviewTab = ({ revData }: any) => {
   console.log("loggedUser", loggedUser);
   const { deleteReview } = useContext(ReviewContext);
   return (
-    <div className="flex">
-      <Card className=" shadow md:w-96 bg-secondary">
+    <div className="flex ">
+      <Card className=" shadow md:w-96 bg-secondary ">
         <CardHeader>
           <CardTitle className=" flex  sm:flex-col lg:flex-row ">
             <div className="flex items-center gap-5 ">

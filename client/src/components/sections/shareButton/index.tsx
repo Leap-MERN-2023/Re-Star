@@ -35,11 +35,11 @@ const ShareButton = () => {
     <>
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button variant="outline" className="w-full bg-secondary">
+          <Button className="w-full bg-secondary hover:bg-secondary text-primary">
             <FaShare size={"25px"} style={{ margin: 4 }} /> Share
           </Button>
         </AlertDialogTrigger>
-        <AlertDialogContent className="flex justify-between bg-gray-200">
+        <AlertDialogContent className="flex justify-between bg-secondary p-10">
           <div className="flex gap-2">
             <FacebookShareButton
               url={websiteUrl}
@@ -48,7 +48,7 @@ const ShareButton = () => {
               }
               hashtag={"#nextshare"}
             >
-              <FacebookIcon size={32} round />
+              <FacebookIcon size={50} round />
             </FacebookShareButton>
             <TwitterShareButton
               url={websiteUrl}
@@ -56,20 +56,20 @@ const ShareButton = () => {
                 "next-share is a social share buttons for your next React apps."
               }
             >
-              <TwitterIcon size={32} round />
+              <TwitterIcon size={50} round />
             </TwitterShareButton>
             <EmailShareButton
               url={"https://github.com/next-share"}
               subject={"Next Share"}
               body="body"
             >
-              <EmailIcon size={32} round />
+              <EmailIcon size={50} round />
             </EmailShareButton>
             <FacebookMessengerShareButton
               url={"https://github.com/next-share"}
               appId={""}
             >
-              <FacebookMessengerIcon size={32} round />
+              <FacebookMessengerIcon size={50} round />
             </FacebookMessengerShareButton>
             <TelegramShareButton
               url={"https://github.com/next-share"}
@@ -77,7 +77,7 @@ const ShareButton = () => {
                 "next-share is a social share buttons for your next React apps."
               }
             >
-              <TelegramIcon size={32} round />
+              <TelegramIcon size={50} round />
             </TelegramShareButton>
             <RedditShareButton
               url={"https://github.com/next-share"}
@@ -85,11 +85,11 @@ const ShareButton = () => {
                 "next-share is a social share buttons for your next React apps."
               }
             >
-              <RedditIcon size={32} round />
+              <RedditIcon size={50} round />
             </RedditShareButton>
           </div>
-          <AlertDialogFooter className="flex justify-end">
-            <AlertDialogCancel>X</AlertDialogCancel>
+          <AlertDialogFooter className="flex justify-end text-xl text-primary">
+            <AlertDialogCancel>x</AlertDialogCancel>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
