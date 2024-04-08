@@ -18,26 +18,12 @@ interface ILocalUser {
 }
 
 const SuperPage = () => {
-  const [localUser, setLocalUser] = useState<ILocalUser>({
-    role: "",
-    createdAt: "",
-    email: "",
-    name: "",
-    otp: "",
-    _id: "",
-  });
-
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
-
-    setLocalUser(user);
-    const role = localUser?.role;
-
-    console.log("role in super", role, localUser.role);
-    if (role != "admin") {
+    if (user.role != "admin") {
       redirect("/");
     }
-  }, []);
+  }, [user]);
 
   return (
     <div className="bg-secondary">
