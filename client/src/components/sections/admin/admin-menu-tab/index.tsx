@@ -24,8 +24,8 @@ export const AdminMenuTab = ({ orgId }: { orgId: string }) => {
 
   return (
     <div>
-      {categories.map((category) => (
-        <div className="p-6">
+      {categories.map((category, i) => (
+        <div key={i} className="p-6">
           <div>
             <h1 className="font-bold text-[25px]">{category}</h1>
           </div>
@@ -34,8 +34,8 @@ export const AdminMenuTab = ({ orgId }: { orgId: string }) => {
               <CarouselContent className=" flex  p-5 justify-start ">
                 {menus
                   .filter((menu) => menu.category == category)
-                  .map((menu) => (
-                    <div>
+                  .map((menu, i) => (
+                    <div key={i}>
                       <div className="flex justify-center items-center gap-10">
                         <img
                           src="https://scontent.xx.fbcdn.net/v/t1.15752-9/431496684_425982866675811_4402109109499232244_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=0F7bIciPPQkAX_w1lcc&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdSlH3Z9JXLA-JVGNGMyYG-kL2numnrFBaCst_Aq3zN5gA&oe=661F5419"

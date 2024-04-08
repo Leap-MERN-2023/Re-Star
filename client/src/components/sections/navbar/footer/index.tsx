@@ -61,8 +61,8 @@ const Footer = () => {
           </Select>
         </div>
         <div className="md:flex w-[100%] py-10 flex-wrap justify-center">
-          {footerDatas.map((footerData: any) => (
-            <FooterSection footerData={footerData} />
+          {footerDatas.map((footerData: any, i) => (
+            <FooterSection footerData={footerData} key={i} />
           ))}
 
           <div className=" md:flex-1 min-w-40 flex flex-col  items-center">

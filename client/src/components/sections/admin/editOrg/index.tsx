@@ -129,8 +129,8 @@ export function EditOrgMenu({
               <SelectContent>
                 <SelectGroup>
                   <SelectLabel>Categories</SelectLabel>
-                  {categories.map((category) => (
-                    <SelectItem value={category._id}>
+                  {categories.map((category, i) => (
+                    <SelectItem key={i} value={category._id}>
                       {category.name}
                     </SelectItem>
                   ))}

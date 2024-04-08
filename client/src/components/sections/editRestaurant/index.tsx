@@ -87,7 +87,7 @@ export function EditOrganization({ id }: { id: string }) {
           <SheetHeader>
             <SheetTitle className="self-center text-2xl">Edit Page</SheetTitle>
             <SheetDescription>
-              Make changes to your business page here. Click save when you're
+              Make changes to your business page here. Click save when you are
               done.
             </SheetDescription>
           </SheetHeader>

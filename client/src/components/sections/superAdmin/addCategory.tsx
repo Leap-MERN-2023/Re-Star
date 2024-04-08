@@ -60,7 +60,7 @@ const AddCategory = () => {
         <DialogHeader>
           <DialogTitle>Add Category</DialogTitle>
           <DialogDescription>
-            Add category here. Click save when you're done.
+            Add category here. Click save when you are done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
