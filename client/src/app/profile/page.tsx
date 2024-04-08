@@ -1,4 +1,4 @@
-import { ProfileSettings } from "@/components/userProfile";
+import { ProfileSettings } from "@/components/userSettings";
 import React from "react";
 
 const Page = () => {
