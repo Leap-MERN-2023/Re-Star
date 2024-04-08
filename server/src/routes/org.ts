@@ -24,7 +24,7 @@ router
   .route("/picUpload")
   .put(authenticate, upload.single("image"), updateOrgPic);
 router.route("/delete/:id").delete(authenticate, deleteOrg);
-router.route("/approved").get(getApprovedOrg);
+router.route("/get/approved").get(getApprovedOrg);
 router.route("/:id").get(getOrgById);
 router.route("/").get(getOrg);
 

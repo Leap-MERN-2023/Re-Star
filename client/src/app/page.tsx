@@ -7,7 +7,6 @@ export default function Home() {
   return (
     <div className="bg-secondary w-screen overflow-x-hidden ">
       <Search />
-      {/* <CategoryCard /> */}
       <CollectionCard />
     </div>
   );

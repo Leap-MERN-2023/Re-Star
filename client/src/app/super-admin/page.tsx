@@ -2,23 +2,42 @@
 
 import { NextRequest, NextResponse } from "next/server";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SuperAdmin from "@/components/sections/superAdmin";
 
 import { redirect } from "next/navigation";
 import { useLayoutEffect } from "react";
 
+interface ILocalUser {
+  role: string;
+  createdAt: string;
+  email: string;
+  name: string;
+  otp: string;
+  _id: string;
+}
+
 const SuperPage = () => {
-  // useLayoutEffect(() => {
-  //   // const isAuth = isAuthenticated;
-  //   const user: any = localStorage.getItem("user");
+  const [localUser, setLocalUser] = useState<ILocalUser>({
+    role: "",
+    createdAt: "",
+    email: "",
+    name: "",
+    otp: "",
+    _id: "",
+  });
 
-  //   const { role } = user;
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
 
-  //   if (role != "admin") {
-  //     redirect("/");
-  //   }
-  // }, []);
+    setLocalUser(user);
+    const role = localUser?.role;
+
+    console.log("role in super", role, localUser.role);
+    if (role != "admin") {
+      redirect("/");
+    }
+  }, []);
 
   return (
     <div className="bg-secondary">

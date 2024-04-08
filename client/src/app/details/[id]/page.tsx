@@ -17,6 +17,7 @@ export default function OrgByIdPage({ params }: { params: { id: string } }) {
     getReviewById(params.id);
   }, []);
   setOrgIdContext(params.id);
+  console.log("params", params.id);
 
   useEffect(() => {
     if (params.id) {
