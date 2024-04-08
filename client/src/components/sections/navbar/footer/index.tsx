@@ -22,7 +22,7 @@ const Footer = () => {
     {
       id: 1,
       name: "About Re-Star",
-      links: ["About Us" , "Blog", "Work With Us", "Contact Us"],
+      links: ["About Us", "Blog", "Work With Us", "Contact Us"],
     },
 
     {
@@ -39,7 +39,7 @@ const Footer = () => {
     ,
   ];
   return (
-    <div className="bg-secondary w-[100%] :h-[600px] pt-10">
+    <div className=" w-[100%] h-[600px] pt-10 bg-secondary">
       <img
         src="https://scontent.xx.fbcdn.net/v/t1.15752-9/432668076_955629436231499_6015911619386023042_n.png?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=2ZaOIqkyiH0Ab5DTY7Y&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdUiNk19Fcq4MfMe4BTdVBREypFJMxXvFGdB3u1cgDUvMg&oe=6636FB2F"
         className="h-[100px] w-[100%]"
