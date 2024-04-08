@@ -8,6 +8,8 @@ const router = Router();
 router
   .route("/")
   .post(authenticate, upload.single("image"), addMenu)
-  .delete(deleteMenu);
+  .delete(authenticate, deleteMenu);
+
 router.route("/get/:orgId").get(getMenuByOrgId);
+
 export default router;

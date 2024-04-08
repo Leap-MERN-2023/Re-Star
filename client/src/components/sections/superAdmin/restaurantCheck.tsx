@@ -46,7 +46,7 @@ const RestaurantCard = () => {
     <div className="flex flex-wrap justify-around gap-10 mt-20">
       {statuses.map((status) => (
         <div className="w-full  overflow-clip ">
-          <div className="">{status}</div>
+          <div className="text-2xl font-bold text-primary">{status}</div>
           {org
             .filter((stat) => {
               return stat.role === status;

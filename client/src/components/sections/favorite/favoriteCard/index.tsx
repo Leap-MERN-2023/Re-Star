@@ -31,7 +31,7 @@ export function FavoriteCard({ favorite }: any) {
   const router = useRouter();
   const { deleteFavorite } = useContext(FavoritesContext);
   return (
-    <div className="flex flex-row justify-center items-center rounded-lg shadow border-gray-200  mt-5 hover:scale-105">
+    <Card className="flex flex-row justify-center items-center rounded-lg border-[2px] mt-5 hover:scale-105">
       <img
         src={favorite.images?.at(1)}
         className="h-[180px] w-[250px] border-white-200 rounded-lg p-2 object-cover"
@@ -51,7 +51,7 @@ export function FavoriteCard({ favorite }: any) {
       </CardHeader>
       <CardContent>
         <div className=" justify-center items-center ">
-          <Badge className="bg-green-500">
+          <Badge className="bg-green-500 text-primary">
             4.8
             <span className="m-1">
               <FaStar />
@@ -70,7 +70,7 @@ export function FavoriteCard({ favorite }: any) {
           </div>
         </div>
       </CardContent>
-    </div>
+    </Card>
   );
 }
 export default FavoriteCard;

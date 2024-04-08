@@ -22,39 +22,22 @@ import "swiper/css/scrollbar";
 
 export const CategoryRow = ({ categoryId }: { categoryId: string }) => {
   const router = useRouter();
-  const { org } = useContext(RestaurantContext);
+  const { approvedOrgs } = useContext(RestaurantContext);
 
   return (
-    <Swiper
-      modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-      slidesPerView={4}
-      autoplay={{
-        delay: 3000,
-        disableOnInteraction: false,
-      }}
-      navigation
-      pagination={{ clickable: true }}
-      // onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
-      className="w-screen  container mySwiper "
-      spaceBetween={20}
-    >
-      <div className="">
-        {!org && <Skeleton />}
-        {org
-          .filter((e) => {
-            return e.category === categoryId;
-          })
-          .map((org, i) => {
-            return (
-              <div key={i}>
-                <SwiperSlide className="">
-                  <RestaurantCard {...org} />
-                </SwiperSlide>
-              </div>
-            );
-          })}
-      </div>
-    </Swiper>
+    <div className="flex gap-10  ">
+      {!approvedOrgs && <Skeleton />}
+      {approvedOrgs
+        .filter((e) => {
+          return e.category === categoryId;
+        })
+        .map((org, i) => {
+          return (
+            <div key={i} className="">
+              <RestaurantCard {...org} />
+            </div>
+          );
+        })}
+    </div>
   );
 };

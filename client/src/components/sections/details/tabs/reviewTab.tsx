@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Card,
@@ -8,20 +8,24 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import {
-  FaStar,
-  FaClock,
-  BiSolidLike,
-  BiSolidDislike,
-} from "@/components/icons";
+import { FaStar, FaClock, BiEdit, FiDelete } from "@/components/icons";
 import { Button } from "@/components/ui/button";
+import { UserContext } from "@/context/UserProvider";
+import { ReviewContext } from "@/context/ReviewProvider";
+import { ReviewModal } from "../../admin/review-modal";
+import { RestaurantContext } from "@/context/RestaurantProvider";
 
 const ReviewTab = ({ revData }: any) => {
+  const { loggedUser } = useContext(UserContext);
+  const { orgById } = useContext(RestaurantContext);
+  console.log("orgById", orgById);
+  console.log("loggedUser", loggedUser);
+  const { deleteReview } = useContext(ReviewContext);
   return (
     <div className="flex">
-      <Card className=" shadow md:w-96">
+      <Card className=" shadow md:w-96 bg-secondary">
         <CardHeader>
-          <CardTitle className=" flex justify-between ">
+          <CardTitle className=" flex  sm:flex-col lg:flex-row ">
             <div className="flex items-center gap-5 ">
               <Avatar>
                 <AvatarImage
@@ -30,15 +34,15 @@ const ReviewTab = ({ revData }: any) => {
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
-              <div className="text-lg ">
+              <div className="text-sm">
                 <p>{revData?.user}</p>
                 <p className="text-base text-gray-500">Count of reviews</p>
               </div>
             </div>
-            <div className=" h-7 ">
-              <Badge className="m-2 ">
+            <div className="  ">
+              <Badge className="m-1  ">
                 {revData?.score}
-                <span className="">
+                <span className="flex ">
                   <FaStar />
                 </span>
               </Badge>
@@ -53,16 +57,23 @@ const ReviewTab = ({ revData }: any) => {
           </div>
           <div className="my-3">{revData?.message}</div>
         </CardContent>
-        <CardFooter className="flex justify-around">
-          <Button variant="outline" className="bg-[#858484] text-white">
-            <BiSolidLike className="h-5 w-5 mx-2" />
-            Helpful
-          </Button>
-          <Button variant="outline" className="bg-[#858484] text-white">
-            <BiSolidDislike className="h-5 w-5 mx-2" />
-            Unhelpful
-          </Button>
-        </CardFooter>
+        {loggedUser?._id == revData?.user ? (
+          <CardFooter className="flex justify-around">
+            <ReviewModal revData={revData} orgId={orgById._id} />
+            <Button
+              variant="outline"
+              className="bg-[#858484] text-white"
+              onClick={() => {
+                deleteReview(revData._id, orgById._id);
+              }}
+            >
+              <FiDelete className="h-5 w-5 mx-2" />
+              Delete Review
+            </Button>
+          </CardFooter>
+        ) : (
+          ""
+        )}
       </Card>
     </div>
   );

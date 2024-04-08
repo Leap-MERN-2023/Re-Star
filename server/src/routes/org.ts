@@ -8,6 +8,7 @@ import {
   getUserOrgById,
   updateOrgPic,
   changeStatus,
+  getApprovedOrg,
 } from "../controller/org";
 
 import { authenticate, authorize } from "../middleware/authenticate";
@@ -23,6 +24,7 @@ router
   .route("/picUpload")
   .put(authenticate, upload.single("image"), updateOrgPic);
 router.route("/delete/:id").delete(authenticate, deleteOrg);
+router.route("/approved").get(getApprovedOrg);
 router.route("/:id").get(getOrgById);
 router.route("/").get(getOrg);
 

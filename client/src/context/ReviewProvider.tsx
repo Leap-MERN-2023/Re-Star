@@ -26,29 +26,13 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
       message: "",
       user: "",
       organization: "",
+      _id: "",
     },
   ]);
 
   const [isOpen, setIsOpen] = useState(false);
   const { loggedUser } = useContext(UserContext);
-  const addReview = async (
-    score: number | null,
-    message: string,
-    orgId: string
-  ) => {
-    try {
-      await myAxios.post("/review", {
-        organization: orgId,
-        user: loggedUser,
-        score,
-        message,
-      });
-      setIsOpen(!isOpen);
-      toast("Shine review amjilltai uuslee");
-    } catch (error) {
-      toast.error("Error in AddReview COntext");
-    }
-  };
+
   const getReviewById = async (orgId: any) => {
     try {
       setReviewsLoading(true);
@@ -65,6 +49,55 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  const addReview = async (
+    score: number | null,
+    message: string,
+    orgId: string
+  ) => {
+    try {
+      await myAxios.post("/review", {
+        organization: orgId,
+        user: loggedUser,
+        score,
+        message,
+      });
+      setIsOpen(!isOpen);
+
+      toast("Shine review amjilltai uuslee");
+      getReviewById(orgId);
+    } catch (error) {
+      toast.error("Error in AddReview COntext");
+    }
+  };
+
+  const deleteReview = async (reviewId: string, orgId: string) => {
+    try {
+      await myAxios.delete("/review", { data: { reviewId } });
+      console.log("DeleteReview successful");
+      getReviewById(orgId);
+    } catch (error) {
+      console.log("Error in DeleteReview Context", error);
+    }
+  };
+
+  const editReview = async (
+    editedScore: number,
+    editedMessage: string,
+    reviewId: string,
+    orgId: string
+  ) => {
+    try {
+      await myAxios.put("/review", {
+        data: { editedScore, editedMessage, reviewId },
+      });
+
+      getReviewById(orgId);
+      toast("Review amjilltai uurchlugdluu");
+    } catch (error) {
+      console.log("Error in EditReview Context");
+    }
+  };
+
   return (
     <ReviewContext.Provider
       value={{
@@ -73,6 +106,8 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
         addReview,
         getReviewById,
         reviewsLoading,
+        deleteReview,
+        editReview,
       }}
     >
       {children}

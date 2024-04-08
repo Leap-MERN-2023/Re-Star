@@ -26,6 +26,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
   const [refetch, setRefetch] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
   const [org, setOrg] = useState<IOrg[]>([]);
+  const [approvedOrgs, setApprovedOrgs] = useState<IOrg[]>([]);
 
   const [userOrgs, setUserOrgs] = useState<IOrg[]>([]);
   const [orgById, setOrgById] = useState({});
@@ -131,10 +132,23 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  const getApprovedOrgs = async () => {
+    try {
+      const {
+        data: { approvedOrgs },
+      } = await myAxios.get("/org/approved");
+
+      setApprovedOrgs(approvedOrgs);
+    } catch (error: any) {
+      toast.error(`Алдаа : ${error?.response?.data?.message} `);
+      console.log("error", error);
+    }
+  };
+
   useEffect(() => {
     if (token) {
       getRestaurant();
-      console.log("token in RP", token);
+      getApprovedOrgs();
     }
   }, [refetch, token]);
 
@@ -237,6 +251,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
         setOrgIdContext,
         orgById,
         changeOrgStatus,
+        approvedOrgs,
       }}
     >
       {children}

@@ -30,7 +30,7 @@ export default function AddRestaurant() {
       <div className="">
         {activeStep === 0 && (
           <div className="mt-10 bg-secondary text-center text-3xl font-serif flex justify-center items-center flex-col gap-6">
-            <div className="flex justify-center items-end">
+            <div className="flex justify-center items-end bg-primary rounded-full p-10">
               <img
                 src="https://scontent.xx.fbcdn.net/v/t1.15752-9/432983801_791832539065929_2970134213591291201_n.png?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Ac1haJLawqYAX_CSvEa&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdVx1yr3qI3nvMlqAVzneYHRJWBFo-uaZAUqU6cZI9BUig&oe=663488AB"
                 className="h-[250px]"
@@ -61,7 +61,7 @@ export default function AddRestaurant() {
                 information
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex justify-center">
+            {/* <CardContent className="flex justify-center">
               <ul className="steps w-[60%]">
                 <li className="step step-primary">
                   Restaurant <br /> Information
@@ -69,7 +69,7 @@ export default function AddRestaurant() {
                 <li className="step ">Restaurant Location</li>
                 <li className="step ">Done</li>
               </ul>
-            </CardContent>
+            </CardContent> */}
 
             <div className="w-full">
               <StepOne />

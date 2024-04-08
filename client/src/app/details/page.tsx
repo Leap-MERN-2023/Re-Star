@@ -16,8 +16,6 @@ const DetailsPage = ({
   images,
   _id,
 }: IOrg) => {
-  // Print out the picture URLs with alt text
-
   return (
     <div className="bg-secondary ">
       <div className="mx:auto container ">

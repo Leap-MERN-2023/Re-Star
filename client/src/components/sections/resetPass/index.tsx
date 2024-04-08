@@ -18,9 +18,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
+import { useRouter } from "next/navigation";
+
 export const MyStepper = () => {
   const { activeStep, handleFirstStep, handleSecondStep, handleThirdStep } =
     useContext(PasswordContext);
+
+  const router = useRouter();
 
   const formik = useFormik({
     initialValues: {
@@ -40,6 +44,7 @@ export const MyStepper = () => {
       }
       {
         activeStep === 3 && handleThirdStep({ email, password, rePassword });
+        router.push("/login");
       }
     },
   });

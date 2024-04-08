@@ -37,8 +37,6 @@ import { AdminMenuView } from "./adminMenuView";
 export const AdminPage = () => {
   const { getUserRestaurantById, userOrgs, deleteRestaurantById } =
     useContext(RestaurantContext);
-  console.log("userOrgs", userOrgs[0]);
-  console.log("userOrgs", !userOrgs[0]);
 
   const { token } = useContext(UserContext);
 
@@ -113,11 +111,12 @@ export const AdminTab = () => {
       toast.error("aldaa", error.response.data.message);
     }
   };
+
   return (
-    <Tabs defaultValue={userOrgs[0]?.name} className="w-full">
+    <Tabs defaultValue={"admin"} className="w-full">
       <TabsList className="grid w-full grid-cols-2 bg-[#858484]">
-        {userOrgs.map((org) => (
-          <TabsTrigger value={"admin"} className="text-white">
+        {userOrgs.map((org, i) => (
+          <TabsTrigger value={"admin"} className="text-white" key={i}>
             Admin Page
           </TabsTrigger>
         ))}
@@ -131,7 +130,7 @@ export const AdminTab = () => {
           <CardHeader>
             <CardTitle className="text-center">Your Restaurant</CardTitle>
           </CardHeader>
-          <AdminPicView />
+          <AdminPicView images={org.images} />
           <AdminCoreView {...org} />
           <AdminMenuView {...org} />
         </TabsContent>

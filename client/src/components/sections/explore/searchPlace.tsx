@@ -12,11 +12,10 @@ const SearchPlace = () => {
           className=" w-full h-[60px] text-[20px] "
         />
       </div>
-      <div className="flex flex-col space-y-3 mt-10">
-        <div className="space-y-2 bg-secondary h-28 w-full rounded-lg flex shadow">
-          <div></div>
-          <div></div>
-        </div>
+
+      <div className="space-y-2  h-[100vh] w-full rounded-lg flex shadow mt-10">
+        <div></div>
+        <div></div>
       </div>
     </div>
   );

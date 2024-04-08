@@ -35,6 +35,7 @@ export interface IRestaurantContext {
   orgById: any;
   org: IOrg[];
   getUserRestaurantById: () => void;
+  approvedOrgs: IOrg[];
 }
 
 export interface IUpdateRestaurant {
@@ -90,7 +91,11 @@ export interface IInfo {
 
 export interface IMenuContext {
   getMenuByOrgId: (orgId: string) => Promise<void>;
+  DeleteMenuByOrgId: (orgId: string, deleteId: string) => Promise<void>;
+
   menus: IMenu[];
+  getMenus: (name: string) => void;
+  orgMenus: IMenu[] | null;
 }
 export interface IMenu {
   name: string;

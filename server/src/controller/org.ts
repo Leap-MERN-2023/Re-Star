@@ -68,6 +68,23 @@ export const getOrg = async (req: IReq, res: Response, next: NextFunction) => {
   }
 };
 
+export const getApprovedOrg = async (
+  req: IReq,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const approvedOrgs = await Organization.find({ role: "approved" });
+
+    res.status(201).json({
+      message: "got successfully",
+      approvedOrgs,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getUserOrgById = async (
   req: IReq,
   res: Response,
@@ -85,6 +102,7 @@ export const getUserOrgById = async (
     haveOrg: true,
   });
 };
+
 export const deleteOrg = async (
   req: IReq,
   res: Response,
@@ -169,6 +187,7 @@ export const updateOrgPic = async (
     const { secure_url } = await cloudinary.uploader.upload(file.path);
 
     findOrg.images.push(secure_url);
+
     const org = await findOrg.save();
 
     res.status(200).json({
@@ -206,6 +225,72 @@ export const changeStatus = async (
 
     res.status(200).json({
       message: `Organization status changed successfully.`,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const searchOrgByNameAndCategory = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { name, category } = req.params;
+    console.log("params", req.params);
+
+    const organizations = await Organization.find({
+      name: { $regex: new RegExp(name as string, "i") },
+      category: { $regex: new RegExp(category as string, "i") },
+    });
+
+    res.status(200).json({
+      message: `Organization found successfully.`,
+      organizations,
+    });
+    console.log("organizations", organizations);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};
+
+// export const searchMapByName = async (
+//   req: Request,
+//   res: Response,
+//   next: NextFunction
+// ) => {
+//   try {
+//     const { category, name } = req.params;
+//     console.log("req", req.params);
+
+//     const organizations = await Organization.find({
+//       name: { $regex: new RegExp(name, "i") },
+//       category: { $regex: new RegExp(category, "i") },
+//     });
+
+//     Organization.find({ name: { $in: "hand" } });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+export const searchMapByCategory = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { category } = req.params;
+    console.log("req", req.params);
+
+    const organizations = await Organization.find({
+      category: category,
+    });
+
+    res.status(200).json({
+      message: `Organization found successfully.`,
+      organizations,
     });
   } catch (error) {
     next(error);

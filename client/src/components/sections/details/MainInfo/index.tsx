@@ -23,9 +23,10 @@ import { IInfo } from "@/interface";
 import { MenuModal } from "@/components/sections/admin/menu-modal";
 import { IoMdRestaurant, GrMapLocation, FiBell } from "@/components/icons";
 import { intersection } from "zod";
+import ShareButton from "../../shareButton";
 
 interface IProps extends IInfo {
-  reviews: any;
+  reviews?: any;
 }
 
 const MainInfo = ({
@@ -37,10 +38,11 @@ const MainInfo = ({
   description,
   phoneNumber,
   reviews,
+  _id,
 }: IProps) => {
   console.log(reviews);
 
-  const scores = reviews.map((review: any) => review.score);
+  const scores = reviews?.map((review: any) => review.score);
   const calculateAverage = (scores: number[]) => {
     if (scores.length === 0) return 0;
     const total = scores.reduce((acc: number, curr: number) => acc + curr, 0);
@@ -52,12 +54,13 @@ const MainInfo = ({
   return (
     <Card className="mt-4">
       <CardHeader className="text-3xl block w-full ">
-        <CardTitle className=" flex justify-between items-center">
+        <CardTitle className=" flex  flex-col justify-between items-center md:flex-row gap-2">
           <div>
-            <h1 className="text-4xl font-bold ">{name}</h1>
+            <h1 className="text-3xl font-bold ">{name}</h1>
           </div>
-          <div className="flex flex-wrap text-lg text-gray-500">
-            <IoMdRestaurant size={30} color="green" /> : {category}
+          <div className="flex flex-wrap text-lg ">
+            <IoMdRestaurant size={30} className=" text-green-600" /> :{" "}
+            {category}
           </div>
 
           <div className="flex mr-11">
@@ -77,37 +80,38 @@ const MainInfo = ({
       <CardContent>
         <div className="">
           <CardDescription className="text-lg text-gray-400  flex gap-3 ">
-            <GrMapLocation color="green" size={28} />
+            <GrMapLocation className="text-green-600" size={28} />
             <p className="text-primary">{address}</p>
           </CardDescription>
           <CardDescription className="text-xl mt-1 flex gap-3 ">
-            <FiBell color="green" size={28} />
+            <FiBell className="text-green-600" size={28} />
             <p className="text-primary">{description}</p>
           </CardDescription>
           <div className="flex gap-10 mt-3">
-            <p className="text-lg text-[#329531] font-medium">
+            <p className="text-lg text-[#329531] font-semibold">
               Open at: {openTime}
             </p>
-            <p className="text-lg text-[#a03636] font-medium">
+            <p className="text-lg text-[#ef3737] font-semibold">
               Close at: {closeTime}
             </p>
           </div>
         </div>
       </CardContent>
       <CardFooter className="flex-wrap grid grid-cols-4 gap-3">
-        <Button variant="outline">
+        <Button variant="outline" className="bg-secondary">
           <MdAssistantDirection size={"25px"} style={{ margin: 6 }} />
           Direction
         </Button>
-        <Button variant={"outline"}>
+        <Button variant={"outline"} className="bg-secondary">
           <CiBookmarkRemove size={"25px"} style={{ margin: 4 }} />
           Save
         </Button>
-        <Button variant={"outline"}>
-          <FaShare size={"25px"} style={{ margin: 4 }} />
-          Share
+        <Button variant={"outline"} className="bg-secondary">
+          <ShareButton />
         </Button>
-        <ReviewModal />
+        <Button variant={"outline"} className="bg-secondary">
+          <ReviewModal />
+        </Button>
       </CardFooter>
     </Card>
   );

@@ -66,7 +66,7 @@ export function ProfileSettings() {
         <div className="grid  md:grid-rows-1 gap-6 w-[500px] mt-10 border-spacing-2 bg- border border-purple-300 p-8 rounded-xl">
           <div className="flex justify-center ">
             <div>
-              <Avatar className="md:w-52 md:h-52 self-center flex justify-center m-3 ">
+              <Avatar className="md:w-52 md:h-52 self-center flex justify-center mb-4">
                 <AvatarImage
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBeHdW37yqnZFBs4Rrg4F38OJJr0Jlh53Bpw&usqp=CAU"
                   className="md:w-52 md:h-52"

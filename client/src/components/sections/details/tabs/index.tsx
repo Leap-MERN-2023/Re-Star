@@ -7,7 +7,7 @@ import { MenuTab } from "./menuTab";
 import PhotosTab from "./photosTab";
 import ReviewTab from "./reviewTab";
 
-const DetailTab = (props: { reviews?: any }) => {
+const DetailTab = (props: { reviews?: any }, id: any) => {
   const { reviews } = props;
 
   return (
@@ -21,9 +21,11 @@ const DetailTab = (props: { reviews?: any }) => {
         <Card>
           <CardHeader>
             <CardTitle>Reviews</CardTitle>
-            {reviews?.map((revData: any, index: any) => (
-              <ReviewTab revData={revData} key={index} />
-            ))}
+            <div className="flex gap-5 mt-5 flex-wrap">
+              {reviews?.map((revData: any, index: any) => (
+                <ReviewTab revData={revData} key={index} />
+              ))}
+            </div>
           </CardHeader>
         </Card>
       </TabsContent>

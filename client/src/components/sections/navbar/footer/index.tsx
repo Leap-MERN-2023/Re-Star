@@ -39,14 +39,14 @@ const Footer = () => {
     ,
   ];
   return (
-    <div className="bg-secondary w-[100%] h-[600px] pt-10">
+    <div className="bg-secondary w-[100%] :h-[600px] pt-10">
       <img
         src="https://scontent.xx.fbcdn.net/v/t1.15752-9/432668076_955629436231499_6015911619386023042_n.png?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=2ZaOIqkyiH0Ab5DTY7Y&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdUiNk19Fcq4MfMe4BTdVBREypFJMxXvFGdB3u1cgDUvMg&oe=6636FB2F"
         className="h-[100px] w-[100%]"
       />
       <div className="container p-0">
         <div className="flex justify-between ">
-          <h1 className=" font-bold text-3xl">Re-Star</h1>
+          <h1 className="font-bold text-3xl">Re-Star</h1>
           <Select>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Select language" />
@@ -60,12 +60,12 @@ const Footer = () => {
             </SelectContent>
           </Select>
         </div>
-        <div className="flex w-[100%] py-10 flex-wrap justify-center">
+        <div className="md:flex w-[100%] py-10 flex-wrap justify-center">
           {footerDatas.map((footerData: any) => (
             <FooterSection footerData={footerData} />
           ))}
 
-          <div className=" flex-1 min-w-40 flex flex-col  items-center">
+          <div className=" md:flex-1 min-w-40 flex flex-col  items-center">
             <h1 className="my-5 font-semibold text-xl">Social Links</h1>
             <div className="flex gap-3">
               <FaFacebook />
