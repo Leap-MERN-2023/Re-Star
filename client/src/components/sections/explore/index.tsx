@@ -10,10 +10,10 @@ import { RestaurantContext } from "@/context/RestaurantProvider";
 const Explore = () => {
   const [mapOrgs, setMapOrgs] = useState<any>([]);
 
-  const { org } = useContext(RestaurantContext);
+  const { approvedOrgs } = useContext(RestaurantContext);
 
   const mappedOrgByName = (name: string) => {
-    const NameFilteredOrg = org.filter((res) =>
+    const NameFilteredOrg = approvedOrgs.filter((res) =>
       res.name.toLowerCase().includes(name!.toLowerCase())
     );
     console.log("NameFilteredOrg", NameFilteredOrg);
@@ -23,7 +23,9 @@ const Explore = () => {
   };
 
   const mappedOrgByCategory = (category: string) => {
-    const NameFilteredOrg = org.filter((res) => res.category === category);
+    const NameFilteredOrg = approvedOrgs.filter(
+      (res) => res.category === category
+    );
     console.log("NameFilteredOrg", NameFilteredOrg);
     setMapOrgs(NameFilteredOrg);
 

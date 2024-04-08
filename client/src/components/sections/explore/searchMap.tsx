@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
 import {
   APIProvider,
   Map,
@@ -55,6 +55,45 @@ const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
 
   console.log("ammped", mapOrgs);
 
+  // const calculateDistance = (lat1, lon1, lat2, lon2) => {
+  //   const earthRadius = 6371; // in kilometers
+
+  //   const degToRad = (deg) => {
+  //     return deg * (Math.PI / 180);
+  //   };
+
+  //   const dLat = degToRad(lat2 - lat1);
+  //   const dLon = degToRad(lon2 - lon1);
+
+  //   const a =
+  //     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+  //     Math.cos(degToRad(lat1)) *
+  //       Math.cos(degToRad(lat2)) *
+  //       Math.sin(dLon / 2) *
+  //       Math.sin(dLon / 2);
+
+  //   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  //   const distance = earthRadius * c;
+
+  //   setDistance(distance.toFixed(1));
+  //   return distance.toFixed(2); // Return the distance with 2 decimal places
+  // };
+
+  // const onDirectionClick = () => {
+  //   window.open(
+  //     "https://www.google.com/maps/dir/?api=1&origin=" +
+  //       userLocation.lat +
+  //       "," +
+  //       userLocation.lng +
+  //       "&destination=" +
+  //       business.geometry.location.lat +
+  //       "," +
+  //       business.geometry.location.lng +
+  //       "&travelmode=driving"
+  //   );
+  // };
+
   return (
     <div className="w-[1000px]">
       <div className="flex">
@@ -76,10 +115,10 @@ const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
               defaultCenter={position1}
               mapId="a0c7f1864bf16324"
             >
-              {locations?.map((org, i) => (
+              {mapOrgs?.map((org, i) => (
                 <React.Fragment key={i}>
                   <AdvancedMarker
-                    position={{ lat: org.lat, lng: org.lng }}
+                    position={{ lat: Number(org?.lat), lng: Number(org?.lng) }}
                     // position={{ lat: org.lat, lng: 106.901336 }}
                     title={org.name}
                   >
@@ -91,13 +130,17 @@ const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
                   </AdvancedMarker>
                   <InfoWindow
                     // position={{ lat: 47.925472, lng: 106.901336 }}
-                    position={{ lat: org.lat, lng: org.lng }}
+                    position={{ lat: Number(org?.lat), lng: Number(org?.lng) }}
                     maxWidth={200}
                     minWidth={100}
                   >
                     <div className="">
-                      <img src="" alt="" className="h-[80px] w-[100px]" />
-                      <p className="text-primary">{org.name}</p>
+                      <img
+                        src={org.images.at(0)}
+                        alt=""
+                        className="h-[80px] w-full object-cover"
+                      />
+                      <p className="text-primary text-bold">{org.name}</p>
                       <p className="text-primary">{org.location}</p>
                       <p className="text-primary">{org.description}</p>
                     </div>

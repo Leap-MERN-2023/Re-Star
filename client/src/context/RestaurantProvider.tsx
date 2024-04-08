@@ -136,7 +136,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
     try {
       const {
         data: { approvedOrgs },
-      } = await myAxios.get("/org/approved");
+      } = await myAxios.get("/org/get/approved");
 
       setApprovedOrgs(approvedOrgs);
     } catch (error: any) {
