@@ -22,12 +22,12 @@ import "swiper/css/scrollbar";
 
 export const CategoryRow = ({ categoryId }: { categoryId: string }) => {
   const router = useRouter();
-  const { org } = useContext(RestaurantContext);
+  const { approvedOrgs } = useContext(RestaurantContext);
 
   return (
     <div className="flex gap-10  ">
-      {!org && <Skeleton />}
-      {org
+      {!approvedOrgs && <Skeleton />}
+      {approvedOrgs
         .filter((e) => {
           return e.category === categoryId;
         })

@@ -23,7 +23,6 @@ const Explore = () => {
   };
 
   const mappedOrgByCategory = (category: string) => {
-    console.log("cate", category);
     const NameFilteredOrg = org.filter((res) => res.category === category);
     console.log("NameFilteredOrg", NameFilteredOrg);
     setMapOrgs(NameFilteredOrg);

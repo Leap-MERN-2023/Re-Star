@@ -57,14 +57,16 @@ const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
 
   return (
     <div className="w-[1000px]">
-      <div>
+      <div className="flex">
         <Input
           placeholder="Search for restaurant, cuisine or dish"
           className="w-full h-[60px] text-[20px]"
           value={searchName}
           onChange={(e) => setSearchName(e.target.value)}
         />
-        <Button onClick={handleMappedOrg}>Search</Button>
+        <Button onClick={handleMappedOrg} className="h-14">
+          Search
+        </Button>
       </div>
       <div className="mt-10 w-full">
         <APIProvider apiKey={"AIzaSyBT_7Q6oBgnkM-f_18dZBRvT1BeNA8TQkY"}>

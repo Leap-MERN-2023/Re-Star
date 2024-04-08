@@ -35,6 +35,7 @@ export interface IRestaurantContext {
   orgById: any;
   org: IOrg[];
   getUserRestaurantById: () => void;
+  approvedOrgs: IOrg[];
 }
 
 export interface IUpdateRestaurant {
