@@ -8,6 +8,7 @@ const CategoryList = ({ mappedOrgByCategory, allOrg }: any) => {
   const [selectedCategory, setSelectedCategory] = useState();
 
   return (
+<<<<<<< Updated upstream
     <div className="h-[100vh] p-5">
       <Card className="rounded  w-[480px]   md:w-[300px] sm:w-[120px] sm:h-[500]  3xs:w-[80] 3xs:h-[300]     shadow-lg text-secondary p-5  ">
         <h1 className="text-primary flex justify-center font-bold text-[30px]">
@@ -28,6 +29,10 @@ const CategoryList = ({ mappedOrgByCategory, allOrg }: any) => {
           ))}
         </div>
       </Card>
+=======
+    <div className="min-h-screen">
+      <div className="rounded w-[250px] h-[900px] shadow-lg"></div>
+>>>>>>> Stashed changes
     </div>
   );
 };

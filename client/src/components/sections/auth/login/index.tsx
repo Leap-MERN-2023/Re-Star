@@ -23,6 +23,7 @@ import {
 import { LoginSchema } from "@/schema";
 
 import Swal from "sweetalert2";
+import Image from "next/image";
 
 export const LoginPage = () => {
   const [loading, setLoading] = useState(false);
@@ -67,14 +68,27 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className="bg-secondary md:flex h-screen justify-center items-center md:gap-40">
-      <div>
-        <img
+    <div className=" bg-no-repeat md:flex  justify-center items-center md:gap-40 bg-secondary ">
+      {/* <div> */}
+      {/* <img
           src="https://scontent.xx.fbcdn.net/v/t1.15752-9/434153217_788234183216519_7255311917734673479_n.png?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=B9c5dwTAMb0Ab7KIWKk&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdUW2eNmHd6opBye3rdwZybNn4OEBfbemcJL4Qzikf5OBw&oe=6636DFAE"
           alt="pic"
-        />
-      </div>
-      <div className="md:w-[500px] p-10  md:p-14 rounded-2xl bg-[#fbfbfb] flex flex-col gap-5 sm:w-full ">
+        /> */}
+      <Image
+        alt="Mountains"
+        src="/images/mainback.png"
+        // placeholder="blur"
+        quality={100}
+        width={1000}
+        height={1000}
+        style={{
+          objectFit: "cover",
+          height: "900px",
+          width: "1900px",
+        }}
+      />
+      {/* </div> */}
+      <div className="md:w-[500px] md:p-14 rounded-2xl bg-[#fbfbfb] flex flex-col gap-5 sm:w-full absolute">
         <p className="text-3xl self-center  font-serif">LOG IN</p>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
