@@ -105,16 +105,12 @@ export function MenuModal({ id }: { id: string }) {
     // <form onSubmit={formik.handleSubmit}>
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant={"outline"} className="w-full">
-          <MdRestaurantMenu
-            color="#858484"
-            size={"25px"}
-            style={{ margin: 4 }}
-          />
+        <Button className="w-full bg-secondary text-primary   hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointers">
           Add Menu Item
+          <MdRestaurantMenu size={"25px"} style={{ margin: 4 }} />
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px]">
+      <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle>Add menu </DialogTitle>
           <DialogDescription>
@@ -129,13 +125,13 @@ export function MenuModal({ id }: { id: string }) {
             </Label>
             <Input
               id="name"
-              className="w-64"
+              className="w-full bg-secondary placeholder:text-primary"
               name="name"
               placeholder="Name of Item."
               onChange={formik.handleChange}
               value={formik.values.name}
             />
-            <Label htmlFor="description" className="text-right">
+            <Label htmlFor="description" className="text-primary">
               Description
             </Label>
             <Textarea
@@ -143,12 +139,14 @@ export function MenuModal({ id }: { id: string }) {
               name="description"
               onChange={formik.handleChange}
               value={formik.values.description}
+              placeholder="Write here..."
+              className="bg-secondary placeholder:text-primary"
             />
             <Select
               onValueChange={(e) => formik.setFieldValue("category", e)}
               value={formik.values.category}
             >
-              <SelectTrigger className="w-[250px]">
+              <SelectTrigger className=" bg-secondary">
                 <SelectValue placeholder="Select Category" />
               </SelectTrigger>
               <SelectContent>
@@ -161,40 +159,43 @@ export function MenuModal({ id }: { id: string }) {
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <Label htmlFor="price" className="text-right">
+            <Label htmlFor="price" className="text-primary">
               Price
             </Label>
             <Input
               id="price"
-              className="w-64"
-              placeholder="Price of Item."
+              className=" bg-secondary placeholder:text-primary"
+              placeholder="Price of item..."
               onChange={formik.handleChange}
               value={formik.values.price}
             />
             <div>
               <Label className="gap-4"> Image of Item </Label>
-              <div>
-                <div className="size-40 text-center flex flex-col justify-center">
-                  <div className="mx-[10%]">
-                    <IoMdCloudUpload className="lg:size-52" color="purple" />
-                  </div>
-                </div>
+              {/* <div> */}
+              {/* <div className=" text-center flex flex-col justify-center"> */}
+              <div className="flex justify-center w-full">
+                <Button className="bg-secondary text-primary hover:bg-black ">
+                  <input
+                    type="file"
+                    onChange={(event) => {
+                      const selectedFile =
+                        event.target.files && event.target.files[0];
+                      formik.setFieldValue("image", selectedFile);
+                    }}
+                  />
+                </Button>
               </div>
-              <Button variant={"outline"} className="bg-slate-500">
-                <input
-                  type="file"
-                  onChange={(event) => {
-                    const selectedFile =
-                      event.target.files && event.target.files[0];
-                    formik.setFieldValue("image", selectedFile);
-                  }}
-                />
-              </Button>
             </div>
+            {/* </div> */}
           </div>
         </div>
+        {/* </div> */}
         <DialogFooter>
-          <Button type="submit" onClick={() => formik.handleSubmit()}>
+          <Button
+            type="submit"
+            onClick={() => formik.handleSubmit()}
+            className="bg-secondary  hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointers text-primary"
+          >
             Add Item
           </Button>
         </DialogFooter>

@@ -8,27 +8,9 @@ import {
 } from "@/components/ui/carousel";
 
 export const AdminPicView = (images: any) => {
-  const pictures = [
-    {
-      img: "https://i.pinimg.com/736x/67/86/94/67869432930f288a4f31328f20793cc8.jpg",
-    },
-    {
-      img: "https://i.pinimg.com/736x/67/86/94/67869432930f288a4f31328f20793cc8.jpg",
-    },
-    {
-      img: "https://i.pinimg.com/736x/67/86/94/67869432930f288a4f31328f20793cc8.jpg",
-    },
-    {
-      img: "https://i.pinimg.com/736x/67/86/94/67869432930f288a4f31328f20793cc8.jpg",
-    },
-    {
-      img: "https://i.pinimg.com/736x/67/86/94/67869432930f288a4f31328f20793cc8.jpg",
-    },
-  ];
-
   return (
     <>
-      <Carousel className="w-full  bg-white rounded-lg shadow-xl ">
+      <Carousel className="w-full rounded-lg shadow-xl ">
         <CarouselContent className="-ml-1 ">
           {images.images.map((picture: any, index: number) => (
             <CarouselItem
@@ -40,7 +22,7 @@ export const AdminPicView = (images: any) => {
                   <img
                     src={picture}
                     alt=""
-                    className="h-full w-full rounded-lg"
+                    className="h-full w-full rounded-lg object-cover"
                   />
                 </Card>
               </div>

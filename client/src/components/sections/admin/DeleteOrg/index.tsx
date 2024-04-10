@@ -24,11 +24,7 @@ export function DeleteOrg({ _id, name, orgId }: IProps) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button
-          variant="outline"
-          size={"icon"}
-          className="flex justify-center items-center m-3"
-        >
+        <Button size={"icon"} className="flex justify-center items-center m-3 ">
           <MdDeleteForever color="red" className="w-10 h-10" />
         </Button>
       </AlertDialogTrigger>

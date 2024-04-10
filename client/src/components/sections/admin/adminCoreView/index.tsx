@@ -52,15 +52,15 @@ const AdminCoreView = ({
             <div>
               <h1 className=" font-bold text-5xl">{name}</h1>
             </div>
-            <div className="flex flex-wrap text-lg text-gray-500">
+            <div className="flex flex-wrap text-lg ">
               {" "}
-              <IoMdRestaurant size={30} color="green" /> : {category?.name}
+              <IoMdRestaurant size={30} /> : {category?.name}
             </div>
 
-            <div className="flex mr-11 ">
-              <Badge className="mr-2 bg-green-500">
+            <div className="flex  ">
+              <Badge className="mr-2 bg-green-500 text-white h-[30px]">
                 4.6
-                <span className="m-2">
+                <span className="">
                   <FaStar />
                 </span>
               </Badge>
@@ -73,17 +73,17 @@ const AdminCoreView = ({
         </CardHeader>
         <CardContent className="mt-0">
           <div className="">
-            <CardDescription className="text-lg text-gray-400  flex gap-3 font-serif">
-              <GrMapLocation color="green" size={28} /> {address}
+            <CardDescription className="text-lg text-gray-400  flex gap-3 text-primary">
+              <GrMapLocation size={28} className="text-[#3dbe3b] " /> {address}
             </CardDescription>
-            <CardDescription className="text-xl mt-1 flex gap-3 font-serif">
-              <FiBell color="green" size={28} /> {description}
+            <CardDescription className="text-xl mt-1 flex gap-3 text-primary">
+              <FiBell className="text-[#37c535] " size={28} /> {description}
             </CardDescription>
             <div className="flex gap-10 mt-3">
-              <p className="text-lg text-[#329531] font-medium">
+              <p className="text-lg text-[#37c535] font-medium">
                 Open at: {openTime}{" "}
               </p>
-              <p className="text-lg text-[#a03636] font-medium">
+              <p className="text-lg text-[#e03c3c] font-medium">
                 Close at: {closeTime}
               </p>
             </div>
@@ -92,9 +92,9 @@ const AdminCoreView = ({
         <CardFooter className="flex-wrap  gap-3  grid grid-cols-4">
           <AddPhotos id={_id} />
 
-          <Button variant={"outline"}>
-            <FaShare color="#858484" size={"25px"} style={{ margin: 4 }} />
+          <Button className="bg-secondary text-primary gap-2  hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointers">
             Share
+            <FaShare size={"25px"} style={{ margin: 4 }} />
           </Button>
           <MenuModal id={_id} />
           <EditOrganization id={_id} />

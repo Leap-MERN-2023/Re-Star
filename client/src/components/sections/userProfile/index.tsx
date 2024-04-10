@@ -1,5 +1,5 @@
 "use client";
-import {Button} from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import { BiEditAlt } from "@/components/icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useContext } from "react";
@@ -32,45 +32,60 @@ export const UserProfile = () => {
                 Edit Profile
               </Button>
               </Link>
-              </div>
-              <Avatar className="md:w-52 md:h-52 self-center flex justify-center ml-6">
-                <AvatarImage
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBeHdW37yqnZFBs4Rrg4F38OJJr0Jlh53Bpw&usqp=CAU"
-                  className="md:w-52 md:h-52"
-                  alt="@shadcn"
-                />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-              <div className="rounded-lg ">
-                <div> </div>
-              </div>
             </div>
-               <div className="flex flex-col grid-cols-3">
+            <Avatar className="md:w-52 md:h-52 self-center flex justify-center ml-6">
+              <AvatarImage
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBeHdW37yqnZFBs4Rrg4F38OJJr0Jlh53Bpw&usqp=CAU"
+                className="md:w-52 md:h-52"
+                alt="@shadcn"
+              />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <div className="rounded-lg ">
+              <div> </div>
+            </div>
+          </div>
+          <div className="flex flex-col grid-cols-3">
             <div className="flex flex-row justify-between p-6 px-8">
-              <div className="flex flex-row self-center font-bold">Reviews <CiStar className="flex self-center ml-1"/></div>
-              <div className="flex flex-row self-center font-bold">Favorites<CiHeart className="flex self-center ml-1"/></div>
-              <div className="flex flex-row self-center font-bold">Organizations<GoOrganization className="flex self-center ml-1"/></div>
+              <div className="flex flex-row self-center font-bold">
+                Reviews <CiStar className="flex self-center ml-1" />
+              </div>
+              <div className="flex flex-row self-center font-bold">
+                Favorites
+                <CiHeart className="flex self-center ml-1" />
+              </div>
+              <div className="flex flex-row self-center font-bold">
+                Organizations
+                <GoOrganization className="flex self-center ml-1" />
+              </div>
             </div>
             <div className="flex flex-row justify-between p-6 mx-2 pl-8 ">
               <div className="flex flex-row self-center">196</div>
-              <FaGripLinesVertical className="flex self-center ml-4"/>
+              <FaGripLinesVertical className="flex self-center ml-4" />
               <div className="flex flex-row self-center">210</div>
-            <FaGripLinesVertical className="flex self-center ml-4"/>
+              <FaGripLinesVertical className="flex self-center ml-4" />
               <div className="flex flex-row self-center mr-9">2</div>
             </div>
-            </div>
-            <div className="flex gap-4 justify-center">
-              <FaFacebook />
-              <FaInstagram />
-              <FaTwitter />
-              <FaYoutube />
-            </div>
-            <div className="m-10 font-extralight flex justify-center border rounded-sm border-slate-300 p-4">I am a reviewer with a passion for food Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</div>
+          </div>
+          <div className="flex gap-4 justify-center">
+            <FaFacebook />
+            <FaInstagram />
+            <FaTwitter />
+            <FaYoutube />
+          </div>
+          <div className="m-10 font-extralight flex justify-center border rounded-sm border-slate-300 p-4">
+            I am a reviewer with a passion for food Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum
           </div>
         </div>
         <img  className="h-1/4 w-1/4 mt-40 mb-30 ml-32" src="./images/foodpic.png"></img>
       </div>
-    
-
+    </div>
   );
-  };
+};

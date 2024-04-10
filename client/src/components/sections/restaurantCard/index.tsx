@@ -66,9 +66,9 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
           }}
         />
         <CardHeader>
-          <div className="grid grid-cols-2 items-center">
+          <div className="grid grid-cols-2 items-center ">
             <CardTitle
-              className="font-bold  text-xl w-[200px]"
+              className="font-bold  text-xl w-[200px] line-clamp-2 h-[50px] flex items-center"
               onClick={() => {
                 setOrgIdContext(_id);
                 router.push(`http://localhost:3000/details/${_id}`);
@@ -86,7 +86,7 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
         </CardHeader>
         <CardContent>
           <div className="flex flex-cols-2 justify-between items-center gap-2">
-            <div className="text-sm  font-medium text- ">
+            <div className="text-sm  font-medium line-clamp-2 ">
               Location: {address}
             </div>
             <div className="flex justify-end ml-6">

@@ -21,10 +21,10 @@ import * as yup from "yup";
 
 const RestaurantCard = () => {
   const { org, changeOrgStatus } = useContext(RestaurantContext);
-
+  console.log("ORG========>", org);
   const router = useRouter();
 
-  const statuses = ["PENDING", "APPROVED", "BANNED"];
+  const statuses = ["pending", "approved", "banned"];
 
   const formik = useFormik({
     initialValues: {
@@ -43,10 +43,12 @@ const RestaurantCard = () => {
   });
 
   return (
-    <div className="flex flex-wrap justify-around gap-10 mt-20">
+    <div className="flex flex-wrap justify-around gap-10 mt-[100px]">
       {statuses.map((status, i) => (
         <div className="w-full  overflow-clip " key={i}>
-          <div className="text-2xl font-bold text-primary">{status}</div>
+          <div className="text-2xl font-bold text-primary">
+            {status.toUpperCase()}
+          </div>
           {org
             .filter((stat) => {
               return stat.role === status;
@@ -116,7 +118,7 @@ const RestaurantCard = () => {
                     <Button
                       type="submit"
                       //   onClick={() => formik.handleSubmit()}
-                      className="w-full bg-[#61b23f]"
+                      className="w-full bg-[#61b23f] text-white"
                       onClick={() => changeOrgStatus(e?._id, "approved")}
                     >
                       Add Restaurant
@@ -124,7 +126,7 @@ const RestaurantCard = () => {
                     <Button
                       type="submit"
                       //   onClick={() => formik.handleSubmit()}
-                      className="w-full bg-[#a83c3c]"
+                      className="w-full bg-[#a83c3c] text-white"
                       onClick={() => changeOrgStatus(e?._id, "banned")}
                     >
                       Decline Restaurant

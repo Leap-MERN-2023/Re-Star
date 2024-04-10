@@ -75,12 +75,9 @@ export function EditOrganization({ id }: { id: string }) {
     <div>
       <Sheet>
         <SheetTrigger asChild>
-          <Button
-            className="w-full h-12 bg-gray-300 space-x-4"
-            variant="secondary"
-          >
-            <GrEdit size={23} color="gray" />
+          <Button className="w-full bg-secondary text-primary gap-2  hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointers">
             Edit Restaurant
+            <GrEdit size={22} />
           </Button>
         </SheetTrigger>
         <SheetContent className="w-[400px] sm:w-[540px]">
