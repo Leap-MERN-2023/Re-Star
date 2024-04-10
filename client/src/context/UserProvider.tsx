@@ -2,6 +2,7 @@
 
 import {
   PropsWithChildren,
+  SetStateAction,
   createContext,
   useContext,
   useEffect,
@@ -19,6 +20,7 @@ import {
   IChangeUserProfile,
 } from "../interface";
 import { toast } from "react-toastify";
+import { unknown } from "zod";
 
 export const UserContext = createContext<IUserContext>({
   token: "",
@@ -29,6 +31,7 @@ export const UserContext = createContext<IUserContext>({
 
 const UserProvider = ({ children }: PropsWithChildren) => {
   const [token, setToken] = useState<string | null>("");
+
   const [loggedUser, setLoggedUser] = useState<ILoggedUser>({
     name: "",
     email: "",
@@ -43,6 +46,10 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     localStorage.removeItem("user");
 
     setLoggedUser({ name: "", email: "", _id: "" });
+  };
+
+  const callSetRefresh = (boolean: boolean) => {
+    setRefresh(boolean);
   };
 
   const changeUserProfile = async ({ changedUser }: IChangeUserProfile) => {
@@ -65,7 +72,16 @@ const UserProvider = ({ children }: PropsWithChildren) => {
         showConfirmButton: false,
       });
 
-      setLoggedUser({ ...data.changedUser, password: "" });
+      localStorage.removeItem("user");
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          ...loggedUser,
+          name: changedUser.name,
+          email: changedUser.email,
+        })
+      );
+      callSetRefresh(!refresh);
     } catch (error) {
       console.log("Error in changeUserProfile in userprovider", error);
     }
@@ -76,7 +92,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     const pToken = localStorage.getItem("token");
     setLoggedUser(user);
     setToken(pToken);
-  }, []);
+  }, [refresh]);
 
   return (
     <UserContext.Provider

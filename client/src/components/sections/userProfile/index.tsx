@@ -16,8 +16,10 @@ import {
   FaTwitter,
   FaYoutube,
 } from "@/components/icons";
+import { UserContext } from "@/context/UserProvider";
 
 export const UserProfile = () => {
+  const { loggedUser } = useContext(UserContext);
   return (
       <div title="Profile" className="  flex justify-center  ">
         <div className="grid md:grid-rows-1 gap-6 w-[600px] mt-10 border-spacing-2 border border-slate-400 rounded-xl mt-32 mb-12">
