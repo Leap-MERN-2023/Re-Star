@@ -22,7 +22,7 @@ export const AdminPicView = (images: any) => {
                   <img
                     src={picture}
                     alt=""
-                    className="h-full w-full rounded-lg "
+                    className="h-full w-full rounded-lg object-cover"
                   />
                 </Card>
               </div>

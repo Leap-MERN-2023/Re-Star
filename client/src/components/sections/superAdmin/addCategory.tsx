@@ -54,7 +54,9 @@ const AddCategory = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Add Category Here</Button>
+        <Button className="mt-[120px] bg-primary text-secondary">
+          Add Category Here
+        </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
