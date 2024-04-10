@@ -22,7 +22,7 @@ export const UserProfile = () => {
   const { loggedUser } = useContext(UserContext);
   return (
     <div title="Profile Settings" className="  flex justify-center  ">
-      <div className="grid md:grid-rows-1 gap-6 w-[600px] mt-10 border-spacing-2 border border-slate-400 rounded-xl">
+      <div className="grid md:grid-rows-1 gap-6 w-[600px] mt-20 border-spacing-2 border border-slate-400 rounded-xl">
         <div className="flex justify-center flex-col ">
           <div className="flex flex-row bg-slate-300 w-full rounded-sm p-4">
             <div className="flex flex-col">
