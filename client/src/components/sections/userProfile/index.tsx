@@ -16,19 +16,18 @@ import {
   FaTwitter,
   FaYoutube,
 } from "@/components/icons";
+import { UserContext } from "@/context/UserProvider";
 
 export const UserProfile = () => {
+  const { loggedUser } = useContext(UserContext);
   return (
-    <div
-      title="Profile Settings"
-      className="  flex justify-center bg-secondary "
-    >
-      <div className="grid md:grid-rows-1 gap-6 w-[600px] border-spacing-2 border border-primary rounded-xl mt-[150px]">
-        <div className="flex justify-center flex-col  ">
-          <div className="flex flex-row bg-secondary w-full rounded-sm p-4">
-            <div className="flex flex-col ">
+    <div title="Profile Settings" className="  flex justify-center  ">
+      <div className="grid md:grid-rows-1 gap-6 w-[600px] mt-10 border-spacing-2 border border-slate-400 rounded-xl">
+        <div className="flex justify-center flex-col ">
+          <div className="flex flex-row bg-slate-300 w-full rounded-sm p-4">
+            <div className="flex flex-col">
               <div className="self-center flex justify-center p-4 font-bold text-2xl">
-                User Name
+                {loggedUser.name}
               </div>
               <div className="flex self-center">I am a reviewer :8</div>
               <Link className="flex self-center font-bold mt-4" href={""}>

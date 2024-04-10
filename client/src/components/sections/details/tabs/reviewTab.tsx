@@ -14,6 +14,7 @@ import { UserContext } from "@/context/UserProvider";
 import { ReviewContext } from "@/context/ReviewProvider";
 import { ReviewModal } from "../../admin/review-modal";
 import { RestaurantContext } from "@/context/RestaurantProvider";
+import moment from "moment";
 
 const ReviewTab = ({ revData }: any) => {
   const { loggedUser } = useContext(UserContext);
@@ -25,7 +26,7 @@ const ReviewTab = ({ revData }: any) => {
     <div className="flex ">
       <Card className=" shadow md:w-96 bg-secondary ">
         <CardHeader>
-          <CardTitle className=" flex  sm:flex-col lg:flex-row ">
+          <CardTitle className=" flex  sm:flex-col lg:flex-row justify-between ">
             <div className="flex items-center gap-5 ">
               <Avatar>
                 <AvatarImage
@@ -35,7 +36,7 @@ const ReviewTab = ({ revData }: any) => {
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
               <div className="text-sm">
-                <p>{revData?.user}</p>
+                <p>{revData?.user.name}</p>
                 <p className="text-base text-gray-500">Count of reviews</p>
               </div>
             </div>
@@ -53,7 +54,9 @@ const ReviewTab = ({ revData }: any) => {
           <div className="flex">
             <FaClock size={28} color="green" />
             <span className="mx-4">Dining :</span>
-            <span className="text-gray-500">{revData?.createdAt}</span>
+            <span className="text-gray-500">
+              {moment(revData?.createdAt).format("LL")}
+            </span>
           </div>
           <div className="my-3">{revData?.message}</div>
         </CardContent>
