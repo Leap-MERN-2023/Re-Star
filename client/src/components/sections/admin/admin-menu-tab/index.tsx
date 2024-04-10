@@ -30,7 +30,7 @@ export const AdminMenuTab = ({ orgId }: { orgId: string }) => {
             <h1 className="font-bold text-[25px]">{category}</h1>
           </div>
           <div className="flex gap-10 p-10 ">
-            <Carousel className="w-full  bg-secondary rounded-lg shadow-xl ">
+            <Carousel className="w-full  rounded-lg shadow-xl ">
               <CarouselContent className=" flex  p-5 justify-start ">
                 {menus
                   .filter((menu) => menu.category == category)

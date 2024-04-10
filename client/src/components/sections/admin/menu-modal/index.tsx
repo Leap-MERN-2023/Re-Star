@@ -105,13 +105,9 @@ export function MenuModal({ id }: { id: string }) {
     // <form onSubmit={formik.handleSubmit}>
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant={"outline"} className="w-full">
-          <MdRestaurantMenu
-            color="#858484"
-            size={"25px"}
-            style={{ margin: 4 }}
-          />
+        <Button className="w-full bg-secondary text-primary   hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointers">
           Add Menu Item
+          <MdRestaurantMenu size={"25px"} style={{ margin: 4 }} />
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[600px]">

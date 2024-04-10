@@ -44,28 +44,29 @@ export function AddPhotos({ id }: { id: string }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">
+        <Button className="bg-secondary gap-2 text-primary hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointer">
           {" "}
-          <MdOutlineInsertPhoto size={26} color="gray" /> Add Photos
+          Add Photos
+          <MdOutlineInsertPhoto size={26} />
         </Button>
       </DialogTrigger>
       <DialogContent className="w-fit">
         <DialogHeader>
           <DialogTitle>Add Photo</DialogTitle>
         </DialogHeader>
-        <div className="grid w-full p-10">
+        <div className="grid w-full ">
           <Card>
             {!image && (
-              <div className="size-60 text-center flex flex-col justify-center">
-                <div className="mx-[10%]">
-                  <IoMdCloudUpload className="lg:size-52" color="purple" />
+              <div className="flex flex-col justify-center">
+                <div className=" flex justify-center items-center gap-10">
+                  No Chosen File
+                  <IoMdCloudUpload className="size-10" />
                 </div>
-                No Chosen File
               </div>
             )}
             {loading && (
-              <div className="h-fit flex flex-col justify-center items-center text-error">
-                <span className="loading loading-dots w-14 text-error"></span>
+              <div className="h-fit flex flex-col justify-center items-center ">
+                <span className="loading loading-dots "></span>
                 <span>Uploading</span>
               </div>
             )}
@@ -79,7 +80,7 @@ export function AddPhotos({ id }: { id: string }) {
             )}
           </Card>
 
-          <Button>
+          <Button className="mt-5">
             <input
               type="file"
               name="image"
