@@ -55,7 +55,7 @@ export const AdminPage = () => {
   return (
     <div className="container mx-auto  ">
       <div className="flex">
-        <h1 className="text-3xl p-3 text-bold text-center flex-1">
+        <h1 className="text-3xl p-3 text-bold text-center flex-1 mt-[100px]">
           Admin Page
         </h1>
       </div>
@@ -114,7 +114,7 @@ export const AdminTab = () => {
 
   return (
     <Tabs defaultValue={"admin"} className="w-full">
-      <TabsList className="grid w-full grid-cols-2 bg-[#858484]">
+      <TabsList className="grid w-full grid-cols-2 bg-secondary shadow ">
         {userOrgs.map((org, i) => (
           <TabsTrigger value={"admin"} className="text-white" key={i}>
             Admin Page
@@ -157,7 +157,9 @@ export const AdminTab = () => {
                 <CardFooter className="w-full">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Button variant="outline">Delete Organization</Button>
+                      <Button className="bg-secondary text-primary">
+                        Delete Organization
+                      </Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
                       <DialogHeader>

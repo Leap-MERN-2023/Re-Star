@@ -24,6 +24,8 @@ import { MenuModal } from "@/components/sections/admin/menu-modal";
 import { IoMdRestaurant, GrMapLocation, FiBell } from "@/components/icons";
 import { intersection } from "zod";
 import ShareButton from "../../shareButton";
+import { Router } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface IProps extends IInfo {
   reviews?: any;
@@ -50,6 +52,8 @@ const MainInfo = ({
   };
 
   const averageScore = calculateAverage(scores);
+
+  const router = useRouter();
 
   return (
     <Card className="mt-4">
@@ -99,7 +103,11 @@ const MainInfo = ({
       </CardContent>
       <CardFooter className="flex-wrap grid grid-cols-4 gap-3">
         <Button className="bg-secondary text-primary hover:bg-secondary hover:scale-105">
-          <MdAssistantDirection size={"25px"} style={{ margin: 6 }} />
+          <MdAssistantDirection
+            size={"25px"}
+            style={{ margin: 6 }}
+            onClick={() => router.push("/explore")}
+          />
           Direction
         </Button>
         <Button className="bg-secondary text-primary hover:bg-black hover:scale-105">

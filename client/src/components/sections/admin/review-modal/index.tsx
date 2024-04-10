@@ -51,7 +51,10 @@ export function ReviewModal({ revData }: IReviewModal) {
             Add Review
           </Button>
         ) : (
-          <Button variant="outline" className="bg-[#858484] text-white">
+          <Button
+            variant="outline"
+            className=" bg-secondary hover:bg-secondary text-primary"
+          >
             <BiEdit className="h-5 w-5 mx-2" />
             Edit Review
           </Button>
@@ -88,7 +91,7 @@ export function ReviewModal({ revData }: IReviewModal) {
             </Label>
             <Textarea
               id="message"
-              className="w-64 placeholder:text-primary"
+              className="w-64 placeholder:text-primary bg-secondary"
               placeholder={
                 !revData ? "Type your comment here." : revData?.message
               }
@@ -106,6 +109,7 @@ export function ReviewModal({ revData }: IReviewModal) {
                   ? addReview(score, message, orgById._id)
                   : editReview(editedScore, message, revData._id, orgById._id)
               }
+              className="bg-secondary text-primary"
             >
               Add review
             </Button>
