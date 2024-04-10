@@ -14,7 +14,7 @@ const PhotosTab = (props: { images?: string[] }) => {
         <CardTitle>Photos</CardTitle>
       </CardHeader>
       <CardContent className=" rounded-md flex gap-1 flex-wrap">
-        {images.map((picture: any, index: number) => (
+        {/* {images.map((picture: any, index: number) => (
           <img
             src={picture}
             alt="pic"
@@ -23,7 +23,7 @@ const PhotosTab = (props: { images?: string[] }) => {
             style={{ borderRadius: "20px", padding: "10px" }}
             className="hover:"
           />
-        ))}
+        ))} */}
       </CardContent>
     </div>
   );
