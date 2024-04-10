@@ -18,7 +18,7 @@ const DetailsPage = ({
 }: IOrg) => {
   return (
     <div className="bg-secondary ">
-      <div className="mx:auto container ">
+      <div className="mx:auto container  ">
         <DetailPicture images={images} />
       </div>
       <div className="mx:auto container">

@@ -86,12 +86,15 @@ export const SignupPage = () => {
     <div className="bg-secondary md:flex justify-center  items-center h-screen gap-40 p-3">
       <div>
         <img
-          src="https://scontent.xx.fbcdn.net/v/t1.15752-9/434153217_788234183216519_7255311917734673479_n.png?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=B9c5dwTAMb0Ab7KIWKk&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdUW2eNmHd6opBye3rdwZybNn4OEBfbemcJL4Qzikf5OBw&oe=6636DFAE"
+          src="https://scontent.xx.fbcdn.net/v/t1.15752-9/434269528_1078973929854025_8067944200692202315_n.png?stp=dst-png_s403x403&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Gbbj_JDKuaoAb5DryQ7&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdVzqZOWpwDeLxuuoxoYCzLGPJjetJJNnFxbe7L2ju2FvA&oe=663C8694"
           alt="pic"
+          className="h-[600px]"
         />
       </div>
       <div className="md:w-[500px] sm:w-full sm:mt-5 p-10 bg-[#fffefe] md:p-14 rounded-2xl flex flex-col md:gap-5 ">
-        <div className="text-3xl self-center  font-serif">SIGN UP</div>
+        <div className="text-3xl self-center  font-serif text-black">
+          SIGN UP
+        </div>
 
         <Form {...form}>
           <form
@@ -104,12 +107,13 @@ export const SignupPage = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel className="text-black">Email</FormLabel>
                     <FormControl>
                       <Input
                         {...field}
                         type="email"
                         placeholder="johndoe@gmail.com"
+                        className="placeholder:text-white"
                       />
                     </FormControl>
                     <FormMessage />
@@ -121,9 +125,13 @@ export const SignupPage = () => {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Name</FormLabel>
+                    <FormLabel className="text-black">Name</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="John Doe" />
+                      <Input
+                        {...field}
+                        placeholder="Your name..."
+                        className="placeholder:text-white"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -134,9 +142,14 @@ export const SignupPage = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel className="text-black">Password</FormLabel>
                     <FormControl>
-                      <Input {...field} type="password" placeholder="******" />
+                      <Input
+                        {...field}
+                        type="password"
+                        placeholder="******"
+                        className="placeholder:text-white"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -147,26 +160,36 @@ export const SignupPage = () => {
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Confirm Password</FormLabel>
+                    <FormLabel className="text-black">
+                      Confirm Password
+                    </FormLabel>
                     <FormControl>
-                      <Input {...field} type="password" placeholder="******" />
+                      <Input
+                        {...field}
+                        type="password"
+                        placeholder="******"
+                        className="placeholder:text-white"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
-            <Button type="submit" className="w-full">
+            <Button
+              type="submit"
+              className="w-full bg-black text-white hover:bg-slate-800"
+            >
               {loading ? "Loading..." : "Register"}
             </Button>
           </form>
         </Form>
-        <p className="self-center">or</p>
+        <p className="self-center font-semibold text-black">or</p>
         <div className="flex justify-around">
-          <Button variant={"outline"} color="red">
+          <Button variant={"outline"} size={"icon"} className="text-[30px]">
             <MdEmail />
           </Button>
-          <Button variant={"outline"} color="blue">
+          <Button variant={"outline"} size={"icon"} className="text-[30px]">
             <FaFacebook />
           </Button>
         </div>

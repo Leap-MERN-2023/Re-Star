@@ -68,80 +68,82 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className=" bg-no-repeat md:flex  justify-center items-center md:gap-40 bg-secondary ">
-      {/* <div> */}
-      {/* <img
-          src="https://scontent.xx.fbcdn.net/v/t1.15752-9/434153217_788234183216519_7255311917734673479_n.png?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=B9c5dwTAMb0Ab7KIWKk&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdUW2eNmHd6opBye3rdwZybNn4OEBfbemcJL4Qzikf5OBw&oe=6636DFAE"
-          alt="pic"
-        /> */}
-      <Image
-        alt="Mountains"
-        src="/images/mainback.png"
-        // placeholder="blur"
-        quality={100}
-        width={1000}
-        height={1000}
-        style={{
-          objectFit: "cover",
-          height: "900px",
-          width: "1900px",
-        }}
-      />
-      {/* </div> */}
-      <div className="md:w-[500px] md:p-14 rounded-2xl bg-[#fbfbfb] flex flex-col gap-5 sm:w-full absolute">
-        <p className="text-3xl self-center  font-serif">LOG IN</p>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <div className="space-y-4">
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        type="email"
-                        placeholder="johndoe@gmail.com"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input {...field} type="password" placeholder="******" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            <Button type="submit" className="w-full">
-              {loading ? "Loading..." : "Log in"}
-            </Button>
-          </form>
-        </Form>
+    <div className="  md:flex  justify-center items-center md:gap-40 bg-secondary ">
+      <div className="mt-[100px] flex gap-20 p-20">
         <div>
-          <Link href={"/resetPass"} className="p-0 m-0 hover:text-gray-600">
-            Forgot password
-          </Link>
+          <img
+            src="https://scontent.xx.fbcdn.net/v/t1.15752-9/434353573_2647516172097761_4183035951152431244_n.png?stp=dst-png_p403x403&_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=bKmqRqGrJo4Ab73VYow&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdVDgEEwIhzqGMeU5LXt1YLL8jzYoLSv5kxPF4-5-THi8g&oe=663C7D73"
+            alt="pic"
+            className="h-[600px]"
+          />
         </div>
-        <p className="self-center">or</p>
-        <div className="flex justify-around">
-          <Button variant={"outline"} size={"icon"}>
-            <MdEmail />
-          </Button>
-          <Button variant={"outline"} size={"icon"}>
-            <FaFacebook />
-          </Button>
+        <div className="md:w-[500px] md:p-14 rounded-2xl bg-[#fbfbfb] flex flex-col gap-5 sm:w-full ">
+          <p className="text-3xl self-center text-black font-serif">LOG IN</p>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-black">Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          type="email"
+                          className="placeholder:text-primary"
+                          placeholder="johndoe@gmail.com"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-black">Password</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          type="password"
+                          placeholder="******"
+                          className="placeholder:text-primary"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <Button
+                type="submit"
+                className="w-full  bg-black text-white hover:bg-slate-600"
+              >
+                {loading ? "Loading..." : "Log in"}
+              </Button>
+            </form>
+          </Form>
+          <div>
+            <Link
+              href={"/resetPass"}
+              className="p-0 m-0 hover:text-gray-600 text-black justify-end flex"
+            >
+              Forgot password
+            </Link>
+          </div>
+          <p className="self-center text-secondary font-semibold">or</p>
+          <div className="flex justify-around">
+            <Button variant={"outline"} size={"icon"} className="text-[30px]">
+              <MdEmail />
+            </Button>
+            <Button variant={"outline"} size={"icon"} className="text-[30px]">
+              <FaFacebook />
+            </Button>
+          </div>
         </div>
       </div>
     </div>

@@ -39,7 +39,7 @@ const Footer = () => {
     ,
   ];
   return (
-    <div className=" w-[100%] h-[600px] pt-10 bg-secondary shadow-sm">
+    <div className=" w-[100%] h-[600px] pt-10 bg-secondary shadow-inner">
       <div className="container p-0">
         <div className="flex justify-between ">
           <h1 className="font-bold text-3xl">Re-Star</h1>

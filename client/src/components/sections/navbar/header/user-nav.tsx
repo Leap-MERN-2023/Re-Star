@@ -24,11 +24,11 @@ export function UserNav() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="relative h-8 w-8 rounded-full p-4 hover:scale-105"
+          className="relative h-10 w-10 rounded-md border-2 hover:bg-secondary border-primary p-4 bg-secondary hover:scale-105"
         >
           <Avatar className="h-8 w-8 border-primary">
             <AvatarImage src="/avatars/01.png" alt="@shadcn" />
-            <AvatarFallback className="bg-secondary border-2 border-primary">
+            <AvatarFallback className="bg-secondary hover:bg-secondary">
               SC
             </AvatarFallback>
           </Avatar>

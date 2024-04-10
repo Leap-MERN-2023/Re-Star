@@ -14,7 +14,7 @@ const FavoriteDrawer = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <div className="menu p-4 min-h-full bg-secondary text-base-content ">
+        <div className="menu p-4 min-h-full bg-secondary text-base-content  w-[600px] ">
           <h1 className="text-2xl text-primary font-medium flex justify-center mt-5">
             Your favorites
           </h1>

@@ -33,8 +33,13 @@ const Explore = () => {
 
   return (
     <div className="flex items-center gap-10">
-      <CategoryList mappedOrgByCategory={mappedOrgByCategory} allOrg={allOrg} />
-      <SearchMap mappedOrgByName={mappedOrgByName} mapOrgs={mapOrgs} />
+      <div className="flex mt-[100px]">
+        <CategoryList
+          mappedOrgByCategory={mappedOrgByCategory}
+          allOrg={allOrg}
+        />
+        <SearchMap mappedOrgByName={mappedOrgByName} mapOrgs={mapOrgs} />
+      </div>
     </div>
   );
 };
