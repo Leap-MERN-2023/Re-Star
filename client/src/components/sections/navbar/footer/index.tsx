@@ -75,8 +75,8 @@ const Footer = () => {
           <p>
             By continuing past this page, you agree to our Terms of Service,
             Cookie Policy, Privacy Policy and Content Policies. All trademarks
-            are properties of their respective owners. 2008-2024 © Zomato™ Ltd.
-            All rights reserved.
+            are properties of their respective owners. Since 2024 © Re-Star™
+            Ltd. All rights reserved.
           </p>
         </div>
       </div>
