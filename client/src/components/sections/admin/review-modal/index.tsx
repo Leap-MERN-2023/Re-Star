@@ -39,7 +39,6 @@ export function ReviewModal({ revData }: IReviewModal) {
     }
   }, [score]);
 
-  console.log("message", message);
   const { orgById } = useContext(RestaurantContext);
 
   return (

@@ -34,10 +34,12 @@ import {
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { UserContext } from "@/context/UserProvider";
+import { MenuContext } from "@/context/MenuProvider";
 
 // import { MenuContext } from "@/context/MenuProvider";
 
 export function MenuModal({ id }: { id: string }) {
+  const { getMenuByOrgId } = useContext(MenuContext);
   const { token } = useContext(UserContext);
   const formik = useFormik({
     initialValues: {
@@ -48,20 +50,6 @@ export function MenuModal({ id }: { id: string }) {
       image: "",
     },
     onSubmit: ({ name, category, description, price, image }) => {
-      console.log(
-        "name",
-        name,
-        "category",
-        category,
-        "desc,",
-        description,
-        "price",
-        price,
-        "img",
-        image,
-        "orgId",
-        id
-      );
       addMenuItem({ name, category, description, price, image });
     },
   });
@@ -74,7 +62,6 @@ export function MenuModal({ id }: { id: string }) {
     image,
   }: any) => {
     try {
-      console.log("star");
       const dataForm = new FormData();
       dataForm.set("name", name);
       dataForm.set("category", category);
@@ -88,21 +75,14 @@ export function MenuModal({ id }: { id: string }) {
           Authorization: `Bearer ${token}`,
         },
       });
+      getMenuByOrgId(id);
 
-      // useEffect(() => {
-      //     if (value=== null) {
-      //       setIsDisabled(true);
-      //     } else {
-      //       setIsDisabled(false);
-      //     }
-      //   }, [value]);
       toast.success("Shine review amjilltai uuslee");
     } catch (error) {
       toast.error("Алдаа");
     }
   };
   return (
-    // <form onSubmit={formik.handleSubmit}>
     <Dialog>
       <DialogTrigger asChild>
         <Button className="w-full bg-secondary text-primary   hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointers">
@@ -201,6 +181,5 @@ export function MenuModal({ id }: { id: string }) {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-    // </form>
   );
 }
