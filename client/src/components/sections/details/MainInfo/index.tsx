@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -26,6 +26,7 @@ import { intersection } from "zod";
 import ShareButton from "../../shareButton";
 import { Router } from "next/router";
 import { useRouter } from "next/navigation";
+import { CategoryContext } from "@/context/CategoryProvider";
 
 interface IProps extends IInfo {
   reviews?: any;
@@ -50,7 +51,13 @@ const MainInfo = ({
     const total = scores.reduce((acc: number, curr: number) => acc + curr, 0);
     return total / scores.length;
   };
+  const { categories } = useContext(CategoryContext);
+  // console.log("CATS IN ID PAGE", categories);
 
+  const cat = categories?.filter(
+    (cat) => (cat._id as string) === (category as string)
+  );
+  console.log("cattttttt", cat);
   const averageScore = calculateAverage(scores);
 
   const router = useRouter();
@@ -63,8 +70,8 @@ const MainInfo = ({
             <h1 className="text-3xl font-bold ">{name}</h1>
           </div>
           <div className="flex flex-wrap text-lg ">
-            <IoMdRestaurant size={30} className=" text-green-600" /> :{" "}
-            {category}
+            <IoMdRestaurant size={30} className=" text-green-600" /> :
+            {cat.length > 0 ? cat[0].name : "Loading"}
           </div>
 
           <div className="flex mr-11">
