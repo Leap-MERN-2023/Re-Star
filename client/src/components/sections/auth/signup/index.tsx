@@ -109,7 +109,7 @@ export const SignupPage = () => {
                         {...field}
                         type="email"
                         placeholder="johndoe@gmail.com"
-                        className="placeholder:text-white"
+                        className="placeholder:text-white "
                       />
                     </FormControl>
                     <FormMessage />
