@@ -21,6 +21,9 @@ const ReviewTab = ({ revData }: any) => {
   const { orgById } = useContext(RestaurantContext);
 
   const { deleteReview } = useContext(ReviewContext);
+
+  console.log("loggedUSER ID", loggedUser._id);
+  console.log("revID", revData.id);
   return (
     <div className="flex ">
       <Card className=" shadow md:w-96 bg-secondary ">
@@ -59,12 +62,11 @@ const ReviewTab = ({ revData }: any) => {
           </div>
           <div className="my-3">{revData?.message}</div>
         </CardContent>
-        {loggedUser?._id == revData?.user ? (
+        {loggedUser?._id == revData?.user._id ? (
           <CardFooter className="flex justify-around">
             <ReviewModal revData={revData} orgId={orgById._id} />
             <Button
-              variant="outline"
-              className="bg-[#858484] text-white"
+              className="bg-primary text-secondary"
               onClick={() => {
                 deleteReview(revData._id, orgById._id);
               }}
