@@ -90,3 +90,28 @@ export const editReview = async (
     console.log("Error in edit review", error);
   }
 };
+
+export const averageScore = async (
+  req: IReq,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const orgReviews = await Review.find({
+      organization: req.body.orgId,
+    });
+    const scores = orgReviews.map((review) => review.score);
+    console.log("orgrevs", orgReviews);
+    console.log("scoresssss", scores);
+    const calculateAverage = (scores: number[]) => {
+      if (scores.length === 0) return 0;
+      const total = scores.reduce((acc: number, curr: number) => acc + curr, 0);
+      return total / scores.length;
+    };
+    const averageScore = calculateAverage(scores);
+    console.log("averageScore", averageScore);
+    res.status(201).json({ averageScore });
+  } catch (error) {
+    console.log("Error in averageScore function Server", error);
+  }
+};

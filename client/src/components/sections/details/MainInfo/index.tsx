@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+"use client";
+import React, { useContext, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -24,6 +25,7 @@ import { MenuModal } from "@/components/sections/admin/menu-modal";
 import { IoMdRestaurant, GrMapLocation, FiBell } from "@/components/icons";
 import { intersection } from "zod";
 import ShareButton from "../../shareButton";
+import { ReviewContext } from "@/context/ReviewProvider";
 
 interface IProps extends IInfo {
   reviews?: any;

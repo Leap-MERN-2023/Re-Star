@@ -30,6 +30,8 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
     },
   ]);
 
+  // const [avScore, setAvScore] = useState(0);
+
   const [isOpen, setIsOpen] = useState(false);
   const { loggedUser } = useContext(UserContext);
 
@@ -98,6 +100,21 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  // const averageScoreCalc = async (orgId: string) => {
+  //   try {
+  //     const {
+  //       data: { averageScore },
+  //     } = await myAxios.get("/review/averageScore", {
+  //       data: { orgId },
+  //     });
+  //     // setAvScore(averageScore);
+  //     console.log("data", averageScore);
+  //     // return averageScore;
+  //   } catch (error) {
+  //     toast(`${error}`);
+  //   }
+  // };
+
   return (
     <ReviewContext.Provider
       value={{
@@ -108,6 +125,8 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
         reviewsLoading,
         deleteReview,
         editReview,
+        // averageScoreCalc,
+        // avScore,
       }}
     >
       {children}

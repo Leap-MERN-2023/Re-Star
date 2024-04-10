@@ -18,4 +18,6 @@ export interface IReviewContext {
     reviewId: string,
     orgById: string
   ) => void;
+  // averageScoreCalc: (orgId: string) => void;
+  // avScore: number;
 }
