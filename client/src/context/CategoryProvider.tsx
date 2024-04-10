@@ -46,7 +46,7 @@ const CategoryProvider = ({ children }: PropsWithChildren) => {
       },
     });
 
-    toast.success("success");
+    toast.success("Success");
   };
 
   useEffect(() => {

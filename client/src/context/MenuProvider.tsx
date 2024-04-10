@@ -37,7 +37,7 @@ const MenuProvider = ({ children }: PropsWithChildren) => {
 
       setMenus(menus[0].foods);
     } catch (error: any) {
-      toast.error("error :", error);
+      toast.error("Error :", error);
       console.log("error", error);
     }
   };
@@ -49,7 +49,7 @@ const MenuProvider = ({ children }: PropsWithChildren) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      toast.success("Successfully deleted menu item");
+      toast.success("Successfully deleted");
       getMenuByOrgId(orgId);
     } catch (error: any) {
       toast.error("error :", error);

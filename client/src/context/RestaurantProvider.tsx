@@ -70,11 +70,11 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
         },
       });
 
-      toast.success("restaurant amjilttai uuslee");
+      toast.success("Restaurant created ");
       console.log("RES DATAAA====>", formdata);
       setIsLoading(!isLoading);
     } catch (error) {
-      toast.error(`Алдаа : ${error} `);
+      toast.error(`Error : ${error} `);
     }
   };
 
@@ -111,11 +111,11 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       );
       setIsLoading(true);
 
-      toast.success("restaurant amjilttai shinechlegdlee");
+      toast.success("Restaurant updated");
 
       setIsLoading(!isLoading);
     } catch (error) {
-      toast.error(`Алдаа : ${error} `);
+      toast.error(`Error : ${error} `);
     }
   };
 
@@ -127,7 +127,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       console.log("All Org :", allOrgs);
       setOrg(allOrgs);
     } catch (error: any) {
-      toast.error(`Алдаа : ${error?.response?.data?.message} `);
+      toast.error(`Error : ${error?.response?.data?.message} `);
       console.log("error", error);
     }
   };
@@ -140,7 +140,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
 
       setApprovedOrgs(approvedOrgs);
     } catch (error: any) {
-      toast.error(`Алдаа : ${error?.response?.data?.message} `);
+      toast.error(`Error : ${error?.response?.data?.message} `);
       console.log("error", error);
     }
   };
@@ -167,7 +167,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       setOrgById(findOrg);
     } catch (error: any) {
       toast.error(
-        `Алдаа : ${error.response ? error.response.data.message : error} `
+        `Error : ${error.response ? error.response.data.message : error} `
       );
     }
   };
@@ -191,7 +191,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       setUserOrgs([findOrg]);
     } catch (error: any) {
       toast.error(
-        `Алдаа : ${error.response ? error.response.data.message : error} `
+        `Error : ${error.response ? error.response.data.message : error} `
       );
     }
   };
@@ -207,10 +207,10 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       });
 
       setUserOrgs([findOrg]);
-      toast.success("deleted successfully");
+      toast.success("Deleted ");
     } catch (error: any) {
       toast.error(
-        `Алдаа : ${error.response ? error.response.data.message : error} `
+        `Error : ${error.response ? error.response.data.message : error} `
       );
     }
   };
@@ -228,7 +228,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
         }
       );
 
-      toast.success("successfully changed restaurant status");
+      toast.success("Successfully changed restaurant status");
       getRestaurant();
     } catch (error: any) {
       toast.error("error :", error);
