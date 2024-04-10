@@ -13,15 +13,17 @@ import { PiTrademarkLight } from "react-icons/pi";
 
 const AboutUs = () => {
   return (
-    <Card className="p-12 flex flex-col justify-center item-center">
-      <img
+    <Card className="p-12 flex flex-col justify-center item-center ">
+      {/* <img
         className="flex justify-center item-center rounded-sm overflow-hidden"
         src="https://images.unsplash.com/photo-1568031813264-d394c5d474b9?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVudXxlbnwwfHwwfHx8MA%3D%3D"
-      />
-      <h1 className="font-bold text-4xl mt-16 mb-2">Who we are</h1>
-      <Progress className="w-[100%] bg-slate-300 " />
-      <h2 className=" font-mono text-2xl text-slate-700 mt-8">About us</h2>
-      <p className=" text-lg flex w-1/2 mb-32 font-extralight">
+      /> */}
+      <h1 className="font-bold text-4xl mt-[100px] mb-2">Who we are</h1>
+      <Progress className=" bg-slate-300 w-full flex  justify-center" />
+      <h2 className=" font-mono text-2xl text-primary mt-4 text-center">
+        About us
+      </h2>
+      <p className=" text-lg flex  mt- font-extralight tracking-wider ">
         What is Re-Star? Re-Star is the first Mongolian review application
         focusing on the plethora of restaurants and services in Ulaanbaatar to
         give users the chance to give honest reviews and share experiences at
@@ -34,41 +36,48 @@ const AboutUs = () => {
         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
         qui officia deserunt mollit anim id est laborum.
       </p>
-      <CardContent>
-        <Carousel>
-          <CarouselContent>
-            <CarouselItem className="flex justify-center rounded-sm  overflow-hidden">
-              <img src="https://plus.unsplash.com/premium_photo-1661281337214-c5f344300d92?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d29ya2luZ3xlbnwwfHwwfHx8MA%3D%3D"></img>
-            </CarouselItem>
-            <CarouselItem className="flex justify-center rounded-sm overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29ya2luZ3xlbnwwfHwwfHx8MA%3D%3D"></img>
-            </CarouselItem>
-            <CarouselItem className="flex justify-center rouned-sm overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHdvcmtpbmd8ZW58MHx8MHx8fDA%3D"></img>
-            </CarouselItem>
-            <CarouselItem className="flex justify-center rounded-sm overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1633613286991-611fe299c4be?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmV2aWV3fGVufDB8fDB8fHww"></img>
-            </CarouselItem>
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-        <div className="m-10 font-thin flex justify-center ">
-          Explore our blog for insightful articles, personal reflections,
-          impactful resources, and ideas that inspire us at Re-star{" "}
-          <FaArrowDown className="ml-2 mt-1 flex justify-center item-center" />
-        </div>
-
-        <Link
-          className="flex justify-center font-bold text-3xl text-blue-300"
-          href={""}
-        >
-          BLOG
-        </Link>
-        <div className="flex justify-center item-center mt-10 font-extralight">
-          From the team at Re-Star <PiTrademarkLight />
-        </div>
-      </CardContent>
+      <div className=" grid-cols-2 justify-center flex mt-10">
+        <CardContent>
+          <img
+            src="./Zoi.png"
+            alt="Zoi"
+            className="w-[250px] h-[300px] object-cover rounded-2xl"
+          />
+          <p className="font-bold text-[35px] ">Zoya </p>
+          <p className="font-serif text-xl text-wrap">
+            Back-end, Front-end Developer <br /> and Team Leader{" "}
+          </p>
+        </CardContent>
+        <CardContent>
+          <img
+            src="./anna.png"
+            alt="Zoi"
+            className="w-[300px] h-[300px] object-cover rounded-2xl"
+          />
+          <p className="font-bold text-[35px] ">Anar </p>
+          <p className="font-serif text-xl text-wrap">Front-end Developer </p>
+        </CardContent>
+        <CardContent>
+          <img
+            src="./bilguun.jpg"
+            alt="Zoi"
+            className="w-[250px] h-[300px] object-cover rounded-2xl"
+          />
+          <p className="font-bold text-[35px] ">Bilguun </p>
+          <p className="font-serif text-xl text-wrap">
+            Front-end Developer and <br /> Back-end Developer{" "}
+          </p>
+        </CardContent>
+        <CardContent>
+          <img
+            src="./batbold.png"
+            alt="Zoi"
+            className="w-[250px] h-[300px] object-cover rounded-2xl"
+          />
+          <p className="font-bold text-[35px] ">BatBold </p>
+          <p className="font-serif text-xl text-wrap">Front-end Developer </p>
+        </CardContent>
+      </div>
     </Card>
   );
 };
