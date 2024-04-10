@@ -63,7 +63,7 @@ export function ProfileSettings() {
   return (
     <>
       <div title="Profile Settings" className="  flex justify-center  ">
-        <div className="grid  md:grid-rows-1 gap-6 w-[500px] mt-10 border-spacing-2 bg- border border-purple-300 p-8 rounded-xl">
+        <div className="grid  md:grid-rows-1 gap-6 w-[500px] mt-20 mb-12 border-spacing-2 bg-border border-blue-300 p-8 rounded-xl">
           <div className="flex justify-center ">
             <div>
               <Avatar className="md:w-52 md:h-52 self-center flex justify-center mb-4">
@@ -75,7 +75,7 @@ export function ProfileSettings() {
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
               <div className="rounded-lg ">
-                <Input id="picture" type="file" className="w-60" />
+                <Input id="picture" type="file" className="w-56" />
               </div>
             </div>
           </div>
@@ -103,7 +103,7 @@ export function ProfileSettings() {
                         />
                       </FormControl>
                       <BiEditAlt
-                        className="w-10 h-10"
+                        className="w-10 h-10 ml-1 bg-secondary rounded-md"
                         onClick={() => setIsClicked(!isClicked)}
                       />
                     </div>
@@ -129,7 +129,7 @@ export function ProfileSettings() {
                         />
                       </FormControl>
                       <BiEditAlt
-                        className="w-10 h-10"
+                        className="w-10 h-10 ml-1 bg-secondary rounded-md"
                         onClick={() => setIsClicked(!isClicked)}
                       />
                     </div>

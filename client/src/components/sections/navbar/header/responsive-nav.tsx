@@ -15,21 +15,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { UserContext } from "@/context/UserProvider";
 import { useRouter } from "next/navigation";
+import FavoriteDrawer from "../../favorite/favoriteDrawer";
 
-export function UserNav() {
-  const { logout, loggedUser } = useContext(UserContext);
+export function ResponsiveNav() {
   const router = useRouter();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="relative h-10 w-10 rounded-md border-2 hover:bg-secondary border-primary p-4 bg-secondary hover:scale-105 max-[460px]:text-xs max-[460px]:justify-center  "
+          className="relative h-10 w-10 rounded-md max-[460px]:border-2 hover:bg-secondary max-[460px]:border-primary max-[460px]:p-4 max-[460px]:bg-secondary hover:scale-105 min-[460px]:text-xs min-[460px]:justify-center min-[460px]:text-transparent"
         >
           <Avatar className="h-8 w-8 border-primary">
-            <AvatarImage src="/avatars/01.png" alt="@shadcn" />
             <AvatarFallback className="bg-secondary hover:bg-secondary">
-              SC
+              NAV
             </AvatarFallback>
           </Avatar>
         </Button>
@@ -42,37 +41,32 @@ export function UserNav() {
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-lg font-medium leading-none text-center">
-              {loggedUser.name}
             </p>
             <p className="text-xs leading-none text-muted-foreground text-center">
-              {loggedUser.email}
             </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={() => router.push("/userProfile")}>
-            Profile
+          <DropdownMenuItem onClick={() => router.push("/")}>
+            Home
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => router.push("/admin/addrestaurant")}>
-            Add Restaurant
+          <DropdownMenuItem onClick={() => router.push("/explore")}>
+            Explore
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => router.push("/admin")}>
-            Go to Restaurant
+          <DropdownMenuItem onClick={() => router.push("/admin/addrestaurant")}>
+           Add Restaurant
             <DropdownMenuShortcut>⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => router.push("/favorites")}>
             Favorites
+            <FavoriteDrawer />
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={logout}>
-          Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
