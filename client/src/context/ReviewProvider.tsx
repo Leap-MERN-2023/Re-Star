@@ -63,7 +63,7 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
       });
       setIsOpen(!isOpen);
 
-      toast("Shine review amjilltai uuslee");
+      toast("New review added");
       getReviewById(orgId);
     } catch (error) {
       toast.error("Error in AddReview COntext");
@@ -73,7 +73,7 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
   const deleteReview = async (reviewId: string, orgId: string) => {
     try {
       await myAxios.delete("/review", { data: { reviewId } });
-      console.log("DeleteReview successful");
+      console.log("Delete Review successful");
       getReviewById(orgId);
     } catch (error) {
       console.log("Error in DeleteReview Context", error);
@@ -92,7 +92,7 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
       });
 
       getReviewById(orgId);
-      toast("Review amjilltai uurchlugdluu");
+      toast("Review updated");
     } catch (error) {
       console.log("Error in EditReview Context");
     }

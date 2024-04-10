@@ -35,7 +35,7 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
       setFavorites(favorites?.organizations);
       setFav1(!fav1);
     } catch (error: any) {
-      toast.error("Error in favorite context getFavorites", error);
+      toast.error("Error in favorite context ", error);
     }
   };
 
@@ -62,7 +62,7 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
       );
       getFavorites();
       console.log("orgId in favContext", orgId);
-      toast.success("Put Fav Success");
+      toast.success("Add Favorite");
     } catch (error) {
       console.log("err in addfav context", error);
     }
