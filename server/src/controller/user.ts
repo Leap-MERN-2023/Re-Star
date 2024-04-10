@@ -30,7 +30,6 @@ export const checkPass = async (
   try {
     const { user } = req;
     const { pass } = req.body;
-    console.log("user", user);
 
     const find = await User.findOne({ email: user.email })
       .select("+password")
@@ -50,7 +49,6 @@ export const checkPass = async (
       message: `Захиалгыг амжилттай авлаа`,
       isValid: true,
     });
-    console.log("uuusus")
   } catch (error) {
     next(error);
   }
@@ -87,8 +85,6 @@ export const changeUserData = async (
       message: "Хэрэглэгчийн мэдээлэл амжилттай өөрчиллөө.",
       changedUser,
     });
-
-    console.log("successfully changed user data", changedUser);
   } catch (error) {
     next(error);
   }

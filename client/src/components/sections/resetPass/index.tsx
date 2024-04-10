@@ -37,7 +37,6 @@ export const MyStepper = () => {
     onSubmit: ({ email, rePassword, password, otp }) => {
       {
         activeStep === 1 && handleFirstStep(email);
-        console.log("mail", email);
       }
       {
         activeStep === 2 && handleSecondStep(email, otp);

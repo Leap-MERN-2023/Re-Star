@@ -83,7 +83,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
       );
       callSetRefresh(!refresh);
     } catch (error) {
-      console.log("Error in changeUserProfile in userprovider", error);
+      toast.error(`error ${error}`);
     }
   };
 

@@ -70,8 +70,7 @@ export function EditOrgMenu({
 
         toast.success("Shine review amjilltai uuslee");
       } catch (error: any) {
-        toast.error("Алдаа");
-        console.log("errr", error);
+        toast.error(`error ${error}`);
       }
     },
   });

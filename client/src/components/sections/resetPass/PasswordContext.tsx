@@ -37,8 +37,6 @@ const PasswordProvider = ({ children }: PropsWithChildren) => {
 
       setActiveStep((prev) => prev + 1);
       toast.success("Амжилттай: имэйл илгээгдсэн");
-
-      console.log("step", activeStep);
     } catch (error) {
       toast.error("Алдаа : Имейл бүртгэлгүй");
     }
@@ -55,7 +53,6 @@ const PasswordProvider = ({ children }: PropsWithChildren) => {
       toast.success("Амжилттай: код зөв бна");
     } catch (error) {
       toast.error("Алдаа : Код буруу");
-      console.log("err");
     }
   };
 
@@ -81,7 +78,6 @@ const PasswordProvider = ({ children }: PropsWithChildren) => {
       setActiveStep(1);
     } catch (error) {
       toast.error("Алдаа гарлаа");
-      console.log("err");
     }
   };
 

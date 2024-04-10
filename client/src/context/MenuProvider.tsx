@@ -25,7 +25,7 @@ const MenuProvider = ({ children }: PropsWithChildren) => {
       } = await myAxios.get(`/menu/get/${id}`);
       setOrgMenus(menus[0]?.foods);
     } catch (error) {
-      console.log("err", error);
+      toast.error(`error ${error}`);
     }
   };
 
@@ -37,8 +37,7 @@ const MenuProvider = ({ children }: PropsWithChildren) => {
 
       setMenus(menus[0].foods);
     } catch (error: any) {
-      toast.error("Error :", error);
-      console.log("error", error);
+      toast.error("error :", error);
     }
   };
   const DeleteMenuByOrgId = async (orgId: string, deleteId: string) => {
@@ -53,7 +52,6 @@ const MenuProvider = ({ children }: PropsWithChildren) => {
       getMenuByOrgId(orgId);
     } catch (error: any) {
       toast.error("error :", error);
-      console.log("error", error);
     }
   };
 

@@ -11,7 +11,6 @@ import Multer from "multer";
 export const addOrg = async (req: IReq, res: Response, next: NextFunction) => {
   const newOrg = req.body;
   const { user } = req;
-  console.log("REqq: ", req.body);
 
   const newOrganization = { ...newOrg, user: user._id };
   const images: string[] = [];
@@ -34,7 +33,6 @@ export const addOrg = async (req: IReq, res: Response, next: NextFunction) => {
   res.status(201).json({
     message: "Шинэ ресторан амжилттай бүртгэгдлээ ",
   });
-  console.log("successfully");
 };
 
 export const getOrgById = async (
@@ -51,7 +49,7 @@ export const getOrgById = async (
       haveOrg: true,
     });
   } catch (error) {
-    console.log("getOrgById ERROR", error);
+    throw new MyError("Error while getting organizations", 200);
   }
 };
 
@@ -111,7 +109,6 @@ export const deleteOrg = async (
   try {
     const id = req.params;
     const { user } = req;
-    console.log("delete", req.params);
 
     const findOrg = await Organization.findOne({ user: user.id });
 
@@ -207,8 +204,6 @@ export const changeStatus = async (
     const {
       user: { role },
     } = req;
-    console.log("role", role);
-    console.log("role", typeof role);
 
     if (role !== "admin") {
       throw new MyError("You can not do this action", 200);
@@ -238,7 +233,6 @@ export const searchOrgByNameAndCategory = async (
 ) => {
   try {
     const { name, category } = req.params;
-    console.log("params", req.params);
 
     const organizations = await Organization.find({
       name: { $regex: new RegExp(name as string, "i") },
@@ -249,32 +243,11 @@ export const searchOrgByNameAndCategory = async (
       message: `Organization found successfully.`,
       organizations,
     });
-    console.log("organizations", organizations);
   } catch (error) {
-    console.error(error);
     next(error);
   }
 };
 
-// export const searchMapByName = async (
-//   req: Request,
-//   res: Response,
-//   next: NextFunction
-// ) => {
-//   try {
-//     const { category, name } = req.params;
-//     console.log("req", req.params);
-
-//     const organizations = await Organization.find({
-//       name: { $regex: new RegExp(name, "i") },
-//       category: { $regex: new RegExp(category, "i") },
-//     });
-
-//     Organization.find({ name: { $in: "hand" } });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
 export const searchMapByCategory = async (
   req: Request,
   res: Response,
@@ -282,7 +255,6 @@ export const searchMapByCategory = async (
 ) => {
   try {
     const { category } = req.params;
-    console.log("req", req.params);
 
     const organizations = await Organization.find({
       category: category,

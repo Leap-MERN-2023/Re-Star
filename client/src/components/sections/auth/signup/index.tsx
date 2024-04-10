@@ -74,7 +74,6 @@ export const SignupPage = () => {
       });
       router.push("/login");
     } catch (error: any) {
-      console.log("err", error);
       toast.error(`${error?.response?.data?.message as string}`);
     }
   };

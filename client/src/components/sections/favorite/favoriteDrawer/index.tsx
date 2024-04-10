@@ -4,7 +4,7 @@ import { FavoritesContext } from "@/context/FavoritesProvider";
 
 const FavoriteDrawer = () => {
   const { favorites } = useContext(FavoritesContext);
-  console.log("FAV DRAWER FAV CARD", favorites);
+
   return (
     <div className="drawer drawer-end z-20  shadow-white shadow-xl">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />

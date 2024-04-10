@@ -70,8 +70,8 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
         },
       });
 
-      toast.success("Restaurant created ");
-      console.log("RES DATAAA====>", formdata);
+      toast.success("restaurant amjilttai uuslee");
+
       setIsLoading(!isLoading);
     } catch (error) {
       toast.error(`Error : ${error} `);
@@ -124,11 +124,10 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       const {
         data: { allOrgs },
       } = await myAxios.get("/org");
-      console.log("All Org :", allOrgs);
+
       setOrg(allOrgs);
     } catch (error: any) {
-      toast.error(`Error : ${error?.response?.data?.message} `);
-      console.log("error", error);
+      toast.error(`Алдаа : ${error?.response?.data?.message} `);
     }
   };
 
@@ -140,8 +139,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
 
       setApprovedOrgs(approvedOrgs);
     } catch (error: any) {
-      toast.error(`Error : ${error?.response?.data?.message} `);
-      console.log("error", error);
+      toast.error(`Алдаа : ${error?.response?.data?.message} `);
     }
   };
 
@@ -163,7 +161,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       const {
         data: { findOrg },
       } = await myAxios.get(`/org/${orgIdContext}`);
-      console.log("findOrg", findOrg);
+
       setOrgById(findOrg);
     } catch (error: any) {
       toast.error(

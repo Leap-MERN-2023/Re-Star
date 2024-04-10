@@ -19,8 +19,7 @@ import moment from "moment";
 const ReviewTab = ({ revData }: any) => {
   const { loggedUser } = useContext(UserContext);
   const { orgById } = useContext(RestaurantContext);
-  console.log("orgById", orgById);
-  console.log("loggedUser", loggedUser);
+
   const { deleteReview } = useContext(ReviewContext);
   return (
     <div className="flex ">
