@@ -54,7 +54,6 @@ export function EditOrgMenu({
 
     onSubmit: async ({ name, category, description, price }) => {
       try {
-        console.log("star");
         const dataForm = new FormData();
         dataForm.set("name", name);
         dataForm.set("category", category);

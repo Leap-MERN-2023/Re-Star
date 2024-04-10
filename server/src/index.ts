@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("Hello Re-Star");
+  res.send("Hello Re-Star It is Review giving website");
 });
 
 app.use("/auth", AuthRoutes);
