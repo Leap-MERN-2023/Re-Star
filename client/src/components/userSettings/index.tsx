@@ -145,6 +145,7 @@ export function ProfileSettings() {
                     <div className="flex">
                       <FormControl>
                         <Input
+                          type="password"
                           className="placeholder:text-black"
                           disabled={isClicked}
                           placeholder="***********"
