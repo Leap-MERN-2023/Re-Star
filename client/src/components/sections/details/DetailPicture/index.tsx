@@ -27,7 +27,7 @@ export function DetailPicture(props: { images?: string[] }) {
       plugins={[plugin.current]}
       className="w-full p-3 rounded-lg shadow-xl  "
     >
-      <CarouselContent className="-ml-1 ">
+      <CarouselContent className="-ml-1 mt-[100px]">
         {images.map((picture: any, index: number) => (
           <CarouselItem
             key={index}

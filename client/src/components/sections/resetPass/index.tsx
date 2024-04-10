@@ -50,9 +50,9 @@ export const MyStepper = () => {
   });
 
   return (
-    <div className=" flex justify-center items-center my-20">
+    <div className=" flex justify-center items-center h-[600px] bg-secondary">
       {activeStep === 1 && (
-        <Card className="w-[350px] ">
+        <Card className="w-[350px] mt-[120px]">
           <CardHeader>
             <CardTitle>Reset Password</CardTitle>
           </CardHeader>
@@ -65,6 +65,7 @@ export const MyStepper = () => {
                     id="email"
                     placeholder="Email"
                     name="email"
+                    className="bg-secondary"
                     onChange={formik.handleChange}
                   />
                 </div>
@@ -79,7 +80,7 @@ export const MyStepper = () => {
         </Card>
       )}
       {activeStep === 2 && (
-        <Card className="w-[350px]">
+        <Card className="w-[350px]  mt-[120px]">
           <CardHeader>
             <CardTitle>Reset Password Step 2</CardTitle>
           </CardHeader>
@@ -94,6 +95,7 @@ export const MyStepper = () => {
                     id="otp"
                     placeholder="Enter code"
                     name="otp"
+                    className="bg-secondary"
                     onChange={formik.handleChange}
                   />
                 </div>
@@ -106,7 +108,7 @@ export const MyStepper = () => {
         </Card>
       )}
       {activeStep === 3 && (
-        <Card className="w-[350px]">
+        <Card className="w-[350px]  mt-[120px]">
           <CardHeader>
             <CardTitle>Reset Password Step 3</CardTitle>
           </CardHeader>
@@ -119,12 +121,14 @@ export const MyStepper = () => {
                     id="password"
                     placeholder="new password"
                     name="password"
+                    className="bg-secondary"
                     onChange={formik.handleChange}
                   />
                   <Input
                     id="rePassword"
                     placeholder="repeat new password"
                     name="rePassword"
+                    className="bg-secondary"
                     onChange={formik.handleChange}
                   />
                 </div>
