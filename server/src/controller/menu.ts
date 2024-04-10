@@ -16,16 +16,13 @@ export const addMenu = async (
     const { orgId, ...newFood } = newMenu;
 
     if (req.file) {
-      console.log("first");
       const { secure_url } = await cloudinary.uploader.upload(req.file.path);
       newFood.image = secure_url;
-      console.log("yup");
     }
 
     const findMenu = await Menu.findOne({ organization: orgId });
 
     if (!findMenu) {
-      console.log("create");
       await Menu.create({
         organization: newMenu.orgId,
         foods: {

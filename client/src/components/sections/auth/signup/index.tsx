@@ -51,9 +51,6 @@ export const SignupPage = () => {
     if (password !== confirmPassword) {
       return toast.error("password is not same");
     } else {
-      console.log(
-        `name: ${name}, email: ${email}, password:${password}, confirm : ${confirmPassword}`
-      );
       if (signup) {
         signup({ name, email, password });
       }
@@ -67,7 +64,7 @@ export const SignupPage = () => {
         name,
         password,
       });
-      console.log("Data :", data);
+
       await Swal.fire({
         position: "center",
         title: "Sign up successffully",

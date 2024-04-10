@@ -243,7 +243,7 @@ export function StepOne() {
               onChange={(event) => {
                 const selectedFile =
                   event.target.files && event.target.files[0];
-                console.log("F", selectedFile);
+
                 formik.setFieldValue("imgTwo", selectedFile);
               }}
             />
