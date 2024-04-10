@@ -16,6 +16,7 @@ import StepTwo from "./stepTwo";
 
 import { IoFastFood } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function AddRestaurant() {
   const [activeStep, setActiveStep] = useState(0);
@@ -46,8 +47,10 @@ export default function AddRestaurant() {
             </div>
             Add Your restaurant on Re-star
             <div className="grid grid-cols-2 gap-3">
-              <Button onClick={handleNext} className="">
-                Go to Home{" "}
+              <Button className="">
+                <Link href={"/"}>
+                Go to Home
+                </Link>
               </Button>
               <Button onClick={handleNext} className="bg-primary">
                 Next{" "}

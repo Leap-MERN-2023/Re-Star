@@ -19,13 +19,13 @@ import {
 
 export const UserProfile = () => {
   return (
-      <div title="Profile Settings" className="  flex justify-center  ">
-        <div className="grid md:grid-rows-1 gap-6 w-[600px] mt-10 border-spacing-2 border border-slate-400 rounded-xl">
+      <div title="Profile" className="  flex justify-center  ">
+        <div className="grid md:grid-rows-1 gap-6 w-[600px] mt-10 border-spacing-2 border border-slate-400 rounded-xl mt-32 mb-12">
           <div className="flex justify-center flex-col ">
             <div className="flex flex-row bg-slate-300 w-full rounded-sm p-4">
               <div className="flex flex-col">
               <div className="self-center flex justify-center p-4 font-bold text-2xl">User Name</div>
-              <div  className="flex self-center" >I am a reviewer :8</div>
+              <div  className="flex self-center" >I am a reviewer :D</div>
               <Link className="flex self-center font-bold mt-4"href={""}>Website.mn <FaLink className="flex self-center ml-2" /></Link>
               <Link className="flex self-center" href={"/profile"}>
               <Button className="h-8 w-24  flex self-center mt-6">
@@ -68,7 +68,9 @@ export const UserProfile = () => {
             <div className="m-10 font-extralight flex justify-center border rounded-sm border-slate-300 p-4">I am a reviewer with a passion for food Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</div>
           </div>
         </div>
+        <img  className="h-1/4 w-1/4 mt-40 mb-30 ml-32" src="./images/foodpic.png"></img>
       </div>
+    
 
   );
   };
