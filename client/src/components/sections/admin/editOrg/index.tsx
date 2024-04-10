@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
@@ -138,13 +139,15 @@ export function EditOrgMenu({
           </div>
         </div>
         <DialogFooter>
-          <Button
-            type="submit"
-            className="w-full"
-            onClick={() => formik.handleSubmit()}
-          >
-            Save Changes
-          </Button>
+          <DialogClose>
+            <Button
+              type="submit"
+              className="w-full"
+              onClick={() => formik.handleSubmit()}
+            >
+              Save Changes
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

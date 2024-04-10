@@ -14,6 +14,7 @@ import { MdRestaurantMenu } from "react-icons/md";
 
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -98,7 +99,6 @@ export function MenuModal({ id }: { id: string }) {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4"></div>
           <div className=" flex flex-col items-start gap-4 justify-start">
             <Label htmlFor="NameFood" className="text-right">
               Name
@@ -171,13 +171,15 @@ export function MenuModal({ id }: { id: string }) {
         </div>
         {/* </div> */}
         <DialogFooter>
-          <Button
-            type="submit"
-            onClick={() => formik.handleSubmit()}
-            className="bg-secondary  hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointers text-primary"
-          >
-            Add Item
-          </Button>
+          <DialogClose>
+            <Button
+              type="submit"
+              onClick={() => formik.handleSubmit()}
+              className="bg-secondary  hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointers text-primary"
+            >
+              Add Item
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

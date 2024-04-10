@@ -89,13 +89,8 @@ const AdminCoreView = ({
             </div>
           </div>
         </CardContent>
-        <CardFooter className="flex-wrap  gap-3  grid grid-cols-4">
+        <CardFooter className="flex-wrap  gap-3  grid grid-cols-3">
           <AddPhotos id={_id} />
-
-          <Button className="bg-secondary text-primary gap-2  hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointers">
-            Share
-            <FaShare size={"25px"} style={{ margin: 4 }} />
-          </Button>
           <MenuModal id={_id} />
           <EditOrganization id={_id} />
         </CardFooter>

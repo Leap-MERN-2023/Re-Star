@@ -268,7 +268,7 @@ export function StepOne() {
             type="submit"
             className="w-full"
           >
-            {isLoading === true ? "...loading" : "Upload"}
+            {isLoading ? "...loading" : "Upload"}
           </Button>
         </CardFooter>
       </Card>

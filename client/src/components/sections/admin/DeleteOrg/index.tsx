@@ -21,6 +21,8 @@ interface IProps extends IMenu {
 
 export function DeleteOrg({ _id, name, orgId }: IProps) {
   const { DeleteMenuByOrgId } = useContext(MenuContext);
+
+  console.log("orfid in deletorf", orgId);
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>

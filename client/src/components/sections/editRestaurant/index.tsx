@@ -105,7 +105,12 @@ export function EditOrganization({ id }: { id: string }) {
               <Label htmlFor="Open Hours" className="text-right">
                 Open Hours
               </Label>
-              <Input id="Close Hours" className="col-span-3" type="time" />
+              <Input
+                id="Close Hours"
+                className="col-span-3"
+                type="time"
+                value={formik.values.openTime}
+              />
               <Label htmlFor="Close Hours" className="text-right">
                 Close Hours
               </Label>

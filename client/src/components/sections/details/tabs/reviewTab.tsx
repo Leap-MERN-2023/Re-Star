@@ -22,8 +22,6 @@ const ReviewTab = ({ revData }: any) => {
 
   const { deleteReview } = useContext(ReviewContext);
 
-  console.log("loggedUSER ID", loggedUser._id);
-  console.log("revID", revData.id);
   return (
     <div className="flex ">
       <Card className=" shadow md:w-96 bg-secondary ">
@@ -42,8 +40,8 @@ const ReviewTab = ({ revData }: any) => {
                 <p className="text-base text-gray-500">Count of reviews</p>
               </div>
             </div>
-            <div className="  ">
-              <Badge className="m-1  ">
+            <div>
+              <Badge className="m-1">
                 {revData?.score}
                 <span className="flex ">
                   <FaStar />

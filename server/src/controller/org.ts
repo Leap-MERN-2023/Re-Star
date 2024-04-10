@@ -107,17 +107,15 @@ export const deleteOrg = async (
   next: NextFunction
 ) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const { user } = req;
+    console.log("id", id);
 
-    const findOrg = await Organization.findOne({ user: user.id });
+    const findOrg = await Organization.findOneAndDelete({ _id: id });
 
     if (!findOrg) {
       throw new MyError(` Orgization  олдсонгүй.`, 400);
     }
-
-    const data = findOrg.deleteOne({ _id: id });
-    await findOrg.save();
 
     res.status(200).json({
       message: `Organization устгалаа.`,

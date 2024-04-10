@@ -33,10 +33,10 @@ import { toast } from "react-toastify";
 import { AdminPicView } from "./adminPicView";
 import AdminCoreView from "./adminCoreView";
 import { AdminMenuView } from "./adminMenuView";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 export const AdminPage = () => {
-  const { getUserRestaurantById, userOrgs, deleteRestaurantById } =
-    useContext(RestaurantContext);
+  const { getUserRestaurantById, userOrgs } = useContext(RestaurantContext);
 
   const { token } = useContext(UserContext);
 
@@ -77,8 +77,13 @@ export const AdminPage = () => {
 };
 
 export const AdminTab = () => {
-  const { getUserRestaurantById, userOrgs, deleteRestaurantById } =
-    useContext(RestaurantContext);
+  const {
+    getUserRestaurantById,
+    userOrgs,
+    deleteRestaurantById,
+    isOpen,
+    ChangeIsOpen,
+  } = useContext(RestaurantContext);
 
   const { token } = useContext(UserContext);
   const [pass, setPass] = useState<string>("");
@@ -107,8 +112,11 @@ export const AdminTab = () => {
       } else {
         toast.error("wrong password");
       }
+      ChangeIsOpen(!isOpen);
     } catch (error: any) {
       toast.error("aldaa", error.response.data.message);
+    } finally {
+      ChangeIsOpen(!isOpen);
     }
   };
 
@@ -130,7 +138,7 @@ export const AdminTab = () => {
           <CardHeader>
             <CardTitle className="text-center">Your Restaurant</CardTitle>
           </CardHeader>
-          <AdminPicView images={org.images} />
+          <AdminPicView images={org?.images} />
           <AdminCoreView {...org} />
           <AdminMenuView {...org} />
         </TabsContent>
@@ -155,9 +163,12 @@ export const AdminTab = () => {
                   </div>
                 </CardContent>
                 <CardFooter className="w-full">
-                  <Dialog>
+                  <Dialog open={isOpen}>
                     <DialogTrigger asChild>
-                      <Button className="bg-secondary text-primary">
+                      <Button
+                        className="bg-secondary text-primary"
+                        onClick={() => ChangeIsOpen(!isOpen)}
+                      >
                         Delete Organization
                       </Button>
                     </DialogTrigger>
@@ -180,12 +191,14 @@ export const AdminTab = () => {
                         </div>
                       </div>
                       <DialogFooter>
-                        <Button
-                          className="w-full"
-                          onClick={() => checkPassword(pass, org._id)}
-                        >
-                          Check Password
-                        </Button>
+                        <DialogClose>
+                          <Button
+                            className="w-full"
+                            onClick={() => checkPassword(pass, org?._id)}
+                          >
+                            Check Password
+                          </Button>
+                        </DialogClose>
                       </DialogFooter>
                     </DialogContent>
                   </Dialog>
