@@ -10,9 +10,7 @@ export const login = async (
   next: NextFunction
 ) => {
   try {
-    console.log("begin");
     const { userEmail, userPassword } = req.body;
-    console.log("req.body", req.body);
 
     const user = await User.findOne({ email: userEmail })
       .select("+password")
@@ -37,15 +35,11 @@ export const login = async (
     );
     const { password, ...otherParams } = user;
 
-    console.log("token", token);
-
     res.status(201).json({
       message: "Хэрэглэгч амжилттай нэвтэрлээ",
       token,
       user: otherParams,
     });
-
-    console.log("Хэрэглэгч амжилттай нэвтэрлээ", user);
   } catch (error) {
     next(error);
   }
@@ -58,7 +52,7 @@ export const signup = async (
 ) => {
   try {
     const newUser = req.body;
-    console.log("user", newUser);
+
     const isExist = await User.findOne({ email: newUser.email });
 
     if (isExist) {

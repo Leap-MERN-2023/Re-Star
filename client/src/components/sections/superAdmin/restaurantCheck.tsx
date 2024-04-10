@@ -21,7 +21,7 @@ import * as yup from "yup";
 
 const RestaurantCard = () => {
   const { org, changeOrgStatus } = useContext(RestaurantContext);
-  console.log("ORG========>", org);
+
   const router = useRouter();
 
   const statuses = ["pending", "approved", "banned"];
@@ -37,7 +37,6 @@ const RestaurantCard = () => {
     },
 
     onSubmit: ({ status, orgId }) => {
-      console.log("org", org, "status", status);
       changeOrgStatus(orgId, status);
     },
   });

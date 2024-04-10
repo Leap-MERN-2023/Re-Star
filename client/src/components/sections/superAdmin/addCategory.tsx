@@ -41,13 +41,11 @@ const AddCategory = () => {
     },
     validationSchema,
     onSubmit({ name, description, image }) {
-      console.log("IMG", image);
       const dataForm = new FormData();
       dataForm.set("name", name);
       dataForm.set("description", description);
       dataForm.set("image", image as any);
       addCategory(dataForm);
-      console.log("Form :", dataForm);
     },
   });
 

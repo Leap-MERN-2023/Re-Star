@@ -43,8 +43,6 @@ const MainInfo = ({
   reviews,
   _id,
 }: IProps) => {
-  console.log(reviews);
-
   const scores = reviews?.map((review: any) => review.score);
   const calculateAverage = (scores: number[]) => {
     if (scores.length === 0) return 0;

@@ -10,7 +10,6 @@ export const addReview = async (
 ) => {
   try {
     const newReview = req.body;
-    console.log("new review :", newReview);
 
     const user = await Review.create({ ...newReview });
 
@@ -18,7 +17,7 @@ export const addReview = async (
       message: "Post review successfully",
     });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
@@ -39,17 +38,12 @@ export const getReviewById = async (
   next: NextFunction
 ) => {
   try {
-    console.log("12==>");
-    console.log("HIII", req.params);
-    const orgReview = await Review.find({
-      organization: req.params.id,
-    }).populate("user");
-    console.log("org.Rev", orgReview);
+    const orgReview = await Review.find({ organization: req.params.id });
 
     res.status(201).json({ orgReview });
     res.send({ orgReview });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
@@ -64,7 +58,7 @@ export const deleteReview = async (
     });
     res.status(201).json({ message: "Heregchinn review amjilttai ustgagdlaa" });
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
@@ -74,7 +68,6 @@ export const editReview = async (
   next: NextFunction
 ) => {
   try {
-    console.log("Hi editReview");
     const findReview = await Review.findByIdAndUpdate(
       { _id: req.body.data.reviewId },
       {
@@ -89,6 +82,6 @@ export const editReview = async (
       .status(201)
       .json({ message: "Heregchinn review amjilttai uurchlugluu" });
   } catch (error) {
-    console.log("Error in edit review", error);
+    next(error);
   }
 };

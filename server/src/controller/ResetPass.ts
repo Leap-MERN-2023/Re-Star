@@ -26,7 +26,6 @@ export const sendEmailToUser = async (req: Request, res: Response) => {
     await sendEmail({ email, otp });
 
     res.status(201).json({ message: "Email амжилттай илгээгдлээ." });
-    console.log("successful 1 step");
   } catch (error) {
     console.log("ERR", error);
     res.status(400).json({

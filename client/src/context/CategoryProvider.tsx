@@ -37,7 +37,6 @@ const CategoryProvider = ({ children }: PropsWithChildren) => {
   };
 
   const addCategory = async (dataForm: any) => {
-    console.log("DF", dataForm.get("image"));
     const {
       data: { categories },
     } = await myAxios.post("/category/add", dataForm, {

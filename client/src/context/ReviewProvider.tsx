@@ -36,16 +36,15 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
   const getReviewById = async (orgId: any) => {
     try {
       setReviewsLoading(true);
-      console.log("WORKING GETREVBYID");
 
       const {
         data: { orgReview },
       } = await myAxios.get(`/review/${orgId}`);
-      console.log("REVIEW IN CONTEXT", orgReview);
+
       setReview(orgReview);
       setReviewsLoading(false);
     } catch (error) {
-      console.log("Err in getReviewById COntext", error);
+      toast.error(`error ${error}`);
     }
   };
 
@@ -73,10 +72,9 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
   const deleteReview = async (reviewId: string, orgId: string) => {
     try {
       await myAxios.delete("/review", { data: { reviewId } });
-      console.log("Delete Review successful");
       getReviewById(orgId);
     } catch (error) {
-      console.log("Error in DeleteReview Context", error);
+      toast.error(`error ${error}`);
     }
   };
 
@@ -94,7 +92,7 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
       getReviewById(orgId);
       toast("Review updated");
     } catch (error) {
-      console.log("Error in EditReview Context");
+      toast.error(`error ${error}`);
     }
   };
 

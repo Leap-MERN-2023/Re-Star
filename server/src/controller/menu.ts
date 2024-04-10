@@ -62,9 +62,7 @@ export const addMenu = async (
         });
       }
     }
-    console.log("done");
   } catch (error) {
-    console.log("err", error);
     next(error);
   }
 };
@@ -96,9 +94,6 @@ export const deleteMenu = async (
 
   const spliceCount = findMenu.foods.splice(indexOfMenu, 1);
 
-  console.log("indexOfMenu", indexOfMenu);
-  console.log("spliceCount", spliceCount);
-
   const menu = await findMenu.save();
 
   res.status(201).json({
@@ -113,10 +108,8 @@ export const getMenuByOrgId = async (
   next: NextFunction
 ) => {
   const { orgId } = req.params;
-  console.log("orgId in menus", orgId);
 
   const menus = await Menu.find({ organization: orgId });
-  console.log("ALl", menus);
 
   res.status(201).json({
     message: "Post category successfully",

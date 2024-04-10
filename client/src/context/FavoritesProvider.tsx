@@ -31,7 +31,7 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("getFavs running");
+
       setFavorites(favorites?.organizations);
       setFav1(!fav1);
     } catch (error: any) {
@@ -61,10 +61,10 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
         }
       );
       getFavorites();
-      console.log("orgId in favContext", orgId);
-      toast.success("Add Favorite");
+
+      toast.success("Put Fav Success");
     } catch (error) {
-      console.log("err in addfav context", error);
+      toast.error(`error ${error}`);
     }
   };
 
@@ -81,10 +81,8 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
         data: { orgId },
       });
       getFavorites();
-
-      console.log("Fav amjilttai ustgalaa", favorites);
     } catch (error) {
-      console.log("Error in delFav COntext", error);
+      toast.error(`error ${error}`);
     }
   };
 
