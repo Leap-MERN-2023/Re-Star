@@ -91,8 +91,8 @@ const UserProvider = ({ children }: PropsWithChildren) => {
         })
       );
       callSetRefresh(!refresh);
-    } catch (error) {
-      toast.error(`error ${error}`);
+    } catch (error: any) {
+      toast.error(`error ${error.response && error.response.data.message}`);
     }
   };
 

@@ -79,8 +79,8 @@ export function MenuModal({ id }: { id: string }) {
       getMenuByOrgId(id);
 
       toast.success("Successful");
-    } catch (error) {
-      toast.error("Error");
+    } catch (error: any) {
+      toast.error(`Error : ${error.response && error.response.data.message}`);
     }
   };
   return (
