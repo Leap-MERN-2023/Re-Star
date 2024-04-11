@@ -1,11 +1,9 @@
 "use client";
 import { RestaurantContext } from "@/context/RestaurantProvider";
 import React, { useContext, useEffect, useState } from "react";
-import Lottie from "react-lottie";
+// import Lottie from "react-lottie";
 import * as emptyBasket from "../../../../public/images/empty.json";
-
 import myAxios from "@/utils/myAxios";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,7 +12,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import {
   Dialog,
   DialogContent,
@@ -22,12 +19,9 @@ import {
   DialogHeader,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
 import { UserContext } from "@/context/UserProvider";
 import { toast } from "react-toastify";
 import { AdminPicView } from "./adminPicView";
@@ -62,7 +56,7 @@ export const AdminPage = () => {
       <div>
         {userOrgs[0] === null ? (
           <div className=" justify-center">
-            <Lottie options={defaultOption} height={400} width={400} />
+            {/* <Lottie options={defaultOption} height={400} width={400} /> */}
             <h3 className="text-center text-2xl">
               {" "}
               Та байгууллага бүртгээгүй байна
