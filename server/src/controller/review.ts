@@ -26,10 +26,14 @@ export const getReview = async (
   res: Response,
   next: NextFunction
 ) => {
-  const reviews = await Review.find();
-  res.status(201).json({
-    message: "Get all review successfully",
-  });
+  try {
+    const reviews = await Review.find();
+    res.status(201).json({
+      message: "Get all review successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const getReviewById = async (

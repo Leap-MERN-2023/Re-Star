@@ -9,30 +9,34 @@ import cloudinary from "../utils/cloudinary";
 import Multer from "multer";
 
 export const addOrg = async (req: IReq, res: Response, next: NextFunction) => {
-  const newOrg = req.body;
-  const { user } = req;
+  try {
+    const newOrg = req.body;
+    const { user } = req;
 
-  const newOrganization = { ...newOrg, user: user._id };
-  const images: string[] = [];
+    const newOrganization = { ...newOrg, user: user._id };
+    const images: string[] = [];
 
-  const files = req.files as Express.Multer.File[];
+    const files = req.files as Express.Multer.File[];
 
-  if (!files) {
-    throw new MyError("No file uploaded", 400);
-  } else {
-    for (let file of files) {
-      const { secure_url } = await cloudinary.uploader.upload(file.path);
+    if (!files) {
+      throw new MyError("No file uploaded", 400);
+    } else {
+      for (let file of files) {
+        const { secure_url } = await cloudinary.uploader.upload(file.path);
 
-      images.push(secure_url);
+        images.push(secure_url);
+      }
+      newOrganization.images = images;
+
+      const org = await Organization.create(newOrganization);
     }
-    newOrganization.images = images;
 
-    const org = await Organization.create(newOrganization);
+    res.status(201).json({
+      message: "Шинэ ресторан амжилттай бүртгэгдлээ ",
+    });
+  } catch (error) {
+    next(error);
   }
-
-  res.status(201).json({
-    message: "Шинэ ресторан амжилттай бүртгэгдлээ ",
-  });
 };
 
 export const getOrgById = async (
@@ -88,17 +92,21 @@ export const getUserOrgById = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { user } = req;
+  try {
+    const { user } = req;
 
-  const findOrg = await Organization.findOne({ user: user._id })
-    .populate("category")
-    .lean();
+    const findOrg = await Organization.findOne({ user: user._id })
+      .populate("category")
+      .lean();
 
-  res.status(201).json({
-    message: "got successfully",
-    findOrg,
-    haveOrg: true,
-  });
+    res.status(201).json({
+      message: "got successfully",
+      findOrg,
+      haveOrg: true,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const deleteOrg = async (

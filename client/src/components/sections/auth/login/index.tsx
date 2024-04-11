@@ -138,11 +138,11 @@ export const LoginPage = () => {
           </div>
           <p className="self-center text-secondary font-semibold">or</p>
           <div className="flex justify-around">
-            <Button variant={"outline"} size={"icon"} className="text-[30px]">
-              <MdEmail />
-            </Button>
-            <Button variant={"outline"} size={"icon"} className="text-[30px]">
-              <FaFacebook />
+            <Button
+              className="p-0 m-0 hover:text-primary hover:bg-slate-500 text-primary flex bg-secondary w-full text-center"
+              onClick={() => router.push("/signup")}
+            >
+              Sign up
             </Button>
           </div>
         </div>

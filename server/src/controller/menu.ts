@@ -58,34 +58,38 @@ export const deleteMenu = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { deleteId, orgId } = req.body;
+  try {
+    const { deleteId, orgId } = req.body;
 
-  const { user } = req;
+    const { user } = req;
 
-  const findOrg = await Organization.findOne({ user: user._id });
+    const findOrg = await Organization.findOne({ user: user._id });
 
-  if (!findOrg) {
-    throw new MyError("You are not owner of this restaurant", 401);
+    if (!findOrg) {
+      throw new MyError("You are not owner of this restaurant", 401);
+    }
+
+    const findMenu = await Menu.findOne({ organization: orgId });
+
+    if (!findMenu) {
+      throw new MyError("Restaurant does not exist", 401);
+    }
+
+    const indexOfMenu = findMenu.foods.findIndex((e: any) => {
+      return e._id == deleteId;
+    });
+
+    const spliceCount = findMenu.foods.splice(indexOfMenu, 1);
+
+    const menu = await findMenu.save();
+
+    res.status(201).json({
+      message: "deleted category successfully",
+      menu,
+    });
+  } catch (error) {
+    next(error);
   }
-
-  const findMenu = await Menu.findOne({ organization: orgId });
-
-  if (!findMenu) {
-    throw new MyError("Restaurant does not exist", 401);
-  }
-
-  const indexOfMenu = findMenu.foods.findIndex((e: any) => {
-    return e._id == deleteId;
-  });
-
-  const spliceCount = findMenu.foods.splice(indexOfMenu, 1);
-
-  const menu = await findMenu.save();
-
-  res.status(201).json({
-    message: "deleted category successfully",
-    menu,
-  });
 };
 
 export const getMenuByOrgId = async (
@@ -93,14 +97,18 @@ export const getMenuByOrgId = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { orgId } = req.params;
+  try {
+    const { orgId } = req.params;
 
-  const menus = await Menu.find({ organization: orgId });
+    const menus = await Menu.find({ organization: orgId });
 
-  res.status(201).json({
-    message: "Post category successfully",
-    menus,
-  });
+    res.status(201).json({
+      message: "Post category successfully",
+      menus,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const updateMenu = async (
