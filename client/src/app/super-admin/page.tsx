@@ -7,11 +7,9 @@ import { redirect } from "next/navigation";
 
 const SuperPage = () => {
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const user = JSON.parse(localStorage.getItem("user") || "{}");
-      if (user.role !== "admin") {
-        redirect("/");
-      }
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    if (user.role !== "admin") {
+      redirect("/");
     }
   }, []);
 
