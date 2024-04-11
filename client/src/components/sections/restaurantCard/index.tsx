@@ -55,7 +55,7 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
           className="h-52 w-full rounded-2xl p-3 object-cover "
           onClick={() => {
             setOrgIdContext(_id);
-            router.push(`http://localhost:3000/details/${_id}`);
+            router.push(`https://re-star-front.vercel.app/details/${_id}`);
           }}
         />
         <CardHeader>
@@ -64,7 +64,7 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
               className="font-bold  text-xl w-[200px] line-clamp-2 h-[50px] flex items-center"
               onClick={() => {
                 setOrgIdContext(_id);
-                router.push(`http://localhost:3000/details/${_id}`);
+                router.push(`https://re-star-front.vercel.app/details/${_id}`);
               }}
             >
               {name}
