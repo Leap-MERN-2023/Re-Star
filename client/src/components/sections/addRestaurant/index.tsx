@@ -1,24 +1,18 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 import React, { useState } from "react";
 
 import { StepOne } from "./StepOne";
 import { StepThree } from "./StepThree";
 import StepTwo from "./stepTwo";
-
-import { IoFastFood } from "react-icons/io5";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function AddRestaurant() {
   const [activeStep, setActiveStep] = useState(0);
+  const router = useRouter();
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
@@ -27,7 +21,7 @@ export default function AddRestaurant() {
   };
   return (
     <div className="p-7 bg-secondary ">
-      <div className="">
+      <div>
         {activeStep === 0 && (
           <div className="mt-10 bg-secondary text-center text-3xl flex justify-center items-center flex-col gap-6 font-medium">
             <div className="flex justify-center items-end bg-secondary rounded-full p-10">
@@ -46,9 +40,7 @@ export default function AddRestaurant() {
             </div>
             Add Your restaurant on Re-star
             <div className="grid grid-cols-2 gap-3">
-              <Button onClick={handleNext} className="">
-                Go to Home{" "}
-              </Button>
+              <Button onClick={() => router.push("/")}>Go to Home </Button>
               <Button onClick={handleNext} className="bg-primary">
                 Next{" "}
               </Button>
@@ -58,7 +50,7 @@ export default function AddRestaurant() {
 
         {activeStep === 1 && (
           <div className="grid grid-cols-1 gap-10 justify-center mt-[100px]">
-            <CardHeader className="">
+            <CardHeader>
               <CardTitle className="self-center ">
                 Create Your Restaurant on RE-STAR
               </CardTitle>

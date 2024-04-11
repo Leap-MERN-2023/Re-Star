@@ -10,8 +10,8 @@ const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  console.log("ERR MESSAGE =====>", err.message.cyan);
-  console.log("ERR STACK =====>", err.stack?.red.underline);
+  console.log("ERR MESSAGE =====>", err.message);
+  console.log("ERR STACK =====>", err.stack);
 
   if (err.message === "jwt expired")
     err.message = "Token-ний хугацаа дууссан байна дахин нэвтэрнэ үү";

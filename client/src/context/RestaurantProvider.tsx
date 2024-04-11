@@ -17,6 +17,7 @@ import {
 import { toast } from "react-toastify";
 import { UserContext } from "./UserProvider";
 import { MenuContext } from "./MenuProvider";
+import { useRouter } from "next/navigation";
 
 export const RestaurantContext = createContext<IRestaurantContext>(
   {} as IRestaurantContext
@@ -27,11 +28,12 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
   const [isLoading, setIsLoading] = useState(false);
   const [org, setOrg] = useState<IOrg[]>([]);
   const [approvedOrgs, setApprovedOrgs] = useState<IOrg[]>([]);
-
+  const [isOpen, setIsOpen] = useState(false);
   const [userOrgs, setUserOrgs] = useState<IOrg[]>([]);
   const [orgById, setOrgById] = useState({});
 
   const { token } = useContext(UserContext);
+  const router = useRouter();
 
   const createRestaurant = async ({
     name,
@@ -48,7 +50,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
     lng,
   }: IRestaurant) => {
     try {
-      setIsLoading(!isLoading);
+      setIsLoading(true);
       const formdata = new FormData();
 
       formdata.set("name", name);
@@ -71,10 +73,12 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       });
 
       toast.success("restaurant amjilttai uuslee");
-
-      setIsLoading(!isLoading);
+      getUserRestaurantById();
+      router.push("/admin");
     } catch (error) {
       toast.error(`Error : ${error} `);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -195,6 +199,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
   };
 
   const deleteRestaurantById = async (id: string) => {
+    console.log("id", id);
     try {
       const {
         data: { findOrg },
@@ -204,6 +209,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
         },
       });
 
+      getUserRestaurantById();
       setUserOrgs([findOrg]);
       toast.success("Deleted ");
     } catch (error: any) {
@@ -233,21 +239,27 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  const ChangeIsOpen = (open: boolean) => {
+    setIsOpen(open);
+  };
+
   return (
     <RestaurantContext.Provider
       value={{
         org,
+        isOpen,
+        orgById,
+        refetch,
         userOrgs,
-        createRestaurant,
         isLoading,
         handleFetch,
-        refetch,
+        ChangeIsOpen,
         updateRestaurant,
+        createRestaurant,
         getRestaurantById,
         deleteRestaurantById,
         getUserRestaurantById,
         setOrgIdContext,
-        orgById,
         changeOrgStatus,
         approvedOrgs,
       }}

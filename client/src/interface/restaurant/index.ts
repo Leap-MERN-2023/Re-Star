@@ -36,6 +36,8 @@ export interface IRestaurantContext {
   org: IOrg[];
   getUserRestaurantById: () => void;
   approvedOrgs: IOrg[];
+  isOpen: boolean;
+  ChangeIsOpen: (open: boolean) => void;
 }
 
 export interface IUpdateRestaurant {

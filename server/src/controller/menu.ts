@@ -30,7 +30,7 @@ export const addMenu = async (
           description: newMenu.description,
           category: newMenu.category,
           price: newMenu.price,
-          image: newMenu.image,
+          image: newFood.image,
         },
       });
       res.status(201).json({

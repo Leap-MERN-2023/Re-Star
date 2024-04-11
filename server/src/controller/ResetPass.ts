@@ -55,8 +55,6 @@ export const verifyOtp = async (req: Request, res: Response) => {
     console.log("valid", validOtp);
 
     res.status(200).json({ message: "OTP is validated" });
-    console.log("successful 2 step", otp);
-    console.log("successful 2 otp step", validOtp);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Server is internal error" });

@@ -38,7 +38,10 @@ const Explore = () => {
           mappedOrgByCategory={mappedOrgByCategory}
           allOrg={allOrg}
         />
-        <SearchMap mappedOrgByName={mappedOrgByName} mapOrgs={mapOrgs} />
+        <SearchMap
+          mappedOrgByName={mappedOrgByName}
+          mapOrgs={mapOrgs == false ? approvedOrgs : mapOrgs}
+        />
       </div>
     </div>
   );

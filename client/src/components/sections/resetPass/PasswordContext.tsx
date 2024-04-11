@@ -53,6 +53,7 @@ const PasswordProvider = ({ children }: PropsWithChildren) => {
       toast.success("Амжилттай: код зөв бна");
     } catch (error) {
       toast.error("Алдаа : Код буруу");
+      console.log(`error ${error}`);
     }
   };
 

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogFooter,
   DialogHeader,
@@ -14,12 +15,14 @@ import { Card } from "@/components/ui/card";
 import { UserContext } from "@/context/UserProvider";
 import myAxios from "@/utils/myAxios";
 import { toast } from "react-toastify";
+import { RestaurantContext } from "@/context/RestaurantProvider";
 
 export function AddPhotos({ id }: { id: string }) {
   const [image, setImage] = useState<File>();
   const [loading, setLoading] = useState(false);
 
   const { token } = useContext(UserContext);
+  const { getUserRestaurantById } = useContext(RestaurantContext);
 
   const uploadPic = async () => {
     setLoading(true);
@@ -34,6 +37,7 @@ export function AddPhotos({ id }: { id: string }) {
           Authorization: `Bearer ${token}`,
         },
       });
+      getUserRestaurantById();
       toast.success("success");
       setLoading(false);
     } catch (error: any) {
@@ -75,7 +79,7 @@ export function AddPhotos({ id }: { id: string }) {
               <img
                 src={URL.createObjectURL(image)}
                 alt="ss"
-                className="object-cover rounded-lg"
+                className="object-cover size-80 rounded-lg"
               />
             )}
           </Card>
@@ -89,9 +93,11 @@ export function AddPhotos({ id }: { id: string }) {
           </Button>
         </div>
         <DialogFooter>
-          <Button type="submit" className="w-full" onClick={uploadPic}>
-            Save changes
-          </Button>
+          <DialogClose asChild>
+            <Button type="submit" className="w-full" onClick={uploadPic}>
+              Save changes
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

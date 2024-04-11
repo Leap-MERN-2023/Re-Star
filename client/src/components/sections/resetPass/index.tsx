@@ -43,7 +43,6 @@ export const MyStepper = () => {
       }
       {
         activeStep === 3 && handleThirdStep({ email, password, rePassword });
-        router.push("/login");
       }
     },
   });
