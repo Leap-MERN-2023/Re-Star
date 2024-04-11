@@ -3,8 +3,6 @@ import { DetailPicture } from "@/components/sections/details/DetailPicture";
 import DetailTab from "@/components/sections/details/tabs";
 import DetailCard from "@/components/sections/details/MainInfo";
 
-import { IOrg } from "@/interface";
-
 const DetailsPage = ({
   name,
   category,
@@ -15,7 +13,7 @@ const DetailsPage = ({
   phoneNumber,
   images,
   _id,
-}: IOrg) => {
+}: any) => {
   return (
     <div className="bg-secondary ">
       <div className="mx:auto container  ">

@@ -17,8 +17,6 @@ import FavoritesProvider from "@/context/FavoritesProvider";
 import MenuProvider from "@/context/MenuProvider";
 import { ThemeProvider } from "@/context/ThemeProvider";
 
-import { PagesProgressBar as ProgressBar } from "next-nprogress-bar";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

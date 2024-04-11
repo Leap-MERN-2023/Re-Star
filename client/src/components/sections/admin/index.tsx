@@ -133,8 +133,8 @@ export const AdminTab = () => {
           Delete Restaurant
         </TabsTrigger>
       </TabsList>
-      {userOrgs.map((org) => (
-        <TabsContent value={"admin"}>
+      {userOrgs.map((org, index) => (
+        <TabsContent value={"admin"} key={index}>
           <CardHeader>
             <CardTitle className="text-center">Your Restaurant</CardTitle>
           </CardHeader>
@@ -146,8 +146,8 @@ export const AdminTab = () => {
       <TabsContent value="delete" className="flex justify-center">
         {userOrgs.length === 0
           ? ""
-          : userOrgs.map((org) => (
-              <Card className="lg:w-1/3 w-full">
+          : userOrgs.map((org, index) => (
+              <Card className="lg:w-1/3 w-full" key={index}>
                 <CardHeader>
                   <CardTitle className="text-center">
                     Delete {org?.name}
@@ -156,7 +156,7 @@ export const AdminTab = () => {
                 <CardContent className="space-y-2">
                   <div className="space-y-1">
                     <p>
-                      Once you delete you restaurant, you can't undo this
+                      Once you delete you restaurant, you can&apos;t undo this
                       action. All the information about your restaurant will be
                       dleted immediatelly
                     </p>
