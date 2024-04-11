@@ -21,6 +21,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { FavoritesContext } from "@/context/FavoritesProvider";
+import { RestaurantContext } from "@/context/RestaurantProvider";
 
 interface IProps extends IInfo {
   reviews: any;
@@ -30,13 +31,21 @@ export function FavoriteCard({ favorite }: any) {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const router = useRouter();
   const { deleteFavorite } = useContext(FavoritesContext);
+
   return (
     <Card className="flex flex-row justify-center items-center rounded-lg border-[2px] mt-5 hover:scale-105">
       <img
         src={favorite.images?.at(1)}
         className="h-[180px] w-[250px] border-white-200 rounded-lg p-2 object-cover"
+        onClick={() => {
+          router.push(`http://localhost:3000/details/${favorite._id}`);
+        }}
       />
-      <CardHeader>
+      <CardHeader
+        onClick={() => {
+          router.push(`http://localhost:3000/details/${favorite._id}`);
+        }}
+      >
         <div className="">
           <CardTitle
             className="text-xl text-primary"

@@ -37,6 +37,7 @@ export function MainNav({ className }: any) {
       >
         Explore
       </Link>
+
       <Link
         href={`${loggedUser ? "/admin/addrestaurant" : ""}`}
         className="text-primary font-semibold transition-colors hover:scale-105  max-[460px]:text-transparent  max-[460px]:text-xs "
@@ -50,7 +51,6 @@ export function MainNav({ className }: any) {
         >
           Favorites
         </label>
-        <FavoriteDrawer />
       </div>
 
       {!loggedUser._id ? (
@@ -73,9 +73,12 @@ export function MainNav({ className }: any) {
           className="text-primary font-semibold transition-colors hover:scale-105 max-[460px]:text-transparent max-[460px]:text-xs "
           href="/admin"
         >
-          <div className="hover:scale-120">Go to your Restaurant</div>
+          <div className="hover:scale-120">Your Restaurant</div>
         </Link>
       )}
+      <div>
+        <FavoriteDrawer />
+      </div>
     </nav>
   );
 }
