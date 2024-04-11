@@ -22,17 +22,21 @@ export function UserNav() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className="relative h-10 w-10 rounded-md border-2 hover:bg-secondary border-primary p-4 bg-secondary hover:scale-105 max-[460px]:text-xs max-[460px]:justify-center  "
-        >
-          <Avatar className="h-8 w-8 border-primary">
-            <AvatarImage src="/avatars/01.png" alt="@shadcn" />
-            <AvatarFallback className="bg-secondary hover:bg-secondary">
-              SC
-            </AvatarFallback>
-          </Avatar>
-        </Button>
+        {loggedUser._id ? (
+          <Button
+            variant="ghost"
+            className="relative h-10 w-10 rounded-md border-2 hover:bg-secondary border-primary p-4 bg-secondary hover:scale-105 max-[460px]:text-xs max-[460px]:justify-center "
+          >
+            <Avatar className="h-8 w-8 border-primary">
+              <AvatarImage src="/avatars/01.png" alt="@shadcn" />
+              <AvatarFallback className="bg-secondary hover:bg-secondary">
+                {loggedUser.name.charAt(0)}
+              </AvatarFallback>
+            </Avatar>
+          </Button>
+        ) : (
+          ""
+        )}
       </DropdownMenuTrigger>
       <DropdownMenuContent
         className="w-56 bg-secondary border-primary border-2"
@@ -53,26 +57,10 @@ export function UserNav() {
         <DropdownMenuGroup>
           <DropdownMenuItem onClick={() => router.push("/userProfile")}>
             Profile
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => router.push("/admin/addrestaurant")}>
-            Add Restaurant
-            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => router.push("/admin")}>
-            Go to Restaurant
-            <DropdownMenuShortcut>⌘Q</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => router.push("/favorites")}>
-            Favorites
-            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
+        <DropdownMenuItem onClick={logout}>Log out</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={logout}>
-          Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

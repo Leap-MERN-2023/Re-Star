@@ -24,7 +24,7 @@ export function ResponsiveNav() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="relative h-10 w-10 rounded-md max-[460px]:border-2 hover:bg-secondary max-[460px]:border-primary max-[460px]:p-4 max-[460px]:bg-secondary hover:scale-105 min-[460px]:text-xs min-[460px]:justify-center min-[460px]:text-transparent"
+          className="relative h-10 w-10 rounded-md max-[460px]:border-2 hover:bg-secondary max-[460px]:border-primary max-[460px]:p-4 max-[460px]:bg-secondary hover:scale-105 min-[460px]:text-xs min-[460px]:justify-center min-[460px]:text-transparent sm:hidden"
         >
           <Avatar className="h-8 w-8 border-primary">
             <AvatarFallback className="bg-secondary hover:bg-secondary">
@@ -40,10 +40,8 @@ export function ResponsiveNav() {
       >
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-lg font-medium leading-none text-center">
-            </p>
-            <p className="text-xs leading-none text-muted-foreground text-center">
-            </p>
+            <p className="text-lg font-medium leading-none text-center"></p>
+            <p className="text-xs leading-none text-muted-foreground text-center"></p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
@@ -57,7 +55,7 @@ export function ResponsiveNav() {
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => router.push("/admin/addrestaurant")}>
-           Add Restaurant
+            Add Restaurant
             <DropdownMenuShortcut>⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => router.push("/favorites")}>

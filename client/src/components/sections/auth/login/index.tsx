@@ -62,6 +62,7 @@ export const LoginPage = () => {
       localStorage.setItem("token", token);
 
       router.push("/");
+      setTimeout(() => location.reload(), 1000);
     } catch (error: any) {
       toast.error(` Error ${(error?.response?.data?.message as string) || ""}`);
     }
