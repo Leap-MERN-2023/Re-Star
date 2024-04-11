@@ -28,6 +28,7 @@ import { useContext, useState } from "react";
 import { RestaurantContext } from "@/context/RestaurantProvider";
 import { CategoryContext } from "@/context/CategoryProvider";
 import { Skeleton } from "@/components/ui/skeleton";
+import Loading from "@/app/loading";
 
 export function StepOne() {
   const [selectValue, setSelectValue] = useState<string | null>();
