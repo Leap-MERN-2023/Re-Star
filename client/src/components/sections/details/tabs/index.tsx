@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { MenuTab } from "./menuTab";
-import PhotosTab from "./photosTab";
+
 import ReviewTab from "./reviewTab";
 
 const DetailTab = (props: { reviews?: any }) => {

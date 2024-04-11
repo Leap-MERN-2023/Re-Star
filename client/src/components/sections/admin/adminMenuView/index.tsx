@@ -20,7 +20,7 @@ export const AdminMenuView = ({ name, _id }: any) => {
 
   return (
     <Tabs defaultValue="reviews" className="w-full mt-3">
-      <TabsList className="grid w-full grid-cols-2 bg-secondary text-white">
+      <TabsList className="grid w-full grid-cols-2 bg-secondary text-primary">
         <TabsTrigger value="reviews">Reviews</TabsTrigger>
         <TabsTrigger value="menu">Menu</TabsTrigger>
       </TabsList>

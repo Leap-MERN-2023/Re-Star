@@ -47,9 +47,9 @@ export function RestaurantCard({ name, address, images, _id }: IProps) {
   };
 
   return (
-    <div className=" flex justify-center items-center transform transition-all hover:scale-105 hover:cursor-pointer">
+    <div className=" flex justify-center items-center transform transition-all hover:scale-105 hover:cursor-pointer ">
       {/* <CarouselItem className="pl-1 md:basis-1/2 lg:basis-1/3 "> */}
-      <Card className="w-[350px] ">
+      <Card className="w-[350px] flex-wrap">
         <img
           src={images?.at(1)}
           className="h-52 w-full rounded-2xl p-3 object-cover "

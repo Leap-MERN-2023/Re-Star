@@ -74,7 +74,11 @@ export function EditOrgMenu({
 
         getMenuByOrgId(orgId);
 
+<<<<<<< HEAD:client/src/components/sections/admin/editOrgMenu/index.tsx
         toast.success("Successful");
+=======
+        toast.success("New review edited");
+>>>>>>> 70c8d72 (edit):client/src/components/sections/admin/editOrg/index.tsx
       } catch (error: any) {
         toast.error(`error : ${error.response && error.response.data.message}`);
       }
@@ -84,12 +88,9 @@ export function EditOrgMenu({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          variant={"outline"}
-          size={"icon"}
-          className="flex justify-center items-center m-3"
-        >
-          <MdModeEdit className="w-10 h-10 text-green-600 " />
+        <Button className="flex justify-center items-center w-full text-[#17BA09] bg-white">
+          {/* <MdModeEdit className="w-10 h-10 text-green-600 " /> */}
+          Edit
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

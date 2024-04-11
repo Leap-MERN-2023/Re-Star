@@ -22,12 +22,12 @@ interface IProps extends IMenu {
 export function DeleteOrg({ _id, name, orgId }: IProps) {
   const { DeleteMenuByOrgId } = useContext(MenuContext);
 
-  console.log("orfid in deletorf", orgId);
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button size={"icon"} className="flex justify-center items-center m-3 ">
-          <MdDeleteForever color="red" className="w-10 h-10" />
+        <Button className="flex justify-center items-center text-[#be2929f7] bg-white  w-full">
+          {/* <MdDeleteForever color="red" className="w-10 h-10" /> */}
+          Delete
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>

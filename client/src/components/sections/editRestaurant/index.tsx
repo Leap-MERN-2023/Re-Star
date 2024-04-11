@@ -75,7 +75,7 @@ export function EditOrganization({ id }: { id: string }) {
     <div>
       <Sheet>
         <SheetTrigger asChild>
-          <Button className="w-full bg-secondary text-primary gap-2  hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointers">
+          <Button className="w-full bg-secondary text-primary gap-2  hover:bg-secondary hover:scale-105 transform transition-all hover:cursor-pointers">
             Edit Restaurant
             <GrEdit size={22} />
           </Button>
@@ -95,7 +95,7 @@ export function EditOrganization({ id }: { id: string }) {
               </Label>
               <Input
                 id="name"
-                className="col-span-3"
+                className="col-span-3 bg-secondary"
                 name="name"
                 onChange={formik.handleChange}
                 value={formik.values.name}
@@ -107,18 +107,18 @@ export function EditOrganization({ id }: { id: string }) {
               </Label>
               <Input
                 id="Close Hours"
-                className="col-span-3"
+                className="col-span-3 bg-secondary"
                 type="time"
                 value={formik.values.openTime}
               />
-              <Label htmlFor="Close Hours" className="text-right">
+              <Label htmlFor="Close Hours" className="text-right ">
                 Close Hours
               </Label>
               <Input
                 id="OperationHours"
                 value={formik.values.closeTime}
                 name="closeTime"
-                className="col-span-3"
+                className="col-span-3 bg-secondary"
                 type="time"
               />
             </div>
@@ -128,7 +128,7 @@ export function EditOrganization({ id }: { id: string }) {
               </Label>
               <Input
                 id="Phone"
-                className="col-span-3"
+                className="col-span-3 bg-secondary"
                 name="phoneNumber"
                 onChange={formik.handleChange}
                 value={formik.values.phoneNumber}
@@ -140,7 +140,7 @@ export function EditOrganization({ id }: { id: string }) {
               </Label>
               <Input
                 id="address"
-                className="col-span-3"
+                className="col-span-3 bg-secondary"
                 name="address"
                 onChange={formik.handleChange}
                 value={formik.values.address}
@@ -152,7 +152,7 @@ export function EditOrganization({ id }: { id: string }) {
               </Label>
               <Input
                 id="description"
-                className="col-span-3"
+                className="col-span-3 bg-secondary"
                 name="description"
                 onChange={formik.handleChange}
                 value={formik.values.description}
@@ -167,7 +167,7 @@ export function EditOrganization({ id }: { id: string }) {
                   formik.setFieldValue("category", e);
                 }}
               >
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full bg-secondary">
                   <SelectValue placeholder="Add Category" />
                 </SelectTrigger>
                 <SelectContent>
