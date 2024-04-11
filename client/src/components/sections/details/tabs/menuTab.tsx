@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useRef } from "react";
 
 import AutoPlay from "embla-carousel-autoplay";
 import "swiper/css";
@@ -22,9 +22,7 @@ export const MenuTab = () => {
   const { orgMenus } = useContext(MenuContext);
   const { menus } = useContext(MenuContext);
 
-  const plugin = React.useRef(
-    AutoPlay({ delay: 1500, stopOnInterraction: true })
-  );
+  const plugin = useRef(AutoPlay({ delay: 1500, stopOnInterraction: true }));
   return (
     <div>
       {!orgMenus ? (
