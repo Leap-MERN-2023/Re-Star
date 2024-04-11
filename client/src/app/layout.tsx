@@ -1,3 +1,5 @@
+// "use client";s
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -14,6 +16,8 @@ import RestaurantProvider from "@/context/RestaurantProvider";
 import FavoritesProvider from "@/context/FavoritesProvider";
 import MenuProvider from "@/context/MenuProvider";
 import { ThemeProvider } from "@/context/ThemeProvider";
+
+import { PagesProgressBar as ProgressBar } from "next-nprogress-bar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -52,6 +56,12 @@ export default function RootLayout({
                       <MenuProvider>
                         <Header />
                         {children}
+                        {/* <ProgressBar
+                          height="4px"
+                          color="#fffd00"
+                          options={{ showSpinner: false }}
+                          shallowRouting
+                        /> */}
                         <ToastContainer />
                         <Footer />
                       </MenuProvider>

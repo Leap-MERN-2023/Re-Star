@@ -25,7 +25,7 @@ export const CategoryRow = ({ categoryId }: { categoryId: string }) => {
   const { approvedOrgs } = useContext(RestaurantContext);
 
   return (
-    <div className="flex gap-10  ">
+    <div className="flex gap-5 flex-wrap justify-start ">
       {!approvedOrgs && <Skeleton />}
       {approvedOrgs
         .filter((e) => {

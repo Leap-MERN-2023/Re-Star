@@ -55,7 +55,7 @@ export const AdminPage = () => {
   return (
     <div className="container mx-auto  ">
       <div className="flex">
-        <h1 className="text-3xl p-3 text-bold text-center flex-1 mt-[100px]">
+        <h1 className="text-4xl p-3 font-bold text-center flex-1 mt-[100px]">
           Admin Page
         </h1>
       </div>
@@ -124,12 +124,12 @@ export const AdminTab = () => {
     <Tabs defaultValue={"admin"} className="w-full">
       <TabsList className="grid w-full grid-cols-2 bg-secondary shadow ">
         {userOrgs.map((org, i) => (
-          <TabsTrigger value={"admin"} className="text-white" key={i}>
+          <TabsTrigger value={"admin"} className="text-primary" key={i}>
             Admin Page
           </TabsTrigger>
         ))}
 
-        <TabsTrigger value="delete" className="text-white">
+        <TabsTrigger value="delete" className="text-primary">
           Delete Restaurant
         </TabsTrigger>
       </TabsList>

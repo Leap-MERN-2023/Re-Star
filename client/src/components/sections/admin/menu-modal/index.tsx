@@ -78,15 +78,19 @@ export function MenuModal({ id }: { id: string }) {
       });
       getMenuByOrgId(id);
 
+<<<<<<< HEAD
       toast.success("Successful");
+=======
+      toast.success("New review added");
+>>>>>>> 70c8d72 (edit)
     } catch (error) {
-      toast.error("Алдаа");
+      toast.error("Error");
     }
   };
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-full bg-secondary text-primary   hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointers">
+        <Button className="w-full bg-secondary text-primary   hover:bg-secondary hover:scale-105 transform transition-all hover:cursor-pointers">
           Add Menu Item
           <MdRestaurantMenu size={"25px"} style={{ margin: 4 }} />
         </Button>

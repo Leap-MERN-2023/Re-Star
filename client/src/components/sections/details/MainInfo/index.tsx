@@ -66,8 +66,8 @@ const MainInfo = ({
           <div>
             <h1 className="text-3xl font-bold ">{name}</h1>
           </div>
-          <div className="flex flex-wrap text-lg ">
-            <IoMdRestaurant size={30} className=" text-green-600" /> :
+          <div className="flex flex-wrap text-lg gap-2">
+            <IoMdRestaurant size={30} className=" text-primary" />
             {cat.length > 0 ? cat[0].name : "Loading"}
           </div>
 

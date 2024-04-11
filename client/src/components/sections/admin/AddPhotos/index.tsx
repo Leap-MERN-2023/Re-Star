@@ -48,7 +48,7 @@ export function AddPhotos({ id }: { id: string }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="bg-secondary gap-2 text-primary hover:bg-black hover:scale-105 transform transition-all hover:cursor-pointer">
+        <Button className="bg-secondary gap-2 text-primary hover:bg-secondary hover:scale-105 transform transition-all hover:cursor-pointer">
           {" "}
           Add Photos
           <MdOutlineInsertPhoto size={26} />

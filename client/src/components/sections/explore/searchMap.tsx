@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CloudFog } from "lucide-react";
 import { IOrg } from "@/interface";
+import { Router } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface IProps {
   mappedOrgByName: (searchName: string) => void;
@@ -109,15 +111,14 @@ const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
                   </AdvancedMarker>
 
                   <InfoWindow
-                    // position={{ lat: 47.925472, lng: 106.901336 }}
                     position={{
                       lat: Number(org?.lat),
                       lng: Number(org?.lng),
                     }}
-                    maxWidth={200}
-                    minWidth={100}
+                    maxWidth={250}
+                    minWidth={150}
                   >
-                    <div className="">
+                    <div className="h-[130px] w-[200px]">
                       <img
                         src={org.images.at(0)}
                         className="h-[80px] w-full object-cover"
@@ -125,8 +126,7 @@ const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
                       <p className="text-black text-lg font-medium w-full">
                         {org.name}
                       </p>
-                      <p className="text-black">{org.location}</p>
-                      <p className="text-black">{org.description}</p>
+                      {/* <p className="text-black">{org.location}</p> */}
 
                       <p className="text-black font-medium justify-end flex mt-2 gap-1">
                         <span className="text-[#FB1818] ">{org.openTime}</span>:
