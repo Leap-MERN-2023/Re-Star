@@ -35,7 +35,11 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
       setFavorites(favorites?.organizations);
       setFav1(!fav1);
     } catch (error: any) {
-      toast.error("Error in favorite context ", error);
+      toast.error(
+        `Error in deleting restaurant: ${
+          error.response ? error.response.data.message : error
+        } `
+      );
     }
   };
 
@@ -62,7 +66,7 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
       );
       getFavorites();
 
-      toast.success("Put Fav Success");
+      toast.success("Successfully added to favorites");
     } catch (error) {
       toast.error(`error ${error}`);
     }

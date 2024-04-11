@@ -1,22 +1,23 @@
 "use client";
 
 import {
-  IRestaurantContext,
-  IRestaurant,
-  IUpdateRestaurant,
-  IOrg,
-} from "@/interface";
-import myAxios from "@/utils/myAxios";
-import {
   PropsWithChildren,
   createContext,
   useContext,
   useEffect,
   useState,
 } from "react";
+
+import {
+  IRestaurantContext,
+  IRestaurant,
+  IUpdateRestaurant,
+  IOrg,
+} from "@/interface";
+
+import myAxios from "@/utils/myAxios";
 import { toast } from "react-toastify";
 import { UserContext } from "./UserProvider";
-import { MenuContext } from "./MenuProvider";
 import { useRouter } from "next/navigation";
 
 export const RestaurantContext = createContext<IRestaurantContext>(
@@ -76,7 +77,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       getUserRestaurantById();
       router.push("/admin");
     } catch (error) {
-      toast.error(`Error : ${error} `);
+      toast.error(`Error in adding Restaurant: ${error} `);
     } finally {
       setIsLoading(false);
     }
@@ -119,7 +120,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
 
       setIsLoading(!isLoading);
     } catch (error) {
-      toast.error(`Error : ${error} `);
+      toast.error(`Error in updating restaurant : ${error} `);
     }
   };
 
@@ -143,7 +144,9 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
 
       setApprovedOrgs(approvedOrgs);
     } catch (error: any) {
-      toast.error(`Алдаа : ${error?.response?.data?.message} `);
+      toast.error(
+        `Алдаа : ${error?.response && error?.response?.data?.message} `
+      );
     }
   };
 
@@ -214,7 +217,9 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       toast.success("Deleted ");
     } catch (error: any) {
       toast.error(
-        `Error : ${error.response ? error.response.data.message : error} `
+        `Error in deleting restaurant: ${
+          error.response ? error.response.data.message : error
+        } `
       );
     }
   };
@@ -235,7 +240,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       toast.success("Successfully changed restaurant status");
       getRestaurant();
     } catch (error: any) {
-      toast.error("error :", error);
+      toast.error("error in changing restaurant status:", error);
     }
   };
 

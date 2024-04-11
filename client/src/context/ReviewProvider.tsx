@@ -73,8 +73,9 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
     try {
       await myAxios.delete("/review", { data: { reviewId } });
       getReviewById(orgId);
+      toast.success("deleted review");
     } catch (error) {
-      toast.error(`error ${error}`);
+      toast.error(`error in deleting review ${error}`);
     }
   };
 
@@ -92,7 +93,7 @@ const ReviewProvider = ({ children }: PropsWithChildren) => {
       getReviewById(orgId);
       toast("Review updated");
     } catch (error) {
-      toast.error(`error ${error}`);
+      toast.error(`error in editing review : ${error}`);
     }
   };
 

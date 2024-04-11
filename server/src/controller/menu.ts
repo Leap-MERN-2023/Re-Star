@@ -12,6 +12,7 @@ export const addMenu = async (
 ) => {
   try {
     const newMenu = req.body;
+    console.log("req", req.body);
 
     const { orgId, ...newFood } = newMenu;
 
@@ -37,33 +38,18 @@ export const addMenu = async (
         message: "Post category successfully",
       });
     } else {
-      const updateMenuIndex = findMenu.foods.findIndex(
-        (e) => e.name === newMenu.name
-      );
+      const newmenu = findMenu.foods.push({
+        ...newFood,
+      });
 
-      if (updateMenuIndex === undefined || updateMenuIndex === -1) {
-        const newmenu = findMenu.foods.push({
-          ...newFood,
-        });
-
-        await findMenu.save();
-        res.status(201).json({
-          message: "Post menu successfully",
-        });
-      } else {
-        findMenu.foods[updateMenuIndex].name = newMenu.name;
-        findMenu.foods[updateMenuIndex].price = newMenu.price;
-        findMenu.foods[updateMenuIndex].category = newMenu.category;
-        findMenu.foods[updateMenuIndex].description = newMenu.description;
-        findMenu.foods[updateMenuIndex].image = newMenu.image;
-        await findMenu.save();
-        res.status(201).json({
-          message: "updated menu successfully",
-        });
-      }
+      await findMenu.save();
+      res.status(201).json({
+        message: "Post menu successfully",
+      });
     }
   } catch (error) {
     next(error);
+    console.log("error", error);
   }
 };
 
@@ -115,4 +101,49 @@ export const getMenuByOrgId = async (
     message: "Post category successfully",
     menus,
   });
+};
+
+export const updateMenu = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    console.log("start");
+    const newMenu = req.body;
+    console.log("req.body", req.body);
+    console.log("newMenu", req.body.orgId);
+
+    const { orgId, ...newFood } = newMenu;
+    const findMenu = await Menu.findOne({ organization: orgId });
+
+    if (!findMenu) {
+      throw new MyError("Organization does not exit", 404);
+    }
+
+    const updateMenuIndex = findMenu.foods.findIndex(
+      (e) => e._id === newMenu.menuId
+    );
+
+    if (updateMenuIndex === undefined || updateMenuIndex === -1) {
+      throw new MyError("Food does not exist", 404);
+    }
+
+    findMenu.foods[updateMenuIndex].name = newMenu.name;
+    findMenu.foods[updateMenuIndex].price = newMenu.price;
+    findMenu.foods[updateMenuIndex].category = newMenu.category;
+    findMenu.foods[updateMenuIndex].description = newMenu.description;
+    findMenu.foods[updateMenuIndex].image = newMenu.image;
+    await findMenu.save();
+    res.status(201).json({
+      message: "updated menu successfully",
+    });
+
+    await findMenu.save();
+    res.status(201).json({
+      message: "Post menu successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
 };

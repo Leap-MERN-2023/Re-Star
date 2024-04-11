@@ -30,22 +30,30 @@ const CategoryProvider = ({ children }: PropsWithChildren) => {
   const { token } = useContext(UserContext);
 
   const getCategory = async () => {
-    const {
-      data: { categories },
-    } = await myAxios.get("/category/get");
-    setCategories(categories);
+    try {
+      const {
+        data: { categories },
+      } = await myAxios.get("/category/get");
+      setCategories(categories);
+    } catch (error) {
+      console.log(`Error : ${error}`);
+    }
   };
 
   const addCategory = async (dataForm: any) => {
-    const {
-      data: { categories },
-    } = await myAxios.post("/category/add", dataForm, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    try {
+      const {
+        data: { categories },
+      } = await myAxios.post("/category/add", dataForm, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    toast.success("Success");
+      toast.success("Successfully added category");
+    } catch (error) {
+      console.log(`Error : ${error}`);
+    }
   };
 
   useEffect(() => {

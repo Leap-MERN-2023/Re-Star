@@ -5,7 +5,7 @@ import RestaurantCheck from "./restaurantCheck";
 
 const SuperAdmin = () => {
   return (
-    <div className="">
+    <div>
       <AddCategory />
       <RestaurantCheck />
     </div>
