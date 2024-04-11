@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { MenuContext } from "@/context/MenuProvider";
 
-import { EditOrgMenu } from "../editOrg";
+import { EditOrgMenu } from "../editOrgMenu";
 import {
   Carousel,
   CarouselContent,
@@ -60,7 +60,11 @@ export const AdminMenuTab = ({ orgId }: { orgId: string }) => {
                             </p>
                           </div>
                         </div>
-                        <EditOrgMenu {...menu} orgId={orgId} />
+                        <EditOrgMenu
+                          {...menu}
+                          orgId={orgId}
+                          menuId={menu._id}
+                        />
                       </div>
                     </div>
                   ))}

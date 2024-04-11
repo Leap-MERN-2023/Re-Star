@@ -78,7 +78,7 @@ export function MenuModal({ id }: { id: string }) {
       });
       getMenuByOrgId(id);
 
-      toast.success("Shine review amjilltai uuslee");
+      toast.success("Successful");
     } catch (error) {
       toast.error("Алдаа");
     }

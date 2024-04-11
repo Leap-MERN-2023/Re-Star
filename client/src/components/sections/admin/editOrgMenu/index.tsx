@@ -31,6 +31,7 @@ import { MenuContext } from "@/context/MenuProvider";
 
 interface IOrmMenuProps extends IMenu {
   orgId: string;
+  menuId: string;
 }
 
 export function EditOrgMenu({
@@ -38,7 +39,7 @@ export function EditOrgMenu({
   category,
   description,
   price,
-  _id,
+  menuId,
   orgId,
 }: IOrmMenuProps) {
   const { categories } = useContext(CategoryContext);
@@ -61,17 +62,21 @@ export function EditOrgMenu({
         dataForm.set("description", description);
         dataForm.set("price", price);
         dataForm.set("orgId", orgId);
+        dataForm.set("menuId", menuId);
+        console.log("first", name, category, description, price, orgId);
+        console.log("second", dataForm.get("orgId"));
 
-        const data = await myAxios.post("/menu", dataForm, {
+        const data = await myAxios.post("/menu/update", dataForm, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+
         getMenuByOrgId(orgId);
 
-        toast.success("Shine review amjilltai uuslee");
+        toast.success("Successful");
       } catch (error: any) {
-        toast.error(`error ${error}`);
+        toast.error(`error : ${error.response && error.response.data.message}`);
       }
     },
   });

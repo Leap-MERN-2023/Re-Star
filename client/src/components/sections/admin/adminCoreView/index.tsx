@@ -37,13 +37,6 @@ const AdminCoreView = ({
   description,
   phoneNumber,
 }: IInfo) => {
-  const categories = [
-    " korean food",
-    "original chickens",
-    "tasty soups",
-    "nice environment",
-  ];
-
   return (
     <div className="">
       <Card className="mt-4">

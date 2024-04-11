@@ -12,9 +12,8 @@ const DetailTab = (props: { reviews?: any }) => {
 
   return (
     <Tabs defaultValue="reviews" className="w-full ">
-      <TabsList className="grid w-full grid-cols-3  shadow text-primary mt-3 bg-secondary">
+      <TabsList className="grid w-full grid-cols-2  shadow text-primary mt-3 bg-secondary">
         <TabsTrigger value="reviews">Reviews</TabsTrigger>
-        <TabsTrigger value="photos">Photos</TabsTrigger>
         <TabsTrigger value="menu">Menu</TabsTrigger>
       </TabsList>
       <TabsContent value="reviews">
@@ -27,11 +26,6 @@ const DetailTab = (props: { reviews?: any }) => {
               ))}
             </div>
           </CardHeader>
-        </Card>
-      </TabsContent>
-      <TabsContent value="photos">
-        <Card>
-          <PhotosTab />
         </Card>
       </TabsContent>
       <TabsContent value="menu">

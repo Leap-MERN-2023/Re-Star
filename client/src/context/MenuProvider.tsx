@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import myAxios from "@/utils/myAxios";
 
 import { IMenu, IMenuContext } from "@/interface";
-import { AxiosError } from "axios";
 
 export const MenuContext = createContext<IMenuContext>({} as IMenuContext);
 
@@ -37,7 +36,7 @@ const MenuProvider = ({ children }: PropsWithChildren) => {
 
       setMenus(menus[0].foods);
     } catch (error: any) {
-      toast.error("error :", error);
+      toast.error("Error while getting restaurant :", error);
     }
   };
   const DeleteMenuByOrgId = async (orgId: string, deleteId: string) => {
@@ -51,7 +50,7 @@ const MenuProvider = ({ children }: PropsWithChildren) => {
       toast.success("Successfully deleted");
       getMenuByOrgId(orgId);
     } catch (error: any) {
-      toast.error("error :", error);
+      toast.error("Error while deleting restaurant :", error);
     }
   };
 

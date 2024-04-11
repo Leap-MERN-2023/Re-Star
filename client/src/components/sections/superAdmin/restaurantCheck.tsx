@@ -15,14 +15,11 @@ import { DialogDescription } from "@radix-ui/react-dialog";
 import { Label } from "@/components/ui/label";
 
 import { useFormik } from "formik";
-import { MenuContext } from "@/context/MenuProvider";
 
 import * as yup from "yup";
 
 const RestaurantCard = () => {
   const { org, changeOrgStatus } = useContext(RestaurantContext);
-
-  const router = useRouter();
 
   const statuses = ["pending", "approved", "banned"];
 
@@ -40,6 +37,7 @@ const RestaurantCard = () => {
       changeOrgStatus(orgId, status);
     },
   });
+  console.log("org", org);
 
   return (
     <div className="flex flex-wrap justify-around gap-10 mt-[100px]">
@@ -114,41 +112,50 @@ const RestaurantCard = () => {
                     </div>
                   </div>
                   <DialogFooter className="gap-2">
-                    <Button
-                      type="submit"
-                      //   onClick={() => formik.handleSubmit()}
-                      className="w-full bg-[#61b23f] text-white"
-                      onClick={() => changeOrgStatus(e?._id, "approved")}
-                    >
-                      Add Restaurant
-                    </Button>
-                    <Button
-                      type="submit"
-                      //   onClick={() => formik.handleSubmit()}
-                      className="w-full bg-[#a83c3c] text-white"
-                      onClick={() => changeOrgStatus(e?._id, "banned")}
-                    >
-                      Decline Restaurant
-                    </Button>
+                    {e.role.toLowerCase() === "pending" && (
+                      <>
+                        <Button
+                          type="submit"
+                          className="w-full bg-[#61b23f] text-white"
+                          onClick={() => changeOrgStatus(e?._id, "approved")}
+                        >
+                          Add Restaurant
+                        </Button>
+                        <Button
+                          type="submit"
+                          className="w-full bg-[#a83c3c] text-white"
+                          onClick={() => changeOrgStatus(e?._id, "banned")}
+                        >
+                          Decline Restaurant
+                        </Button>
+                      </>
+                    )}
+                    {e.role.toLowerCase() === "banned" && (
+                      <>
+                        <Button
+                          type="submit"
+                          className=" bg-[#61b23f] text-white"
+                          onClick={() => changeOrgStatus(e?._id, "approved")}
+                        >
+                          Approve Restaurant
+                        </Button>
+                      </>
+                    )}
+                    {e.role.toLocaleLowerCase() === "approved" && (
+                      <Button
+                        type="submit"
+                        className=" bg-[#a83c3c] text-white"
+                        onClick={() => changeOrgStatus(e?._id, "banned")}
+                      >
+                        Ban Restaurant
+                      </Button>
+                    )}
                   </DialogFooter>
                 </DialogContent>
               </Dialog>
             ))}
         </div>
       ))}
-      {/* {org
-          .filter((e) => {
-            return e.category === categoryId;
-          })
-          .map((org, i) => {
-            return (
-              <div key={i}>
-                <SwiperSlide className="">
-                  <RestaurantCard {...org} />
-                </SwiperSlide>
-              </div>
-            );
-          })} */}
     </div>
   );
 };

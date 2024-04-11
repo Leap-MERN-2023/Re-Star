@@ -29,7 +29,7 @@ export const UserProfile = () => {
               <div className="self-center flex justify-center p-4 font-bold text-2xl">
                 {loggedUser.name}
               </div>
-              <div className="flex self-center">I am a reviewer :8</div>
+              <div className="flex self-center">I am a reviewer :3</div>
               <Link className="flex self-center font-bold mt-4" href={""}>
                 Website.mn <FaLink className="flex self-center ml-2" />
               </Link>
@@ -40,11 +40,7 @@ export const UserProfile = () => {
               </Link>
             </div>
             <Avatar className="md:w-52 md:h-52 self-center flex justify-center ml-6">
-              <AvatarImage
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBeHdW37yqnZFBs4Rrg4F38OJJr0Jlh53Bpw&usqp=CAU"
-                className="md:w-52 md:h-52"
-                alt="@shadcn"
-              />
+              <AvatarImage src="" className="md:w-52 md:h-52" alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <div className="rounded-lg ">

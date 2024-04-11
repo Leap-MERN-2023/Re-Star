@@ -50,12 +50,11 @@ const MainInfo = ({
     return total / scores.length;
   };
   const { categories } = useContext(CategoryContext);
-  // console.log("CATS IN ID PAGE", categories);
 
   const cat = categories?.filter(
     (cat) => (cat._id as string) === (category as string)
   );
-  console.log("cattttttt", cat);
+
   const averageScore = calculateAverage(scores);
 
   const router = useRouter();
@@ -106,15 +105,7 @@ const MainInfo = ({
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex-wrap grid grid-cols-4 gap-3">
-        <Button className="bg-secondary text-primary hover:bg-secondary hover:scale-105">
-          <MdAssistantDirection
-            size={"25px"}
-            style={{ margin: 6 }}
-            onClick={() => router.push("/explore")}
-          />
-          Direction
-        </Button>
+      <CardFooter className="flex-wrap grid grid-cols-3 gap-3">
         <Button className="bg-secondary text-primary hover:bg-black hover:scale-105">
           <CiBookmarkRemove size={"25px"} style={{ margin: 4 }} />
           Save

@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { addMenu, deleteMenu, getMenuByOrgId } from "../controller/menu";
+import {
+  addMenu,
+  deleteMenu,
+  getMenuByOrgId,
+  updateMenu,
+} from "../controller/menu";
 import { authenticate } from "../middleware/authenticate";
 import { upload } from "../middleware/multer";
 
@@ -11,5 +16,6 @@ router
   .delete(authenticate, deleteMenu);
 
 router.route("/get/:orgId").get(getMenuByOrgId);
+router.route("/update").post(authenticate, updateMenu);
 
 export default router;
