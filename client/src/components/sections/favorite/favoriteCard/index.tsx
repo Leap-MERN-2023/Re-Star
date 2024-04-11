@@ -38,21 +38,20 @@ export function FavoriteCard({ favorite }: any) {
         src={favorite.images?.at(1)}
         className="h-[180px] w-[250px] border-white-200 rounded-lg p-2 object-cover"
         onClick={() => {
-          router.push(`http://localhost:3000/details/${favorite._id}`);
+          router.push(
+            `https://re-star-front.vercel.app/details/${favorite._id}`
+          );
         }}
       />
       <CardHeader
         onClick={() => {
-          router.push(`http://localhost:3000/details/${favorite._id}`);
+          router.push(
+            `https://re-star-front.vercel.app/details/${favorite._id}`
+          );
         }}
       >
         <div className="">
-          <CardTitle
-            className="text-xl text-primary"
-            onClick={() => {
-              router.push(`http://localhost:3000/details/${favorite._id}`);
-            }}
-          >
+          <CardTitle className="text-xl text-primary">
             {favorite.name}
           </CardTitle>
         </div>
