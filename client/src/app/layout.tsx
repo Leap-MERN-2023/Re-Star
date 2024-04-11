@@ -1,7 +1,7 @@
 // "use client";s
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Ubuntu } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/sections/navbar/header";
 import Footer from "@/components/sections/navbar/footer";
