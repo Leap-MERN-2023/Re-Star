@@ -9,25 +9,29 @@ export const addFavorite = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { orgId } = req.body;
+  try {
+    const { orgId } = req.body;
 
-  const findFavorite = await Favorite.findOne({ user: req.user._id }).populate(
-    "organizations"
-  );
-
-  if (!findFavorite) {
-    await Favorite.create({
+    const findFavorite = await Favorite.findOne({
       user: req.user._id,
-      organizations: [orgId],
-    });
-  } else {
-    findFavorite.organizations.push(orgId);
+    }).populate("organizations");
 
-    const favorites = await findFavorite?.save();
-    res.status(201).json({
-      message: "Post favorite successfully",
-      favorites,
-    });
+    if (!findFavorite) {
+      await Favorite.create({
+        user: req.user._id,
+        organizations: [orgId],
+      });
+    } else {
+      findFavorite.organizations.push(orgId);
+
+      const favorites = await findFavorite?.save();
+      res.status(201).json({
+        message: "Post favorite successfully",
+        favorites,
+      });
+    }
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -36,13 +40,17 @@ export const getFavorite = async (
   res: Response,
   next: NextFunction
 ) => {
-  const favorites = await Favorite.findOne({ user: req.user._id }).populate(
-    "organizations"
-  );
-  res.status(201).json({
-    message: `Get all favorite successfully`,
-    favorites,
-  });
+  try {
+    const favorites = await Favorite.findOne({ user: req.user._id }).populate(
+      "organizations"
+    );
+    res.status(201).json({
+      message: `Get all favorite successfully`,
+      favorites,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 export const deleteFavorite = async (
   req: IReq,

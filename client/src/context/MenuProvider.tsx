@@ -36,7 +36,7 @@ const MenuProvider = ({ children }: PropsWithChildren) => {
 
       setMenus(menus[0].foods);
     } catch (error: any) {
-      toast.error("Error while getting restaurant :", error);
+      console.log("Error while getting restaurant", error);
     }
   };
 

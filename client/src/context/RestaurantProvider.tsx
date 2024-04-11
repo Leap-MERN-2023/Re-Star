@@ -76,8 +76,12 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
       toast.success("restaurant amjilttai uuslee");
       getUserRestaurantById();
       router.push("/admin");
-    } catch (error) {
-      toast.error(`Error in adding Restaurant: ${error} `);
+    } catch (error: any) {
+      toast.error(
+        `Error in adding Restaurant: ${
+          error.response && error.response.data.message
+        } `
+      );
     } finally {
       setIsLoading(false);
     }

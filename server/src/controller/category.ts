@@ -10,35 +10,43 @@ export const addCategory = async (
   res: Response,
   next: NextFunction
 ) => {
-  const newCategory = req.body;
+  try {
+    const newCategory = req.body;
 
-  if (!req.file) {
-    throw new MyError("Pic", 400);
-  } else {
-    const { secure_url } = await cloudinary.uploader.upload(req.file.path);
+    if (!req.file) {
+      throw new MyError("Pic", 400);
+    } else {
+      const { secure_url } = await cloudinary.uploader.upload(req.file.path);
 
-    newCategory.image = secure_url;
+      newCategory.image = secure_url;
+    }
+
+    const category = await Category.create({ ...newCategory });
+
+    res.status(201).json({
+      message: "Post category successfully",
+      category,
+    });
+  } catch (error) {
+    next(error);
   }
-
-  const category = await Category.create({ ...newCategory });
-
-  res.status(201).json({
-    message: "Post category successfully",
-    category,
-  });
 };
 export const deleteCategory = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const { deleteId } = req.body;
+  try {
+    const { deleteId } = req.body;
 
-  await Category.deleteOne({ _id: deleteId });
+    await Category.deleteOne({ _id: deleteId });
 
-  res.status(201).json({
-    message: "deleted category successfully",
-  });
+    res.status(201).json({
+      message: "deleted category successfully",
+    });
+  } catch (error) {
+    next();
+  }
 };
 
 export const updateCategory = async (
@@ -46,22 +54,26 @@ export const updateCategory = async (
   res: Response,
   next: NextFunction
 ) => {
-  const updateCategory = req.body;
+  try {
+    const updateCategory = req.body;
 
-  const findCategory = await Category.findByIdAndUpdate(
-    {
-      _id: updateCategory.id,
-    },
-    {
-      name: updateCategory.name,
-      image: updateCategory.image,
-      description: updateCategory.description,
-    }
-  );
+    const findCategory = await Category.findByIdAndUpdate(
+      {
+        _id: updateCategory.id,
+      },
+      {
+        name: updateCategory.name,
+        image: updateCategory.image,
+        description: updateCategory.description,
+      }
+    );
 
-  res.status(201).json({
-    message: "Post category successfully",
-  });
+    res.status(201).json({
+      message: "Post category successfully",
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const getCategory = async (
@@ -69,10 +81,14 @@ export const getCategory = async (
   res: Response,
   next: NextFunction
 ) => {
-  const categories = await Category.find();
+  try {
+    const categories = await Category.find();
 
-  res.status(201).json({
-    message: "Post category successfully",
-    categories,
-  });
+    res.status(201).json({
+      message: "Post category successfully",
+      categories,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
