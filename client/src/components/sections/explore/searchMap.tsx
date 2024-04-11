@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { IOrg } from "@/interface";
 import { UserContext } from "@/context/UserProvider";
+import { GiPerson } from "react-icons/gi";
 
 interface IProps {
   mappedOrgByName: (searchName: string) => void;
@@ -139,12 +140,11 @@ const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
                   <div className="text-bold">{org.name}</div>
                 </React.Fragment>
               ))}
-              <AdvancedMarker position={userLocation} className="bg-pink-800">
-                <Pin
-                  background={"#FE0E0E"}
-                  borderColor={"#B30808"}
-                  glyphColor={"#9C0909"}
-                />
+              <AdvancedMarker
+                position={userLocation}
+                className=" bg-transparent"
+              >
+                <GiPerson className="text-5xl text-orange-500 z-10" />
               </AdvancedMarker>
             </Map>
           </div>
