@@ -11,6 +11,7 @@ export interface IUserContext {
   loggedUser: ILoggedUser;
   changeUserProfile: ({ changedUser }: IChangeUserProfile) => {};
   token: string | null | undefined;
+  userLocation: any;
 }
 export interface ISignUp {
   name: string;

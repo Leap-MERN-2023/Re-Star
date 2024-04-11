@@ -18,16 +18,12 @@ import {
   ISignUp,
   ILogin,
   IChangeUserProfile,
+  IUser,
 } from "../interface";
 import { toast } from "react-toastify";
 import { unknown } from "zod";
 
-export const UserContext = createContext<IUserContext>({
-  token: "",
-  changeUserProfile: async () => {},
-  logout: () => {},
-  loggedUser: {} as ILoggedUser,
-});
+export const UserContext = createContext<IUserContext>({} as IUserContext);
 
 const UserProvider = ({ children }: PropsWithChildren) => {
   const [token, setToken] = useState<string | null>("");
@@ -38,6 +34,19 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     _id: "",
   });
   const [refresh, setRefresh] = useState(false);
+  const [userLocation, setUserLocation] = useState({ lat: 0, lng: 0 });
+  const getUserLocation = () => {
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      console.log(pos);
+      setUserLocation({
+        lat: pos.coords.latitude,
+        lng: pos.coords.longitude,
+      });
+    });
+  };
+  useEffect(() => {
+    getUserLocation();
+  }, []);
 
   const router = useRouter();
 
@@ -97,9 +106,10 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   return (
     <UserContext.Provider
       value={{
+        token,
         logout,
         loggedUser,
-        token,
+        userLocation,
         changeUserProfile,
       }}
     >

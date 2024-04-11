@@ -8,10 +8,8 @@ import {
 } from "@vis.gl/react-google-maps";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { CloudFog } from "lucide-react";
 import { IOrg } from "@/interface";
-import { Router } from "next/router";
-import { useRouter } from "next/navigation";
+import { UserContext } from "@/context/UserProvider";
 
 interface IProps {
   mappedOrgByName: (searchName: string) => void;
@@ -31,6 +29,8 @@ const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
   const position1 = { lat: 47.915274773004924, lng: 106.91512983001671 };
 
   const [searchName, setSearchName] = useState("");
+
+  const { userLocation } = useContext(UserContext);
 
   const handleMappedOrg = useCallback(() => {
     mappedOrgByName(searchName);
@@ -74,6 +74,7 @@ const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
   //       "&travelmode=driving"
   //   );
   // };
+  console.log("userlocation", userLocation);
 
   return (
     <div className="w-[1000px] ">
@@ -138,6 +139,13 @@ const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
                   <div className="text-bold">{org.name}</div>
                 </React.Fragment>
               ))}
+              <AdvancedMarker position={userLocation} className="bg-pink-800">
+                <Pin
+                  background={"#FE0E0E"}
+                  borderColor={"#B30808"}
+                  glyphColor={"#9C0909"}
+                />
+              </AdvancedMarker>
             </Map>
           </div>
         </APIProvider>

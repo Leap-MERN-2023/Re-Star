@@ -56,29 +56,21 @@ export function EditOrgMenu({
 
     onSubmit: async ({ name, category, description, price }) => {
       try {
-        const dataForm = new FormData();
-        dataForm.set("name", name);
-        dataForm.set("category", category);
-        dataForm.set("description", description);
-        dataForm.set("price", price);
-        dataForm.set("orgId", orgId);
-        dataForm.set("menuId", menuId);
         console.log("first", name, category, description, price, orgId);
-        console.log("second", dataForm.get("orgId"));
 
-        const data = await myAxios.post("/menu/update", dataForm, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const data = await myAxios.post(
+          "/menu/update",
+          { name, category, description, price, orgId, menuId },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         getMenuByOrgId(orgId);
 
-<<<<<<< HEAD:client/src/components/sections/admin/editOrgMenu/index.tsx
         toast.success("Successful");
-=======
-        toast.success("New review edited");
->>>>>>> 70c8d72 (edit):client/src/components/sections/admin/editOrg/index.tsx
       } catch (error: any) {
         toast.error(`error : ${error.response && error.response.data.message}`);
       }
