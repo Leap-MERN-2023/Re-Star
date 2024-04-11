@@ -1,7 +1,9 @@
-import * as React from "react";
+"use client";
+import React, { useRef } from "react";
 import AutoPlay from "embla-carousel-autoplay";
 
 import { Card, CardContent } from "@/components/ui/card";
+
 import {
   Carousel,
   CarouselContent,
@@ -18,9 +20,7 @@ export function DetailPicture(props: { images?: string[] }) {
   ];
 
   const { images = pictures } = props;
-  const plugin = React.useRef(
-    AutoPlay({ delay: 1500, stopOnInterraction: true })
-  );
+  const plugin = useRef(AutoPlay({ delay: 1500, stopOnInterraction: true }));
 
   return (
     <Carousel
