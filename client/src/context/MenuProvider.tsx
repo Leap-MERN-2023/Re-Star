@@ -39,6 +39,7 @@ const MenuProvider = ({ children }: PropsWithChildren) => {
       toast.error("Error while getting restaurant :", error);
     }
   };
+
   const DeleteMenuByOrgId = async (orgId: string, deleteId: string) => {
     try {
       await myAxios.delete(`/menu/`, {

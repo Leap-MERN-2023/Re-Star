@@ -12,7 +12,6 @@ export const addMenu = async (
 ) => {
   try {
     const newMenu = req.body;
-    console.log("req", req.body);
 
     const { orgId, ...newFood } = newMenu;
 
