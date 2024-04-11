@@ -78,11 +78,7 @@ export function MenuModal({ id }: { id: string }) {
       });
       getMenuByOrgId(id);
 
-<<<<<<< HEAD
       toast.success("Successful");
-=======
-      toast.success("New review added");
->>>>>>> 70c8d72 (edit)
     } catch (error) {
       toast.error("Error");
     }

@@ -122,8 +122,9 @@ export const updateMenu = async (
     }
 
     const updateMenuIndex = findMenu.foods.findIndex(
-      (e) => e._id === newMenu.menuId
+      (e) => e._id?.toString() == newMenu.menuId
     );
+    console.log("first");
 
     if (updateMenuIndex === undefined || updateMenuIndex === -1) {
       throw new MyError("Food does not exist", 404);
@@ -133,7 +134,6 @@ export const updateMenu = async (
     findMenu.foods[updateMenuIndex].price = newMenu.price;
     findMenu.foods[updateMenuIndex].category = newMenu.category;
     findMenu.foods[updateMenuIndex].description = newMenu.description;
-    findMenu.foods[updateMenuIndex].image = newMenu.image;
     await findMenu.save();
     res.status(201).json({
       message: "updated menu successfully",
