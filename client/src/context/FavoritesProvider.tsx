@@ -66,7 +66,7 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
       );
       getFavorites();
 
-      toast.success("Successfully added to favorites");
+      toast.success("Favorite successfully added");
     } catch (error) {
       toast.error(`error ${error}`);
     }
@@ -85,6 +85,7 @@ const FavoritesProvider = ({ children }: PropsWithChildren) => {
         data: { orgId },
       });
       getFavorites();
+      toast.success("Favorite successfully deleted");
     } catch (error) {
       toast.error(`error ${error}`);
     }

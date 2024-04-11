@@ -38,7 +38,9 @@ export const getReviewById = async (
   next: NextFunction
 ) => {
   try {
-    const orgReview = await Review.find({ organization: req.params.id });
+    const orgReview = await Review.find({
+      organization: req.params.id,
+    }).populate("user");
 
     res.status(201).json({ orgReview });
     res.send({ orgReview });

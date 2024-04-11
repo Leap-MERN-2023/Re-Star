@@ -73,7 +73,7 @@ const MainInfo = ({
 
           <div className="flex mr-11">
             <Badge className="mr-3 bg-green-600 text-white flex justify-center items-center h-[30px]">
-              {averageScore}
+              {Math.round(averageScore * 100) / 100}
               <span className="m-1">
                 <FaStar />
               </span>
@@ -105,15 +105,18 @@ const MainInfo = ({
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex-wrap grid grid-cols-3 gap-3">
-        <Button className="bg-secondary text-primary hover:bg-black hover:scale-105">
-          <CiBookmarkRemove size={"25px"} style={{ margin: 4 }} />
-          Save
+      <CardFooter className="flex-wrap flex gap-3">
+        <Button
+          onClick={() => router.push("/explore")}
+          className="bg-secondary text-primary hover:bg-secondary hover:scale-105 flex-1"
+        >
+          <MdAssistantDirection size={"25px"} style={{ margin: 6 }} />
+          Location
         </Button>
-        <Button className="bg-secondary text-primary hover:bg-secondary hover:scale-105">
+        <Button className="bg-secondary text-primary hover:bg-secondary hover:scale-105 flex-1">
           <ShareButton />
         </Button>
-        <Button className="bg-secondary text-primary hover:bg-secondary hover:scale-105">
+        <Button className="bg-secondary text-primary hover:bg-secondary hover:scale-105 flex-1">
           <ReviewModal />
         </Button>
       </CardFooter>

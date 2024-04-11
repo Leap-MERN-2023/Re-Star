@@ -15,13 +15,6 @@ import { useContext, useEffect, useState } from "react";
 import { FavoritesContext } from "@/context/FavoritesProvider";
 import { RestaurantContext } from "@/context/RestaurantProvider";
 import { ReviewContext } from "@/context/ReviewProvider";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 
 interface IProps extends IOrg {
   favorite?: boolean;
