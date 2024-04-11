@@ -28,6 +28,7 @@ import { AdminPicView } from "./adminPicView";
 import AdminCoreView from "./adminCoreView";
 import { AdminMenuView } from "./adminMenuView";
 import { DialogClose } from "@radix-ui/react-dialog";
+import Loading from "@/app/loading";
 
 export const AdminPage = () => {
   const { getUserRestaurantById, userOrgs } = useContext(RestaurantContext);
@@ -80,6 +81,7 @@ export const AdminTab = () => {
   } = useContext(RestaurantContext);
 
   const { token } = useContext(UserContext);
+  const { isLoading } = useContext(RestaurantContext);
   const [pass, setPass] = useState<string>("");
 
   useEffect(() => {
@@ -132,9 +134,18 @@ export const AdminTab = () => {
           <CardHeader>
             <CardTitle className="text-center">Your Restaurant</CardTitle>
           </CardHeader>
-          <AdminPicView images={org?.images} />
-          <AdminCoreView {...org} />
-          <AdminMenuView {...org} />
+
+          {!isLoading ? (
+            <div>
+              <AdminPicView images={org?.images} />
+              <AdminCoreView {...org} />
+              <AdminMenuView {...org} />
+            </div>
+          ) : (
+            <div className="w-screen h-screen  z-50">
+              <Loading />
+            </div>
+          )}
         </TabsContent>
       ))}
       <TabsContent value="delete" className="flex justify-center">

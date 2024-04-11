@@ -28,6 +28,7 @@ export interface IRestaurantContext {
     description,
     phoneNumber,
   }: IUpdateRestaurant) => void;
+  ChangeLoading: (open: boolean) => void;
   getRestaurantById: (id: string) => void;
   userOrgs: IOrg[];
   deleteRestaurantById: (id: string) => void;

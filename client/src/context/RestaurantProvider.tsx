@@ -251,6 +251,9 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
   const ChangeIsOpen = (open: boolean) => {
     setIsOpen(open);
   };
+  const ChangeLoading = (loading: boolean) => {
+    setIsLoading(loading);
+  };
 
   return (
     <RestaurantContext.Provider
@@ -261,6 +264,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
         refetch,
         userOrgs,
         isLoading,
+        ChangeLoading,
         handleFetch,
         ChangeIsOpen,
         updateRestaurant,
