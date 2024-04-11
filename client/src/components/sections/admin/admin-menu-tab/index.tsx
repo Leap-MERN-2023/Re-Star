@@ -59,14 +59,14 @@ export const AdminMenuTab = ({ orgId }: { orgId: string }) => {
                             </p>
                           </div>
                         </div>
-                        <div className="flex gap-4">
-                          <EditOrgMenu
-                            {...menu}
-                            orgId={orgId}
-                            menuId={menu._id}
-                          />
-                          <DeleteOrg orgId={orgId} {...menu} />
-                        </div>
+                      </div>
+                      <div className="flex gap-4">
+                        <EditOrgMenu
+                          {...menu}
+                          orgId={orgId}
+                          menuId={menu._id}
+                        />
+                        <DeleteOrg orgId={orgId} {...menu} />
                       </div>
                     </div>
                   ))}

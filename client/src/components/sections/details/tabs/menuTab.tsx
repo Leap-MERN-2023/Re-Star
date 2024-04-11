@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 
 import AutoPlay from "embla-carousel-autoplay";
 import "swiper/css";
@@ -17,10 +17,11 @@ import {
 } from "@/components/ui/carousel";
 
 export const MenuTab = () => {
-  const categories = ["Dessert", "Drink", "Main Course", "Alcohol"];
+  const categories = ["Main Course", "Dessert", "Drink", "Alcohol"];
 
   const { orgMenus } = useContext(MenuContext);
-  const { menus } = useContext(MenuContext);
+
+  // useEffect(()=>{getMenuByOrgId(orgId)},[menus])
 
   const plugin = useRef(AutoPlay({ delay: 1500, stopOnInterraction: true }));
   return (
@@ -38,7 +39,7 @@ export const MenuTab = () => {
             <div className="flex gap-10 p-10 ">
               <Carousel className="w-full  rounded-lg shadow-xl justify-around  flex ">
                 <CarouselContent className=" flex  p-5 justify-start w-full gap-10 ">
-                  {menus
+                  {orgMenus
                     .filter((menu) => menu.category == category)
                     .map((menu, i) => (
                       <div key={i} className="">
