@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { CategoryContext } from "@/context/CategoryProvider";
 import React, { useContext, useState } from "react";
 
-const CategoryList = ({ mappedOrgByCategory, allOrg }: any) => {
+const CategoryList = ({ mappedOrgByCategory, allOrg, ClearCategory }: any) => {
   const { categories } = useContext(CategoryContext);
   const [selectedCategory, setSelectedCategory] = useState();
 
@@ -14,9 +14,7 @@ const CategoryList = ({ mappedOrgByCategory, allOrg }: any) => {
           Category List
         </h1>
         <div className="flex flex-col text-black gap-4 mt-5">
-          <Button className="" onClick={allOrg}>
-            All
-          </Button>
+          <Button onClick={allOrg}>All</Button>
           {categories.map((category, i) => (
             <Button
               key={i}
@@ -26,6 +24,7 @@ const CategoryList = ({ mappedOrgByCategory, allOrg }: any) => {
               <div>{category.name}</div>
             </Button>
           ))}
+          <Button onClick={ClearCategory}>Clear</Button>
         </div>
       </Card>
     </div>

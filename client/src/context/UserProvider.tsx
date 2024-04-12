@@ -1,27 +1,12 @@
 "use client";
 
-import {
-  PropsWithChildren,
-  SetStateAction,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { PropsWithChildren, createContext, useEffect, useState } from "react";
 import myAxios from "@/utils/myAxios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 
-import {
-  IUserContext,
-  ILoggedUser,
-  ISignUp,
-  ILogin,
-  IChangeUserProfile,
-  IUser,
-} from "../interface";
+import { IUserContext, ILoggedUser, IChangeUserProfile } from "../interface";
 import { toast } from "react-toastify";
-import { unknown } from "zod";
 
 export const UserContext = createContext<IUserContext>({} as IUserContext);
 
@@ -34,21 +19,6 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     _id: "",
   });
   const [refresh, setRefresh] = useState(false);
-  const [userLocation, setUserLocation] = useState({ lat: 0, lng: 0 });
-  const getUserLocation = () => {
-    navigator.geolocation.getCurrentPosition(function (pos) {
-      console.log(pos);
-      setUserLocation({
-        lat: pos.coords.latitude,
-        lng: pos.coords.longitude,
-      });
-    });
-  };
-  useEffect(() => {
-    getUserLocation();
-  }, []);
-
-  const router = useRouter();
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -109,7 +79,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
         token,
         logout,
         loggedUser,
-        userLocation,
+
         changeUserProfile,
       }}
     >
