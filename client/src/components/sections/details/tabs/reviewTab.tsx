@@ -23,7 +23,7 @@ const ReviewTab = ({ revData }: any) => {
   const { deleteReview } = useContext(ReviewContext);
 
   return (
-    <div className="flex ">
+    <div className="flex flex-col">
       <Card className=" shadow md:w-96 bg-secondary ">
         <CardHeader>
           <CardTitle className=" flex  sm:flex-col lg:flex-row justify-between ">
