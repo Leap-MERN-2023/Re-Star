@@ -188,6 +188,7 @@ export const AdminTab = () => {
                           </Label>
                           <Input
                             id="password"
+                            type="password"
                             value={pass}
                             className="col-span-3"
                             name="pass"
@@ -196,9 +197,9 @@ export const AdminTab = () => {
                         </div>
                       </div>
                       <DialogFooter>
-                        <DialogClose>
+                        <DialogClose className="flex w-full gap-10 ">
                           <Button
-                            className="w-full"
+                            className="flex-1"
                             onClick={() => checkPassword(pass, org?._id)}
                           >
                             Check Password

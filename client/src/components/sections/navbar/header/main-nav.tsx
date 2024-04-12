@@ -76,6 +76,16 @@ export function MainNav({ className }: any) {
           <div className="hover:scale-120">Your Restaurant</div>
         </Link>
       )}
+      {loggedUser.role === "admin" ? (
+        <Link
+          className="text-primary font-semibold transition-colors hover:scale-105 max-[460px]:text-transparent max-[460px]:text-xs "
+          href="/super-admin"
+        >
+          <div className="hover:scale-120">Super-Admin</div>
+        </Link>
+      ) : (
+        ""
+      )}
       <div>
         <FavoriteDrawer />
       </div>
