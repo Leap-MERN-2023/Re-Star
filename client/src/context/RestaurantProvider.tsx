@@ -82,6 +82,7 @@ const RestaurantProvider = ({ children }: PropsWithChildren) => {
           error.response && error.response.data.message
         } `
       );
+      console.log("error", error);
     } finally {
       setIsLoading(false);
     }

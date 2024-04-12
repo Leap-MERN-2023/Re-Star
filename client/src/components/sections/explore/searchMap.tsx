@@ -15,6 +15,7 @@ import { GiPerson } from "react-icons/gi";
 interface IProps {
   mappedOrgByName: (searchName: string) => void;
   mapOrgs: IOrgProps[];
+  userLocation: { lat: number; lng: number };
 }
 
 interface IOrgProps extends IOrg {
@@ -26,55 +27,15 @@ interface IOrgProps extends IOrg {
   closeTime: string;
 }
 
-const SearchMap = ({ mapOrgs, mappedOrgByName }: IProps) => {
+const SearchMap = ({ mapOrgs, mappedOrgByName, userLocation }: IProps) => {
   const position1 = { lat: 47.915274773004924, lng: 106.91512983001671 };
 
   const [searchName, setSearchName] = useState("");
-
-  const { userLocation } = useContext(UserContext);
 
   const handleMappedOrg = useCallback(() => {
     mappedOrgByName(searchName);
   }, [mappedOrgByName]);
 
-  // const calculateDistance = (lat1, lon1, lat2, lon2) => {
-  //   const earthRadius = 6371; // in kilometers
-
-  //   const degToRad = (deg) => {
-  //     return deg * (Math.PI / 180);
-  //   };s
-
-  //   const dLat = degToRad(lat2 - lat1);
-  //   const dLon = degToRad(lon2 - lon1);
-
-  //   const a =
-  //     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-  //     Math.cos(degToRad(lat1)) *
-  //       Math.cos(degToRad(lat2)) *
-  //       Math.sin(dLon / 2) *
-  //       Math.sin(dLon / 2);
-
-  //   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-  //   const distance = earthRadius * c;
-
-  //   setDistance(distance.toFixed(1));
-  //   return distance.toFixed(2); // Return the distance with 2 decimal places
-  // };
-
-  // const onDirectionClick = () => {
-  //   window.open(
-  //     "https://www.google.com/maps/dir/?api=1&origin=" +
-  //       userLocation.lat +
-  //       "," +
-  //       userLocation.lng +
-  //       "&destination=" +
-  //       business.geometry.location.lat +
-  //       "," +
-  //       business.geometry.location.lng +
-  //       "&travelmode=driving"
-  //   );
-  // };
   console.log("userlocation", userLocation);
 
   return (

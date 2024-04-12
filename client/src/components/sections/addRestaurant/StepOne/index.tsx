@@ -100,6 +100,25 @@ export function StepOne() {
     },
   });
 
+  const setDemoRestaurant = () => {
+    try {
+      formik.setValues({
+        ...formik.values,
+        name: "Gamma",
+        category: "661399674e7b769f796850e9",
+        openTime: "09:00",
+        closeTime: "20:00",
+        address: "Bayangol Hoteliin Ard gereg tower 8 dawhar",
+        description: "Nice environment and delicious foods",
+        phoneNumber: "123456789",
+        lat: "47.913283179012878",
+        lng: "106.92328188937363",
+      });
+    } catch (error) {
+      console.error("Error setting demo values:", error);
+    }
+  };
+
   return (
     <div className="w-full flex flex-col justify-center items-center sm:justify-start">
       <Card className="w-[500px] justify-center">
@@ -114,6 +133,7 @@ export function StepOne() {
                 id="name"
                 placeholder="Name of your project"
                 name="name"
+                value={formik.values.name}
                 className="w-full bg-secondary placeholder:text-"
                 onChange={formik.handleChange}
               />
@@ -125,7 +145,9 @@ export function StepOne() {
               <Label htmlFor="framework">Restaurant type</Label>
               <Select
                 onValueChange={(e) => (
-                  addCategory(e), formik.setFieldValue("category", e)
+                  addCategory(e),
+                  formik.setFieldValue("category", e),
+                  console.log("values", e)
                 )}
                 name="category"
                 value={formik.values.category}
@@ -200,6 +222,7 @@ export function StepOne() {
             <Input
               placeholder="Restaurant Full Address: "
               name="address"
+              value={formik.values.address}
               className=" lg:w-full md:w-full sm:w-full xs:w-full bg-secondary"
               onChange={formik.handleChange}
             />
@@ -209,6 +232,7 @@ export function StepOne() {
             <Input
               placeholder="Latitude"
               name="lat"
+              value={formik.values.lat}
               className="bg-secondary  lg:w-full md:w-full sm:w-full xs:w-full"
               onChange={formik.handleChange}
             />
@@ -218,6 +242,7 @@ export function StepOne() {
             <Input
               placeholder="Longitude"
               name="lng"
+              value={formik.values.lng}
               className="bg-secondary  lg:w-full md:w-full sm:w-full xs:w-full"
               onChange={formik.handleChange}
             />
@@ -263,13 +288,20 @@ export function StepOne() {
             />
           </Button>
         </CardContent>
-        <CardFooter className="flex justify-between ">
+        <CardFooter className="flex justify-between flex-col gap-3">
           <Button
             onClick={() => formik.handleSubmit()}
             type="submit"
             className="w-full"
           >
             {isLoading ? "...loading" : "Upload"}
+          </Button>
+          <Button
+            className="w-full bg-gray-500"
+            variant={"secondary"}
+            onClick={setDemoRestaurant}
+          >
+            Add demo restaurant
           </Button>
         </CardFooter>
       </Card>
