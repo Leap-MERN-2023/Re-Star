@@ -2,14 +2,11 @@
 
 import React, { useContext, useEffect, useRef } from "react";
 import AutoPlay from "embla-carousel-autoplay";
-<<<<<<< Updated upstream
-=======
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import myAxios from "@/utils/myAxios";
->>>>>>> Stashed changes
 import { MenuContext } from "@/context/MenuProvider";
 import {
   Carousel,
