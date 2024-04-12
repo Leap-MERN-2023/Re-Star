@@ -4,7 +4,7 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { BiEditAlt } from "@/components/icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -148,14 +148,13 @@ export function ProfileSettings() {
                           type="password"
                           className="placeholder:text-black"
                           disabled={isClicked}
-                          placeholder="***********"
+                          placeholder="New password"
                           {...field}
                           value={changedUser.password}
                           name="password"
                           onChange={(e) => handleChange(e)}
                         />
                       </FormControl>
-                      <Button>Change Password</Button>
                     </div>
                   </FormItem>
                 )}

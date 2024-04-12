@@ -17,6 +17,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     name: "",
     email: "",
     _id: "",
+    role: "",
   });
   const [refresh, setRefresh] = useState(false);
 
@@ -24,7 +25,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-    setLoggedUser({ name: "", email: "", _id: "" });
+    setLoggedUser({ name: "", email: "", _id: "", role: "" });
   };
 
   const callSetRefresh = (boolean: boolean) => {

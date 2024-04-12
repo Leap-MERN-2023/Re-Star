@@ -2,6 +2,11 @@
 
 import React, { useContext, useEffect, useRef } from "react";
 import AutoPlay from "embla-carousel-autoplay";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import myAxios from "@/utils/myAxios";
 import { MenuContext } from "@/context/MenuProvider";
 import {
   Carousel,
@@ -10,6 +15,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "@mui/material";
+import { Autoplay, Navigation } from "swiper/modules";
 
 export const MenuTab = () => {
   const categories = ["Main Course", "Dessert", "Drink", "Alcohol"];
@@ -32,9 +40,9 @@ export const MenuTab = () => {
               <h1 className="font-bold text-[25px]">{category}</h1>
             </div>
             <div className="flex gap-10 p-10 ">
-              <Carousel className="w-full  rounded-lg shadow-xl justify-around  flex ">
+              {/* <Carousel className="w-full  rounded-lg shadow-xl justify-around  flex ">
                 <CarouselContent className=" flex  p-5 justify-start w-full gap-10 ">
-                  {orgMenus
+                {orgMenus
                     .filter((menu) => menu.category == category)
                     .map((menu, i) => (
                       <div key={i} className="">
@@ -67,7 +75,48 @@ export const MenuTab = () => {
                 </CarouselContent>
                 <CarouselPrevious />
                 <CarouselNext />
-              </Carousel>
+              </Carousel> */}
+              <Swiper
+                slidesPerView={4}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                // pagination={{ clickable: true }}
+                navigation={true}
+                modules={[Autoplay, Navigation]}
+                className="mySwiper"
+              >
+                <SwiperSlide>
+                  {orgMenus
+                    .filter((menu) => menu.category == category)
+                    .map((menu, i) => (
+                      <div key={i} className="">
+                        <div className="flex justify-center items-center gap-10">
+                          <img
+                            src="https://scontent.xx.fbcdn.net/v/t1.15752-9/434336546_798251238377443_7522391854054539304_n.png?stp=dst-png_s403x403&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=AhXjA-ilSWIAb5oikhT&_nc_oc=AdhlnuOKh5MhZIhINswmbcCDgiyoL6Q6PZZ_6MOd_52__m5RWnld9yLV6Jw13M4FYwfZnkCVHK7yEmkT9ImpvDXC&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdWCfN9xSB9iCHG4DTsSC0W2u9qtwFP4Is7qJaIvU_CHZQ&oe=663EDEEA"
+                            className="h-[260px] w-[260px] rounded-full "
+                          />
+                          <img
+                            src={menu.image}
+                            className="h-[180px] w-[180px] rounded-full  absolute"
+                          />
+                        </div>
+                        <div className="flex justify-center gap-10">
+                          <div className="">
+                            <div className="text-center">
+                              <p className="font-semibold text-[20px]">
+                                {menu.price}₮{" "}
+                              </p>
+                            </div>
+                            <div className="text-center">
+                              <p className="text-[18px] font-semibold">
+                                {menu.name}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                </SwiperSlide>
+              </Swiper>
             </div>
           </div>
         ))
