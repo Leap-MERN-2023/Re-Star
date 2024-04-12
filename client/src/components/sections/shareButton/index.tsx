@@ -13,8 +13,6 @@ import {
   FacebookIcon,
   TwitterShareButton,
   TwitterIcon,
-  GabShareButton,
-  GabIcon,
   EmailShareButton,
   EmailIcon,
   FacebookMessengerShareButton,
@@ -42,7 +40,7 @@ const ShareButton = () => {
         <AlertDialogContent className="flex justify-between bg-secondary p-10">
           <div className="flex gap-2">
             <FacebookShareButton
-              url={websiteUrl}
+              url={"https://www.facebook.com/blackgate4"}
               quote={
                 "next-share is a social share buttons for your next React apps."
               }
@@ -59,14 +57,14 @@ const ShareButton = () => {
               <TwitterIcon size={50} round />
             </TwitterShareButton>
             <EmailShareButton
-              url={"https://github.com/next-share"}
+              url={"https://www.instagram.com/gate_concept_bar/?hl=en"}
               subject={"Next Share"}
               body="body"
             >
               <EmailIcon size={50} round />
             </EmailShareButton>
             <FacebookMessengerShareButton
-              url={"https://github.com/next-share"}
+              url={"https://www.facebook.com/blackgate4"}
               appId={""}
             >
               <FacebookMessengerIcon size={50} round />

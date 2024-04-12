@@ -89,6 +89,7 @@ export function MenuModal({ id }: { id: string }) {
       ChangeLoading(false);
     }
   };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -183,7 +184,7 @@ export function MenuModal({ id }: { id: string }) {
               onClick={() => formik.handleSubmit()}
               className="bg-primary text-secondary hover:bg-secondary hover:text-primary "
             >
-              Add Item
+              Add Menu
             </Button>
           </DialogClose>
         </DialogFooter>
