@@ -44,7 +44,9 @@ const Explore = () => {
   const allOrg = () => {
     setMapOrgs(approvedOrgs);
   };
-  const ClearCategory = () => {};
+  const ClearCategory = () => {
+    setMapOrgs([]);
+  };
 
   return (
     <div className="flex items-center gap-10">
