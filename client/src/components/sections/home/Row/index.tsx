@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
-
 import { useRouter } from "next/navigation";
 import { RestaurantContext } from "@/context/RestaurantProvider";
 import { Skeleton } from "@/components/ui/skeleton";
 import RestaurantCard from "../../restaurantCard";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   Navigation,
@@ -25,19 +23,37 @@ export const CategoryRow = ({ categoryId }: { categoryId: string }) => {
   const { approvedOrgs } = useContext(RestaurantContext);
 
   return (
-    <div className="flex gap-5 flex-wrap justify-start ">
-      {!approvedOrgs && <Skeleton />}
-      {approvedOrgs
-        .filter((e) => {
-          return e.category === categoryId;
-        })
-        .map((org, i) => {
-          return (
-            <div key={i} className="">
-              <RestaurantCard {...org} />
-            </div>
-          );
-        })}
-    </div>
+    <Swiper
+      // spaceBetween={30}
+      slidesPerView={3}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
+      pagination={{
+        clickable: true,
+      }}
+      navigation={true}
+      modules={[Autoplay, Pagination, Navigation]}
+      className="mySwiper"
+    >
+      <div className="flex justify-start ">
+        {!approvedOrgs && <Skeleton />}
+
+        {approvedOrgs
+          .filter((e) => {
+            return e.category === categoryId;
+          })
+          .map((org, i) => {
+            return (
+              <div key={i} className="">
+                <SwiperSlide>
+                  <RestaurantCard {...org} />
+                </SwiperSlide>
+              </div>
+            );
+          })}
+      </div>
+    </Swiper>
   );
 };

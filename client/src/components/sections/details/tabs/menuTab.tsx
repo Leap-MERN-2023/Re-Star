@@ -1,12 +1,7 @@
 "use client";
 
 import React, { useContext, useEffect, useRef } from "react";
-
 import AutoPlay from "embla-carousel-autoplay";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import myAxios from "@/utils/myAxios";
 import { MenuContext } from "@/context/MenuProvider";
 import {
   Carousel,
